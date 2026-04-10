@@ -208,7 +208,7 @@
       "acceptanceCriteria": [
         "1. 卡牌悬停有浮起和阴影加深效果。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
