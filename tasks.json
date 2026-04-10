@@ -164,8 +164,8 @@
       "acceptanceCriteria": [
         "1. 牌库厚度效果更自然，无刺眼黄色。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-154",

@@ -22,13 +22,13 @@
 .deck-stack.card::before {
   transform: translate(4px, 4px);
   z-index: -1;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(184, 134, 11, 0.6);
 }
 
 .deck-stack.card::after {
   transform: translate(8px, 8px);
   z-index: -2;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(184, 134, 11, 0.4);
 }
 
 .deck-stack.card:hover::before {
