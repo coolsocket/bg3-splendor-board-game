@@ -197,8 +197,8 @@
       "acceptanceCriteria": [
         "1. Bonus 方块明显小于 Token 球体。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-157",
