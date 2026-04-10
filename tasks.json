@@ -142,7 +142,7 @@
       "acceptanceCriteria": [
         "1. Bonus 方块尺寸约为球体的 70%。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
