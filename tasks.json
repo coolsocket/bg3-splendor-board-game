@@ -329,8 +329,8 @@
       "acceptanceCriteria": [
         "1. 资源球质感更真实，高光不生硬。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     }
   ]
 }

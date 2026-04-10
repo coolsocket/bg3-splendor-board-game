@@ -74,7 +74,7 @@
 
 /* RADIANT_GEM (Cleric/Paladin) - Gold/Yellow */
 .token.radiant_gem {
-  background: radial-gradient(circle at 35% 35%, #fffbeb, #fef08a, #ca8a04, #713f12);
+  background: radial-gradient(circle at 25% 25%, #fffbeb, #fef08a, #ca8a04, #713f12);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .token.radiant_gem:hover:not(.disabled) {
@@ -83,7 +83,7 @@
 
 /* ARCANE_CRYSTAL (Wizard/Sorcerer) - Blue */
 .token.arcane_crystal {
-  background: radial-gradient(circle at 35% 35%, #e3f2fd, #1565c0, #0d47a1, #05204a);
+  background: radial-gradient(circle at 25% 25%, #e3f2fd, #1565c0, #0d47a1, #05204a);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .token.arcane_crystal:hover:not(.disabled) {
@@ -92,7 +92,7 @@
 
 /* NATURES_BLESSING (Druid/Ranger) - Green */
 .token.natures_blessing {
-  background: radial-gradient(circle at 35% 35%, #e8f5e9, #2e7d32, #1b5e20, #0a3d12);
+  background: radial-gradient(circle at 25% 25%, #e8f5e9, #2e7d32, #1b5e20, #0a3d12);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .token.natures_blessing:hover:not(.disabled) {
@@ -101,7 +101,7 @@
 
 /* INFERNAL_IRON (Karlach/Hellish) - Red */
 .token.infernal_iron {
-  background: radial-gradient(circle at 35% 35%, #fef2f2, #f87171, #dc2626, #7f1d1d);
+  background: radial-gradient(circle at 25% 25%, #fef2f2, #f87171, #dc2626, #7f1d1d);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .token.infernal_iron:hover:not(.disabled) {
@@ -110,7 +110,7 @@
 
 /* DARK_QUARTZ (Rogue/Warlock) - Purple/Dark */
 .token.dark_quartz {
-  background: radial-gradient(circle at 35% 35%, #faf5ff, #c084fc, #9333ea, #3b0764);
+  background: radial-gradient(circle at 25% 25%, #faf5ff, #c084fc, #9333ea, #3b0764);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .token.dark_quartz:hover:not(.disabled) {
@@ -119,7 +119,7 @@
 
 /* TRUE_SOUL_TADPOLE (Wildcard) - Pink/Arcane */
 .token.true_soul_tadpole {
-  background: radial-gradient(circle at 35% 35%, #fdf2f8, #f472b6, #db2777, #500724);
+  background: radial-gradient(circle at 25% 25%, #fdf2f8, #f472b6, #db2777, #500724);
   box-shadow: 0 0 10px rgba(212, 175, 55, 0.6), 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   border: 2px solid #d4af37; /* Gold border */
 }
