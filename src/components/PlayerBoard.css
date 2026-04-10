@@ -9,8 +9,8 @@
   color: #E8E2D2; /* text-parchment */
   font-family: 'Georgia', serif; /* Fallback for display font */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  width: 100%;
-  max-width: 100%;
+  width: 260px;
+  max-width: 260px;
   box-sizing: border-box;
 }
 
