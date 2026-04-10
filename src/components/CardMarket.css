@@ -1,7 +1,7 @@
 .card-market {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.5rem;
   padding: 20px;
   background-color: rgba(26, 20, 15, 0.8); /* bg-camp-table-ish, dark brown translucent */
   border-radius: 8px;
@@ -23,7 +23,7 @@
 .market-row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 1.5rem;
   align-items: center;
 }
 
@@ -85,7 +85,7 @@
   grid-column: span 4;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+  gap: 1.5rem;
   perspective: 1000px;
 }
 

@@ -43,7 +43,7 @@
       "acceptanceCriteria": [
         "1. 全局列间距统一。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
