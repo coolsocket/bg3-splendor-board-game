@@ -1,0 +1,284 @@
+/* PlayerBoard.css */
+
+.player-board {
+  background-color: #0a0a0f;
+  background-image: linear-gradient(135deg, #0a0a0f 0%, #16171d 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: #E8E2D2; /* text-parchment */
+  font-family: 'Georgia', serif; /* Fallback for display font */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.player-board.current-player {
+  border-color: rgba(138, 43, 226, 0.6); /* accent-arcane softened */
+  box-shadow: 0 4px 20px rgba(138, 43, 226, 0.15);
+}
+
+.player-board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #3a3f4d;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.player-name {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #E8E2D2;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.prestige-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, #2a2f3a 0%, #16171d 100%);
+  border: 1px solid #d4af37; /* accent-gold */
+  border-radius: 0 0 12px 12px; /* Shield/ribbon feel */
+  padding: 0.4rem 0.8rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.prestige-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #a0a5b5;
+}
+
+.prestige-value {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #d4af37; /* accent-gold */
+  text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+}
+
+.player-board-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.section {
+  background-color: #222731;
+  border: 1px solid #2e3542;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.section h3 {
+  font-family: 'Cinzel', Georgia, serif;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #c5ccd8;
+  border-bottom: 1px solid #2e3542;
+  padding-bottom: 0.5rem;
+}
+
+/* Asset Matrix */
+.asset-matrix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.25rem;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.bonus-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2f3a;
+  border: 1px solid #3a3f4d;
+  border-radius: 6px;
+  width: 42px;
+  height: 42px;
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bonus-item.radiant_gem { background: radial-gradient(circle at 35% 35%, #fffbeb, #fef08a, #ca8a04, #713f12); }
+.bonus-item.arcane_crystal { background: radial-gradient(circle at 35% 35%, #e0f2fe, #38bdf8, #0284c7, #0c4a6e); }
+.bonus-item.natures_blessing { background: radial-gradient(circle at 35% 35%, #f0fdf4, #4ade80, #16a34a, #14532d); }
+.bonus-item.infernal_iron { background: radial-gradient(circle at 35% 35%, #fef2f2, #f87171, #dc2626, #7f1d1d); }
+.bonus-item.dark_quartz { background: radial-gradient(circle at 35% 35%, #faf5ff, #c084fc, #9333ea, #3b0764); }
+.bonus-item.true_soul_tadpole { background: radial-gradient(circle at 35% 35%, #fdf2f8, #f472b6, #db2777, #500724); }
+
+.bonus-value {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: bold;
+  color: #E8E2D2;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Cards List */
+.cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  align-items: flex-start;
+}
+
+/* Custom scrollbar for cards list */
+.cards-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cards-list::-webkit-scrollbar-track {
+  background: #1a1c23;
+}
+
+.cards-list::-webkit-scrollbar-thumb {
+  background: #3a3f4d;
+  border-radius: 3px;
+}
+
+.cards-list::-webkit-scrollbar-thumb:hover {
+  background: #4a5061;
+}
+
+/* Scale down cards in player board to save space */
+.cards-list .card {
+  transform: scale(0.75);
+  transform-origin: top left;
+  margin-right: -40px; /* Compensate for scale width reduction */
+  margin-bottom: -60px; /* Compensate for scale height reduction */
+}
+
+.empty-message {
+  color: #6a7285;
+  font-style: italic;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.reserved-slots-container {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+}
+
+.reserve-slot {
+  width: 60px;
+  height: 90px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.reserve-slot.empty {
+  border: 2px dashed #3a3f4d;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.reserve-slot.filled .card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(0.375);
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+/* Patrons List */
+.patron-slots-container {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+}
+
+.patron-slot {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.patron-slot.empty {
+  border: 2px dashed #3a3f4d;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.patron-slot.filled {
+  border: 1px solid #d4af37; /* accent-gold */
+  background-color: #1a1c23;
+}
+
+.patron-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.patron-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0.25rem;
+  text-align: center;
+  font-size: 0.65rem;
+  color: #a0a5b5;
+}
+
+.patron-vp {
+  font-family: 'Cinzel', Georgia, serif;
+  color: #d4af37;
+  font-weight: bold;
+  margin-top: 0.25rem;
+}
+
+.player-board.active-player {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+}
+
+.player-board.active-player .player-name {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+.active-arrow {
+  color: #d4af37;
+  display: inline-block;
+  animation: breathe 2s infinite ease-in-out;
+  margin-right: 4px;
+}
+
+.hourglass {
+  display: inline-block;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(4px); opacity: 1; }
+}

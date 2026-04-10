@@ -1,0 +1,620 @@
+{
+  "branchName": "feature/migration-and-refactor",
+  "baselineCommit": "",
+  "userStories": [
+    {
+      "id": "STORY-001",
+      "priority": "High",
+      "title": "Create Core State Topology & Data Flow Document",
+      "description": "Define the State Tree structure based on existing TypeScript models.",
+      "acceptanceCriteria": [
+        "1. Document exists at docs/state_topology.md",
+        "2. Defines publicStore, playerStore, and gameSystemStore structures."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-002",
+      "priority": "High",
+      "title": "Create Domain Logic Specification Document",
+      "description": "Define pure functions for game rules, decoupling them from UI.",
+      "acceptanceCriteria": [
+        "1. Document exists at docs/rulebook.md",
+        "2. Defines core pure functions for game rules."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-003",
+      "priority": "High",
+      "title": "Create Design System & Component Specification Document",
+      "description": "Define atomic UI norms, BG3 style textures, and CSS classes.",
+      "acceptanceCriteria": [
+        "1. Document exists at docs/design_system.md",
+        "2. Defines components and styling guidelines."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-004",
+      "priority": "High",
+      "title": "Create Extensibility Guide Document",
+      "description": "Guide on how to add expansion packs using plugin/strategy patterns.",
+      "acceptanceCriteria": [
+        "1. Document exists at docs/extensibility_guide.md",
+        "2. Outlines extension patterns."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-005",
+      "priority": "High",
+      "title": "Create Detailed Migration Document",
+      "description": "Detailed technical migration plan from the old codebase to the new architecture.",
+      "acceptanceCriteria": [
+        "1. Document exists at docs/migration_plan.md",
+        "2. Details steps for code migration."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-006",
+      "priority": "High",
+      "title": "Initialize Project Structure",
+      "description": "Setup project with framework (React/Vue) and tools.",
+      "acceptanceCriteria": [
+        "1. Project initialized in bg3_splendor_game_2",
+        "2. Basic scaffold working."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-007",
+      "priority": "High",
+      "title": "Migrate Resource and Card Models",
+      "description": "Port Resource.ts and Card.ts to the new project.",
+      "acceptanceCriteria": [
+        "1. Files ported and TypeScript errors resolved."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-008",
+      "priority": "High",
+      "title": "Migrate Player and Patron Models",
+      "description": "Port Player.ts and Patron.ts to the new project.",
+      "acceptanceCriteria": [
+        "1. Files ported and TypeScript errors resolved."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-009",
+      "priority": "High",
+      "title": "Migrate GameState Model",
+      "description": "Port GameState.ts to the new project.",
+      "acceptanceCriteria": [
+        "1. File ported and TypeScript errors resolved."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-010",
+      "priority": "High",
+      "title": "Setup State Store",
+      "description": "Implement Zustand/Pinia store for Game State.",
+      "acceptanceCriteria": [
+        "1. Store created and accessible."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-011",
+      "priority": "Medium",
+      "title": "Implement Core Logic - Take Tokens",
+      "description": "Pure function for taking tokens.",
+      "acceptanceCriteria": [
+        "1. Function implemented and unit tested."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-012",
+      "priority": "Medium",
+      "title": "Implement Core Logic - Buy Card",
+      "description": "Pure function for buying card.",
+      "acceptanceCriteria": [
+        "1. Function implemented and unit tested."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-013",
+      "priority": "Medium",
+      "title": "Implement Core Logic - Reserve Card",
+      "description": "Pure function for reserving card.",
+      "acceptanceCriteria": [
+        "1. Function implemented and unit tested."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-014",
+      "priority": "Medium",
+      "title": "Implement Core Logic - Patron Check",
+      "description": "Pure function for checking patron visits.",
+      "acceptanceCriteria": [
+        "1. Function implemented and unit tested."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-015",
+      "priority": "Medium",
+      "title": "Create Token Component",
+      "description": "Atomic UI component for a token.",
+      "acceptanceCriteria": [
+        "1. Component renders according to design system."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-016",
+      "priority": "Medium",
+      "title": "Create Card Component",
+      "description": "Atomic UI component for a card.",
+      "acceptanceCriteria": [
+        "1. Component renders according to design system."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-017",
+      "priority": "Medium",
+      "title": "Create PlayerBoard Component",
+      "description": "Component for player status panel.",
+      "acceptanceCriteria": [
+        "1. Component renders with correct structure."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-018",
+      "priority": "Medium",
+      "title": "Create CardMarket Component",
+      "description": "Component for market area.",
+      "acceptanceCriteria": [
+        "1. Component renders with 3 tiers of cards."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-019",
+      "priority": "Medium",
+      "title": "Create PublicResourcePool Component",
+      "description": "Component for public tokens.",
+      "acceptanceCriteria": [
+        "1. Component renders available tokens."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-020",
+      "priority": "Medium",
+      "title": "Create GameArena Component",
+      "description": "Top level container.",
+      "acceptanceCriteria": [
+        "1. Renders all sub-components correctly."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-021",
+      "priority": "High",
+      "title": "Integrate Store with Components",
+      "description": "Connect components to state store.",
+      "acceptanceCriteria": [
+        "1. Components reflect store state dynamically."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-022",
+      "priority": "Low",
+      "title": "Implement Token Trajectory Animation",
+      "description": "Animation for tokens moving to player.",
+      "acceptanceCriteria": [
+        "1. Animation plays on token take."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-023",
+      "priority": "Low",
+      "title": "Implement Card Flip Animation",
+      "description": "Animation for card reservation.",
+      "acceptanceCriteria": [
+        "1. Animation plays on card reserve."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-024",
+      "priority": "Medium",
+      "title": "Migrate AI Logic",
+      "description": "Port AI decision making if applicable.",
+      "acceptanceCriteria": [
+        "1. AI logic functional in new project."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-025",
+      "priority": "Medium",
+      "title": "Migrate Server/Socket Logic",
+      "description": "Port backend communication.",
+      "acceptanceCriteria": [
+        "1. Socket connection established and working."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-026",
+      "priority": "High",
+      "title": "Add Unit Tests for Domain Logic",
+      "description": "Comprehensive tests for pure functions.",
+      "acceptanceCriteria": [
+        "1. Tests cover all core rules and edge cases."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-027",
+      "priority": "High",
+      "title": "Add Component Tests",
+      "description": "Verify component rendering and interactions.",
+      "acceptanceCriteria": [
+        "1. Critical components covered by tests."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-028",
+      "priority": "High",
+      "title": "Verify End-to-End Flow",
+      "description": "Simulate games to verify flow.",
+      "acceptanceCriteria": [
+        "1. Full game can be played without errors."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-029",
+      "priority": "Medium",
+      "title": "Final Polish and Docs Update",
+      "description": "Clean up and update docs.",
+      "acceptanceCriteria": [
+        "1. Docs match final implementation."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-030",
+      "priority": "High",
+      "title": "Final Verification Report",
+      "description": "Generate report of migration.",
+      "acceptanceCriteria": [
+        "1. Report generated at docs/migration_report.md"
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-031",
+      "priority": "High",
+      "title": "Extract Card and Patron Data",
+      "description": "Extract cards and patrons data from simulate.ts to initialData.ts.",
+      "acceptanceCriteria": [
+        "1. src/data/initialData.ts exists and exports data."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-032",
+      "priority": "High",
+      "title": "Update App.tsx to render GameArena",
+      "description": "Replace default template with GameArena rendering.",
+      "acceptanceCriteria": [
+        "1. App.tsx renders GameArena."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-033",
+      "priority": "High",
+      "title": "Initialize Stores with Data",
+      "description": "Initialize Zustand stores with sample data in App.tsx.",
+      "acceptanceCriteria": [
+        "1. Stores populated on load."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-034",
+      "priority": "Medium",
+      "title": "Verify Rendering and Fix UI Errors",
+      "description": "Ensure components render correctly in browser.",
+      "acceptanceCriteria": [
+        "1. No console errors and layout looks correct."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-035",
+      "priority": "High",
+      "title": "Take Screenshot to Verify",
+      "description": "Capture UI screenshot for verification.",
+      "acceptanceCriteria": [
+        "1. Screenshot shows game UI."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-036",
+      "priority": "High",
+      "title": "PlayerBoard - Asset Matrix",
+      "description": "Implement 2x6 grid for tokens and bonuses.",
+      "acceptanceCriteria": [
+        "1. Asset matrix implemented."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-037",
+      "priority": "High",
+      "title": "PlayerBoard - Remove Redundant Text",
+      "description": "Use visual symbols instead of text for resources.",
+      "acceptanceCriteria": [
+        "1. Text removed, symbols used."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-038",
+      "priority": "High",
+      "title": "PlayerBoard - Micro Card Slots",
+      "description": "Implement slots for reserved cards.",
+      "acceptanceCriteria": [
+        "1. Micro slots implemented."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-039",
+      "priority": "High",
+      "title": "PlayerBoard - Round Avatar Slots",
+      "description": "Implement slots for patrons.",
+      "acceptanceCriteria": [
+        "1. Avatar slots implemented."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-040",
+      "priority": "High",
+      "title": "PlayerBoard - Aggregate Bonuses",
+      "description": "Remove Owned Cards list, aggregate bonuses.",
+      "acceptanceCriteria": [
+        "1. List removed, bonuses aggregated."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-041",
+      "priority": "High",
+      "title": "PlayerBoard - Accordion/Tabs",
+      "description": "Implement tabs for multiple players.",
+      "acceptanceCriteria": [
+        "1. Accordion/Tabs implemented."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-042",
+      "priority": "High",
+      "title": "CardMarket - Uniform Layout",
+      "description": "Uniform card layout (Top/Mid/Bottom).",
+      "acceptanceCriteria": [
+        "1. Uniform layout implemented."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-043",
+      "priority": "High",
+      "title": "CardMarket - Center Costs",
+      "description": "Center compact costs at bottom.",
+      "acceptanceCriteria": [
+        "1. Costs centered."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-044",
+      "priority": "High",
+      "title": "PublicResourcePool - Separate Wildcards",
+      "description": "Separate wildcards (Tadpole/Gold).",
+      "acceptanceCriteria": [
+        "1. Wildcards separated."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-045",
+      "priority": "High",
+      "title": "CardMarket - Deck Stack Effect",
+      "description": "Add shadows to deck stack.",
+      "acceptanceCriteria": [
+        "1. Deck stack effect added."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-046",
+      "priority": "High",
+      "title": "CardMarket - Empty Slot Placeholder",
+      "description": "Add texture to empty slots.",
+      "acceptanceCriteria": [
+        "1. Placeholder added."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-047",
+      "priority": "High",
+      "title": "PublicResourcePool - Clickable Feel",
+      "description": "Add hover scale and glow to tokens.",
+      "acceptanceCriteria": [
+        "1. Clickable feel added."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-048",
+      "priority": "High",
+      "title": "UX - Affordable Card Highlight",
+      "description": "Glow border for affordable cards.",
+      "acceptanceCriteria": [
+        "1. Highlight added."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-049",
+      "priority": "High",
+      "title": "Card - Smooth Flip Animation",
+      "description": "Ensure a smooth 3D flip animation when reserving a card.",
+      "acceptanceCriteria": [
+        "1. Ensure a smooth 3D flip animation when reserving a card.",
+        "2. Add `perspective` to the container to enhance the 3D effect."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-050",
+      "priority": "High",
+      "title": "CardMarket - Slide-in Animation for new cards",
+      "description": "Add a slide-in animation for new cards entering the market.",
+      "acceptanceCriteria": [
+        "1. Add a slide-in animation for new cards entering the market.",
+        "2. The animation should translate from `translateX(-20px)` to `0` and fade in.",
+        "3. It should take about 0.3 seconds."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-051",
+      "priority": "High",
+      "title": "Aesthetics - Token Texture",
+      "description": "Tone down saturation, add noise texture.",
+      "acceptanceCriteria": [
+        "1. Token texture updated."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-052",
+      "priority": "High",
+      "title": "Aesthetics - Epic Font",
+      "description": "Use serif font for numbers on cards.",
+      "acceptanceCriteria": [
+        "1. Font updated."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-053",
+      "priority": "High",
+      "title": "Aesthetics - Dark Backgrounds",
+      "description": "Mix environment color into backgrounds, blur.",
+      "acceptanceCriteria": [
+        "1. Backgrounds updated."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-054",
+      "priority": "High",
+      "title": "Aesthetics - Tier Marks",
+      "description": "Replace text Tier marks with symbols.",
+      "acceptanceCriteria": [
+        "1. Tier marks updated."
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-055",
+      "priority": "High",
+      "title": "Final Verification",
+      "description": "Final screenshot and verification.",
+      "acceptanceCriteria": [
+        "1. Screenshot captured."
+      ],
+      "passes": false,
+      "attempts": 0
+    }
+  ]
+}

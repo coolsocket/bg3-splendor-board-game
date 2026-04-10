@@ -1,0 +1,336 @@
+{
+  "branchName": "feature/fluid-responsive-refactor",
+  "baselineCommit": "",
+  "userStories": [
+    {
+      "id": "STORY-079",
+      "priority": "High",
+      "title": "废除外层固定宽度",
+      "description": "删除最外层容器的 max-w-7xl 或固定 width，改用 w-screen h-screen overflow-hidden。",
+      "acceptanceCriteria": [
+        "1. 应用接管整个浏览器视口，无外层固定宽度限制。"
+      ],
+      "passes": true,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-080",
+      "priority": "High",
+      "title": "采用动态列宽分配",
+      "description": "使用 grid-cols-[300px_1fr_250px] 布局，左右侧边栏固定最小宽度，中间市场区自适应。",
+      "acceptanceCriteria": [
+        "1. 左右面板和中间市场按比例分配宽度，消除黑边。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-081",
+      "priority": "High",
+      "title": "释放垂直空间",
+      "description": "中间的 Card Market 容器使用 flex-grow 或 h-full，让卡牌区域自然向下延伸。",
+      "acceptanceCriteria": [
+        "1. 卡牌区域自然向下延伸，不缩在暗色方块里。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-082",
+      "priority": "High",
+      "title": "统一列间距",
+      "description": "全局使用统一的 gap-6 或 gap-8 建立严谨的呼吸空间。",
+      "acceptanceCriteria": [
+        "1. 全局列间距统一。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-083",
+      "priority": "High",
+      "title": "强制统一卡牌尺寸",
+      "description": "保证牌库和翻开的卡片在代码中必须渲染同一个 <Card /> 组件，保证宽高度绝对 1:1 一致。",
+      "acceptanceCriteria": [
+        "1. 牌库和翻开卡片尺寸绝对一致。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-084",
+      "priority": "High",
+      "title": "引入绝对宽高比 (Aspect Ratio)",
+      "description": "不要给卡牌写死 height。给卡牌组件加上 aspect-[2/3] 属性。",
+      "acceptanceCriteria": [
+        "1. 卡牌使用 aspect-[2/3] 自适应缩放。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-085",
+      "priority": "High",
+      "title": "卡牌内部的 Flex 布局重构",
+      "description": "改为 flex flex-col justify-between，把顶部分数和底部成本彻底推向卡牌的上下边缘。",
+      "acceptanceCriteria": [
+        "1. 卡牌内容两端对齐，分数在顶，成本在底。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-086",
+      "priority": "High",
+      "title": "放大关键决策数值",
+      "description": "卡牌左上角的分数和菱形放大至少 1.5 倍，并加粗。",
+      "acceptanceCriteria": [
+        "1. 分数和菱形明显放大并加粗。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-087",
+      "priority": "High",
+      "title": "重排底部成本区",
+      "description": "使用 flex flex-wrap justify-center gap-1 p-2 建立一个专门的底部栏，防止图标截断。",
+      "acceptanceCriteria": [
+        "1. 底部成本区排版整齐，无截断。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-088",
+      "priority": "High",
+      "title": "卡牌占位符 (Empty Slots)",
+      "description": "当一行不足 4 张卡时，渲染带有虚线边框的 <EmptyCardSlot /> 组件。",
+      "acceptanceCriteria": [
+        "1. 空缺处显示虚线占位符，维持 4 列阵型。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-089",
+      "priority": "High",
+      "title": "修复 Token 与 Bonus 的网格断层",
+      "description": "建立严格的 6 列 Grid (grid-cols-6)，确保同一颜色的 Token 和 Bonus 永远在同一垂直线上。",
+      "acceptanceCriteria": [
+        "1. 同色 Token 和 Bonus 严格垂直对齐。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-090",
+      "priority": "High",
+      "title": "消除无效的背景色块",
+      "description": "删掉包裹球和方块的深灰色长条背景，让球直接浮在面板底色上。",
+      "acceptanceCriteria": [
+        "1. 消除冗余背景色块，界面更清爽。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-091",
+      "priority": "High",
+      "title": "缩小 Bonus 方块的体积",
+      "description": "将 Bonus 方块尺寸缩小到球体的 70%。",
+      "acceptanceCriteria": [
+        "1. Bonus 方块尺寸约为球体的 70%。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-092",
+      "priority": "High",
+      "title": "对齐 Prestige 徽章",
+      "description": "使用 items-center 让名字和分数框在同一条水平线上完美居中。",
+      "acceptanceCriteria": [
+        "1. 名字和分数框水平居中对齐。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-093",
+      "priority": "High",
+      "title": "统一折叠与展开的宽度",
+      "description": "所有玩家的面板基础宽度必须完全一致。",
+      "acceptanceCriteria": [
+        "1. 所有玩家面板宽度一致。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-094",
+      "priority": "High",
+      "title": "解决第六个球的强制换行",
+      "description": "缩小球的直径，或者允许父容器使用 justify-between，强制 6 个球在一行排开。",
+      "acceptanceCriteria": [
+        "1. 公共池 6 个球在一行排开，无换行。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-095",
+      "priority": "High",
+      "title": "强化百搭代币的分割",
+      "description": "加粗分割线，或者给黄金球单独加一个底座/光环。",
+      "acceptanceCriteria": [
+        "1. 黄金球有明显的特殊视觉标识。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-096",
+      "priority": "High",
+      "title": "删除冗余的提示文字",
+      "description": "删除 'Click to take tokens'，增加 hover 效果和手型光标。",
+      "acceptanceCriteria": [
+        "1. 提示文字删除，交互暗示明确。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-097",
+      "priority": "High",
+      "title": "引入悬停状态 (Hover States)",
+      "description": "所有可点击的卡牌必须加上 transition-transform hover:-translate-y-2 hover:shadow-2xl。",
+      "acceptanceCriteria": [
+        "1. 卡牌悬停有浮起和阴影加深效果。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-098",
+      "priority": "High",
+      "title": "公共代币的选中状态 (Selection State)",
+      "description": "选中的代币必须有一个高亮的描边 (ring-4 ring-yellow-400)，配合确认按钮。",
+      "acceptanceCriteria": [
+        "1. 选中代币有明显高亮边框。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-099",
+      "priority": "High",
+      "title": "无效操作的禁用态 (Disabled State)",
+      "description": "Token 达上限时，公共池的球变成半透明或黑白 (opacity-50 grayscale)。",
+      "acceptanceCriteria": [
+        "1. 禁用状态视觉反馈明确。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-100",
+      "priority": "High",
+      "title": "激活玩家的强视觉锚点",
+      "description": "给当前回合玩家的整个面板外框加上缓慢呼吸的发光动画。",
+      "acceptanceCriteria": [
+        "1. 激活玩家面板有呼吸发光效果。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-101",
+      "priority": "High",
+      "title": "添加微交互动画",
+      "description": "卡牌被买走时缩放消失，新卡牌翻开时 Y 轴翻转。",
+      "acceptanceCriteria": [
+        "1. 卡牌交互有动画过渡。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-102",
+      "priority": "High",
+      "title": "重构右侧 Patrons 面板",
+      "description": "做成带有华丽金属包边的塔罗牌形状，去除虚线。",
+      "acceptanceCriteria": [
+        "1. 贵族位呈现塔罗牌形状和金属包边。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-103",
+      "priority": "High",
+      "title": "提升文字对比度",
+      "description": "使用羊皮纸色 (#E8E2D2) 显示占位符文字。",
+      "acceptanceCriteria": [
+        "1. 占位符文字清晰可辨。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-104",
+      "priority": "High",
+      "title": "统一卡牌的背景材质",
+      "description": "叠加极低透明度的噪点背景或渐变，增加纸牌质感。",
+      "acceptanceCriteria": [
+        "1. 卡牌背景有噪点或渐变质感。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-105",
+      "priority": "High",
+      "title": "修改数字字体 (Typography)",
+      "description": "引入古典衬线字体 (如 Cinzel) 专门用于展示分数和代币数量。",
+      "acceptanceCriteria": [
+        "1. 分数和代币数量使用衬线字体。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-106",
+      "priority": "High",
+      "title": "优化霓虹边缘发光",
+      "description": "发光范围调大，颜色调成暗金色或奥术蓝。",
+      "acceptanceCriteria": [
+        "1. 发光更接近魔法光晕，而非霓虹灯管。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-107",
+      "priority": "High",
+      "title": "统一元素的阴影体系",
+      "description": "用物理投影构建 Z 轴深度 (shadow-lg, shadow-xl)。",
+      "acceptanceCriteria": [
+        "1. 界面元素有层次分明的阴影。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-108",
+      "priority": "High",
+      "title": "清理无用的留白 (Dead Padding)",
+      "description": "减少内部元素的垂直 Padding，信息更加紧凑。",
+      "acceptanceCriteria": [
+        "1. 元素间距更紧凑，无过度留白。"
+      ],
+      "passes": false,
+      "attempts": 0
+    }
+  ]
+}
