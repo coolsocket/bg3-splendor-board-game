@@ -65,8 +65,8 @@
       "acceptanceCriteria": [
         "1. 代币下方无倒影效果。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-145",
@@ -76,8 +76,8 @@
       "acceptanceCriteria": [
         "1. 代币有自然的底部投影，增加桌面感。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-146",
@@ -87,8 +87,8 @@
       "acceptanceCriteria": [
         "1. 公共池代币均匀排开，无大面积黑洞。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-147",
@@ -98,8 +98,8 @@
       "acceptanceCriteria": [
         "1. 公共池垂直方向更紧凑。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-148",
@@ -109,8 +109,8 @@
       "acceptanceCriteria": [
         "1. WILDCARD 标识更符合暗黑奇幻风格。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-149",
