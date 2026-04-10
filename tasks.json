@@ -285,8 +285,8 @@
       "acceptanceCriteria": [
         "1. Hook 逻辑清晰，组件代码减少。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-135",
