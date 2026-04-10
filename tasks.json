@@ -175,8 +175,8 @@
       "acceptanceCriteria": [
         "1. 图片占位符不空洞，有质感。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-155",
