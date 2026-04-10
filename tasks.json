@@ -252,7 +252,7 @@
       "acceptanceCriteria": [
         "1. 卡牌交互有动画过渡。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {

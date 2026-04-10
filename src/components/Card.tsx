@@ -31,11 +31,19 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   const tierClass = `border-tier-${tier}`;
   const [isReserving, setIsReserving] = React.useState(false);
+  const [isBuying, setIsBuying] = React.useState(false);
   
   const handleAction = (action: 'buy' | 'reserve' | 'select', e: React.MouseEvent) => {
     e.stopPropagation();
     if (action === 'reserve') {
       setIsReserving(true);
+      setTimeout(() => {
+        if (onInteract) {
+          onInteract(action, id);
+        }
+      }, 600);
+    } else if (action === 'buy') {
+      setIsBuying(true);
       setTimeout(() => {
         if (onInteract) {
           onInteract(action, id);
@@ -50,7 +58,7 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <div 
-      className={`card ${tierClass} ${isAffordable ? 'affordable' : 'unaffordable'} ${isSelected ? 'selected' : ''} ${isReserving ? 'reserving' : ''} ${isDeck ? 'is-deck' : ''}`}
+      className={`card ${tierClass} ${isAffordable ? 'affordable' : 'unaffordable'} ${isSelected ? 'selected' : ''} ${isReserving ? 'reserving' : ''} ${isBuying ? 'buying' : ''} ${isDeck ? 'is-deck' : ''}`}
       onClick={(e) => !isDeck && handleAction('select', e)}
       role="button"
       aria-label={isDeck ? `Deck tier ${tier}, count ${deckCount}` : `Card tier ${tier}, prestige points ${prestigePoints}, bonus ${providedBonus}`}
