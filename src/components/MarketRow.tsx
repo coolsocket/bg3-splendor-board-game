@@ -2,6 +2,7 @@ import React from 'react';
 import './MarketRow.css';
 import { Card, type CardProps } from './Card';
 import { EmptyCardSlot } from './EmptyCardSlot';
+import { DeckStack } from './DeckStack';
 
 interface MarketRowProps {
   tier: 1 | 2 | 3;
@@ -19,16 +20,7 @@ export const MarketRow: React.FC<MarketRowProps> = ({
   return (
     <div className={`market-row tier-${tier}`}>
       <div className="deck-container">
-        <Card 
-          id={`deck-${tier}`} 
-          tier={tier} 
-          isDeck={true} 
-          deckCount={deckCount} 
-          prestigePoints={0} 
-          providedBonus={'RADIANT_GEM'} 
-          cost={{}} 
-          isAffordable={false} 
-        />
+        <DeckStack tier={tier} deckCount={deckCount} />
       </div>
       <div className="cards-container">
         {cards.map(card => (

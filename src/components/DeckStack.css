@@ -1,0 +1,66 @@
+.deck-stack.card {
+  overflow: visible;
+  background: transparent;
+}
+
+/* Simulate stacked cards */
+.deck-stack.card::before,
+.deck-stack.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: #e8e2d2;
+  background-image: linear-gradient(rgba(232, 226, 210, 0.9), rgba(216, 206, 180, 0.9));
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.deck-stack.card::before {
+  transform: translate(4px, 4px);
+  z-index: -1;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.deck-stack.card::after {
+  transform: translate(8px, 8px);
+  z-index: -2;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.deck-stack.card:hover::before {
+  transform: translate(6px, 6px);
+}
+
+.deck-stack.card:hover::after {
+  transform: translate(12px, 12px);
+}
+
+.deck-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* Ensure text is above pseudo-elements */
+}
+
+.deck-count {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2c1a04;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.deck-label {
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #5c4a37;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
