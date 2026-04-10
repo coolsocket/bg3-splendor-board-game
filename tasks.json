@@ -241,8 +241,8 @@
       "acceptanceCriteria": [
         "1. 按钮交互态统一。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-131",

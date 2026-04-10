@@ -200,6 +200,12 @@
 .action-btn:hover:not(:disabled) {
   background: var(--color-gold-dark);
   color: var(--color-text-dark);
+  box-shadow: 0 0 5px var(--color-gold);
+}
+
+.action-btn:active:not(:disabled) {
+  transform: scale(0.95);
+  background: var(--color-gold);
 }
 
 .action-btn:disabled {
@@ -207,6 +213,7 @@
   cursor: not-allowed;
   border-color: #555;
   background: #1a1a1a;
+  box-shadow: none;
 }
 
 /* Interaction States */
