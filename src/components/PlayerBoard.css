@@ -194,13 +194,13 @@
 
 @keyframes active-player-breathe {
   0% {
-    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3), 0 10px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3), 0 0 2px rgba(192, 132, 252, 0.2);
   }
   50% {
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.9), 0 10px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 10px rgba(192, 132, 252, 0.5);
   }
   100% {
-    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3), 0 10px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3), 0 0 2px rgba(192, 132, 252, 0.2);
   }
 }
 

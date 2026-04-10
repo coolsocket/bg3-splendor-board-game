@@ -268,14 +268,14 @@
     },
     {
       "id": "STORY-133",
-      "priority": "Medium",
-      "title": "增强激活玩家发光效果",
-      "description": "激活玩家面板的呼吸发光效果更加自然、有魔法感。",
+      "priority": "Low",
+      "title": "强化激活玩家的发光效果",
+      "description": "使用更平滑的 CSS 动画，并确保发光颜色与暗黑奇幻风格匹配（可考虑微弱的奥术紫或金色）。",
       "acceptanceCriteria": [
-        "1. 发光效果细腻，不刺眼。"
+        "1. 呼吸灯效果平滑，颜色匹配。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-134",
