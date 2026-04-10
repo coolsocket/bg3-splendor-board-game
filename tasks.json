@@ -219,8 +219,8 @@
       "acceptanceCriteria": [
         "1. 全局有微弱噪点质感。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-129",
