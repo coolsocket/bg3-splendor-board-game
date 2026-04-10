@@ -186,8 +186,8 @@
       "acceptanceCriteria": [
         "1. 悬停时卡牌浮起且有魔法光晕。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-156",
