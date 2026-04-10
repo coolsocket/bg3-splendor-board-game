@@ -120,8 +120,8 @@
       "acceptanceCriteria": [
         "1. PrestigeBadge 组件可用。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-120",

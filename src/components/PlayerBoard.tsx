@@ -4,6 +4,7 @@ import { Token, type ResourceType } from './Token';
 import { Card, type CardProps } from './Card';
 import { usePlayerStore } from '../store/playerStore';
 import type { ResourceCollection, Card as DomainCard } from '../domain/models';
+import { PrestigeBadge } from './PrestigeBadge';
 
 export interface PlayerBoardProps {
   playerName: string;
@@ -103,10 +104,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
           </h2>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             {props.isActive && <span className="hourglass">⏳</span>}
-            <div className="prestige-badge">
-              <span className="prestige-label">Prestige</span>
-              <span className="prestige-value">{prestigePoints}</span>
-            </div>
+            <PrestigeBadge prestigePoints={prestigePoints} />
           </div>
         </div>
         <div className="player-board-content" style={{ padding: '0.5rem' }}>
@@ -131,10 +129,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
         </h2>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           {props.isActive && <span className="hourglass">⏳</span>}
-          <div className="prestige-badge">
-            <span className="prestige-label">Prestige</span>
-            <span className="prestige-value">{prestigePoints}</span>
-          </div>
+          <PrestigeBadge prestigePoints={prestigePoints} />
         </div>
       </div>
 
