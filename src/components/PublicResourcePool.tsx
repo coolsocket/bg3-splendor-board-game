@@ -3,6 +3,7 @@ import { Token, type ResourceType } from './Token';
 import './PublicResourcePool.css';
 import { usePublicStore } from '../store/publicStore';
 import { ResourceType as DomainResourceType } from '../domain/models';
+import { WildcardPool } from './WildcardPool';
 
 interface PublicResourcePoolProps {
   resources?: Record<ResourceType, number>;
@@ -31,7 +32,6 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
     'NATURES_BLESSING',
     'INFERNAL_IRON',
     'DARK_QUARTZ',
-    'TRUE_SOUL_TADPOLE',
   ];
 
   return (
@@ -50,9 +50,14 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
                 disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
               />
             </div>
-            {index === 0 && <div className="pool-separator"></div>}
           </React.Fragment>
         ))}
+        <div className="pool-separator"></div>
+        <WildcardPool
+          count={resources['TRUE_SOUL_TADPOLE'] || 0}
+          onClick={() => onTokenClick && onTokenClick('TRUE_SOUL_TADPOLE')}
+          disabled={disabledTokens.includes('TRUE_SOUL_TADPOLE') || (resources['TRUE_SOUL_TADPOLE'] || 0) <= 0}
+        />
       </div>
     </div>
   );
