@@ -2,7 +2,7 @@
 
 .game-arena {
   display: grid;
-  grid-template-columns: minmax(250px, 20%) 1fr minmax(120px, 15%);
+  grid-template-columns: 300px 1fr 250px;
   gap: 1.5rem;
   padding: 1.5rem;
   min-height: 100vh;

@@ -21,7 +21,7 @@
       "acceptanceCriteria": [
         "1. 左右面板和中间市场按比例分配宽度，消除黑边。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
