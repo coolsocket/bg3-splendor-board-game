@@ -62,7 +62,7 @@
 .token.disabled {
   cursor: not-allowed;
   opacity: 0.5;
-  filter: grayscale(50%) brightness(70%);
+  filter: grayscale(100%) brightness(70%);
 }
 
 /* Selection State */
