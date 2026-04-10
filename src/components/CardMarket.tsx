@@ -6,6 +6,7 @@ import { usePlayerStore } from '../store/playerStore';
 import { calculateEffectiveCost } from '../domain/logic';
 import { CardTier, ResourceType as DomainResourceType, type Card as DomainCard } from '../domain/models';
 import type { ResourceType } from './Token';
+import { EmptyCardSlot } from './EmptyCardSlot';
 
 export interface CardMarketProps {
   tier1Cards?: CardProps[];
@@ -16,12 +17,6 @@ export interface CardMarketProps {
   tier3DeckCount?: number;
   onCardInteract?: (action: 'buy' | 'reserve' | 'select', cardId: string) => void;
 }
-
-const EmptyCardSlot: React.FC = () => (
-  <div className="empty-card-slot">
-    <span>Empty Slot</span>
-  </div>
-);
 
 export const CardMarket: React.FC<CardMarketProps> = ({
   onCardInteract

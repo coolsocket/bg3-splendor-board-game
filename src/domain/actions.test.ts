@@ -426,6 +426,36 @@ describe('buyCardAction', () => {
             expect(newState.availablePatrons.length).toBe(0);
         }
     });
+
+    it('should not trigger patron visit if conditions are not met', () => {
+        const patron = {
+            id: 'patron1',
+            name: 'Test Patron',
+            requirements: { [ResourceType.RADIANT_GEM]: 3 }, // Requires 3, player will only have 2
+            points: 3,
+        };
+        const state = {
+            ...baseState,
+            players: [
+                {
+                    ...player1,
+                    resources: { ...createEmptyResourceCollection(), [ResourceType.RADIANT_GEM]: 2 },
+                },
+                player2,
+            ],
+            availablePatrons: [patron],
+        };
+
+        const result = buyCardAction(state, '1', 'card1');
+
+        expect(result.success).toBe(true);
+        if (result.success) {
+            const newState = result.data;
+            expect(newState.players[0].patrons.length).toBe(0);
+            expect(newState.players[0].prestigePoints).toBe(1); // Only card points
+            expect(newState.availablePatrons.length).toBe(1);
+        }
+    });
 });
 
 describe('reserveCardAction', () => {

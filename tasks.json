@@ -1,335 +1,335 @@
 {
-  "branchName": "feature/fluid-responsive-refactor",
+  "branchName": "feature/phase4-refinement",
   "baselineCommit": "",
   "userStories": [
     {
-      "id": "STORY-079",
+      "id": "STORY-109",
       "priority": "High",
-      "title": "废除外层固定宽度",
-      "description": "删除最外层容器的 max-w-7xl 或固定 width，改用 w-screen h-screen overflow-hidden。",
+      "title": "修复 Vitest ESM 解析错误",
+      "description": "调查并修复单元测试中的 ESM 模块解析问题，确保可以运行本地测试。",
       "acceptanceCriteria": [
-        "1. 应用接管整个浏览器视口，无外层固定宽度限制。"
+        "1. 运行 `npm run test` 或 `npx vitest` 能够正常启动并执行测试，无 ESM 错误。"
       ],
       "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-110",
+      "priority": "High",
+      "title": "为 gameSystemStore 添加单元测试",
+      "description": "编写测试用例验证 gameSystemStore 的核心 actions。",
+      "acceptanceCriteria": [
+        "1. 测试覆盖核心状态变更。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-111",
+      "priority": "High",
+      "title": "为卡牌购买逻辑添加单元测试",
+      "description": "验证扣除资源、增加卡牌、触发贵族访问等完整链路。",
+      "acceptanceCriteria": [
+        "1. 购买成功与失败的 edge cases 均有测试覆盖。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-112",
+      "priority": "High",
+      "title": "为代币拿取逻辑添加单元测试",
+      "description": "验证 3 个不同颜色、2 个同颜色、上限 10 个等规则限制。",
+      "acceptanceCriteria": [
+        "1. 代币规则限制有测试覆盖。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-113",
+      "priority": "High",
+      "title": "为贵族访问逻辑添加单元测试",
+      "description": "验证条件满足时贵族自动访问的逻辑。",
+      "acceptanceCriteria": [
+        "1. 贵族访问逻辑有测试覆盖。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-114",
+      "priority": "Medium",
+      "title": "提取 Token 组件到独立文件",
+      "description": "如果尚未独立，将 Token 提取为独立的原子组件。",
+      "acceptanceCriteria": [
+        "1. Token 组件独立，易于复用。"
+      ],
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-080",
-      "priority": "High",
-      "title": "采用动态列宽分配",
-      "description": "使用 grid-cols-[300px_1fr_250px] 布局，左右侧边栏固定最小宽度，中间市场区自适应。",
+      "id": "STORY-115",
+      "priority": "Medium",
+      "title": "提取 Card 组件到独立文件",
+      "description": "如果尚未独立，将 Card 提取为独立的原子组件。",
       "acceptanceCriteria": [
-        "1. 左右面板和中间市场按比例分配宽度，消除黑边。"
+        "1. Card 组件独立，易于复用。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-081",
-      "priority": "High",
-      "title": "释放垂直空间",
-      "description": "中间的 Card Market 容器使用 flex-grow 或 h-full，让卡牌区域自然向下延伸。",
+      "id": "STORY-116",
+      "priority": "Medium",
+      "title": "提取 EmptyCardSlot 组件",
+      "description": "创建专门的空卡槽位组件，带虚线边框。",
       "acceptanceCriteria": [
-        "1. 卡牌区域自然向下延伸，不缩在暗色方块里。"
+        "1. EmptyCardSlot 组件可用。"
       ],
       "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-117",
+      "priority": "Medium",
+      "title": "提取 PlayerAvatar 组件",
+      "description": "提取玩家头像及状态指示器为独立组件。",
+      "acceptanceCriteria": [
+        "1. PlayerAvatar 组件可用。"
+      ],
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-082",
-      "priority": "High",
-      "title": "统一列间距",
-      "description": "全局使用统一的 gap-6 或 gap-8 建立严谨的呼吸空间。",
+      "id": "STORY-118",
+      "priority": "Medium",
+      "title": "提取 ResourceMatrix 组件",
+      "description": "从 PlayerBoard 中提取资源矩阵（Token + Bonus）为独立组件。",
       "acceptanceCriteria": [
-        "1. 全局列间距统一。"
+        "1. ResourceMatrix 组件可用。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-083",
-      "priority": "High",
-      "title": "强制统一卡牌尺寸",
-      "description": "保证牌库和翻开的卡片在代码中必须渲染同一个 <Card /> 组件，保证宽高度绝对 1:1 一致。",
+      "id": "STORY-119",
+      "priority": "Medium",
+      "title": "提取 PrestigeBadge 组件",
+      "description": "提取威望分数徽章（盾牌/丝带形状）为独立组件。",
       "acceptanceCriteria": [
-        "1. 牌库和翻开卡片尺寸绝对一致。"
+        "1. PrestigeBadge 组件可用。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-084",
-      "priority": "High",
-      "title": "引入绝对宽高比 (Aspect Ratio)",
-      "description": "不要给卡牌写死 height。给卡牌组件加上 aspect-[2/3] 属性。",
+      "id": "STORY-120",
+      "priority": "Medium",
+      "title": "提取 PatronSlot 组件",
+      "description": "提取贵族卡槽位为独立组件。",
       "acceptanceCriteria": [
-        "1. 卡牌使用 aspect-[2/3] 自适应缩放。"
+        "1. PatronSlot 组件可用。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-085",
-      "priority": "High",
-      "title": "卡牌内部的 Flex 布局重构",
-      "description": "改为 flex flex-col justify-between，把顶部分数和底部成本彻底推向卡牌的上下边缘。",
+      "id": "STORY-121",
+      "priority": "Medium",
+      "title": "提取 MarketRow 组件",
+      "description": "提取市场中的单行（Tier）为独立组件。",
       "acceptanceCriteria": [
-        "1. 卡牌内容两端对齐，分数在顶，成本在底。"
+        "1. MarketRow 组件可用。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-086",
-      "priority": "High",
-      "title": "放大关键决策数值",
-      "description": "卡牌左上角的分数和菱形放大至少 1.5 倍，并加粗。",
+      "id": "STORY-122",
+      "priority": "Medium",
+      "title": "提取 DeckStack 组件",
+      "description": "提取牌堆组件，包含阴影叠层效果。",
       "acceptanceCriteria": [
-        "1. 分数和菱形明显放大并加粗。"
+        "1. DeckStack 组件可用。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-087",
-      "priority": "High",
-      "title": "重排底部成本区",
-      "description": "使用 flex flex-wrap justify-center gap-1 p-2 建立一个专门的底部栏，防止图标截断。",
+      "id": "STORY-123",
+      "priority": "Medium",
+      "title": "提取 WildcardPool 组件",
+      "description": "提取百搭代币（黄金/蝌蚪）独立区域组件。",
       "acceptanceCriteria": [
-        "1. 底部成本区排版整齐，无截断。"
+        "1. WildcardPool 组件可用。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-088",
+      "id": "STORY-124",
       "priority": "High",
-      "title": "卡牌占位符 (Empty Slots)",
-      "description": "当一行不足 4 张卡时，渲染带有虚线边框的 <EmptyCardSlot /> 组件。",
+      "title": "集中管理 CSS 变量",
+      "description": "创建 variables.css 或 theme.css，集中定义颜色、字体、阴影等变量。",
       "acceptanceCriteria": [
-        "1. 空缺处显示虚线占位符，维持 4 列阵型。"
+        "1. CSS 变量集中管理，无硬编码。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-089",
+      "id": "STORY-125",
       "priority": "High",
-      "title": "修复 Token 与 Bonus 的网格断层",
-      "description": "建立严格的 6 列 Grid (grid-cols-6)，确保同一颜色的 Token 和 Bonus 永远在同一垂直线上。",
+      "title": "替换硬编码颜色为变量",
+      "description": "遍历组件 CSS，将硬编码颜色替换为集中管理的 CSS 变量。",
       "acceptanceCriteria": [
-        "1. 同色 Token 和 Bonus 严格垂直对齐。"
+        "1. 组件 CSS 中无硬编码颜色。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-090",
+      "id": "STORY-126",
       "priority": "High",
-      "title": "消除无效的背景色块",
-      "description": "删掉包裹球和方块的深灰色长条背景，让球直接浮在面板底色上。",
+      "title": "确保所有数字使用衬线字体",
+      "description": "卡牌分数、代币数量等数字严格使用古典衬线字体（Cinzel/Playfair）。",
       "acceptanceCriteria": [
-        "1. 消除冗余背景色块，界面更清爽。"
+        "1. 数字字体统一为衬线字体。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-091",
-      "priority": "High",
-      "title": "缩小 Bonus 方块的体积",
-      "description": "将 Bonus 方块尺寸缩小到球体的 70%。",
+      "id": "STORY-127",
+      "priority": "Medium",
+      "title": "添加暗角 (Vignette) 效果",
+      "description": "为最外层容器添加暗角效果，增强暗黑沉浸感。",
       "acceptanceCriteria": [
-        "1. Bonus 方块尺寸约为球体的 70%。"
+        "1. 边缘有自然暗角过渡。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-092",
-      "priority": "High",
-      "title": "对齐 Prestige 徽章",
-      "description": "使用 items-center 让名字和分数框在同一条水平线上完美居中。",
+      "id": "STORY-128",
+      "priority": "Medium",
+      "title": "添加全局噪点纹理",
+      "description": "叠加极低透明度的噪点图片或 CSS 噪点，使界面更有实体材质感。",
       "acceptanceCriteria": [
-        "1. 名字和分数框水平居中对齐。"
+        "1. 全局有微弱噪点质感。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-093",
-      "priority": "High",
-      "title": "统一折叠与展开的宽度",
-      "description": "所有玩家的面板基础宽度必须完全一致。",
+      "id": "STORY-129",
+      "priority": "Medium",
+      "title": "精致化组件边框",
+      "description": "边框使用极细线条，并带 subtle gradient，替代生硬的纯色边框。",
       "acceptanceCriteria": [
-        "1. 所有玩家面板宽度一致。"
+        "1. 边框更加细腻高级。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-094",
-      "priority": "High",
-      "title": "解决第六个球的强制换行",
-      "description": "缩小球的直径，或者允许父容器使用 justify-between，强制 6 个球在一行排开。",
+      "id": "STORY-130",
+      "priority": "Medium",
+      "title": "统一按钮交互态",
+      "description": "确保所有按钮有统一的 hover、active 和 disabled 视觉反馈。",
       "acceptanceCriteria": [
-        "1. 公共池 6 个球在一行排开，无换行。"
+        "1. 按钮交互态统一。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-095",
-      "priority": "High",
-      "title": "强化百搭代币的分割",
-      "description": "加粗分割线，或者给黄金球单独加一个底座/光环。",
+      "id": "STORY-131",
+      "priority": "Medium",
+      "title": "修复组件间 Z-Index 冲突",
+      "description": "检查并修复悬停放大等交互时的层级遮挡问题。",
       "acceptanceCriteria": [
-        "1. 黄金球有明显的特殊视觉标识。"
+        "1. 层级无冲突，悬停元素不被遮挡。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-096",
-      "priority": "High",
-      "title": "删除冗余的提示文字",
-      "description": "删除 'Click to take tokens'，增加 hover 效果和手型光标。",
+      "id": "STORY-132",
+      "priority": "Medium",
+      "title": "定制暗黑风格滚动条",
+      "description": "隐藏浏览器默认滚动条，使用与暗黑奇幻风格一致的窄滚动条。",
       "acceptanceCriteria": [
-        "1. 提示文字删除，交互暗示明确。"
+        "1. 滚动条风格统一。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-097",
-      "priority": "High",
-      "title": "引入悬停状态 (Hover States)",
-      "description": "所有可点击的卡牌必须加上 transition-transform hover:-translate-y-2 hover:shadow-2xl。",
+      "id": "STORY-133",
+      "priority": "Medium",
+      "title": "增强激活玩家发光效果",
+      "description": "激活玩家面板的呼吸发光效果更加自然、有魔法感。",
       "acceptanceCriteria": [
-        "1. 卡牌悬停有浮起和阴影加深效果。"
+        "1. 发光效果细腻，不刺眼。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-098",
+      "id": "STORY-134",
       "priority": "High",
-      "title": "公共代币的选中状态 (Selection State)",
-      "description": "选中的代币必须有一个高亮的描边 (ring-4 ring-yellow-400)，配合确认按钮。",
+      "title": "创建 useTokenSelection 自定义 Hook",
+      "description": "抽离代币选择的复杂逻辑到自定义 Hook 中，提升组件可读性。",
       "acceptanceCriteria": [
-        "1. 选中代币有明显高亮边框。"
+        "1. Hook 逻辑清晰，组件代码减少。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-099",
+      "id": "STORY-135",
       "priority": "High",
-      "title": "无效操作的禁用态 (Disabled State)",
-      "description": "Token 达上限时，公共池的球变成半透明或黑白 (opacity-50 grayscale)。",
+      "title": "创建 useCardPurchase 自定义 Hook",
+      "description": "抽离卡牌购买及验证逻辑到自定义 Hook 中。",
       "acceptanceCriteria": [
-        "1. 禁用状态视觉反馈明确。"
+        "1. Hook 逻辑清晰，组件代码减少。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-100",
-      "priority": "High",
-      "title": "激活玩家的强视觉锚点",
-      "description": "给当前回合玩家的整个面板外框加上缓慢呼吸的发光动画。",
+      "id": "STORY-136",
+      "priority": "Medium",
+      "title": "实现快捷键支持",
+      "description": "添加 Esc 取消选择、Enter 确认等常见快捷键。",
       "acceptanceCriteria": [
-        "1. 激活玩家面板有呼吸发光效果。"
+        "1. 快捷键可用。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-101",
-      "priority": "High",
-      "title": "添加微交互动画",
-      "description": "卡牌被买走时缩放消失，新卡牌翻开时 Y 轴翻转。",
+      "id": "STORY-137",
+      "priority": "Medium",
+      "title": "添加无障碍 aria-label",
+      "description": "为纯图标按钮等元素添加无障碍标签，提升可访问性。",
       "acceptanceCriteria": [
-        "1. 卡牌交互有动画过渡。"
+        "1. 关键交互元素有 aria-label。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-102",
+      "id": "STORY-138",
       "priority": "High",
-      "title": "重构右侧 Patrons 面板",
-      "description": "做成带有华丽金属包边的塔罗牌形状，去除虚线。",
+      "title": "全量测试验证",
+      "description": "使用修复后的测试套件运行所有单元测试，确保无 regression。",
       "acceptanceCriteria": [
-        "1. 贵族位呈现塔罗牌形状和金属包边。"
+        "1. 所有单元测试物理通过。"
       ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-103",
-      "priority": "High",
-      "title": "提升文字对比度",
-      "description": "使用羊皮纸色 (#E8E2D2) 显示占位符文字。",
-      "acceptanceCriteria": [
-        "1. 占位符文字清晰可辨。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-104",
-      "priority": "High",
-      "title": "统一卡牌的背景材质",
-      "description": "叠加极低透明度的噪点背景或渐变，增加纸牌质感。",
-      "acceptanceCriteria": [
-        "1. 卡牌背景有噪点或渐变质感。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-105",
-      "priority": "High",
-      "title": "修改数字字体 (Typography)",
-      "description": "引入古典衬线字体 (如 Cinzel) 专门用于展示分数和代币数量。",
-      "acceptanceCriteria": [
-        "1. 分数和代币数量使用衬线字体。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-106",
-      "priority": "High",
-      "title": "优化霓虹边缘发光",
-      "description": "发光范围调大，颜色调成暗金色或奥术蓝。",
-      "acceptanceCriteria": [
-        "1. 发光更接近魔法光晕，而非霓虹灯管。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-107",
-      "priority": "High",
-      "title": "统一元素的阴影体系",
-      "description": "用物理投影构建 Z 轴深度 (shadow-lg, shadow-xl)。",
-      "acceptanceCriteria": [
-        "1. 界面元素有层次分明的阴影。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-108",
-      "priority": "High",
-      "title": "清理无用的留白 (Dead Padding)",
-      "description": "减少内部元素的垂直 Padding，信息更加紧凑。",
-      "acceptanceCriteria": [
-        "1. 元素间距更紧凑，无过度留白。"
-      ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     }
   ]
