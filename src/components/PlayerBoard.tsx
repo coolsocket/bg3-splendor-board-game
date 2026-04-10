@@ -5,6 +5,7 @@ import { Card, type CardProps } from './Card';
 import { usePlayerStore } from '../store/playerStore';
 import type { ResourceCollection, Card as DomainCard } from '../domain/models';
 import { PrestigeBadge } from './PrestigeBadge';
+import { PlayerAvatar } from './PlayerAvatar';
 
 export interface PlayerBoardProps {
   playerName: string;
@@ -97,16 +98,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
         onClick={onClick}
         style={{ cursor: 'pointer' }}
       >
-        <div className="player-board-header">
-          <h2 className="player-name">
-            {props.isActive && <span className="active-arrow">▶ </span>}
-            {playerName}
-          </h2>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            {props.isActive && <span className="hourglass">⏳</span>}
-            <PrestigeBadge prestigePoints={prestigePoints} />
-          </div>
-        </div>
+        <PlayerAvatar playerName={playerName} isActive={props.isActive} prestigePoints={prestigePoints} />
         <div className="player-board-content" style={{ padding: '0.5rem' }}>
           <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', fontSize: '0.9rem' }}>
             <span>🃏 {reservedCards.length}</span>
@@ -122,16 +114,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
     <div className={`player-board ${isCurrent ? 'current-player' : ''} ${props.isActive ? 'active-player' : ''}`}>
 
 
-      <div className="player-board-header">
-        <h2 className="player-name">
-          {props.isActive && <span className="active-arrow">▶ </span>}
-          {playerName}
-        </h2>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          {props.isActive && <span className="hourglass">⏳</span>}
-          <PrestigeBadge prestigePoints={prestigePoints} />
-        </div>
-      </div>
+      <PlayerAvatar playerName={playerName} isActive={props.isActive} prestigePoints={prestigePoints} />
 
       <div className="player-board-content">
         {/* Resource Grid */}
