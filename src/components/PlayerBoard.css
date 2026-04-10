@@ -203,17 +203,20 @@
 @keyframes active-player-breathe {
   0% {
     box-shadow: 0 0 5px rgba(212, 175, 55, 0.3), 0 0 2px rgba(192, 132, 252, 0.2);
+    border-color: rgba(212, 175, 55, 0.3);
   }
   50% {
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 10px rgba(192, 132, 252, 0.5);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.9), 0 0 15px rgba(192, 132, 252, 0.6);
+    border-color: rgba(212, 175, 55, 0.9);
   }
   100% {
     box-shadow: 0 0 5px rgba(212, 175, 55, 0.3), 0 0 2px rgba(192, 132, 252, 0.2);
+    border-color: rgba(212, 175, 55, 0.3);
   }
 }
 
 .player-board.active-player {
-  animation: active-player-breathe 3s ease-in-out infinite;
+  animation: active-player-breathe 2s ease-in-out infinite;
 }
 
 .player-board.active-player .player-name {

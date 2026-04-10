@@ -230,8 +230,8 @@
       "acceptanceCriteria": [
         "1. 当前行动者感知极其明确。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-160",
