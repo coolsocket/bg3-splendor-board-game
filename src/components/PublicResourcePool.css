@@ -37,9 +37,9 @@
 
 .pool-tokens {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 1rem;
   padding: 0.5rem;
 }
 
