@@ -296,8 +296,8 @@
       "acceptanceCriteria": [
         "1. 全局背景有微弱纹理，非纯色死板。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-166",
