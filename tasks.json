@@ -241,7 +241,7 @@
       "acceptanceCriteria": [
         "1. 激活玩家面板有呼吸发光效果。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
