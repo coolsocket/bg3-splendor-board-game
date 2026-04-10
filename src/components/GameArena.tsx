@@ -3,6 +3,7 @@ import { PlayerBoard, type PlayerBoardProps } from './PlayerBoard';
 import { useGameSystemStore } from '../store/gameSystemStore';
 import { CardMarket, type CardMarketProps } from './CardMarket';
 import { PublicResourcePool } from './PublicResourcePool';
+import { PatronSlot } from './PatronSlot';
 import type { ResourceType } from './Token';
 import './GameArena.css';
 
@@ -63,18 +64,10 @@ export const GameArena: React.FC<GameArenaProps> = ({
           <h3 className="text-gold">Patrons</h3>
         </div>
         <div className="patron-cards-container">
-          <div className="patron-card-slot">
-            <div className="patron-card-inner">Patron</div>
-          </div>
-          <div className="patron-card-slot">
-            <div className="patron-card-inner">Patron</div>
-          </div>
-          <div className="patron-card-slot">
-            <div className="patron-card-inner">Patron</div>
-          </div>
-          <div className="patron-card-slot">
-            <div className="patron-card-inner">Patron</div>
-          </div>
+          <PatronSlot />
+          <PatronSlot />
+          <PatronSlot />
+          <PatronSlot />
         </div>
       </div>
     </div>

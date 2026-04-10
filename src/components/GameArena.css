@@ -66,32 +66,6 @@
   align-items: center;
 }
 
-.patron-card-slot {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  max-width: 100px;
-  background-color: rgba(20, 15, 10, 0.6);
-  border: 2px solid #d4af37; /* Solid gold border */
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(212, 175, 55, 0.3);
-}
-
-.patron-card-slot:hover {
-  border-color: #c9a063;
-  background-color: rgba(30, 25, 20, 0.8);
-}
-
-.patron-card-inner {
-  color: #8c7a6b;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
 
 .text-gold {
   color: #c9a063;
