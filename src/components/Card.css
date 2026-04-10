@@ -224,12 +224,12 @@
 
 /* Affordable State */
 .card.affordable {
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5), 0 10px 20px rgba(0, 0, 0, 0.5); /* Arcane glow */
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 50px rgba(56, 189, 248, 0.3), 0 10px 20px rgba(0, 0, 0, 0.5); /* Arcane halo */
   animation: card-breathe 3.5s ease-in-out infinite;
 }
 
 .card.affordable:hover {
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.8), 0 15px 30px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.8), 0 0 70px rgba(56, 189, 248, 0.4), 0 15px 30px rgba(0, 0, 0, 0.7);
 }
 
 /* Selected State */
