@@ -98,7 +98,7 @@
       "acceptanceCriteria": [
         "1. 底部成本区排版整齐，无截断。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
