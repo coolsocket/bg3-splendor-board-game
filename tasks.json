@@ -318,8 +318,8 @@
       "acceptanceCriteria": [
         "1. 关键交互元素有 aria-label。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-138",

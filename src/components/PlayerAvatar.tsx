@@ -16,11 +16,11 @@ export const PlayerAvatar: React.FC<PlayerAvatarProps> = ({
   return (
     <div className="player-board-header">
       <h2 className="player-name">
-        {isActive && <span className="active-arrow">▶ </span>}
+        {isActive && <span className="active-arrow" aria-label="Active player">▶ </span>}
         {playerName}
       </h2>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        {isActive && <span className="hourglass">⏳</span>}
+        {isActive && <span className="hourglass" aria-label="Active turn">⏳</span>}
         <PrestigeBadge prestigePoints={prestigePoints} />
       </div>
     </div>
