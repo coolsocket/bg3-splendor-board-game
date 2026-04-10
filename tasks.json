@@ -120,8 +120,8 @@
       "acceptanceCriteria": [
         "1. 卡牌背景色调统一，无生硬切分。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-150",
