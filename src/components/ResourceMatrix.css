@@ -1,0 +1,37 @@
+.asset-matrix {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem 0.25rem;
+  justify-items: center;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.bonus-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2f3a;
+  border: 1px solid #3a3f4d;
+  border-radius: 6px;
+  width: 42px;
+  height: 42px;
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bonus-item.radiant_gem { background: radial-gradient(circle at 35% 35%, #fffbeb, #fef08a, #ca8a04, #713f12); }
+.bonus-item.arcane_crystal { background: radial-gradient(circle at 35% 35%, #e0f2fe, #38bdf8, #0284c7, #0c4a6e); }
+.bonus-item.natures_blessing { background: radial-gradient(circle at 35% 35%, #f0fdf4, #4ade80, #16a34a, #14532d); }
+.bonus-item.infernal_iron { background: radial-gradient(circle at 35% 35%, #fef2f2, #f87171, #dc2626, #7f1d1d); }
+.bonus-item.dark_quartz { background: radial-gradient(circle at 35% 35%, #faf5ff, #c084fc, #9333ea, #3b0764); }
+.bonus-item.true_soul_tadpole { background: radial-gradient(circle at 35% 35%, #fdf2f8, #f472b6, #db2777, #500724); }
+
+.bonus-value {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: bold;
+  color: #E8E2D2;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.8);
+}

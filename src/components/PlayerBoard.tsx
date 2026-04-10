@@ -6,6 +6,7 @@ import { usePlayerStore } from '../store/playerStore';
 import type { ResourceCollection, Card as DomainCard } from '../domain/models';
 import { PrestigeBadge } from './PrestigeBadge';
 import { PlayerAvatar } from './PlayerAvatar';
+import { ResourceMatrix } from './ResourceMatrix';
 
 export interface PlayerBoardProps {
   playerName: string;
@@ -79,14 +80,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
         return acc;
       }, {} as Record<ResourceType, number>);
 
-  const resourceTypes: ResourceType[] = [
-    'RADIANT_GEM',
-    'ARCANE_CRYSTAL',
-    'NATURES_BLESSING',
-    'INFERNAL_IRON',
-    'DARK_QUARTZ',
-    'TRUE_SOUL_TADPOLE'
-  ];
+
 
   const { viewMode = 'full', onClick } = props;
 
@@ -120,16 +114,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
         {/* Resource Grid */}
         <div className="section resource-grid-section">
           <h3>Resources & Bonuses</h3>
-          <div className="asset-matrix">
-            {resourceTypes.map(type => (
-              <Token key={`token-${type}`} type={type} count={tokens[type] || 0} />
-            ))}
-            {resourceTypes.map(type => (
-              <div key={`bonus-${type}`} className={`bonus-item ${type.toLowerCase()}`} title={`Bonus: ${bonuses[type] || 0}`}>
-                <span className="bonus-value">{bonuses[type] || 0}</span>
-              </div>
-            ))}
-          </div>
+          <ResourceMatrix tokens={tokens} bonuses={bonuses} />
         </div>
 
 
