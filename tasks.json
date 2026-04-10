@@ -65,8 +65,8 @@
       "acceptanceCriteria": [
         "1. Token 组件独立，易于复用。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-115",
@@ -76,8 +76,8 @@
       "acceptanceCriteria": [
         "1. Card 组件独立，易于复用。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-116",
