@@ -307,8 +307,8 @@
       "acceptanceCriteria": [
         "1. 界面主色调统一，无杂色。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-167",

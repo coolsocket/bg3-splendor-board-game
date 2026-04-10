@@ -36,7 +36,7 @@
 
 /* Tier Borders */
 .card.border-tier-1 {
-  border: 2px solid #4a4a4a; /* Broken iron */
+  border: 2px solid var(--color-gold-dark);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -245,7 +245,7 @@
 
 /* Selected State */
 .card.selected {
-  outline: 3px solid var(--color-gold-dark); /* Gold border */
+  outline: 3px solid var(--color-arcane); /* Arcane blue border */
   outline-offset: 2px;
 }
 
