@@ -115,10 +115,11 @@
 /* TRUE_SOUL_TADPOLE (Wildcard) - Pink/Arcane */
 .token.true_soul_tadpole {
   background: radial-gradient(circle at 35% 35%, #fdf2f8, #f472b6, #db2777, #500724);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.6), 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  border: 2px solid #d4af37; /* Gold border */
 }
 .token.true_soul_tadpole:hover:not(.disabled) {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px #f472b6;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
 
 /* Animation for taking tokens */
