@@ -153,7 +153,7 @@
       "acceptanceCriteria": [
         "1. 名字和分数框水平居中对齐。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
