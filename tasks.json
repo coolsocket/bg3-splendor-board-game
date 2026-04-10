@@ -208,8 +208,8 @@
       "acceptanceCriteria": [
         "1. Bonus 元素呈现切割宝石质感。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-158",
