@@ -85,10 +85,10 @@
 
 /* Asset Matrix */
 .asset-matrix {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   gap: 0.5rem 0.25rem;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
   max-width: 100%;
   overflow: hidden;

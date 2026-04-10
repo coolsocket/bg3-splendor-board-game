@@ -120,7 +120,7 @@
       "acceptanceCriteria": [
         "1. 同色 Token 和 Bonus 严格垂直对齐。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
