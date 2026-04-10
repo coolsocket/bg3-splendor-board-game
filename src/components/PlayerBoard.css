@@ -63,14 +63,14 @@
 .player-board-content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .section {
   background-color: #222731;
   border: 1px solid #2e3542;
   border-radius: 6px;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .section h3 {

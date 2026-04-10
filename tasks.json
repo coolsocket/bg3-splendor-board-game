@@ -329,7 +329,7 @@
       "acceptanceCriteria": [
         "1. 元素间距更紧凑，无过度留白。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     }
   ]
