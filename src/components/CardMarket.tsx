@@ -70,10 +70,16 @@ export const CardMarket: React.FC<CardMarketProps> = ({
   const renderTier = (tier: 1 | 2 | 3, cards: CardProps[], deckCount: number) => (
     <div className={`market-row tier-${tier}`}>
       <div className="deck-container">
-        <div className={`deck deck-tier-${tier}`}>
-          <span className="deck-count">{deckCount}</span>
-          <span className="deck-label">Tier {tier}</span>
-        </div>
+        <Card 
+          id={`deck-${tier}`} 
+          tier={tier} 
+          isDeck={true} 
+          deckCount={deckCount} 
+          prestigePoints={0} 
+          providedBonus={'RADIANT_GEM'} 
+          cost={{}} 
+          isAffordable={false} 
+        />
       </div>
       <div className="cards-container">
         {cards.map(card => (

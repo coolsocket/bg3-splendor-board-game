@@ -54,7 +54,7 @@
       "acceptanceCriteria": [
         "1. 牌库和翻开卡片尺寸绝对一致。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
