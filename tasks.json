@@ -208,8 +208,8 @@
       "acceptanceCriteria": [
         "1. 边缘有自然暗角过渡。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-128",
