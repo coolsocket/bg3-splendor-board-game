@@ -38,7 +38,6 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
     <div className="public-resource-pool bg-obsidian-panel backdrop-blur-sm">
       <div className="pool-header">
         <h3 className="pool-title text-parchment">Public Resource Pool</h3>
-        <span className="pool-subtitle text-ivory">Click to take tokens</span>
       </div>
       <div className="pool-tokens">
         {resourceTypes.map((type, index) => (

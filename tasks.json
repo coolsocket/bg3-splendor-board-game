@@ -197,7 +197,7 @@
       "acceptanceCriteria": [
         "1. 提示文字删除，交互暗示明确。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
