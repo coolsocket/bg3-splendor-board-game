@@ -24,15 +24,15 @@
 .pool-title {
   margin: 0;
   font-size: 1.25rem;
-  font-family: 'Cinzel', Georgia, serif;
-  color: #E8E2D2; /* text-parchment */
+  font-family: var(--font-serif);
+  color: var(--color-text-primary); /* text-parchment */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .pool-subtitle {
   font-size: 0.85rem;
-  color: #a0a5b5; /* text-ivory fallback */
-  font-family: 'Cinzel', Georgia, serif;
+  color: var(--color-text-secondary); /* text-ivory fallback */
+  font-family: var(--font-serif);
 }
 
 .pool-tokens {
@@ -58,12 +58,12 @@
   box-shadow: 0 0 15px var(--glow-color);
 }
 
-.stack-radiant_gem { --glow-color: #fef08a; }
-.stack-arcane_crystal { --glow-color: #1565c0; }
-.stack-natures_blessing { --glow-color: #2e7d32; }
-.stack-infernal_iron { --glow-color: #f87171; }
-.stack-dark_quartz { --glow-color: #c084fc; }
-.stack-true_soul_tadpole { --glow-color: #f472b6; }
+.stack-radiant_gem { --glow-color: var(--color-radiant); }
+.stack-arcane_crystal { --glow-color: var(--color-arcane); }
+.stack-natures_blessing { --glow-color: var(--color-natures); }
+.stack-infernal_iron { --glow-color: var(--color-infernal); }
+.stack-dark_quartz { --glow-color: var(--color-dark); }
+.stack-true_soul_tadpole { --glow-color: var(--color-wildcard); }
 
 /* Add a slight 3D stack effect */
 .token-stack-container::before {

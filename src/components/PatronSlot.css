@@ -3,7 +3,7 @@
   aspect-ratio: 2 / 3;
   max-width: 100px;
   background-color: rgba(20, 15, 10, 0.6);
-  border: 2px solid #d4af37; /* Solid gold border */
+  border: 2px solid var(--color-gold); /* Solid gold border */
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@
 }
 
 .patron-card-slot:hover {
-  border-color: #c9a063;
+  border-color: var(--color-gold-light);
   background-color: rgba(30, 25, 20, 0.8);
 }
 

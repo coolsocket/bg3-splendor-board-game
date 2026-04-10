@@ -10,8 +10,8 @@
 .wildcard-title {
   margin: 0 0 0.5rem 0;
   font-size: 0.9rem;
-  font-family: 'Cinzel', Georgia, serif;
-  color: #a0a5b5;
+  font-family: var(--font-serif);
+  color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -24,7 +24,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
   border-radius: 50%;
-  --glow-color: #f472b6;
+  --glow-color: var(--color-wildcard);
 }
 
 .wildcard-pool .token-stack-container:hover:not(.disabled) {

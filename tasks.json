@@ -186,8 +186,8 @@
       "acceptanceCriteria": [
         "1. 组件 CSS 中无硬编码颜色。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-126",
