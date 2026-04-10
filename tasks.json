@@ -329,8 +329,8 @@
       "acceptanceCriteria": [
         "1. 所有单元测试物理通过。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     }
   ]
 }
