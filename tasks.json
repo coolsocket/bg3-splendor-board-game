@@ -131,7 +131,7 @@
       "acceptanceCriteria": [
         "1. 消除冗余背景色块，界面更清爽。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
