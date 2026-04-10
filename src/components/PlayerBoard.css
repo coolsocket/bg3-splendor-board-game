@@ -32,7 +32,7 @@
 .section {
   background-color: #222731;
   border: 1px solid #2e3542;
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 0.75rem;
 }
 
@@ -125,7 +125,7 @@
 .reserve-slot {
   width: 60px;
   height: 90px;
-  border-radius: 4px;
+  border-radius: 8px;
   box-sizing: border-box;
   position: relative;
 }

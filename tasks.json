@@ -318,8 +318,8 @@
       "acceptanceCriteria": [
         "1. 所有元素的圆角风格一致。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-168",

@@ -4,7 +4,7 @@
   max-width: 100px;
   background-color: #4a0e17; /* Dark burgundy */
   border: 2px solid var(--color-gold); /* Solid gold border */
-  border-radius: 6px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
