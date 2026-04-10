@@ -5,9 +5,10 @@
   grid-template-columns: 300px 1fr 250px;
   gap: 1.5rem;
   padding: 1.5rem;
-  min-height: 100vh;
+  height: 100vh;
   box-sizing: border-box;
   position: relative;
+  overflow: hidden;
 }
 
 .game-arena::after {
@@ -163,3 +164,15 @@
     order: 3; /* Move sidebar below main area on mobile */
   }
 }
+
+/* Utility classes for layout and scrolling */
+.h-screen { height: 100vh; }
+.w-screen { width: 100vw; }
+.overflow-hidden { overflow: hidden; }
+.overflow-y-auto { overflow-y: auto; }
+.h-full { height: 100%; }
+.pb-20 { padding-bottom: 5rem; }
+.pb-12 { padding-bottom: 3rem; }
+.flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-2 { gap: 0.5rem; }

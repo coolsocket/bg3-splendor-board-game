@@ -1,0 +1,336 @@
+{
+  "branchName": "feature/phase4-refinement",
+  "baselineCommit": "",
+  "userStories": [
+    {
+      "id": "STORY-109",
+      "priority": "High",
+      "title": "修复 Vitest ESM 解析错误",
+      "description": "调查并修复单元测试中的 ESM 模块解析问题，确保可以运行本地测试。",
+      "acceptanceCriteria": [
+        "1. 运行 `npm run test` 或 `npx vitest` 能够正常启动并执行测试，无 ESM 错误。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-110",
+      "priority": "High",
+      "title": "为 gameSystemStore 添加单元测试",
+      "description": "编写测试用例验证 gameSystemStore 的核心 actions。",
+      "acceptanceCriteria": [
+        "1. 测试覆盖核心状态变更。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-111",
+      "priority": "High",
+      "title": "为卡牌购买逻辑添加单元测试",
+      "description": "验证扣除资源、增加卡牌、触发贵族访问等完整链路。",
+      "acceptanceCriteria": [
+        "1. 购买成功与失败的 edge cases 均有测试覆盖。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-112",
+      "priority": "High",
+      "title": "为代币拿取逻辑添加单元测试",
+      "description": "验证 3 个不同颜色、2 个同颜色、上限 10 个等规则限制。",
+      "acceptanceCriteria": [
+        "1. 代币规则限制有测试覆盖。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-113",
+      "priority": "High",
+      "title": "为贵族访问逻辑添加单元测试",
+      "description": "验证条件满足时贵族自动访问的逻辑。",
+      "acceptanceCriteria": [
+        "1. 贵族访问逻辑有测试覆盖。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-114",
+      "priority": "Medium",
+      "title": "提取 Token 组件到独立文件",
+      "description": "如果尚未独立，将 Token 提取为独立的原子组件。",
+      "acceptanceCriteria": [
+        "1. Token 组件独立，易于复用。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-115",
+      "priority": "Medium",
+      "title": "提取 Card 组件到独立文件",
+      "description": "如果尚未独立，将 Card 提取为独立的原子组件。",
+      "acceptanceCriteria": [
+        "1. Card 组件独立，易于复用。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-116",
+      "priority": "Medium",
+      "title": "提取 EmptyCardSlot 组件",
+      "description": "创建专门的空卡槽位组件，带虚线边框。",
+      "acceptanceCriteria": [
+        "1. EmptyCardSlot 组件可用。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-117",
+      "priority": "Medium",
+      "title": "提取 PlayerAvatar 组件",
+      "description": "提取玩家头像及状态指示器为独立组件。",
+      "acceptanceCriteria": [
+        "1. PlayerAvatar 组件可用。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-118",
+      "priority": "Medium",
+      "title": "提取 ResourceMatrix 组件",
+      "description": "从 PlayerBoard 中提取资源矩阵（Token + Bonus）为独立组件。",
+      "acceptanceCriteria": [
+        "1. ResourceMatrix 组件可用。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-119",
+      "priority": "Medium",
+      "title": "提取 PrestigeBadge 组件",
+      "description": "提取威望分数徽章（盾牌/丝带形状）为独立组件。",
+      "acceptanceCriteria": [
+        "1. PrestigeBadge 组件可用。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-120",
+      "priority": "Medium",
+      "title": "提取 PatronSlot 组件",
+      "description": "提取贵族卡槽位为独立组件。",
+      "acceptanceCriteria": [
+        "1. PatronSlot 组件可用。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-121",
+      "priority": "Medium",
+      "title": "提取 MarketRow 组件",
+      "description": "提取市场中的单行（Tier）为独立组件。",
+      "acceptanceCriteria": [
+        "1. MarketRow 组件可用。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-122",
+      "priority": "Medium",
+      "title": "提取 DeckStack 组件",
+      "description": "提取牌堆组件，包含阴影叠层效果。",
+      "acceptanceCriteria": [
+        "1. DeckStack 组件可用。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-123",
+      "priority": "Medium",
+      "title": "提取 WildcardPool 组件",
+      "description": "提取百搭代币（黄金/蝌蚪）独立区域组件。",
+      "acceptanceCriteria": [
+        "1. WildcardPool 组件可用。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-124",
+      "priority": "High",
+      "title": "集中管理 CSS 变量",
+      "description": "创建 variables.css 或 theme.css，集中定义颜色、字体、阴影等变量。",
+      "acceptanceCriteria": [
+        "1. CSS 变量集中管理，无硬编码。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-125",
+      "priority": "High",
+      "title": "替换硬编码颜色为变量",
+      "description": "遍历组件 CSS，将硬编码颜色替换为集中管理的 CSS 变量。",
+      "acceptanceCriteria": [
+        "1. 组件 CSS 中无硬编码颜色。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-126",
+      "priority": "High",
+      "title": "确保所有数字使用衬线字体",
+      "description": "卡牌分数、代币数量等数字严格使用古典衬线字体（Cinzel/Playfair）。",
+      "acceptanceCriteria": [
+        "1. 数字字体统一为衬线字体。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-127",
+      "priority": "Medium",
+      "title": "添加暗角 (Vignette) 效果",
+      "description": "为最外层容器添加暗角效果，增强暗黑沉浸感。",
+      "acceptanceCriteria": [
+        "1. 边缘有自然暗角过渡。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-128",
+      "priority": "Medium",
+      "title": "添加全局噪点纹理",
+      "description": "叠加极低透明度的噪点图片或 CSS 噪点，使界面更有实体材质感。",
+      "acceptanceCriteria": [
+        "1. 全局有微弱噪点质感。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-129",
+      "priority": "Medium",
+      "title": "精致化组件边框",
+      "description": "边框使用极细线条，并带 subtle gradient，替代生硬的纯色边框。",
+      "acceptanceCriteria": [
+        "1. 边框更加细腻高级。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-130",
+      "priority": "Medium",
+      "title": "统一按钮交互态",
+      "description": "确保所有按钮有统一的 hover、active 和 disabled 视觉反馈。",
+      "acceptanceCriteria": [
+        "1. 按钮交互态统一。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-131",
+      "priority": "Medium",
+      "title": "修复组件间 Z-Index 冲突",
+      "description": "检查并修复悬停放大等交互时的层级遮挡问题。",
+      "acceptanceCriteria": [
+        "1. 层级无冲突，悬停元素不被遮挡。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-132",
+      "priority": "Medium",
+      "title": "定制暗黑风格滚动条",
+      "description": "隐藏浏览器默认滚动条，使用与暗黑奇幻风格一致的窄滚动条。",
+      "acceptanceCriteria": [
+        "1. 滚动条风格统一。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-133",
+      "priority": "Low",
+      "title": "强化激活玩家的发光效果",
+      "description": "使用更平滑的 CSS 动画，并确保发光颜色与暗黑奇幻风格匹配（可考虑微弱的奥术紫或金色）。",
+      "acceptanceCriteria": [
+        "1. 呼吸灯效果平滑，颜色匹配。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-134",
+      "priority": "High",
+      "title": "创建 useTokenSelection 自定义 Hook",
+      "description": "抽离代币选择的复杂逻辑到自定义 Hook 中，提升组件可读性。",
+      "acceptanceCriteria": [
+        "1. Hook 逻辑清晰，组件代码减少。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-135",
+      "priority": "High",
+      "title": "创建 useCardPurchase 自定义 Hook",
+      "description": "抽离卡牌购买及验证逻辑到自定义 Hook 中。",
+      "acceptanceCriteria": [
+        "1. Hook 逻辑清晰，组件代码减少。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-136",
+      "priority": "Medium",
+      "title": "实现快捷键支持",
+      "description": "添加 Esc 取消选择、Enter 确认等常见快捷键。",
+      "acceptanceCriteria": [
+        "1. 快捷键可用。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-137",
+      "priority": "Medium",
+      "title": "添加无障碍 aria-label",
+      "description": "为纯图标按钮等元素添加无障碍标签，提升可访问性。",
+      "acceptanceCriteria": [
+        "1. 关键交互元素有 aria-label。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-138",
+      "priority": "High",
+      "title": "全量测试验证",
+      "description": "使用修复后的测试套件运行所有单元测试，确保无 regression。",
+      "acceptanceCriteria": [
+        "1. 所有单元测试物理通过。"
+      ],
+      "passes": true,
+      "attempts": 1
+    }
+  ]
+}

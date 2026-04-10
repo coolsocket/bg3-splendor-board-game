@@ -51,7 +51,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
 
   return (
     <div className="game-arena bg-underdark">
-      <div className="sidebar">
+      <div className="sidebar overflow-y-auto">
         <div className="opponents-container">
           {opponents.map((opponent, index) => {
             const isExpanded = opponent.playerName === expandedPlayerName;
@@ -72,14 +72,16 @@ export const GameArena: React.FC<GameArenaProps> = ({
         </div>
       </div>
       <div className="main-area bg-camp-table">
-        <PublicResourcePool
-          resources={resources}
-          onTokenClick={onTokenClick}
-          disabledTokens={disabledTokens}
-        />
-        <CardMarket {...market} onCardInteract={onCardInteract} />
+        <div className="h-full overflow-y-auto pb-20">
+          <PublicResourcePool
+            resources={resources}
+            onTokenClick={onTokenClick}
+            disabledTokens={disabledTokens}
+          />
+          <CardMarket {...market} onCardInteract={onCardInteract} />
+        </div>
       </div>
-      <div className="patron-area bg-obsidian-panel backdrop-blur-sm">
+      <div className="patron-area bg-obsidian-panel backdrop-blur-sm overflow-y-auto">
         <div className="patron-header">
           <h3 className="text-gold">Patrons</h3>
         </div>

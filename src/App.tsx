@@ -98,7 +98,7 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="app-container h-screen w-screen overflow-hidden">
       <GameArena
         currentPlayer={dummyPlayer}
         opponents={[dummyOpponent]}
