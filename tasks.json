@@ -219,8 +219,8 @@
       "acceptanceCriteria": [
         "1. 标题不再占用过多空间。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-159",

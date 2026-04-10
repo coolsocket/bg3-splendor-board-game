@@ -57,6 +57,14 @@
   padding-right: 0;
 }
 
+.resource-grid-section h3 {
+  font-size: 0.9rem;
+  color: #6a7285;
+  border-bottom: none;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
+}
+
 
 
 
