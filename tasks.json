@@ -131,8 +131,8 @@
       "acceptanceCriteria": [
         "1. 数字使用古典衬线体，提升气质。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-151",
