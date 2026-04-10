@@ -175,8 +175,8 @@
       "acceptanceCriteria": [
         "1. CSS 变量集中管理，无硬编码。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-125",
