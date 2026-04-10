@@ -8,6 +8,7 @@
   border: 1px solid rgba(139, 115, 85, 0.3); /* Antique gold ish border */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
+  flex-grow: 1;
 }
 
 .market-title {

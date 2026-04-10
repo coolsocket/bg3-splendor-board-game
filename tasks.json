@@ -32,7 +32,7 @@
       "acceptanceCriteria": [
         "1. 卡牌区域自然向下延伸，不缩在暗色方块里。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
