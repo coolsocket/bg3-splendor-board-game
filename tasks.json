@@ -142,8 +142,8 @@
       "acceptanceCriteria": [
         "1. 卡牌顶部信息布局紧凑合理。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-152",
