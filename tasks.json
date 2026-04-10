@@ -285,7 +285,7 @@
       "acceptanceCriteria": [
         "1. 卡牌背景有噪点或渐变质感。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
