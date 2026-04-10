@@ -1,8 +1,8 @@
 .patron-card-slot {
   width: 100%;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 1 / 1;
   max-width: 100px;
-  background-color: rgba(20, 15, 10, 0.6);
+  background-color: #4a0e17; /* Dark burgundy */
   border: 2px solid var(--color-gold); /* Solid gold border */
   border-radius: 6px;
   display: flex;
@@ -15,12 +15,16 @@
 
 .patron-card-slot:hover {
   border-color: var(--color-gold-light);
-  background-color: rgba(30, 25, 20, 0.8);
+  background-color: #5c121e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6), 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .patron-card-inner {
-  color: #8c7a6b;
+  color: #F5E6C4; /* Bright parchment */
   font-size: 0.8rem;
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }

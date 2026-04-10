@@ -252,8 +252,8 @@
       "acceptanceCriteria": [
         "1. 贵族卡有实质底色，不空洞。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-162",
@@ -263,8 +263,8 @@
       "acceptanceCriteria": [
         "1. 贵族卡文字清晰可读。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-163",
@@ -274,8 +274,8 @@
       "acceptanceCriteria": [
         "1. 贵族卡比例协调。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-164",
