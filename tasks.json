@@ -318,7 +318,7 @@
       "acceptanceCriteria": [
         "1. 界面元素有层次分明的阴影。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
