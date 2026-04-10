@@ -14,9 +14,10 @@ interface TokenProps {
   count: number;
   onClick?: () => void;
   disabled?: boolean;
+  isSelected?: boolean;
 }
 
-export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = false }) => {
+export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = false, isSelected = false }) => {
   const [isAnimating, setIsAnimating] = React.useState(false);
 
   const getLabel = (type: ResourceType) => {
@@ -45,7 +46,7 @@ export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = f
   return (
     <>
       <div 
-        className={`token ${type.toLowerCase()} ${disabled ? 'disabled' : ''}`} 
+        className={`token ${type.toLowerCase()} ${disabled ? 'disabled' : ''} ${isSelected ? 'selected' : ''}`} 
         onClick={handleClick}
         role="button"
         aria-label={`${type} token, count: ${count}`}

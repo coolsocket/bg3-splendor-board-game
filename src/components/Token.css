@@ -65,6 +65,11 @@
   filter: grayscale(50%) brightness(70%);
 }
 
+/* Selection State */
+.token.selected {
+  box-shadow: 0 0 0 4px #facc15, 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
 /* Gem Specific Gradients and Glows */
 
 /* RADIANT_GEM (Cleric/Paladin) - Gold/Yellow */

@@ -219,7 +219,7 @@
       "acceptanceCriteria": [
         "1. 选中代币有明显高亮边框。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
