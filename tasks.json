@@ -274,7 +274,7 @@
       "acceptanceCriteria": [
         "1. 占位符文字清晰可辨。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {

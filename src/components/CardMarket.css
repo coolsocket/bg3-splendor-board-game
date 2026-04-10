@@ -97,7 +97,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(232, 226, 210, 0.3); /* Faded parchment */
+  color: #E8E2D2; /* Parchment color */
   font-family: 'Cinzel', Georgia, serif;
   font-size: 0.9rem;
   background-color: rgba(0, 0, 0, 0.2);
