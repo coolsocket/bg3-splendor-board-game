@@ -153,8 +153,8 @@
       "acceptanceCriteria": [
         "1. 牌库背面使用深色系材质。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-153",

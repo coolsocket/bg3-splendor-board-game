@@ -13,8 +13,8 @@
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  background: var(--color-parchment);
-  background-image: linear-gradient(rgba(232, 226, 210, 0.9), rgba(216, 206, 180, 0.9));
+  background: #2c1a04; /* Dark brown */
+  background-image: linear-gradient(rgba(60, 20, 20, 0.9), rgba(20, 5, 5, 0.9));
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
 }
@@ -52,8 +52,8 @@
   font-family: var(--font-serif);
   font-size: 2.5rem;
   font-weight: bold;
-  color: var(--color-text-dark);
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  color: var(--color-text-primary);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .deck-label {
