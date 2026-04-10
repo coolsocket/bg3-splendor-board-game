@@ -7,6 +7,7 @@ import { calculateEffectiveCost } from '../domain/logic';
 import { CardTier, ResourceType as DomainResourceType, type Card as DomainCard } from '../domain/models';
 import type { ResourceType } from './Token';
 import { EmptyCardSlot } from './EmptyCardSlot';
+import { MarketRow } from './MarketRow';
 
 export interface CardMarketProps {
   tier1Cards?: CardProps[];
@@ -68,38 +69,12 @@ export const CardMarket: React.FC<CardMarketProps> = ({
   const tier2DeckCount = decks[CardTier.TIER_2]?.length || 0;
   const tier3DeckCount = decks[CardTier.TIER_3]?.length || 0;
 
-  const renderTier = (tier: 1 | 2 | 3, cards: CardProps[], deckCount: number) => (
-    <div className={`market-row tier-${tier}`}>
-      <div className="deck-container">
-        <Card 
-          id={`deck-${tier}`} 
-          tier={tier} 
-          isDeck={true} 
-          deckCount={deckCount} 
-          prestigePoints={0} 
-          providedBonus={'RADIANT_GEM'} 
-          cost={{}} 
-          isAffordable={false} 
-        />
-      </div>
-      <div className="cards-container">
-        {cards.map(card => (
-          <Card key={card.id} {...card} onInteract={onCardInteract} />
-        ))}
-        {/* Fill empty slots if less than 4 cards */}
-        {Array.from({ length: Math.max(0, 4 - cards.length) }).map((_, index) => (
-          <EmptyCardSlot key={`empty-${index}`} />
-        ))}
-      </div>
-    </div>
-  );
-
   return (
     <div className="card-market">
       <h2 className="market-title">Card Market</h2>
-      {renderTier(3, tier3Cards, tier3DeckCount)}
-      {renderTier(2, tier2Cards, tier2DeckCount)}
-      {renderTier(1, tier1Cards, tier1DeckCount)}
+      <MarketRow tier={3} cards={tier3Cards} deckCount={tier3DeckCount} onCardInteract={onCardInteract} />
+      <MarketRow tier={2} cards={tier2Cards} deckCount={tier2DeckCount} onCardInteract={onCardInteract} />
+      <MarketRow tier={1} cards={tier1Cards} deckCount={tier1DeckCount} onCardInteract={onCardInteract} />
     </div>
   );
 };
