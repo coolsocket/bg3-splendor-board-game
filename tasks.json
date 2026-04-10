@@ -263,7 +263,7 @@
       "acceptanceCriteria": [
         "1. 贵族位呈现塔罗牌形状和金属包边。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
