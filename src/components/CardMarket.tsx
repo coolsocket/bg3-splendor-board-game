@@ -17,6 +17,12 @@ export interface CardMarketProps {
   onCardInteract?: (action: 'buy' | 'reserve' | 'select', cardId: string) => void;
 }
 
+const EmptyCardSlot: React.FC = () => (
+  <div className="empty-card-slot">
+    <span>Empty Slot</span>
+  </div>
+);
+
 export const CardMarket: React.FC<CardMarketProps> = ({
   onCardInteract
 }) => {
@@ -87,9 +93,7 @@ export const CardMarket: React.FC<CardMarketProps> = ({
         ))}
         {/* Fill empty slots if less than 4 cards */}
         {Array.from({ length: Math.max(0, 4 - cards.length) }).map((_, index) => (
-          <div key={`empty-${index}`} className="empty-card-slot">
-            <span>Empty Slot</span>
-          </div>
+          <EmptyCardSlot key={`empty-${index}`} />
         ))}
       </div>
     </div>
