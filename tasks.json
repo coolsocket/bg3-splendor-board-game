@@ -263,8 +263,8 @@
       "acceptanceCriteria": [
         "1. 滚动条风格统一。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-133",
