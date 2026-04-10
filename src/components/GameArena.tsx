@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PlayerBoard, type PlayerBoardProps } from './PlayerBoard';
 import { useGameSystemStore } from '../store/gameSystemStore';
 import { CardMarket, type CardMarketProps } from './CardMarket';
 import { PublicResourcePool } from './PublicResourcePool';
 import { PatronSlot } from './PatronSlot';
 import type { ResourceType } from './Token';
+import { useTokenSelection } from '../hooks/useTokenSelection';
 import './GameArena.css';
 
 export interface GameArenaProps {
@@ -28,6 +29,25 @@ export const GameArena: React.FC<GameArenaProps> = ({
 }) => {
   const [expandedPlayerName, setExpandedPlayerName] = useState<string>(currentPlayer.playerName);
   const { currentPlayerIndex } = useGameSystemStore();
+
+  const playerTotalTokens = Object.values(currentPlayer.tokens).reduce((sum, count) => sum + (count || 0), 0);
+  const { selectedTokens, clearSelection, isValid } = useTokenSelection(resources, playerTotalTokens);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        clearSelection();
+      } else if (e.key === 'Enter') {
+        if (isValid) {
+          console.log('Confirmed token selection:', selectedTokens);
+          clearSelection();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [clearSelection, isValid, selectedTokens]);
 
   return (
     <div className="game-arena bg-underdark">

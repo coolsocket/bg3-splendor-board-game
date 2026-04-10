@@ -307,8 +307,8 @@
       "acceptanceCriteria": [
         "1. 快捷键可用。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-137",
