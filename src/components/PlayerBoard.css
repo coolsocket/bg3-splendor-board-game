@@ -37,7 +37,7 @@
 }
 
 .section h3 {
-  font-family: 'Cinzel', Georgia, serif;
+  font-family: var(--font-serif);
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 1.1rem;
@@ -186,7 +186,7 @@
 }
 
 .patron-vp {
-  font-family: 'Cinzel', Georgia, serif;
+  font-family: var(--font-serif);
   color: #d4af37;
   font-weight: bold;
   margin-top: 0.25rem;

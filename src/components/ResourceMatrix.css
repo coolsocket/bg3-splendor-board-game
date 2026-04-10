@@ -29,7 +29,7 @@
 .bonus-item.true_soul_tadpole { background: radial-gradient(circle at 35% 35%, #fdf2f8, #f472b6, #db2777, #500724); }
 
 .bonus-value {
-  font-family: 'Cinzel', Georgia, serif;
+  font-family: var(--font-serif);
   font-weight: bold;
   color: #E8E2D2;
   font-size: 1.2rem;
