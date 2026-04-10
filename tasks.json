@@ -285,8 +285,8 @@
       "acceptanceCriteria": [
         "1. 右侧间距缩小，界面更紧密。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-165",
