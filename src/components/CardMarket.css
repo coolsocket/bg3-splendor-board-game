@@ -32,8 +32,8 @@
 }
 
 .deck {
-  height: 240px; /* Match card height */
-  width: 160px; /* Match card width */
+  width: 100%;
+  aspect-ratio: 2 / 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,8 +90,8 @@
 }
 
 .empty-card-slot {
-  width: 160px;
-  height: 240px;
+  width: 100%;
+  aspect-ratio: 2 / 3;
   border: 2px dashed rgba(139, 115, 85, 0.3);
   border-radius: 8px;
   display: flex;
