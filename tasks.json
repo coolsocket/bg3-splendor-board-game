@@ -252,8 +252,8 @@
       "acceptanceCriteria": [
         "1. 层级无冲突，悬停元素不被遮挡。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-132",
