@@ -73,6 +73,7 @@
 .patron-area {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1.5rem;
   padding: 1.5rem;
   border-radius: 12px;

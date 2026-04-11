@@ -27,9 +27,10 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
   return (
     <div className="patron-card-slot" title={patron.description}>
       <div className="patron-card-inner flex flex-col justify-between p-2 h-full">
-        <div className="patron-header flex justify-between items-center w-full px-1">
+        <div className="patron-header flex items-center justify-center gap-2 w-full px-1">
           <span className="patron-points text-gold font-serif text-xl font-bold">{patron.points}</span>
-          <span className="patron-name text-parchment text-xs truncate max-w-[70px]">{patron.name}</span>
+          <span className="text-gold opacity-70">•</span>
+          <span className="patron-name text-parchment text-xs truncate max-w-[60px]">{patron.name}</span>
         </div>
         
         <div className="patron-center-icon flex-grow flex items-center justify-center">

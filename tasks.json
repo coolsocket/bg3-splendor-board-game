@@ -230,7 +230,7 @@
       "acceptanceCriteria": [
         "1. 分数与名字分离，清晰可读。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -241,7 +241,7 @@
       "acceptanceCriteria": [
         "1. 贵族卡显示招募成本，逻辑完整。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -252,7 +252,7 @@
       "acceptanceCriteria": [
         "1. 无多余重叠图标。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -263,7 +263,7 @@
       "acceptanceCriteria": [
         "1. Patron 卡比例协调，无大面积死黑。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -274,7 +274,7 @@
       "acceptanceCriteria": [
         "1. Patrons 列绝对居中。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
