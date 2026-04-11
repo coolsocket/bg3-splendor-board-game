@@ -1,7 +1,7 @@
 .card-market {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   padding: 20px;
   background-color: rgba(26, 20, 15, 0.8); /* bg-camp-table-ish, dark brown translucent */
   border-radius: 8px;
@@ -15,23 +15,27 @@
 
 .market-title {
   font-family: var(--font-serif); /* STORY-250 */
+  font-size: 2.5rem; /* Enlarged */
+  font-weight: bold;
+  letter-spacing: 2px;
   color: #E8E2D2; /* text-parchment */
-  margin-bottom: 15px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .market-title::before,
 .market-title::after {
   content: '';
   display: inline-block;
-  width: 30px;
-  height: 1px;
-  background-color: rgba(139, 115, 85, 0.5);
+  width: 60px; /* Wider */
+  height: 3px; /* Thicker */
+  background-color: var(--color-gold-dark); /* Stronger color */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 

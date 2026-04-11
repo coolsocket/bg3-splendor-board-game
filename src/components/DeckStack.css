@@ -36,19 +36,21 @@
 
 .deck-count {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: bold;
-  color: var(--color-text-primary);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  color: var(--color-text-dark);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
   line-height: 1;
 }
 
 .deck-label {
   font-family: inherit;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #5c4a37;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   font-weight: bold;
   line-height: 1;
+  margin-top: 4px;
 }
+
