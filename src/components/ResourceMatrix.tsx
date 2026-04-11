@@ -1,6 +1,6 @@
 import React from 'react';
 import './ResourceMatrix.css';
-import { Token, type ResourceType } from './Token';
+import { type ResourceType } from './Token';
 
 interface ResourceMatrixProps {
   tokens: Record<ResourceType, number>;
@@ -18,13 +18,13 @@ const resourceTypes: ResourceType[] = [
 
 export const ResourceMatrix: React.FC<ResourceMatrixProps> = ({ tokens, bonuses }) => {
   return (
-    <div className="asset-matrix grid grid-cols-6 gap-1 w-full max-w-full">
+    <div className="asset-matrix grid grid-cols-3 gap-x-2 gap-y-1 w-full max-w-full">
       {resourceTypes.map(type => (
-        <Token key={`token-${type}`} type={type} count={tokens[type] || 0} />
-      ))}
-      {resourceTypes.map(type => (
-        <div key={`bonus-${type}`} className={`bonus-item ${type.toLowerCase()}`} title={`Bonus: ${bonuses[type] || 0}`}>
-          <span className="bonus-value">{bonuses[type] || 0}</span>
+        <div key={`asset-${type}`} className="asset-item flex items-center">
+          <div className={`color-icon ${type.toLowerCase()}`} />
+          <span className="asset-text ml-1 text-sm font-bold text-white">
+            : {tokens[type] || 0} / {bonuses[type] || 0}
+          </span>
         </div>
       ))}
     </div>

@@ -76,7 +76,7 @@
       "acceptanceCriteria": [
         "1. 玩家面板不再有重复颜色行。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -87,7 +87,7 @@
       "acceptanceCriteria": [
         "1. 资产显示为“数量 / 加成”格式。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -98,7 +98,7 @@
       "acceptanceCriteria": [
         "1. 玩家面板高度大幅压缩，布局紧凑。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
