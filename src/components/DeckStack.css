@@ -49,3 +49,8 @@
   letter-spacing: 1px;
   font-weight: bold;
 }
+
+.deck-stack.card .card-inner {
+  background: #1a0a0a;
+  background-image: linear-gradient(135deg, #2c1212, #0f0505);
+}

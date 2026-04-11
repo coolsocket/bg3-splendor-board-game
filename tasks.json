@@ -175,8 +175,8 @@
       "acceptanceCriteria": [
         "1. 牌库背面颜色深沉，不刺眼。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-185",
