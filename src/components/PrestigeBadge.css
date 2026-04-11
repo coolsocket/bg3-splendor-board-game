@@ -17,9 +17,9 @@
 }
 
 .prestige-value {
-  font-family: 'Cinzel', Georgia, serif;
+  font-family: var(--font-serif); /* STORY-250 */
   font-size: 1.25rem;
   font-weight: bold;
   color: #d4af37; /* accent-gold */
-  text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* STORY-251 */
 }

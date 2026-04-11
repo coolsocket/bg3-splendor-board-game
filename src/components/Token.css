@@ -57,7 +57,7 @@
 
 /* Hover state */
 .token:hover:not(.disabled) {
-  transform: translateY(-4px);
+  transform: translateY(-2px); /* STORY-258 */
 }
 
 /* Disabled state */
@@ -122,8 +122,13 @@
 /* TRUE_SOUL_TADPOLE (Wildcard) - Pink/Arcane */
 .token.true_soul_tadpole {
   background: radial-gradient(circle at 25% 25%, #fdf2f8, #f472b6, #db2777, #500724);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.6), 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   border: 2px solid #d4af37; /* Gold border */
+  border-radius: 12px !important; /* STORY-253: Non-spherical badge */
+}
+
+.token.true_soul_tadpole .token-inner {
+  border-radius: 10px !important; /* STORY-253 */
 }
 .token.true_soul_tadpole:hover:not(.disabled) {
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 10px 15px -3px rgba(0, 0, 0, 0.5);
@@ -163,9 +168,13 @@
   }
 }
 
-/* STORY-225: Fix contrast for yellow and green balls */
-.token.radiant_gem .token-count,
+/* STORY-249 & STORY-251: Fix contrast and reset text shadow */
+.token.radiant_gem .token-count {
+  color: #000000;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
 .token.natures_blessing .token-count {
-  color: #1a1c23;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }

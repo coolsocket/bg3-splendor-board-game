@@ -230,7 +230,7 @@
       "acceptanceCriteria": [
         "1. 黄色和绿色代币内部数字完美可读。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -241,7 +241,7 @@
       "acceptanceCriteria": [
         "1. 全局数值字体绝对统一。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -252,7 +252,7 @@
       "acceptanceCriteria": [
         "1. 关键数字在任何底色下都清晰可见。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -263,7 +263,7 @@
       "acceptanceCriteria": [
         "1. 顶部资源池高度变窄，更紧凑。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -274,7 +274,7 @@
       "acceptanceCriteria": [
         "1. 黄金代币有独特的视觉区隔。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -285,7 +285,7 @@
       "acceptanceCriteria": [
         "1. 标题居中且带有奇幻风格装饰。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -296,7 +296,7 @@
       "acceptanceCriteria": [
         "1. 边框不再是死板的 solid 线条。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -307,7 +307,7 @@
       "acceptanceCriteria": [
         "1. 玩家面板底部内容不贴边切断。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -318,7 +318,7 @@
       "acceptanceCriteria": [
         "1. 页面背景有极淡的奇幻暗纹。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -329,7 +329,7 @@
       "acceptanceCriteria": [
         "1. 全局交互悬停反馈逻辑一致。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     }
   ]

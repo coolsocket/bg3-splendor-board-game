@@ -5,19 +5,33 @@
   padding: 20px;
   background-color: rgba(26, 20, 15, 0.8); /* bg-camp-table-ish, dark brown translucent */
   border-radius: 8px;
-  border: 1px solid rgba(139, 115, 85, 0.3); /* Antique gold ish border */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.4); /* STORY-255: Goldish border */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7),
+              inset 0 0 15px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(212, 175, 55, 0.2); /* STORY-255: Realism */
   backdrop-filter: blur(5px);
   flex-grow: 1;
 }
 
 .market-title {
-  font-family: 'Cinzel', Georgia, serif; /* Match card font */
+  font-family: var(--font-serif); /* STORY-250 */
   color: #E8E2D2; /* text-parchment */
   margin-bottom: 15px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-  border-bottom: 1px solid rgba(139, 115, 85, 0.3);
-  padding-bottom: 5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.market-title::before,
+.market-title::after {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background-color: rgba(139, 115, 85, 0.5);
 }
 
 
@@ -38,9 +52,13 @@
 }
 
 .deck:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px); /* STORY-258 */
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
 }
+
+.deck-tier-1:hover { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 0 15px #4a4a4a; } /* STORY-258 */
+.deck-tier-2:hover { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 0 15px #b58a3e; } /* STORY-258 */
+.deck-tier-3:hover { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 0 15px #d4af37; } /* STORY-258 */
 
 .deck-tier-1 {
   background: linear-gradient(135deg, rgba(44, 44, 44, 0.9) 0%, rgba(17, 17, 17, 0.9) 100%),

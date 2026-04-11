@@ -63,6 +63,8 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><circle cx="150" cy="150" r="140" fill="none" stroke="rgba(212,175,55,0.03)" stroke-width="1"/><circle cx="150" cy="150" r="100" fill="none" stroke="rgba(212,175,55,0.03)" stroke-width="0.5"/><polygon points="150,10 290,150 150,290 10,150" fill="none" stroke="rgba(212,175,55,0.03)" stroke-width="0.5"/><polygon points="150,5 295,150 150,295 5,150" fill="none" stroke="rgba(212,175,55,0.03)" stroke-width="0.5" transform="rotate(45 150 150)"/></svg>'); /* STORY-257 */
+  background-repeat: repeat;
 }
 
 body {
