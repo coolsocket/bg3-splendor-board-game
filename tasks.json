@@ -263,8 +263,8 @@
       "acceptanceCriteria": [
         "1. 无“PATRON”纯文本，使用图标占位。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-193",
