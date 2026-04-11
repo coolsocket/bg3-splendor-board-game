@@ -50,6 +50,8 @@
   font-size: 20px;
   font-weight: bold;
   line-height: 1;
+  position: relative;
+  z-index: 10;
 }
 
 /* Hover state */
@@ -124,6 +126,15 @@
 }
 .token.true_soul_tadpole:hover:not(.disabled) {
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+.token-wildcard-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(212, 175, 55, 0.3); /* Gold with opacity */
+  pointer-events: none;
 }
 
 /* Animation for taking tokens */

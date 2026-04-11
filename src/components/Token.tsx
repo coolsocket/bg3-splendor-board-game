@@ -52,6 +52,11 @@ export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = f
         aria-label={`${type} token, count: ${count}`}
       >
         <div className="token-inner">
+          {type === 'TRUE_SOUL_TADPOLE' && (
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" className="token-wildcard-icon">
+              <path d="M12 2 L15.09 8.26 L22 9.27 L17 14.14 L18.18 21.02 L12 17.77 L5.82 21.02 L7 14.14 L2 9.27 L8.91 8.26 Z"/>
+            </svg>
+          )}
           <span className="token-count">{count}</span>
         </div>
       </div>

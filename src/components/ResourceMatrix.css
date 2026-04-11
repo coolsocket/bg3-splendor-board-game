@@ -22,12 +22,12 @@
   transform: rotate(45deg);
 }
 
-.bonus-item.radiant_gem { background: radial-gradient(circle at 35% 35%, #fffbeb, #fef08a, #ca8a04, #713f12); }
-.bonus-item.arcane_crystal { background: radial-gradient(circle at 35% 35%, #e0f2fe, #38bdf8, #0284c7, #0c4a6e); }
-.bonus-item.natures_blessing { background: radial-gradient(circle at 35% 35%, #f0fdf4, #4ade80, #16a34a, #14532d); }
-.bonus-item.infernal_iron { background: radial-gradient(circle at 35% 35%, #fef2f2, #f87171, #dc2626, #7f1d1d); }
-.bonus-item.dark_quartz { background: radial-gradient(circle at 35% 35%, #faf5ff, #c084fc, #9333ea, #3b0764); }
-.bonus-item.true_soul_tadpole { background: radial-gradient(circle at 35% 35%, #fdf2f8, #f472b6, #db2777, #500724); }
+.bonus-item.radiant_gem { background: radial-gradient(circle at 25% 25%, #fffbeb, #fef08a, #ca8a04, #713f12); }
+.bonus-item.arcane_crystal { background: radial-gradient(circle at 25% 25%, #e0f2fe, #38bdf8, #0284c7, #0c4a6e); }
+.bonus-item.natures_blessing { background: radial-gradient(circle at 25% 25%, #f0fdf4, #4ade80, #16a34a, #14532d); }
+.bonus-item.infernal_iron { background: radial-gradient(circle at 25% 25%, #fef2f2, #f87171, #dc2626, #7f1d1d); }
+.bonus-item.dark_quartz { background: radial-gradient(circle at 25% 25%, #faf5ff, #c084fc, #9333ea, #3b0764); }
+.bonus-item.true_soul_tadpole { background: radial-gradient(circle at 25% 25%, #fdf2f8, #f472b6, #db2777, #500724); }
 
 .bonus-value {
   font-family: var(--font-serif);

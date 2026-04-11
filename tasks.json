@@ -197,8 +197,8 @@
       "acceptanceCriteria": [
         "1. 无“WILDCARD”文本，使用图标代替。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-187",
@@ -208,8 +208,8 @@
       "acceptanceCriteria": [
         "1. 分隔线贯穿、对称且颜色高级。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-188",
@@ -219,8 +219,8 @@
       "acceptanceCriteria": [
         "1. 所有资源球的高光方向一致。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-189",
@@ -230,8 +230,8 @@
       "acceptanceCriteria": [
         "1. 资源池垂直居中，无多余留白。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-190",

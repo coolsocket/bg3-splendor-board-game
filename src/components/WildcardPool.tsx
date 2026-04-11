@@ -15,7 +15,6 @@ export const WildcardPool: React.FC<WildcardPoolProps> = ({
 }) => {
   return (
     <div className="wildcard-pool">
-      <h4 className="wildcard-title text-parchment">Wildcard</h4>
       <div className={`token-stack-container stack-true_soul_tadpole ${disabled ? 'disabled' : ''}`}>
         <Token
           type="TRUE_SOUL_TADPOLE"
