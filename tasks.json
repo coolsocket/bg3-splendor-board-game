@@ -164,8 +164,8 @@
       "acceptanceCriteria": [
         "1. 牌库厚度效果高级，无劣质多边框。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-184",
