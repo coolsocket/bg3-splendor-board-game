@@ -19,6 +19,26 @@
   width: 260px;
   max-width: 260px;
   box-sizing: border-box;
+  max-height: 90vh; /* Limit height for scrolling (STORY-313) */
+  overflow-y: auto;
+}
+
+/* Custom scrollbar for player board (STORY-313) */
+.player-board::-webkit-scrollbar {
+  width: 6px;
+}
+
+.player-board::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+.player-board::-webkit-scrollbar-thumb {
+  background: #3a3f4d;
+  border-radius: 3px;
+}
+
+.player-board::-webkit-scrollbar-thumb:hover {
+  background: #4a5061;
 }
 
 .player-board::before {
@@ -256,7 +276,12 @@
 }
 
 .player-board.glow-arcane {
-  box-shadow: var(--glow-arcane), 0 10px 30px rgba(0, 0, 0, 0.7);
+  box-shadow: 
+    0 0 5px rgba(56, 189, 248, 0.9),
+    0 0 10px rgba(56, 189, 248, 0.6),
+    0 0 20px rgba(56, 189, 248, 0.4),
+    0 0 40px rgba(56, 189, 248, 0.2),
+    0 10px 30px rgba(0, 0, 0, 0.7); /* Layered magic halo (STORY-312) */
   border-color: var(--color-arcane);
 }
 

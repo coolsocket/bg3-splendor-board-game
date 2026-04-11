@@ -2,9 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #3a3f4d;
+  border-bottom: 1px solid #bf953f; /* Dark gold divider (STORY-315) */
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.player-board-header.active-header {
+  background: linear-gradient(to right, rgba(26, 23, 16, 0.8), rgba(10, 10, 15, 0)); /* Dark fantasy highlight (STORY-309) */
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
 }
 
 .player-name {
@@ -55,4 +61,10 @@
   border-radius: 50%;
   border: 2px solid #bf953f;
   object-fit: cover;
+}
+
+.avatar-placeholder-icon {
+  width: 60%;
+  height: 60%;
+  fill: #a0a5b5;
 }

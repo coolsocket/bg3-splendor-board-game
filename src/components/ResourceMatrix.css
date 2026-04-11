@@ -19,8 +19,8 @@
 
 .token-shape, .bonus-shape {
   position: relative;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,14 +59,14 @@
 
 .icon-watermark {
   position: absolute;
-  font-size: 10px;
+  font-size: 14px;
   opacity: 0.25;
   pointer-events: none;
 }
 
 .count-text {
   font-family: var(--font-serif, serif);
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: bold;
   color: #fff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);

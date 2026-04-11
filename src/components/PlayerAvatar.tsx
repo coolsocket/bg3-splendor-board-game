@@ -29,8 +29,10 @@ export const PlayerAvatar: React.FC<PlayerAvatarProps> = ({
           {avatarImg ? (
             <img src={avatarImg} alt={playerName} className="player-avatar-img" />
           ) : (
-            <div className="player-avatar-img bg-gray-700 flex items-center justify-center text-white text-xs font-bold">
-              {playerName.charAt(0)}
+            <div className="player-avatar-img bg-gray-700 flex items-center justify-center">
+              <svg className="avatar-placeholder-icon" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
+              </svg>
             </div>
           )}
           <PrestigeBadge prestigePoints={prestigePoints} />
