@@ -1,7 +1,7 @@
 .market-row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: center;
 }
 
@@ -13,7 +13,7 @@
   grid-column: span 4;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
   perspective: 1000px;
 }
 

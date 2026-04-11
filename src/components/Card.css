@@ -12,6 +12,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transform: scale(var(--card-scale));
 }
 
 /* Parchment Background */
@@ -103,13 +104,12 @@
 .card-image-container {
   flex-grow: 1;
   margin: 0;
-  background-color: #333;
+  background-color: var(--color-bg-obsidian);
   border-radius: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .card-image {
@@ -144,6 +144,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.25rem;
+  margin-bottom: 4px;
 }
 
 .cost-item {
@@ -203,10 +204,16 @@
   transition: background 0.2s, transform 0.1s;
 }
 
-.action-btn:hover:not(:disabled) {
-  background: var(--color-gold-dark);
-  color: var(--color-text-dark);
-  box-shadow: 0 0 5px var(--color-gold);
+.action-btn.action-buy:hover:not(:disabled) {
+  background: var(--color-arcane);
+  color: #ffffff;
+  box-shadow: 0 0 10px var(--color-arcane);
+}
+
+.action-btn.action-reserve:hover:not(:disabled) {
+  background: var(--color-infernal);
+  color: #ffffff;
+  box-shadow: 0 0 10px var(--color-infernal);
 }
 
 .action-btn:active:not(:disabled) {
@@ -226,7 +233,7 @@
 
 /* Default Hover */
 .card:hover {
-  transform: translateY(-0.5rem) scale(1.05);
+  transform: translateY(-0.5rem) scale(calc(var(--card-scale) * 1.05));
   box-shadow: 0 0 15px rgba(218, 165, 32, 0.5), 0 25px 50px rgba(0, 0, 0, 0.8);
   z-index: 10;
 }
