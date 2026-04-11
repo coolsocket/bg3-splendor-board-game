@@ -85,7 +85,6 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
   const { viewMode = 'full', onClick } = props;
 
   if (viewMode === 'summary') {
-    const totalTokens = Object.values(tokens).reduce((a, b) => a + b, 0);
     return (
       <div 
         className={`player-board summary-view ${isCurrent ? 'current-player' : ''} ${props.isActive ? 'active-player' : ''}`}
@@ -93,11 +92,9 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
         style={{ cursor: 'pointer' }}
       >
         <PlayerAvatar playerName={playerName} isActive={props.isActive} prestigePoints={prestigePoints} />
-        <div className="player-board-content" style={{ padding: '0.5rem' }}>
-          <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', fontSize: '0.9rem' }}>
-            <span>🃏 {reservedCards.length}</span>
-            <span style={{ color: '#4a5061' }}>|</span>
-            <span>💎 {totalTokens}</span>
+        <div className="player-board-content">
+          <div style={{ transform: 'scale(0.75)', transformOrigin: 'top left', width: '133.33%' }}>
+            <ResourceMatrix tokens={tokens} bonuses={bonuses} />
           </div>
         </div>
       </div>
@@ -113,7 +110,6 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
       <div className="player-board-content">
         {/* Resource Grid */}
         <div className="section resource-grid-section">
-          <h3>Resources & Bonuses</h3>
           <ResourceMatrix tokens={tokens} bonuses={bonuses} />
         </div>
 
