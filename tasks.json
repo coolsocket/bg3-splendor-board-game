@@ -175,8 +175,8 @@
       "acceptanceCriteria": [
         "1. 全局光标替换为自定义奇幻图标。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-275",

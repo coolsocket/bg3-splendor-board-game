@@ -71,6 +71,11 @@ body {
   margin: 0;
   position: relative;
   user-select: none;
+  cursor: url('./assets/dagger_cursor.png'), auto;
+}
+
+a, button, [role="button"] {
+  cursor: url('./assets/dagger_cursor.png'), pointer;
 }
 
 body::before {
