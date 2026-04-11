@@ -142,8 +142,8 @@
       "acceptanceCriteria": [
         "1. 活跃玩家面板有极强的视觉宣告。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-272",
@@ -153,8 +153,8 @@
       "acceptanceCriteria": [
         "1. 非活跃玩家有明显的暗化和遮罩。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-273",
