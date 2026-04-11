@@ -131,8 +131,8 @@
       "acceptanceCriteria": [
         "1. 卡牌内部元素不贴边，有合适留白。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-181",
