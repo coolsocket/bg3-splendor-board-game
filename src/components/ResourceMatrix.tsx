@@ -26,37 +26,41 @@ const resourceIcons: Record<ResourceType, string> = {
 
 export const ResourceMatrix: React.FC<ResourceMatrixProps> = ({ tokens, bonuses }) => {
   return (
-    <div className="resource-matrix-container flex flex-col gap-2 w-full">
-      {/* Tokens Row */}
-      <div className="tokens-row flex items-center gap-1">
-        {regularResourceTypes.map(type => (
-          <div key={`token-${type}`} className="resource-item flex flex-col items-center">
-            <div className={`token-shape circle ${type.toLowerCase()}`} title={`Token: ${type}`}>
-              <span className="icon-watermark">{resourceIcons[type]}</span>
-              <span className="count-text">{tokens[type] || 0}</span>
+    <div className="resource-matrix-container flex flex-row items-center justify-between w-full gap-4">
+      {/* 5x2 Matrix */}
+      <div className="matrix-grid flex flex-col gap-2">
+        {/* Tokens Row */}
+        <div className="tokens-row flex items-center gap-1">
+          {regularResourceTypes.map(type => (
+            <div key={`token-${type}`} className="resource-item flex flex-col items-center">
+              <div className={`token-shape circle ${type.toLowerCase()}`} title={`Token: ${type}`}>
+                <span className="icon-watermark">{resourceIcons[type]}</span>
+                <span className="count-text">{tokens[type] || 0}</span>
+              </div>
             </div>
-          </div>
-        ))}
-        {/* Wildcard Token */}
-        <div className="wildcard-separator" />
-        <div className="resource-item flex flex-col items-center">
-          <div className="token-shape circle true_soul_tadpole" title="Wildcard: TRUE_SOUL_TADPOLE">
-            <span className="icon-watermark">{resourceIcons['TRUE_SOUL_TADPOLE']}</span>
-            <span className="count-text">{tokens['TRUE_SOUL_TADPOLE'] || 0}</span>
-          </div>
+          ))}
+        </div>
+
+        {/* Bonuses Row */}
+        <div className="bonuses-row flex items-center gap-1">
+          {regularResourceTypes.map(type => (
+            <div key={`bonus-${type}`} className="resource-item flex flex-col items-center">
+              <div className={`bonus-shape diamond ${type.toLowerCase()}`} title={`Bonus: ${type}`}>
+                <span className="icon-watermark">{resourceIcons[type]}</span>
+                <span className="count-text">{bonuses[type] || 0}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Bonuses Row */}
-      <div className="bonuses-row flex items-center gap-1">
-        {regularResourceTypes.map(type => (
-          <div key={`bonus-${type}`} className="resource-item flex flex-col items-center">
-            <div className={`bonus-shape square ${type.toLowerCase()}`} title={`Bonus: ${type}`}>
-              <span className="icon-watermark">{resourceIcons[type]}</span>
-              <span className="count-text">{bonuses[type] || 0}</span>
-            </div>
-          </div>
-        ))}
+      {/* Wildcard Throne */}
+      <div className="wildcard-throne-container flex flex-col items-center justify-center">
+        <div className="wildcard-label text-xs text-amber-400 font-bold mb-1">TRUE SOUL</div>
+        <div className="wildcard-throne token-shape circle true_soul_tadpole large" title="Wildcard: TRUE_SOUL_TADPOLE">
+          <span className="icon-watermark">{resourceIcons['TRUE_SOUL_TADPOLE']}</span>
+          <span className="count-text">{tokens['TRUE_SOUL_TADPOLE'] || 0}</span>
+        </div>
       </div>
     </div>
   );

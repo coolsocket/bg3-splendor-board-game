@@ -191,7 +191,7 @@
 
 .reserve-slot {
   width: 60px;
-  height: 90px;
+  aspect-ratio: 2 / 3;
   border-radius: var(--radius-md);
   box-sizing: border-box;
   position: relative;

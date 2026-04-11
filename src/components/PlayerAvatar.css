@@ -16,8 +16,8 @@
 .player-name {
   margin: 0;
   font-size: 1.5rem;
-  color: #E8E2D2;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  color: #fdf2d9; /* Brighter parchment/gold */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 5px rgba(253, 242, 217, 0.3);
 }
 
 .prestige-score {
@@ -50,8 +50,8 @@
 
 .player-avatar-container {
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: 96px;
+  height: 96px;
   margin-right: 12px;
 }
 
