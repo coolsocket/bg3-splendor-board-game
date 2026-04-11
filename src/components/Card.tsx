@@ -121,12 +121,14 @@ export const Card: React.FC<CardProps> = ({
               className="action-btn action-buy" 
               onClick={(e) => handleAction('buy', e)}
               disabled={!isAffordable}
+              data-audio-action="buy-card"
             >
               Buy
             </button>
             <button 
               className="action-btn action-reserve" 
               onClick={(e) => handleAction('reserve', e)}
+              data-audio-action="reserve-card"
             >
               Reserve
             </button>

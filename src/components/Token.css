@@ -122,28 +122,60 @@
   box-shadow: var(--glow-arcane);
 }
 
-/* NATURES_BLESSING (Druid/Ranger) - Green */
+/* NATURES_BLESSING (Druid/Ranger) - Green (Poison Bottle) */
 .token.natures_blessing {
   background: radial-gradient(circle at 25% 25%, #e8f5e9, #2e7d32, #1b5e20, #0a3d12);
   box-shadow: var(--shadow-depth);
+  position: relative;
+}
+.token.natures_blessing::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 8px;
+  background: #1b5e20;
+  border-radius: 2px 2px 0 0;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-bottom: none;
+  z-index: 1;
 }
 .token.natures_blessing:hover:not(.disabled) {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px #2e7d32;
 }
 
-/* INFERNAL_IRON (Karlach/Hellish) - Red */
+/* INFERNAL_IRON (Karlach/Hellish) - Red (Soul Coin) */
 .token.infernal_iron {
-  background: radial-gradient(circle at 25% 25%, #fef2f2, #f87171, #dc2626, #7f1d1d);
-  box-shadow: var(--shadow-depth);
+  background: radial-gradient(circle at 50% 50%, #7f1d1d, #450a0a, #000000);
+  box-shadow: var(--shadow-depth), inset 0 0 10px #dc2626;
+  border: 2px solid #991b1b;
+}
+.token.infernal_iron::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px dashed #dc2626;
+  border-radius: 50%;
+  opacity: 0.6;
+  pointer-events: none;
 }
 .token.infernal_iron:hover:not(.disabled) {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px #f87171;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px #dc2626;
 }
 
-/* DARK_QUARTZ (Rogue/Warlock) - Purple/Dark */
+/* DARK_QUARTZ (Rogue/Warlock) - Purple/Dark (Parasite) */
 .token.dark_quartz {
   background: radial-gradient(circle at 25% 25%, #faf5ff, #c084fc, #9333ea, #3b0764);
   box-shadow: var(--shadow-depth);
+  border-radius: 70% 30% 30% 70% / 60% 40% 60% 40% !important;
+}
+.token.dark_quartz .token-inner {
+  border-radius: 70% 30% 30% 70% / 60% 40% 60% 40% !important;
 }
 .token.dark_quartz:hover:not(.disabled) {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px #c084fc;

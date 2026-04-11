@@ -13,9 +13,9 @@ export const getDisplayName = (type: ResourceType) => {
   switch (type) {
     case 'RADIANT_GEM': return 'Fairy Gold';
     case 'ARCANE_CRYSTAL': return 'Enchanted Agate';
-    case 'NATURES_BLESSING': return 'Necrotic Bone Coin';
+    case 'NATURES_BLESSING': return 'Poison Bottle';
     case 'INFERNAL_IRON': return 'Soul Coin';
-    case 'DARK_QUARTZ': return 'Mind Flayer Specimen';
+    case 'DARK_QUARTZ': return 'Parasite';
     case 'TRUE_SOUL_TADPOLE': return 'Astral Prism';
     default: return type;
   }
@@ -39,9 +39,9 @@ export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = f
     switch (type) {
       case 'RADIANT_GEM': return 'FG';
       case 'ARCANE_CRYSTAL': return 'EA';
-      case 'NATURES_BLESSING': return 'BC';
+      case 'NATURES_BLESSING': return 'PB';
       case 'INFERNAL_IRON': return 'SC';
-      case 'DARK_QUARTZ': return 'MS';
+      case 'DARK_QUARTZ': return 'P';
       case 'TRUE_SOUL_TADPOLE': return 'AP';
       default: return '';
     }

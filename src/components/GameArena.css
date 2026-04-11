@@ -9,6 +9,7 @@
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
+  cursor: url('../assets/dagger_cursor.png'), auto;
 }
 
 .arena-content {
@@ -76,6 +77,10 @@
   box-shadow: 0 0 20px rgba(181, 138, 62, 0.1), inset 0 0 50px rgba(0, 0, 0, 0.8), 0 10px 30px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(181, 138, 62, 0.2);
   min-height: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500"><g fill="none" stroke="%23c9a063" stroke-width="1" opacity="0.05"><circle cx="250" cy="250" r="200"/><circle cx="250" cy="250" r="150"/><circle cx="250" cy="250" r="100"/><polygon points="250,50 300,200 450,250 300,300 250,450 200,300 50,250 200,200"/><polygon points="250,100 280,220 400,250 280,280 250,400 220,280 100,250 220,220"/></g></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 
