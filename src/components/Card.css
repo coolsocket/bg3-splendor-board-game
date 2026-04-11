@@ -61,7 +61,7 @@
 
 .card-prestige {
   font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
   color: var(--color-text-primary); /* Light parchment text */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
@@ -145,22 +145,22 @@
 }
 
 .cost-item {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 18px;
+  font-size: 27px;
   font-weight: 900;
   color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 1px 2px black;
   box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4);
 }
 
 /* Cost item colors match gems */
-.cost-radiant_gem { background: radial-gradient(circle at 35% 35%, #fef08a, #ca8a04); color: #000; text-shadow: none; }
+.cost-radiant_gem { background: radial-gradient(circle at 35% 35%, #fef08a, #ca8a04); }
 .cost-arcane_crystal { background: radial-gradient(circle at 35% 35%, #38bdf8, #0284c7); }
 .cost-natures_blessing { background: radial-gradient(circle at 35% 35%, #4ade80, #16a34a); }
 .cost-infernal_iron { background: radial-gradient(circle at 35% 35%, #f87171, #dc2626); }
@@ -298,5 +298,13 @@
   100% {
     box-shadow: 0 0 5px rgba(56, 189, 248, 0.3), 0 10px 20px rgba(0, 0, 0, 0.5);
   }
+}
+
+.deck-count {
+  font-family: var(--font-serif);
+}
+
+.deck-label {
+  font-family: var(--font-serif);
 }
 

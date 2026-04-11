@@ -52,7 +52,6 @@ export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = f
         aria-label={`${type} token, count: ${count}`}
       >
         <div className="token-inner">
-          <span className="token-label">{getLabel(type)}</span>
           <span className="token-count">{count}</span>
         </div>
       </div>
@@ -63,7 +62,6 @@ export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = f
           data-testid={`flying-token-${type}`}
         >
           <div className="token-inner">
-            <span className="token-label">{getLabel(type)}</span>
           </div>
         </div>
       )}

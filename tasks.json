@@ -76,8 +76,8 @@
       "acceptanceCriteria": [
         "1. 卡牌分数和成本数字明显变大，易于阅读。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-176",
@@ -87,8 +87,8 @@
       "acceptanceCriteria": [
         "1. 有色圆圈内的数字为白色，对比度高。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-177",
@@ -98,8 +98,8 @@
       "acceptanceCriteria": [
         "1. 代币球体内无冗余字母。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-178",
@@ -109,8 +109,8 @@
       "acceptanceCriteria": [
         "1. 球体内数字完美居中。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-179",
@@ -120,8 +120,8 @@
       "acceptanceCriteria": [
         "1. 卡牌数字统一为古典衬线体。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-180",
