@@ -65,6 +65,7 @@
   font-weight: bold;
   color: var(--color-text-primary); /* Light parchment text */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  padding-top: 0.5rem; /* pt-2 */
 }
 
 .card-bonus-gem {
@@ -75,6 +76,7 @@
   justify-content: center;
   box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transform: translateY(6px); /* Align center with text baseline */
 }
 
 /* Gem Colors (Matching Token.css) */
@@ -152,7 +154,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 27px;
+  font-size: 32px; /* Enlarged font size */
   font-weight: 900;
   color: #fff;
   text-shadow: 0 1px 2px black;
@@ -191,12 +193,13 @@
 .action-btn {
   padding: 4px 8px;
   border-radius: 4px;
-  border: 1px solid var(--color-gold-dark);
-  background: var(--color-text-dark);
-  color: var(--color-parchment);
+  border: 1px solid var(--color-gold); /* Gold border */
+  background: #1a0a0a; /* Dark background */
+  color: #ffffff; /* White text */
   cursor: pointer;
   font-family: var(--font-serif);
-  font-size: 10px;
+  font-size: 11px;
+  font-weight: bold;
   transition: background 0.2s, transform 0.1s;
 }
 

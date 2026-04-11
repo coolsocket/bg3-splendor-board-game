@@ -120,8 +120,8 @@
       "acceptanceCriteria": [
         "1. 悬停按钮高对比度，清晰可见。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-210",
@@ -131,8 +131,8 @@
       "acceptanceCriteria": [
         "1. 卡牌底部成本数字放大，清晰可读。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-211",
@@ -142,8 +142,8 @@
       "acceptanceCriteria": [
         "1. 卡牌左上角数字不贴边。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-212",
@@ -153,8 +153,8 @@
       "acceptanceCriteria": [
         "1. 卡牌头部元素基线对齐。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-213",
@@ -164,8 +164,8 @@
       "acceptanceCriteria": [
         "1. 牌库文本层级协调，不分裂。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-214",
