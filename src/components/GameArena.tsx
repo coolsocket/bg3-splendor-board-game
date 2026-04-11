@@ -10,6 +10,14 @@ import { StagingArea } from './StagingArea';
 import { EventLog } from './EventLog';
 import { useEventLogStore } from '../store/eventLogStore';
 import './GameArena.css';
+import galeImg from '../assets/gale_portrait.png';
+import astarionImg from '../assets/astarion_portrait.png';
+
+const getAvatarImg = (name: string) => {
+  if (name === 'Gale') return galeImg;
+  if (name === 'Astarion') return astarionImg;
+  return null;
+};
 
 export interface GameArenaProps {
   currentPlayer: PlayerBoardProps;
@@ -97,16 +105,33 @@ export const GameArena: React.FC<GameArenaProps> = ({
           isValid={isValid}
         />
       )}
-      <div className="initiative-tracker bg-obsidian-panel backdrop-blur-sm border border-gold-dark/30 p-2 flex items-center justify-center gap-4 my-2 rounded-lg">
-        <span className="text-gold text-sm uppercase tracking-wider font-serif">Initiative:</span>
-        <div className="flex items-center gap-2">
+      <div className="turn-tracker bg-obsidian-panel backdrop-blur-sm border border-gold-dark/30 p-3 flex items-center justify-center gap-6 my-2 rounded-lg shadow-heavy">
+        <span className="text-gold text-sm uppercase tracking-wider font-serif font-bold">Turn Order</span>
+        <div className="flex items-center gap-3">
           {[currentPlayer, ...opponents].map((player, index) => {
             const isActive = index === currentPlayerIndex;
+            const avatarImg = getAvatarImg(player.playerName);
             return (
-              <div key={player.playerName} className={`flex items-center gap-1 px-3 py-1 rounded ${isActive ? 'bg-gold-500/20 border border-gold-500' : 'bg-black/40 border border-gray-700 opacity-70'}`}>
-                {isActive && <span className="text-gold text-sm">▶</span>}
-                <span className={`text-sm ${isActive ? 'text-gold font-bold' : 'text-parchment'}`}>{player.playerName}</span>
-              </div>
+              <React.Fragment key={player.playerName}>
+                <div className="flex flex-col items-center gap-1">
+                  <div className={`relative w-12 h-12 rounded-full border-2 ${isActive ? 'border-gold shadow-[0_0_10px_rgba(212,175,55,0.8)]' : 'border-gray-600 opacity-70'} overflow-hidden`}>
+                    {avatarImg ? (
+                      <img src={avatarImg} alt={player.playerName} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full bg-gray-700 flex items-center justify-center text-white font-bold text-lg">
+                        {player.playerName.charAt(0)}
+                      </div>
+                    )}
+                    {isActive && (
+                      <div className="absolute inset-0 border-2 border-gold animate-pulse rounded-full"></div>
+                    )}
+                  </div>
+                  <span className={`text-xs ${isActive ? 'text-gold font-bold' : 'text-parchment opacity-70'}`}>{player.playerName}</span>
+                </div>
+                {index < [currentPlayer, ...opponents].length - 1 && (
+                  <span className="text-gold opacity-50 text-xl font-bold self-center mb-4">→</span>
+                )}
+              </React.Fragment>
             );
           })}
         </div>

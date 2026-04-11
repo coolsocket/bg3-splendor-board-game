@@ -148,7 +148,7 @@
 
 /* INFERNAL_IRON (Karlach/Hellish) - Red (Soul Coin) */
 .token.infernal_iron {
-  background: radial-gradient(circle at 50% 50%, #7f1d1d, #450a0a, #000000);
+  background: radial-gradient(circle at 25% 25%, #fecaca, #ef4444, #7f1d1d, #000000);
   box-shadow: var(--shadow-depth), inset 0 0 10px #dc2626;
   border: 2px solid #991b1b;
 }
@@ -183,7 +183,7 @@
 
 /* TRUE_SOUL_TADPOLE (Wildcard) - Astral Prism */
 .token.true_soul_tadpole {
-  background: radial-gradient(circle at 25% 25%, #f5f3ff, #a78bfa, #6d28d9, #1e1b4b);
+  background: radial-gradient(circle at 25% 25%, #ffffff, #fef08a, #d4af37, #451a03);
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   border: 2px solid #d4af37; /* Gold border */
   border-radius: var(--radius-md) !important; /* STORY-253: Non-spherical badge */

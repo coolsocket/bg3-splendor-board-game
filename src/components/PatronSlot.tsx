@@ -11,7 +11,7 @@ export interface PatronSlotProps {
 export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
   if (!patron) {
     return (
-      <div className="patron-card-slot">
+      <div className="patron-card-slot empty">
         <div className="patron-card-inner">
           <div className="patron-center-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="patron-icon-svg opacity-30">
@@ -52,7 +52,7 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
                     className={`patron-cost-item cost-${resource.toLowerCase()}`}
                     title={`${resource}: ${amount}`}
                   >
-                    <span className="cost-amount text-white text-xs font-bold">{amount}</span>
+                    <span className="cost-amount text-white text-xl font-bold">{amount}</span>
                   </div>
                 );
               }
