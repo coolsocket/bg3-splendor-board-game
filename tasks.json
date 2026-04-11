@@ -274,8 +274,8 @@
       "acceptanceCriteria": [
         "1. 右侧面板间距缩减，布局紧凑。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-194",
