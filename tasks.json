@@ -175,8 +175,8 @@
       "acceptanceCriteria": [
         "1. 空卡槽有质感底纹，无渲染错误感。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-215",
@@ -186,8 +186,8 @@
       "acceptanceCriteria": [
         "1. 牌库卡背不超出圆角金边。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-216",
@@ -197,8 +197,8 @@
       "acceptanceCriteria": [
         "1. 底部成本不贴死下边框。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-217",
@@ -208,8 +208,8 @@
       "acceptanceCriteria": [
         "1. 悬停时仍能看清卡牌成本信息。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-218",
@@ -219,8 +219,8 @@
       "acceptanceCriteria": [
         "1. Patron 文本不撞墙，有合适内边距。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-219",

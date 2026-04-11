@@ -88,7 +88,7 @@ export const Card: React.FC<CardProps> = ({
           </div>
 
           <div className="card-footer">
-            <div className="card-cost-grid flex justify-center gap-1">
+            <div className="card-cost-grid flex justify-center gap-1 pb-2">
               {Object.entries(cost).map(([resource, amount]) => {
                 if (amount && amount > 0) {
                   return (
