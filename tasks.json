@@ -1,335 +1,335 @@
 {
-  "branchName": "feature/phase8-hud-refactor",
+  "branchName": "feature/phase9-thematic-overhaul",
   "baselineCommit": "",
   "userStories": [
     {
-      "id": "STORY-229",
+      "id": "STORY-259",
       "priority": "High",
-      "title": "废除右侧栏，解放视口",
-      "description": "彻底删除右侧的 Patrons 栏，释放至少 20% 的屏幕横向空间，供卡牌市场扩展。",
+      "title": "确立绝对形状法则",
+      "description": "消耗品（Token）必须是圆形/立体硬币，永久资产（Bonus）必须是方形/切割宝石。",
       "acceptanceCriteria": [
-        "1. 右侧 Patrons 栏被移除，市场区宽度自动扩展。"
+        "1. 代币和加成使用完全不同的形状区隔。"
       ],
       "passes": true,
-      "attempts": 0
+      "attempts": 1
     },
     {
-      "id": "STORY-230",
+      "id": "STORY-260",
       "priority": "High",
-      "title": "构建全局顶部控制台 (Global HUD)",
-      "description": "将 Public Resource Pool 升级为横跨屏幕顶部的控制台，左侧放置全局信息，中间放置资源代币，右侧平铺贵族。",
+      "title": "拆分微观资源文本",
+      "description": "在玩家头像下方，分两行展示：上一行是 5 个圆形的实体代币（内写数字），下一行是 5 个方形的宝石（内写数字）。",
       "acceptanceCriteria": [
-        "1. 顶部控制台建立，整合资源与贵族。"
+        "1. 抛弃 1/0 格式，分两行独立展示代币和加成。"
       ],
       "passes": true,
-      "attempts": 0
+      "attempts": 1
     },
     {
-      "id": "STORY-231",
+      "id": "STORY-261",
+      "priority": "Medium",
+      "title": "色彩亮度的功能性区隔",
+      "description": "Token 高亮、高饱和度；Bonus 颜色暗沉，带玻璃质感。",
+      "acceptanceCriteria": [
+        "1. 代币和加成在亮度上有明显区分。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-262",
       "priority": "High",
-      "title": "贵族 (Patrons) 横向重排",
-      "description": "贵族卡从垂直堆叠改为在顶部控制台右侧横向平铺。",
+      "title": "引入图标锚点（防色盲设计）",
+      "description": "硬币和成本圆圈内刻上小小的属性图标（火焰、毒素等）。",
       "acceptanceCriteria": [
-        "1. 贵族卡横向平铺在顶部。"
+        "1. 资源图标增加内部图形，不纯靠颜色。"
       ],
       "passes": true,
-      "attempts": 0
+      "attempts": 1
     },
     {
-      "id": "STORY-232",
+      "id": "STORY-263",
+      "priority": "Medium",
+      "title": "卡牌Bonus的具象化",
+      "description": "放大卡牌右上角加成，做成立体宝石或符文。",
+      "acceptanceCriteria": [
+        "1. 卡牌上的加成图标具有实体感。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-264",
       "priority": "High",
-      "title": "贵族成本显性化",
-      "description": "在重排后的贵族头像下方，直接用对应颜色的数字角标标出招募成本。",
+      "title": "替换通用资源（核心代币重塑）",
+      "description": "替换为 BG3 核心物资：灵魂硬币（红）、夺心魔标本（紫）、附魔玛瑙（蓝）、妖精金币（黄）、死灵骨币（绿）。",
       "acceptanceCriteria": [
-        "1. 贵族卡显示明确的颜色和数量成本。"
+        "1. 资源名称和视觉对应 BG3 奇幻物品。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-233",
-      "priority": "Medium",
-      "title": "整合玩家与房间信息",
-      "description": "在顶部控制台极左侧添加房间号、目标分数和设置齿轮图标。",
-      "acceptanceCriteria": [
-        "1. 顶部左侧显示房间号和目标分数。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-234",
-      "priority": "Medium",
-      "title": "引入全局回合轨道 (Turn Tracker)",
-      "description": "用极细进度线连接玩家头像，展示出手顺序。",
-      "acceptanceCriteria": [
-        "1. 显示清晰的回合顺序轨道。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-235",
+      "id": "STORY-265",
       "priority": "High",
-      "title": "颜色单次映射逻辑",
-      "description": "彻底删除玩家面板上下两排重复颜色阵列，合并为高密度资产行。",
+      "title": "Wildcard 的终极形态",
+      "description": "黄金百搭代币替换为星界棱尊（Astral Prism）图标。",
       "acceptanceCriteria": [
-        "1. 玩家面板不再有重复颜色行。"
+        "1. 百搭代币使用独特的奇幻图标。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-236",
+      "id": "STORY-266",
+      "priority": "Medium",
+      "title": "重铸玩家面板边框",
+      "description": "使用带有花纹的暗金/青铜金属包边，四角加铆钉或尖刺。",
+      "acceptanceCriteria": [
+        "1. 玩家面板边框具有厚重的奇幻金属质感。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-267",
       "priority": "High",
-      "title": "构建高密度资产行",
-      "description": "格式规范为：[颜色图标]：手牌数 / 永久加成数。",
+      "title": "加入角色头像（Portrait）",
+      "description": "名字旁增加圆形或六边形角色头像。",
       "acceptanceCriteria": [
-        "1. 资产显示为“数量 / 加成”格式。"
+        "1. 玩家面板显示角色头像。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-237",
+      "id": "STORY-268",
+      "priority": "Medium",
+      "title": "卡牌背景的羊皮纸化",
+      "description": "卡牌中间背景替换为做旧羊皮纸或魔法书页纹理。",
+      "acceptanceCriteria": [
+        "1. 卡牌背景不再是死黑，具有纹理感。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-269",
       "priority": "High",
-      "title": "矩阵化排版玩家面板",
-      "description": "将 6 种颜色分布在紧凑的 2x3 或 3x2 网格中，压缩高度 60%。",
+      "title": "古典字体 (Typography)",
+      "description": "强制全局所有数值使用古典奇幻气息的衬线体（如 Cinzel）。",
       "acceptanceCriteria": [
-        "1. 玩家面板高度大幅压缩，布局紧凑。"
+        "1. 彻底移除卡牌和面板上的现代无衬线体数值。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-238",
-      "priority": "Medium",
-      "title": "消除空状态巨型黑洞",
-      "description": "无内容时，折叠 Reserved Cards 和 Visited Patrons 为单行文本或微小占位符。",
-      "acceptanceCriteria": [
-        "1. 空状态不占用大面积死黑空间。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-239",
-      "priority": "Medium",
-      "title": "合并 Prestige 显示",
-      "description": "将玩家名字和威望分数紧密结合，不使用独立方框隔离。",
-      "acceptanceCriteria": [
-        "1. 分数与名字融合，无独立隔离框。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-240",
+      "id": "STORY-270",
       "priority": "High",
-      "title": "重塑行动指示器",
-      "description": "当前回合玩家面板加金色呼吸光晕，名字旁加动态沙漏或法术高亮。",
+      "title": "引入主动权条 (Initiative Tracker)",
+      "description": "在顶部控制台下方画一条横向队列展示出手顺序。",
       "acceptanceCriteria": [
-        "1. 当前玩家有绝对主权感的高亮指示。"
+        "1. 顶部显示横向的回合顺序队列。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-241",
-      "priority": "Medium",
-      "title": "非行动玩家降噪",
-      "description": "非当前回合玩家面板亮度降低 30% (opacity-70)。",
-      "acceptanceCriteria": [
-        "1. 非活跃玩家面板有明显降噪暗化。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-242",
+      "id": "STORY-271",
       "priority": "High",
-      "title": "扩展市场网格",
-      "description": "右侧栏删除后，卡牌市场自动向右扩展，利用 grid 占满空间。",
+      "title": "激活回合的强力视觉宣告",
+      "description": "当前玩家面板亮起强烈的白色/金色轮廓光。",
       "acceptanceCriteria": [
-        "1. 卡牌市场横向占满释放后的空间。"
+        "1. 活跃玩家面板有极强的视觉宣告。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-243",
+      "id": "STORY-272",
       "priority": "Medium",
-      "title": "实现动态视图缩放",
-      "description": "引入 CSS 全局变量（如 --card-scale），允许通过设置调整卡牌尺寸。",
+      "title": "黯淡非行动玩家",
+      "description": "非行动玩家亮度降至 50%，覆盖淡黑半透明遮罩。",
       "acceptanceCriteria": [
-        "1. 支持通过变量动态缩放卡牌。"
+        "1. 非活跃玩家有明显的暗化和遮罩。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-244",
-      "priority": "Medium",
-      "title": "卡牌默认尺寸微缩",
-      "description": "默认尺寸缩小 10%，增加卡牌之间的物理距离 (Gap)。",
-      "acceptanceCriteria": [
-        "1. 卡牌间距增大，呼吸感增强。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-245",
-      "priority": "Medium",
-      "title": "牌库厚度与对齐微调",
-      "description": "垂直居中聚拢牌堆上的数字与罗马数字，减小间距。",
-      "acceptanceCriteria": [
-        "1. 牌库文本紧凑居中。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-246",
-      "priority": "Medium",
-      "title": "消除伪卡牌空洞",
-      "description": "卡牌中间空洞用极暗羊皮纸纹理或纯底色填满，去掉多余内边框。",
-      "acceptanceCriteria": [
-        "1. 无渲染错误感的空洞边框。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-247",
-      "priority": "Medium",
-      "title": "成本视觉分离上移",
-      "description": "底部购买成本圆圈整体上移 4px，确保间距统一且不贴底。",
-      "acceptanceCriteria": [
-        "1. 成本圆圈不贴底，间距统一。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-248",
+      "id": "STORY-273",
       "priority": "High",
-      "title": "强制按钮对比度",
-      "description": "悬停按钮背景使用高亮色（奥术蓝或血红），文字纯白，仅 hover 浮现。",
+      "title": "可操作性高亮（Affordance）",
+      "description": "买得起的卡牌亮起绿色等魔法光芒，买不起的保持暗淡。",
       "acceptanceCriteria": [
-        "1. 悬停操作按钮具有极高对比度。"
+        "1. 可购买的卡牌有明确的视觉引导。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-249",
-      "priority": "High",
-      "title": "对比度硬伤修复 (球体)",
-      "description": "黄底配深黑文字，深绿底配纯白文字，强化可访问性。",
-      "acceptanceCriteria": [
-        "1. 黄色和绿色代币内部数字完美可读。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-250",
-      "priority": "High",
-      "title": "字体家族绝对统一",
-      "description": "强制全局数值（成本和威望）使用同一种古典衬线体。",
-      "acceptanceCriteria": [
-        "1. 全局数值字体绝对统一。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-251",
-      "priority": "Medium",
-      "title": "重置文字阴影 (Text Shadow)",
-      "description": "给所有关键数字加上 0px 2px 4px rgba(0,0,0,0.8) 的投影。",
-      "acceptanceCriteria": [
-        "1. 关键数字在任何底色下都清晰可见。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-252",
-      "priority": "Medium",
-      "title": "资源池高度压缩",
-      "description": "减少 padding-y，使 Public Resource Pool 变成紧凑的工具栏。",
-      "acceptanceCriteria": [
-        "1. 顶部资源池高度变窄，更紧凑。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-253",
-      "priority": "High",
-      "title": "黄金代币绝对区隔",
-      "description": "粉色球加上不同光晕特效或替换为非球形徽章，标明百搭属性。",
-      "acceptanceCriteria": [
-        "1. 黄金代币有独特的视觉区隔。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-254",
-      "priority": "Medium",
-      "title": "标题居中锚定",
-      "description": "将标题锚定在容器顶部居中，并加两侧装饰横线（如 — CARD MARKET —）。",
-      "acceptanceCriteria": [
-        "1. 标题居中且带有奇幻风格装饰。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-255",
-      "priority": "Medium",
-      "title": "边框材质拟真",
-      "description": "利用多重阴影或 border-image 赋予边框金属反光或做旧材质感。",
-      "acceptanceCriteria": [
-        "1. 边框不再是死板的 solid 线条。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-256",
-      "priority": "Medium",
-      "title": "玩家面板底部安全区",
-      "description": "确保 Gale 面板底部有足够的 padding-bottom，不贴死切断。",
-      "acceptanceCriteria": [
-        "1. 玩家面板底部内容不贴边切断。"
-      ],
-      "passes": true,
-      "attempts": 0
-    },
-    {
-      "id": "STORY-257",
+      "id": "STORY-274",
       "priority": "Low",
-      "title": "空置区域阵纹化",
-      "description": "中间大块暗色背景使用极低透明度 (3%) 的法阵或地图纹理平铺。",
+      "title": "鼠标指针替换",
+      "description": "替换为 BG3 风奇幻指针（如铠甲手套或匕首）。",
       "acceptanceCriteria": [
-        "1. 页面背景有极淡的奇幻暗纹。"
+        "1. 全局光标替换为自定义奇幻图标。"
       ],
-      "passes": true,
+      "passes": false,
       "attempts": 0
     },
     {
-      "id": "STORY-258",
+      "id": "STORY-275",
       "priority": "Medium",
-      "title": "交互状态一致性",
-      "description": "所有可点击元素悬停时统一上浮 2px 并散发同色边缘光晕。",
+      "title": "删除空状态黑洞",
+      "description": "移除 RESERVED CARDS (NONE) 等占位大黑框。",
       "acceptanceCriteria": [
-        "1. 全局交互悬停反馈逻辑一致。"
+        "1. 无内容时不显示大面积空白容器。"
       ],
-      "passes": true,
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-276",
+      "priority": "Medium",
+      "title": "重塑保留槽位（Reserve Slots）",
+      "description": "用三个带虚线金边和卡背暗纹的空卡槽代替文字框。",
+      "acceptanceCriteria": [
+        "1. 保留区显示为具象的空槽位。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-277",
+      "priority": "High",
+      "title": "重塑威望徽章（Prestige Badge）",
+      "description": "头像右上角放置盾牌形状金属徽章，内写分数。",
+      "acceptanceCriteria": [
+        "1. 分数以独立的盾牌徽章形式展示。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-278",
+      "priority": "Medium",
+      "title": "收紧名字与数据的间距",
+      "description": "减少面板内部垂直 gap，收紧布局。",
+      "acceptanceCriteria": [
+        "1. 玩家面板内部排版更紧凑。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-279",
+      "priority": "Low",
+      "title": "面板底纹",
+      "description": "面板底层加上微弱的职业纹章暗纹（如 Gale 的奥术符号）。",
+      "acceptanceCriteria": [
+        "1. 面板背景有淡雅的职业暗纹。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-280",
+      "priority": "Medium",
+      "title": "放大公共资源池",
+      "description": "将 HUD 中的代币尺寸放大至少 50%。",
+      "acceptanceCriteria": [
+        "1. 顶部资源池代币更加显眼。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-281",
+      "priority": "Medium",
+      "title": "修复 Wildcard 遮挡",
+      "description": "修复数字被外框挡住的 bug。",
+      "acceptanceCriteria": [
+        "1. 百搭代币数字完整可见。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-282",
+      "priority": "Medium",
+      "title": "重构贵族面板比例",
+      "description": "贵族卡改为垂直长方形（塔罗牌比例）。",
+      "acceptanceCriteria": [
+        "1. 贵族卡采用古典长方比例。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-283",
+      "priority": "High",
+      "title": "显性化贵族招募成本",
+      "description": "贵族卡下方列出所需的颜色及数量成本。",
+      "acceptanceCriteria": [
+        "1. 贵族卡直接展示招募条件。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-284",
+      "priority": "Medium",
+      "title": "修复贵族文字溢出",
+      "description": "分数在左上，名字居中，成本在下，防止截断。",
+      "acceptanceCriteria": [
+        "1. 贵族卡内容排版合理，无溢出。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-285",
+      "priority": "Medium",
+      "title": "牌库厚度对齐",
+      "description": "文本居中聚拢在牌背正中心。",
+      "acceptanceCriteria": [
+        "1. 牌堆信息居中对齐。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-286",
+      "priority": "High",
+      "title": "放大成本数字",
+      "description": "卡牌底部成本圆圈内数字加大 30%，加深投影。",
+      "acceptanceCriteria": [
+        "1. 卡牌成本数字可读性大幅提升。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-287",
+      "priority": "Medium",
+      "title": "统一卡背样式",
+      "description": "保持牌堆和空卡槽的卡背材质统一。",
+      "acceptanceCriteria": [
+        "1. 全局卡背视觉一致。"
+      ],
+      "passes": false,
+      "attempts": 0
+    },
+    {
+      "id": "STORY-288",
+      "priority": "Medium",
+      "title": "卡牌底部边界保护",
+      "description": "增加卡牌底部 padding，防止贴底。",
+      "acceptanceCriteria": [
+        "1. 卡牌底部元素不贴边。"
+      ],
+      "passes": false,
       "attempts": 0
     }
   ]

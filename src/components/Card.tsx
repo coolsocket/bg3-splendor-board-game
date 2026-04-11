@@ -2,6 +2,15 @@ import React from 'react';
 import './Card.css';
 import type { ResourceType } from './Token';
 
+const resourceIcons: Record<ResourceType, string> = {
+  RADIANT_GEM: '☀️',
+  ARCANE_CRYSTAL: '🔮',
+  NATURES_BLESSING: '🍃',
+  INFERNAL_IRON: '🔥',
+  DARK_QUARTZ: '🌑',
+  TRUE_SOUL_TADPOLE: '⭐'
+};
+
 export interface CardProps {
   id: string;
   tier: 1 | 2 | 3;
@@ -97,6 +106,7 @@ export const Card: React.FC<CardProps> = ({
                       className={`cost-item cost-${resource.toLowerCase()}`}
                       title={`${resource}: ${amount}`}
                     >
+                      <span className="cost-icon-watermark">{resourceIcons[resource.toUpperCase() as ResourceType]}</span>
                       <span className="cost-amount">{amount}</span>
                     </div>
                   );
