@@ -241,8 +241,8 @@
       "acceptanceCriteria": [
         "1. 贵族卡显示招募成本，功能完整。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-191",

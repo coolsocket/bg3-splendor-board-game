@@ -6,6 +6,7 @@ import { PublicResourcePool } from './PublicResourcePool';
 import { PatronSlot } from './PatronSlot';
 import type { ResourceType } from './Token';
 import { useTokenSelection } from '../hooks/useTokenSelection';
+import { usePublicStore } from '../store/publicStore';
 import './GameArena.css';
 
 export interface GameArenaProps {
@@ -29,6 +30,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
 }) => {
   const [expandedPlayerName, setExpandedPlayerName] = useState<string>(currentPlayer.playerName);
   const { currentPlayerIndex } = useGameSystemStore();
+  const { availablePatrons } = usePublicStore();
 
   const playerTotalTokens = Object.values(currentPlayer.tokens).reduce((sum, count) => sum + (count || 0), 0);
   const { selectedTokens, clearSelection, isValid } = useTokenSelection(resources, playerTotalTokens);
@@ -86,10 +88,12 @@ export const GameArena: React.FC<GameArenaProps> = ({
           <h3 className="text-gold">Patrons</h3>
         </div>
         <div className="patron-cards-container">
-          <PatronSlot />
-          <PatronSlot />
-          <PatronSlot />
-          <PatronSlot />
+          {availablePatrons.map(patron => (
+            <PatronSlot key={patron.id} patron={patron} />
+          ))}
+          {Array.from({ length: Math.max(0, 4 - availablePatrons.length) }).map((_, i) => (
+            <PatronSlot key={`empty-${i}`} />
+          ))}
         </div>
       </div>
     </div>

@@ -1,15 +1,65 @@
 import React from 'react';
 import './PatronSlot.css';
+import type { Patron } from '../domain/models';
 
 export interface PatronSlotProps {
+  patron?: Patron;
   children?: React.ReactNode;
 }
 
-export const PatronSlot: React.FC<PatronSlotProps> = ({ children }) => {
+export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
+  if (!patron) {
+    return (
+      <div className="patron-card-slot">
+        <div className="patron-card-inner">
+          <div className="patron-center-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="patron-icon-svg opacity-30">
+              <circle cx="12" cy="12" r="10"/>
+              <polygon points="12 6 7 17 17 17"/>
+            </svg>
+          </div>
+          {children || <span className="patron-placeholder-text">Patron</span>}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="patron-card-slot">
-      <div className="patron-card-inner">
-        {children || 'Patron'}
+    <div className="patron-card-slot" title={patron.description}>
+      <div className="patron-card-inner flex flex-col justify-between p-2 h-full">
+        <div className="patron-header flex justify-between items-center w-full">
+          <span className="patron-points text-gold font-serif text-xl font-bold">{patron.points}</span>
+          <span className="patron-name text-parchment text-xs truncate max-w-[70px]">{patron.name}</span>
+        </div>
+        
+        <div className="patron-center-icon flex-grow flex items-center justify-center">
+          {/* STORY-192: 替换纯文本占位符 */}
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="patron-icon-svg text-gold">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="12 2 22 12 12 22 2 12"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        
+        <div className="patron-footer w-full">
+          <div className="patron-cost-grid flex justify-center gap-1 flex-wrap">
+            {/* STORY-190: 补全招募成本 */}
+            {Object.entries(patron.requirements).map(([resource, amount]) => {
+              if (amount && amount > 0) {
+                return (
+                  <div 
+                    key={resource} 
+                    className={`patron-cost-item cost-${resource.toLowerCase()}`}
+                    title={`${resource}: ${amount}`}
+                  >
+                    <span className="cost-amount text-white text-xs font-bold">{amount}</span>
+                  </div>
+                );
+              }
+              return null;
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
