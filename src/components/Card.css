@@ -261,12 +261,12 @@
 
 /* Affordable State */
 .card.affordable {
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.8), 0 0 60px rgba(56, 189, 248, 0.4), 0 10px 20px rgba(0, 0, 0, 0.5); /* Arcane halo */
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.8), 0 0 60px rgba(34, 197, 94, 0.4), 0 10px 20px rgba(0, 0, 0, 0.5); /* Green magic glow */
   animation: card-breathe 2.5s ease-in-out infinite;
 }
 
 .card.affordable:hover {
-  box-shadow: 0 0 35px rgba(56, 189, 248, 0.8), 0 0 70px rgba(56, 189, 248, 0.4), 0 15px 30px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 35px rgba(34, 197, 94, 0.8), 0 0 70px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(0, 0, 0, 0.7);
 }
 
 /* Selected State */
@@ -316,13 +316,13 @@
 /* Breathe animation for affordable cards */
 @keyframes card-breathe {
   0% {
-    box-shadow: 0 0 5px rgba(56, 189, 248, 0.3), 0 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.3), 0 10px 20px rgba(0, 0, 0, 0.5);
   }
   50% {
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.7), 0 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.7), 0 10px 20px rgba(0, 0, 0, 0.5);
   }
   100% {
-    box-shadow: 0 0 5px rgba(56, 189, 248, 0.3), 0 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.3), 0 10px 20px rgba(0, 0, 0, 0.5);
   }
 }
 

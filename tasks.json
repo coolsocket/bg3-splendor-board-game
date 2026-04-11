@@ -164,8 +164,8 @@
       "acceptanceCriteria": [
         "1. 可购买的卡牌有明确的视觉引导。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-274",
