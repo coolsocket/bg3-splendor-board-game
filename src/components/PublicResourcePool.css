@@ -53,6 +53,11 @@
   gap: 1rem;
 }
 
+.pool-tokens.tokens-disabled {
+  filter: grayscale(100%) opacity(50%);
+  pointer-events: none;
+}
+
 .colored-tokens {
   display: flex;
   gap: 0.75rem;

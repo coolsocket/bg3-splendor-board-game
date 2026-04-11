@@ -2,6 +2,7 @@ import React from 'react';
 import { Token, type ResourceType } from './Token';
 import './PublicResourcePool.css';
 import { usePublicStore } from '../store/publicStore';
+import { usePlayerStore } from '../store/playerStore';
 import { ResourceType as DomainResourceType } from '../domain/models';
 import { WildcardPool } from './WildcardPool';
 import { PatronSlot } from './PatronSlot';
@@ -17,6 +18,10 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
 }) => {
   const storeResources = usePublicStore((state) => state.availableResources);
   const availablePatrons = usePublicStore((state) => state.availablePatrons);
+  
+  const storePlayer = usePlayerStore();
+  const totalTokens = Object.values(storePlayer.resources).reduce((sum, count) => sum + (count || 0), 0);
+  const isTokenLimitReached = totalTokens >= 10;
   
   const resources: Record<ResourceType, number> = {
     RADIANT_GEM: storeResources[DomainResourceType.RADIANT_GEM] || 0,
@@ -48,7 +53,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
         </button>
       </div>
       
-      <div className="hud-middle pool-tokens">
+      <div className={`hud-middle pool-tokens ${isTokenLimitReached ? 'tokens-disabled' : ''}`}>
         <div className="colored-tokens">
           {resourceTypes.map((type) => (
             <div key={type} className={`token-stack-container stack-${type.toLowerCase()}`}>

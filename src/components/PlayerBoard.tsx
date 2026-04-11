@@ -87,7 +87,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
   if (viewMode === 'summary') {
     return (
       <div 
-        className={`player-board summary-view ${isCurrent ? 'current-player' : ''} ${props.isActive ? 'active-player' : ''}`}
+        className={`player-board summary-view ${isCurrent ? 'current-player' : ''} ${props.isActive ? 'active-player glow-arcane' : ''}`}
         onClick={onClick}
         style={{ cursor: 'pointer' }}
       >
@@ -145,7 +145,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
   }
 
   return (
-    <div className={`player-board ${isCurrent ? 'current-player' : ''} ${props.isActive ? 'active-player' : ''}`}>
+    <div className={`player-board ${isCurrent ? 'current-player' : ''} ${props.isActive ? 'active-player glow-arcane' : ''}`}>
 
 
       <PlayerAvatar playerName={playerName} isActive={props.isActive} prestigePoints={prestigePoints} />
