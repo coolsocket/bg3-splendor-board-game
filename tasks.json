@@ -186,8 +186,8 @@
       "acceptanceCriteria": [
         "1. 牌库无“TIER”文本，使用符号表示等级。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-186",
