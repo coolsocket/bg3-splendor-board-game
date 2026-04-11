@@ -14,6 +14,36 @@
   border: 2px solid rgba(0, 0, 0, 0.3);
 }
 
+.token-sm {
+  max-width: 40px;
+}
+
+.token-md {
+  max-width: 60px;
+}
+
+.token-lg {
+  max-width: 80px;
+}
+
+.token-consumable {
+  /* Default is circle, defined in .token */
+}
+
+.token-permanent {
+  border-radius: 0 !important;
+  transform: rotate(45deg);
+}
+
+.token-permanent .token-inner {
+  border-radius: 0 !important;
+  transform: rotate(-45deg);
+}
+
+.token-permanent:hover:not(.disabled) {
+  transform: translateY(-2px) rotate(45deg);
+}
+
 .token::after {
   content: '';
   position: absolute;

@@ -27,9 +27,11 @@ interface TokenProps {
   onClick?: () => void;
   disabled?: boolean;
   isSelected?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'consumable' | 'permanent';
 }
 
-export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = false, isSelected = false }) => {
+export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = false, isSelected = false, size = 'md', variant = 'consumable' }) => {
   const [isAnimating, setIsAnimating] = React.useState(false);
 
   const getLabel = (type: ResourceType) => {
@@ -58,7 +60,7 @@ export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = f
   return (
     <>
       <div 
-        className={`token ${type.toLowerCase()} ${disabled ? 'disabled' : ''} ${isSelected ? 'selected' : ''}`} 
+        className={`token ${type.toLowerCase()} ${disabled ? 'disabled' : ''} ${isSelected ? 'selected' : ''} token-${size} token-${variant}`} 
         onClick={handleClick}
         role="button"
         aria-label={`${getDisplayName(type)} token, count: ${count}`}
@@ -79,7 +81,7 @@ export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = f
       </div>
       {isAnimating && (
         <div 
-          className={`token flying ${type.toLowerCase()}`} 
+          className={`token flying ${type.toLowerCase()} token-${size} token-${variant}`} 
           onAnimationEnd={handleAnimationEnd}
           data-testid={`flying-token-${type}`}
         >
