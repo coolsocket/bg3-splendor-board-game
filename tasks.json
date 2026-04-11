@@ -296,8 +296,8 @@
       "acceptanceCriteria": [
         "1. 牌堆信息居中对齐。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-286",
@@ -307,8 +307,8 @@
       "acceptanceCriteria": [
         "1. 卡牌成本数字可读性大幅提升。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-287",
@@ -318,8 +318,8 @@
       "acceptanceCriteria": [
         "1. 全局卡背视觉一致。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-288",
@@ -329,8 +329,8 @@
       "acceptanceCriteria": [
         "1. 卡牌底部元素不贴边。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     }
   ]
 }

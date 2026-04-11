@@ -136,7 +136,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px;
+  padding: 8px 8px 16px 8px; /* Increased bottom padding */
   width: 100%;
   box-sizing: border-box;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -159,11 +159,11 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 32px; /* Enlarged font size */
+  font-size: 42px; /* Enlarged by 30% */
   font-weight: 900;
   color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* STORY-251 */
-  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Deepened shadow */
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 0 4px 8px rgba(0, 0, 0, 0.7); /* Deepened shadow */
 }
 
 .cost-icon-watermark {
