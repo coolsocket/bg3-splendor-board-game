@@ -142,8 +142,8 @@
       "acceptanceCriteria": [
         "1. 卡牌头部元素水平对齐。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-182",

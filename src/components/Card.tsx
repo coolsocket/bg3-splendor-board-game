@@ -70,7 +70,7 @@ export const Card: React.FC<CardProps> = ({
         </div>
       ) : (
         <div className="card-inner p-2">
-          <div className="card-header">
+          <div className="card-header flex justify-between items-center">
             <div className="card-prestige-container">
               {prestigePoints > 0 && (
                 <span className="card-prestige">{prestigePoints}</span>
