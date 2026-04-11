@@ -131,8 +131,8 @@
       "acceptanceCriteria": [
         "1. 顶部显示横向的回合顺序队列。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-271",

@@ -55,6 +55,20 @@ export const GameArena: React.FC<GameArenaProps> = ({
         onTokenClick={onTokenClick}
         disabledTokens={disabledTokens}
       />
+      <div className="initiative-tracker bg-obsidian-panel backdrop-blur-sm border border-gold-dark/30 p-2 flex items-center justify-center gap-4 my-2 rounded-lg">
+        <span className="text-gold text-sm uppercase tracking-wider font-serif">Initiative:</span>
+        <div className="flex items-center gap-2">
+          {[currentPlayer, ...opponents].map((player, index) => {
+            const isActive = index === currentPlayerIndex;
+            return (
+              <div key={player.playerName} className={`flex items-center gap-1 px-3 py-1 rounded ${isActive ? 'bg-gold-500/20 border border-gold-500' : 'bg-black/40 border border-gray-700 opacity-70'}`}>
+                {isActive && <span className="text-gold text-sm">▶</span>}
+                <span className={`text-sm ${isActive ? 'text-gold font-bold' : 'text-parchment'}`}>{player.playerName}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
       <div className="arena-content">
         <div className="sidebar overflow-y-auto">
           <div className="opponents-container">
