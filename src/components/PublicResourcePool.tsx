@@ -81,3 +81,4 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
       </div>
     </div>
   );
+};

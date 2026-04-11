@@ -119,9 +119,9 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px #c084fc;
 }
 
-/* TRUE_SOUL_TADPOLE (Wildcard) - Pink/Arcane */
+/* TRUE_SOUL_TADPOLE (Wildcard) - Astral Prism */
 .token.true_soul_tadpole {
-  background: radial-gradient(circle at 25% 25%, #fdf2f8, #f472b6, #db2777, #500724);
+  background: radial-gradient(circle at 25% 25%, #f5f3ff, #a78bfa, #6d28d9, #1e1b4b);
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   border: 2px solid #d4af37; /* Gold border */
   border-radius: 12px !important; /* STORY-253: Non-spherical badge */

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.css';
-import type { ResourceType } from './Token';
+import { ResourceType, getDisplayName } from './Token';
 
 const resourceIcons: Record<ResourceType, string> = {
   RADIANT_GEM: '☀️',
@@ -104,7 +104,7 @@ export const Card: React.FC<CardProps> = ({
                     <div 
                       key={resource} 
                       className={`cost-item cost-${resource.toLowerCase()}`}
-                      title={`${resource}: ${amount}`}
+                      title={`${getDisplayName(resource as ResourceType)}: ${amount}`}
                     >
                       <span className="cost-icon-watermark">{resourceIcons[resource.toUpperCase() as ResourceType]}</span>
                       <span className="cost-amount">{amount}</span>

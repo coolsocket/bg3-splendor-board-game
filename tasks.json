@@ -65,8 +65,8 @@
       "acceptanceCriteria": [
         "1. 资源名称和视觉对应 BG3 奇幻物品。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-265",
@@ -76,8 +76,8 @@
       "acceptanceCriteria": [
         "1. 百搭代币使用独特的奇幻图标。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-266",
@@ -87,8 +87,8 @@
       "acceptanceCriteria": [
         "1. 玩家面板边框具有厚重的奇幻金属质感。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-267",
@@ -98,8 +98,8 @@
       "acceptanceCriteria": [
         "1. 玩家面板显示角色头像。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-268",
@@ -109,8 +109,8 @@
       "acceptanceCriteria": [
         "1. 卡牌背景不再是死黑，具有纹理感。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-269",
@@ -120,8 +120,8 @@
       "acceptanceCriteria": [
         "1. 彻底移除卡牌和面板上的现代无衬线体数值。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-270",
