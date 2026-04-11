@@ -10,7 +10,7 @@
   border-radius: 8px;
   padding: 1rem 1rem 1.5rem 1rem;
   color: #E8E2D2;
-  font-family: 'Georgia', serif;
+  font-family: var(--font-fantasy);
   box-shadow: 
     0 10px 30px rgba(0, 0, 0, 0.7),
     inset 0 0 15px rgba(0, 0, 0, 0.6),
@@ -81,7 +81,7 @@
 }
 
 .section h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-fantasy);
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: clamp(0.9rem, 1.5vw, 1.1rem);
@@ -248,7 +248,7 @@
 }
 
 .patron-vp {
-  font-family: var(--font-serif);
+  font-family: var(--font-fantasy);
   color: #d4af37;
   font-weight: bold;
   margin-top: 0.25rem;

@@ -32,9 +32,13 @@
   position: relative;
 }
 
+.card-inner > *:not(.card-actions-overlay) {
+  mix-blend-mode: multiply;
+}
+
 /* Depth & Shadows */
 .card {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 6px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-depth);
 }
 
 /* Tier Borders */
@@ -67,7 +71,7 @@
 }
 
 .card-prestige {
-  font-family: var(--font-serif);
+  font-family: var(--font-fantasy);
   font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: bold;
   color: var(--color-text-primary); /* Light parchment text */
@@ -165,7 +169,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-serif);
+  font-family: var(--font-fantasy);
   font-size: clamp(1.5rem, 4vw, 2.625rem); /* Enlarged by 30% and made fluid */
   font-weight: 900;
   color: #fff;
@@ -221,7 +225,7 @@
   background: #1a0a0a; /* Dark background */
   color: #ffffff; /* White text */
   cursor: pointer;
-  font-family: var(--font-serif);
+  font-family: var(--font-fantasy);
   font-size: 11px;
   font-weight: bold;
   transition: background 0.2s, transform 0.1s;
@@ -268,7 +272,7 @@
 
 /* Affordable State */
 .card.affordable {
-  box-shadow: 0 0 30px rgba(34, 197, 94, 0.8), 0 0 60px rgba(34, 197, 94, 0.4), 0 10px 20px rgba(0, 0, 0, 0.5); /* Green magic glow */
+  box-shadow: var(--glow-arcane), var(--shadow-depth);
   animation: card-breathe 2.5s ease-in-out infinite;
 }
 
@@ -334,10 +338,10 @@
 }
 
 .deck-count {
-  font-family: var(--font-serif);
+  font-family: var(--font-fantasy);
 }
 
 .deck-label {
-  font-family: var(--font-serif);
+  font-family: var(--font-fantasy);
 }
 

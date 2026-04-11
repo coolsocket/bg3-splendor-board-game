@@ -29,11 +29,14 @@
   /* Fonts */
   --font-serif: 'Cinzel', 'Playfair Display', Georgia, serif;
   --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-fantasy: 'Cinzel', Georgia, serif;
   
   /* Shadows */
   --shadow-heavy: 0 10px 20px rgba(0, 0, 0, 0.5), 0 6px 6px rgba(0, 0, 0, 0.5);
   --shadow-glow-gold: 0 0 15px rgba(212, 175, 55, 0.5);
   --shadow-glow-arcane: 0 0 15px rgba(56, 189, 248, 0.5);
+  --shadow-depth: 0 15px 30px rgba(0, 0, 0, 0.7), 0 5px 15px rgba(0, 0, 0, 0.5);
+  --glow-arcane: 0 0 20px rgba(56, 189, 248, 0.8), 0 0 40px rgba(56, 189, 248, 0.4);
   
   /* Card Scale */
   --card-scale: 0.9;
