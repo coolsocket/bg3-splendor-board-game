@@ -7,7 +7,7 @@
     radial-gradient(circle at 50% 50%, rgba(189, 147, 249, 0.05) 0%, rgba(189, 147, 249, 0.02) 70%, transparent 71%),
     linear-gradient(135deg, #0a0a0f 0%, #16171d 100%);
   border: 4px solid #5c4418; /* Dark bronze */
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 1rem 1rem 1.5rem 1rem;
   color: #E8E2D2;
   font-family: var(--font-fantasy);
@@ -96,7 +96,7 @@
 .section {
   background-color: #222731;
   border: 1px solid #2e3542;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 0.75rem;
 }
 
@@ -105,7 +105,7 @@
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-  color: #c5ccd8;
+  color: #e2e8f0;
   border-bottom: 1px solid #2e3542;
   padding-bottom: 0.5rem;
   overflow-wrap: break-word;
@@ -125,7 +125,7 @@
 
 .resource-grid-section h3 {
   font-size: 0.9rem;
-  color: #6a7285;
+  color: #94a3b8;
   border-bottom: none;
   margin-bottom: 0.5rem;
   padding-bottom: 0;
@@ -175,7 +175,7 @@
 }
 
 .empty-message {
-  color: #6a7285;
+  color: #94a3b8;
   font-style: italic;
   margin: 0.5rem 0;
   font-size: 0.9rem;
@@ -191,7 +191,7 @@
 .reserve-slot {
   width: 60px;
   height: 90px;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   box-sizing: border-box;
   position: relative;
 }

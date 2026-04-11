@@ -3,7 +3,7 @@
 .card {
   width: 100%;
   aspect-ratio: 2 / 3;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   position: relative;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -218,7 +218,7 @@
 
 .action-btn {
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--color-gold); /* Gold border */
   background: #1a0a0a; /* Dark background */
   color: #ffffff; /* White text */

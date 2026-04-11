@@ -154,11 +154,11 @@
   background: radial-gradient(circle at 25% 25%, #f5f3ff, #a78bfa, #6d28d9, #1e1b4b);
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   border: 2px solid #d4af37; /* Gold border */
-  border-radius: 12px !important; /* STORY-253: Non-spherical badge */
+  border-radius: var(--radius-md) !important; /* STORY-253: Non-spherical badge */
 }
 
 .token.true_soul_tadpole .token-inner {
-  border-radius: 10px !important; /* STORY-253 */
+  border-radius: calc(var(--radius-md) - 2px) !important; /* STORY-253 */
 }
 .token.true_soul_tadpole:hover:not(.disabled) {
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 10px 15px -3px rgba(0, 0, 0, 0.5);
