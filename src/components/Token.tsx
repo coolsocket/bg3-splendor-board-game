@@ -29,9 +29,10 @@ interface TokenProps {
   isSelected?: boolean;
   size?: 'sm' | 'md' | 'lg';
   variant?: 'consumable' | 'permanent';
+  hideLabel?: boolean;
 }
 
-export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = false, isSelected = false, size = 'md', variant = 'consumable' }) => {
+export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = false, isSelected = false, size = 'md', variant = 'consumable', hideLabel = false }) => {
   const [isAnimating, setIsAnimating] = React.useState(false);
 
   const getLabel = (type: ResourceType) => {
@@ -74,7 +75,7 @@ export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = f
               <path d="M4 17 L20 7" />
             </svg>
           ) : (
-            <span className="token-label">{getLabel(type)}</span>
+            !hideLabel && <span className="token-label">{getLabel(type)}</span>
           )}
           <span className="token-count">{count}</span>
         </div>

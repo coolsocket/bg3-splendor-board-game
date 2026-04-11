@@ -41,7 +41,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   ];
 
   return (
-    <div className="public-resource-pool global-hud bg-obsidian-panel backdrop-blur-sm h-16 flex items-center">
+    <div className="public-resource-pool global-hud bg-obsidian-panel backdrop-blur-sm flex items-center">
       <div className="hud-left global-info">
         <span className="room-number text-gold">Room: #12345</span>
         <span className="target-score text-gold">Target: 15</span>
@@ -62,6 +62,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
                 count={resources[type] || 0}
                 onClick={() => onTokenClick && onTokenClick(type)}
                 disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
+                hideLabel={true}
               />
             </div>
           ))}
