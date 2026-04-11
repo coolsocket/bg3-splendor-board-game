@@ -51,34 +51,35 @@ export const GameArena: React.FC<GameArenaProps> = ({
 
   return (
     <div className="game-arena bg-underdark">
-      <div className="sidebar overflow-y-auto">
-        <div className="opponents-container">
-          {opponents.map((opponent, index) => {
-            const isExpanded = opponent.playerName === expandedPlayerName;
-            return (
-              <PlayerBoard
-                key={index}
-                {...opponent}
-                isCurrentPlayer={false}
-                isActive={currentPlayerIndex === index + 1}
-                viewMode={isExpanded ? 'full' : 'summary'}
-                onClick={() => !isExpanded && setExpandedPlayerName(opponent.playerName)}
-              />
-            );
-          })}
+      <PublicResourcePool
+        onTokenClick={onTokenClick}
+        disabledTokens={disabledTokens}
+      />
+      <div className="arena-content">
+        <div className="sidebar overflow-y-auto">
+          <div className="opponents-container">
+            {opponents.map((opponent, index) => {
+              const isExpanded = opponent.playerName === expandedPlayerName;
+              return (
+                <PlayerBoard
+                  key={index}
+                  {...opponent}
+                  isCurrentPlayer={false}
+                  isActive={currentPlayerIndex === index + 1}
+                  viewMode={isExpanded ? 'full' : 'summary'}
+                  onClick={() => !isExpanded && setExpandedPlayerName(opponent.playerName)}
+                />
+              );
+            })}
+          </div>
+          <div className="current-player-container">
+            <PlayerBoard {...currentPlayer} isCurrentPlayer={true} isActive={currentPlayerIndex === 0} />
+          </div>
         </div>
-        <div className="current-player-container">
-          <PlayerBoard {...currentPlayer} isCurrentPlayer={true} isActive={currentPlayerIndex === 0} />
-        </div>
-      </div>
-      <div className="main-area bg-camp-table">
-        <div className="h-full overflow-y-auto pb-20">
-          <PublicResourcePool
-            resources={resources}
-            onTokenClick={onTokenClick}
-            disabledTokens={disabledTokens}
-          />
-          <CardMarket {...market} onCardInteract={onCardInteract} />
+        <div className="main-area bg-camp-table">
+          <div className="h-full overflow-y-auto pb-20">
+            <CardMarket {...market} onCardInteract={onCardInteract} />
+          </div>
         </div>
       </div>
     </div>

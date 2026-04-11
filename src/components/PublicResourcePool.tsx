@@ -4,9 +4,9 @@ import './PublicResourcePool.css';
 import { usePublicStore } from '../store/publicStore';
 import { ResourceType as DomainResourceType } from '../domain/models';
 import { WildcardPool } from './WildcardPool';
+import { PatronSlot } from './PatronSlot';
 
 interface PublicResourcePoolProps {
-  resources?: Record<ResourceType, number>;
   onTokenClick?: (type: ResourceType) => void;
   disabledTokens?: ResourceType[];
 }
@@ -16,6 +16,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   disabledTokens = [],
 }) => {
   const storeResources = usePublicStore((state) => state.availableResources);
+  const availablePatrons = usePublicStore((state) => state.availablePatrons);
   
   const resources: Record<ResourceType, number> = {
     RADIANT_GEM: storeResources[DomainResourceType.RADIANT_GEM] || 0,
@@ -35,23 +36,29 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   ];
 
   return (
-    <div className="public-resource-pool bg-obsidian-panel backdrop-blur-sm">
-      <div className="pool-header">
-        <h3 className="pool-title text-parchment">Public Resource Pool</h3>
+    <div className="public-resource-pool global-hud bg-obsidian-panel backdrop-blur-sm">
+      <div className="hud-left global-info">
+        <span className="room-number text-gold">Room: #12345</span>
+        <span className="target-score text-gold">Target: 15</span>
+        <button className="settings-btn text-gold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
       </div>
-      <div className="pool-tokens">
+      
+      <div className="hud-middle pool-tokens">
         <div className="colored-tokens">
-          {resourceTypes.map((type, index) => (
-            <React.Fragment key={type}>
-              <div className={`token-stack-container stack-${type.toLowerCase()}`}>
-                <Token
-                  type={type}
-                  count={resources[type] || 0}
-                  onClick={() => onTokenClick && onTokenClick(type)}
-                  disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
-                />
-              </div>
-            </React.Fragment>
+          {resourceTypes.map((type) => (
+            <div key={type} className={`token-stack-container stack-${type.toLowerCase()}`}>
+              <Token
+                type={type}
+                count={resources[type] || 0}
+                onClick={() => onTokenClick && onTokenClick(type)}
+                disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
+              />
+            </div>
           ))}
         </div>
         <div className="pool-separator"></div>
@@ -63,6 +70,14 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
           />
         </div>
       </div>
+
+      <div className="hud-right patron-area-horizontal">
+        {availablePatrons.map(patron => (
+          <PatronSlot key={patron.id} patron={patron} />
+        ))}
+        {Array.from({ length: Math.max(0, 4 - availablePatrons.length) }).map((_, i) => (
+          <PatronSlot key={`empty-${i}`} />
+        ))}
+      </div>
     </div>
   );
-};

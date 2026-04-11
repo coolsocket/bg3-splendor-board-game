@@ -21,7 +21,7 @@
       "acceptanceCriteria": [
         "1. 顶部控制台建立，整合资源与贵族。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -32,7 +32,7 @@
       "acceptanceCriteria": [
         "1. 贵族卡横向平铺在顶部。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -43,7 +43,7 @@
       "acceptanceCriteria": [
         "1. 贵族卡显示明确的颜色和数量成本。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -54,7 +54,7 @@
       "acceptanceCriteria": [
         "1. 顶部左侧显示房间号和目标分数。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
@@ -65,7 +65,7 @@
       "acceptanceCriteria": [
         "1. 显示清晰的回合顺序轨道。"
       ],
-      "passes": false,
+      "passes": true,
       "attempts": 0
     },
     {
