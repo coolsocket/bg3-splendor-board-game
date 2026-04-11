@@ -285,8 +285,8 @@
       "acceptanceCriteria": [
         "1. 分隔线绝对居中。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-225",
@@ -296,8 +296,8 @@
       "acceptanceCriteria": [
         "1. 球体内部数字对比度高，清晰可见。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-226",
@@ -307,8 +307,8 @@
       "acceptanceCriteria": [
         "1. 粉色球间距正常，不孤立。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-227",
@@ -318,8 +318,8 @@
       "acceptanceCriteria": [
         "1. 标题字体粗细均匀，显示正常。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-228",
@@ -329,8 +329,8 @@
       "acceptanceCriteria": [
         "1. 资源池顶部留白适中，视觉重心平衡。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     }
   ]
 }

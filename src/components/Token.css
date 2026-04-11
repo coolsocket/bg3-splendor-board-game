@@ -162,3 +162,10 @@
     opacity: 0;
   }
 }
+
+/* STORY-225: Fix contrast for yellow and green balls */
+.token.radiant_gem .token-count,
+.token.natures_blessing .token-count {
+  color: #1a1c23;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}

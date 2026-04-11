@@ -40,24 +40,28 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
         <h3 className="pool-title text-parchment">Public Resource Pool</h3>
       </div>
       <div className="pool-tokens">
-        {resourceTypes.map((type, index) => (
-          <React.Fragment key={type}>
-            <div className={`token-stack-container stack-${type.toLowerCase()}`}>
-              <Token
-                type={type}
-                count={resources[type] || 0}
-                onClick={() => onTokenClick && onTokenClick(type)}
-                disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
-              />
-            </div>
-          </React.Fragment>
-        ))}
+        <div className="colored-tokens">
+          {resourceTypes.map((type, index) => (
+            <React.Fragment key={type}>
+              <div className={`token-stack-container stack-${type.toLowerCase()}`}>
+                <Token
+                  type={type}
+                  count={resources[type] || 0}
+                  onClick={() => onTokenClick && onTokenClick(type)}
+                  disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
+                />
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
         <div className="pool-separator"></div>
-        <WildcardPool
-          count={resources['TRUE_SOUL_TADPOLE'] || 0}
-          onClick={() => onTokenClick && onTokenClick('TRUE_SOUL_TADPOLE')}
-          disabled={disabledTokens.includes('TRUE_SOUL_TADPOLE') || (resources['TRUE_SOUL_TADPOLE'] || 0) <= 0}
-        />
+        <div className="wildcard-token">
+          <WildcardPool
+            count={resources['TRUE_SOUL_TADPOLE'] || 0}
+            onClick={() => onTokenClick && onTokenClick('TRUE_SOUL_TADPOLE')}
+            disabled={disabledTokens.includes('TRUE_SOUL_TADPOLE') || (resources['TRUE_SOUL_TADPOLE'] || 0) <= 0}
+          />
+        </div>
       </div>
     </div>
   );
