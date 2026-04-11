@@ -223,7 +223,7 @@
 
 /* Default Hover */
 .card:hover {
-  transform: translateY(-0.5rem);
+  transform: translateY(-0.5rem) scale(1.05);
   box-shadow: 0 0 15px rgba(218, 165, 32, 0.5), 0 25px 50px rgba(0, 0, 0, 0.8);
   z-index: 10;
 }
@@ -235,8 +235,8 @@
 
 /* Affordable State */
 .card.affordable {
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 50px rgba(56, 189, 248, 0.3), 0 10px 20px rgba(0, 0, 0, 0.5); /* Arcane halo */
-  animation: card-breathe 3.5s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.8), 0 0 60px rgba(56, 189, 248, 0.4), 0 10px 20px rgba(0, 0, 0, 0.5); /* Arcane halo */
+  animation: card-breathe 2.5s ease-in-out infinite;
 }
 
 .card.affordable:hover {

@@ -285,8 +285,8 @@
       "acceptanceCriteria": [
         "1. 滚动条为极细暗金线，不破坏奇幻感。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-195",
@@ -296,8 +296,8 @@
       "acceptanceCriteria": [
         "1. 可购买的卡牌有明显高亮反馈。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-196",
@@ -307,8 +307,8 @@
       "acceptanceCriteria": [
         "1. 文本不可被系统选中。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-197",
@@ -318,8 +318,8 @@
       "acceptanceCriteria": [
         "1. 空卡槽有质感底纹，不显空洞。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-198",
@@ -329,8 +329,8 @@
       "acceptanceCriteria": [
         "1. 悬停有自然的缩放和上浮动效。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     }
   ]
 }
