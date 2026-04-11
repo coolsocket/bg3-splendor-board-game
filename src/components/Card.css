@@ -94,22 +94,22 @@
 
 /* Gem Colors (Matching Token.css) */
 .bonus-radiant_gem {
-  background: radial-gradient(circle at 25% 25%, #fffbeb, #fef08a, #ca8a04, #713f12);
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #fef08a 25%, #ca8a04 70%, #713f12 100%);
 }
 .bonus-arcane_crystal {
-  background: radial-gradient(circle at 25% 25%, #e0f2fe, #38bdf8, #0284c7, #0c4a6e);
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #38bdf8 25%, #0284c7 70%, #0c4a6e 100%);
 }
 .bonus-natures_blessing {
-  background: radial-gradient(circle at 25% 25%, #f0fdf4, #4ade80, #16a34a, #14532d);
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #4ade80 25%, #16a34a 70%, #14532d 100%);
 }
 .bonus-infernal_iron {
-  background: radial-gradient(circle at 25% 25%, #fef2f2, #f87171, #dc2626, #7f1d1d);
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f87171 25%, #dc2626 70%, #7f1d1d 100%);
 }
 .bonus-dark_quartz {
-  background: radial-gradient(circle at 25% 25%, #faf5ff, #c084fc, #9333ea, #3b0764);
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #c084fc 25%, #9333ea 70%, #3b0764 100%);
 }
 .bonus-true_soul_tadpole {
-  background: radial-gradient(circle at 25% 25%, #fdf2f8, #f472b6, #db2777, #500724);
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f472b6 25%, #db2777 70%, #500724 100%);
 }
 
 /* Image Container */
@@ -145,10 +145,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 8px 16px 8px; /* Increased bottom padding */
+  padding: 8px 8px 16px 8px;
   width: 100%;
   box-sizing: border-box;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.6); /* Deep dark band */
+  backdrop-filter: blur(4px); /* Glassmorphism effect */
+  border-radius: 0 0 var(--radius-md) var(--radius-md); /* Match card bottom corners */
 }
 
 .card-cost-grid {
@@ -343,3 +346,20 @@
   font-family: var(--font-fantasy);
 }
 
+/* Dealing Animation */
+@keyframes card-deal {
+  0% {
+    transform: translateX(-100%) rotateY(180deg) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.card-dealing {
+  animation: card-deal 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}

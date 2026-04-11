@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Token, type ResourceType } from './Token';
 import './PublicResourcePool.css';
 import { usePublicStore } from '../store/publicStore';
@@ -22,6 +22,20 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   const storePlayer = usePlayerStore();
   const totalTokens = Object.values(storePlayer.resources).reduce((sum, count) => sum + (count || 0), 0);
   const isTokenLimitReached = totalTokens >= 10;
+
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [scale, setScale] = useState(0.9);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const initialScale = parseFloat(getComputedStyle(root).getPropertyValue('--card-scale')) || 0.9;
+    setScale(initialScale);
+  }, []);
+
+  const handleScaleChange = (newScale: number) => {
+    setScale(newScale);
+    document.documentElement.style.setProperty('--card-scale', newScale.toString());
+  };
   
   const resources: Record<ResourceType, number> = {
     RADIANT_GEM: storeResources[DomainResourceType.RADIANT_GEM] || 0,
@@ -42,15 +56,38 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
 
   return (
     <div className="public-resource-pool global-hud bg-obsidian-panel backdrop-blur-sm flex items-center">
-      <div className="hud-left global-info">
+      <div className="hud-left global-info flex items-center gap-4">
         <span className="room-number text-gold">Room: #12345</span>
         <span className="target-score text-gold">Target: 15</span>
-        <button className="settings-btn text-gold">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-          </svg>
-        </button>
+        <div className="relative">
+          <button 
+            className="settings-btn text-gold p-2 rounded hover:bg-white/10"
+            onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+            aria-label="Settings"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+          {isSettingsOpen && (
+            <div className="absolute top-full left-0 mt-2 bg-obsidian-panel border border-gold-dark/30 p-4 rounded-lg z-50 shadow-heavy min-w-[200px]">
+              <h3 className="text-gold font-serif mb-2 border-bottom border-gold/20 pb-1">Settings</h3>
+              <div className="flex flex-col gap-2">
+                <label className="text-gold text-sm block">Card Scale: {scale.toFixed(1)}</label>
+                <input
+                  type="range"
+                  min="0.5"
+                  max="1.5"
+                  step="0.1"
+                  value={scale}
+                  onChange={(e) => handleScaleChange(parseFloat(e.target.value))}
+                  className="w-full accent-gold"
+                />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
       
       <div className="hud-middle flex flex-col items-center">
