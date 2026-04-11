@@ -97,42 +97,46 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
             <ResourceMatrix tokens={tokens} bonuses={bonuses} />
             
             <div className="section reserved-cards-section" style={{ marginTop: '1rem' }}>
-              <h3>Reserved Cards</h3>
-              <div className="reserved-slots-container">
-                {[0, 1, 2].map(index => {
-                  const card = reservedCards[index];
-                  return card ? (
-                    <div key={card.id} className="reserve-slot filled micro-card">
-                      <Card {...card} />
-                    </div>
-                  ) : (
-                    <div key={`empty-slot-${index}`} className="reserve-slot empty" />
-                  );
-                })}
-              </div>
+              <h3>Reserved Cards {reservedCards.length === 0 && <span className="text-xs text-gray-500">(None)</span>}</h3>
+              {reservedCards.length > 0 && (
+                <div className="reserved-slots-container">
+                  {[0, 1, 2].map(index => {
+                    const card = reservedCards[index];
+                    return card ? (
+                      <div key={card.id} className="reserve-slot filled micro-card">
+                        <Card {...card} />
+                      </div>
+                    ) : (
+                      <div key={`empty-slot-${index}`} className="reserve-slot empty" />
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
             <div className="section patrons-section" style={{ marginTop: '1rem' }}>
-              <h3>Visited Patrons</h3>
-              <div className="patron-slots-container">
-                {[0, 1].map(index => {
-                  const patron = patrons[index];
-                  return patron ? (
-                    <div key={patron.id} className="patron-slot filled">
-                      {patron.imageUrl ? (
-                        <img src={patron.imageUrl} alt={`Patron ${patron.id}`} className="patron-image" />
-                      ) : (
-                        <div className="patron-placeholder">
-                          <span>Patron</span>
-                          <span className="patron-vp">+{patron.prestigePoints} VP</span>
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <div key={`empty-slot-${index}`} className="patron-slot empty" />
-                  );
-                })}
-              </div>
+              <h3>Visited Patrons {patrons.length === 0 && <span className="text-xs text-gray-500">(None)</span>}</h3>
+              {patrons.length > 0 && (
+                <div className="patron-slots-container">
+                  {[0, 1].map(index => {
+                    const patron = patrons[index];
+                    return patron ? (
+                      <div key={patron.id} className="patron-slot filled">
+                        {patron.imageUrl ? (
+                          <img src={patron.imageUrl} alt={`Patron ${patron.id}`} className="patron-image" />
+                        ) : (
+                          <div className="patron-placeholder">
+                            <span>Patron</span>
+                            <span className="patron-vp">+{patron.prestigePoints} VP</span>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div key={`empty-slot-${index}`} className="patron-slot empty" />
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -155,43 +159,47 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
 
         {/* Reserved Cards */}
         <div className="section reserved-cards-section">
-          <h3>Reserved Cards</h3>
-          <div className="reserved-slots-container">
-            {[0, 1, 2].map(index => {
-              const card = reservedCards[index];
-              return card ? (
-                <div key={card.id} className="reserve-slot filled micro-card">
-                  <Card {...card} />
-                </div>
-              ) : (
-                <div key={`empty-slot-${index}`} className="reserve-slot empty" />
-              );
-            })}
-          </div>
+          <h3>Reserved Cards {reservedCards.length === 0 && <span className="text-xs text-gray-500">(None)</span>}</h3>
+          {reservedCards.length > 0 && (
+            <div className="reserved-slots-container">
+              {[0, 1, 2].map(index => {
+                const card = reservedCards[index];
+                return card ? (
+                  <div key={card.id} className="reserve-slot filled micro-card">
+                    <Card {...card} />
+                  </div>
+                ) : (
+                  <div key={`empty-slot-${index}`} className="reserve-slot empty" />
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* Visited Patrons */}
         <div className="section patrons-section">
-          <h3>Visited Patrons</h3>
-          <div className="patron-slots-container">
-            {[0, 1].map(index => {
-              const patron = patrons[index];
-              return patron ? (
-                <div key={patron.id} className="patron-slot filled">
-                  {patron.imageUrl ? (
-                    <img src={patron.imageUrl} alt={`Patron ${patron.id}`} className="patron-image" />
-                  ) : (
-                    <div className="patron-placeholder">
-                      <span>Patron</span>
-                      <span className="patron-vp">+{patron.prestigePoints} VP</span>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div key={`empty-slot-${index}`} className="patron-slot empty" />
-              );
-            })}
-          </div>
+          <h3>Visited Patrons {patrons.length === 0 && <span className="text-xs text-gray-500">(None)</span>}</h3>
+          {patrons.length > 0 && (
+            <div className="patron-slots-container">
+              {[0, 1].map(index => {
+                const patron = patrons[index];
+                return patron ? (
+                  <div key={patron.id} className="patron-slot filled">
+                    {patron.imageUrl ? (
+                      <img src={patron.imageUrl} alt={`Patron ${patron.id}`} className="patron-image" />
+                    ) : (
+                      <div className="patron-placeholder">
+                        <span>Patron</span>
+                        <span className="patron-vp">+{patron.prestigePoints} VP</span>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div key={`empty-slot-${index}`} className="patron-slot empty" />
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>
