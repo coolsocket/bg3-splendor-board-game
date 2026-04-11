@@ -96,9 +96,9 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
           <div style={{ transform: 'scale(0.75)', transformOrigin: 'top left', width: '133.33%' }}>
             <ResourceMatrix tokens={tokens} bonuses={bonuses} />
             
-            <div className="section reserved-cards-section" style={{ marginTop: '1rem' }}>
-              <h3>Reserved Cards {reservedCards.length === 0 && <span className="text-xs text-gray-500">(None)</span>}</h3>
-              {reservedCards.length > 0 && (
+            {reservedCards.length > 0 && (
+              <div className="section reserved-cards-section" style={{ marginTop: '1rem' }}>
+                <h3>Reserved Cards</h3>
                 <div className="reserved-slots-container">
                   {[0, 1, 2].map(index => {
                     const card = reservedCards[index];
@@ -111,12 +111,12 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
                     );
                   })}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
 
-            <div className="section patrons-section" style={{ marginTop: '1rem' }}>
-              <h3>Visited Patrons {patrons.length === 0 && <span className="text-xs text-gray-500">(None)</span>}</h3>
-              {patrons.length > 0 && (
+            {patrons.length > 0 && (
+              <div className="section patrons-section" style={{ marginTop: '1rem' }}>
+                <h3>Visited Patrons</h3>
                 <div className="patron-slots-container">
                   {[0, 1].map(index => {
                     const patron = patrons[index];
@@ -136,8 +136,8 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
                     );
                   })}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -158,9 +158,9 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
 
 
         {/* Reserved Cards */}
-        <div className="section reserved-cards-section">
-          <h3>Reserved Cards {reservedCards.length === 0 && <span className="text-xs text-gray-500">(None)</span>}</h3>
-          {reservedCards.length > 0 && (
+        {reservedCards.length > 0 && (
+          <div className="section reserved-cards-section">
+            <h3>Reserved Cards</h3>
             <div className="reserved-slots-container">
               {[0, 1, 2].map(index => {
                 const card = reservedCards[index];
@@ -173,13 +173,13 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
                 );
               })}
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Visited Patrons */}
-        <div className="section patrons-section">
-          <h3>Visited Patrons {patrons.length === 0 && <span className="text-xs text-gray-500">(None)</span>}</h3>
-          {patrons.length > 0 && (
+        {patrons.length > 0 && (
+          <div className="section patrons-section">
+            <h3>Visited Patrons</h3>
             <div className="patron-slots-container">
               {[0, 1].map(index => {
                 const patron = patrons[index];
@@ -199,8 +199,8 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
                 );
               })}
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -7,9 +7,8 @@ interface PrestigeBadgeProps {
 
 export const PrestigeBadge: React.FC<PrestigeBadgeProps> = ({ prestigePoints }) => {
   return (
-    <div className="prestige-badge">
-      <span className="prestige-label">Prestige</span>
-      <span className="prestige-value">{prestigePoints}</span>
+    <div className="prestige-badge-shield">
+      <span className="prestige-points">{prestigePoints}</span>
     </div>
   );
 };

@@ -186,8 +186,8 @@
       "acceptanceCriteria": [
         "1. 无内容时不显示大面积空白容器。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-276",
@@ -197,8 +197,8 @@
       "acceptanceCriteria": [
         "1. 保留区显示为具象的空槽位。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-277",
@@ -208,8 +208,8 @@
       "acceptanceCriteria": [
         "1. 分数以独立的盾牌徽章形式展示。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-278",
@@ -219,8 +219,8 @@
       "acceptanceCriteria": [
         "1. 玩家面板内部排版更紧凑。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-279",
@@ -230,8 +230,8 @@
       "acceptanceCriteria": [
         "1. 面板背景有淡雅的职业暗纹。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-280",
@@ -241,8 +241,8 @@
       "acceptanceCriteria": [
         "1. 顶部资源池代币更加显眼。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-281",
@@ -252,8 +252,8 @@
       "acceptanceCriteria": [
         "1. 百搭代币数字完整可见。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-282",
@@ -263,8 +263,8 @@
       "acceptanceCriteria": [
         "1. 贵族卡采用古典长方比例。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-283",
@@ -274,8 +274,8 @@
       "acceptanceCriteria": [
         "1. 贵族卡直接展示招募条件。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-284",
@@ -285,8 +285,8 @@
       "acceptanceCriteria": [
         "1. 贵族卡内容排版合理，无溢出。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-285",

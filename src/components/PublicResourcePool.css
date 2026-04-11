@@ -82,8 +82,8 @@
 }
 
 .patron-area-horizontal .patron-card-slot {
-  width: 80px !important;
-  height: 80px !important;
+  width: 60px !important;
+  height: 90px !important;
 }
 
 .patron-area-horizontal .patron-points {
@@ -113,6 +113,18 @@
   cursor: pointer;
   border-radius: 50%;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+  width: 85px;
+  height: 85px;
+}
+
+.public-resource-pool .token {
+  max-width: none !important;
+  width: 85px !important;
+  height: 85px !important;
+}
+
+.public-resource-pool .token-count {
+  font-size: 32px !important;
 }
 
 .token-stack-container:hover {

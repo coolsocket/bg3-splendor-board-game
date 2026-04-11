@@ -26,16 +26,17 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
 
   return (
     <div className="patron-card-slot" title={patron.description}>
-      <div className="patron-card-inner flex flex-col justify-between p-2 h-full">
-        <div className="patron-header flex items-center justify-center gap-2 w-full px-1">
+      <div className="patron-card-inner flex flex-col justify-between p-2 h-full relative">
+        <div className="absolute top-1 left-1">
           <span className="patron-points text-gold font-serif text-xl font-bold">{patron.points}</span>
-          <span className="text-gold opacity-70">•</span>
-          <span className="patron-name text-parchment text-xs truncate max-w-[60px]">{patron.name}</span>
+        </div>
+        
+        <div className="patron-name-container flex justify-center w-full mt-4">
+          <span className="patron-name text-parchment text-xs font-bold text-center truncate max-w-[80px]">{patron.name}</span>
         </div>
         
         <div className="patron-center-icon flex-grow flex items-center justify-center">
-          {/* STORY-192: 替换纯文本占位符 */}
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="patron-icon-svg text-gold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="patron-icon-svg text-gold opacity-50">
             <circle cx="12" cy="12" r="10"/>
             <polygon points="12 2 22 12 12 22 2 12"/>
             <circle cx="12" cy="12" r="3"/>
@@ -44,7 +45,6 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
         
         <div className="patron-footer w-full">
           <div className="patron-cost-grid flex justify-center gap-1 flex-wrap">
-            {/* STORY-190: 补全招募成本 */}
             {Object.entries(patron.requirements).map(([resource, amount]) => {
               if (amount && amount > 0) {
                 return (
