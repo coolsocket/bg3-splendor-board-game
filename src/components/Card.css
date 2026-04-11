@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0.75rem;
+  padding: 0.25rem;
   box-sizing: border-box;
   position: relative;
 }
@@ -145,7 +145,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 8px 16px 8px;
+  padding: 4px;
   width: 100%;
   box-sizing: border-box;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -171,7 +171,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-fantasy);
-  font-size: clamp(1.5rem, 4vw, 2.625rem); /* Enlarged by 30% and made fluid */
+  font-size: clamp(1.75rem, 5vw, 2.625rem); /* Enlarged by 30% and made fluid */
   font-weight: 900;
   color: #fff;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Deepened shadow */

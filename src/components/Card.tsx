@@ -1,6 +1,7 @@
 import React from 'react';
 import './Card.css';
-import { ResourceType, getDisplayName } from './Token';
+import type { ResourceType } from './Token';
+import { getDisplayName } from './Token';
 
 const resourceIcons: Record<ResourceType, string> = {
   RADIANT_GEM: '☀️',
@@ -78,7 +79,7 @@ export const Card: React.FC<CardProps> = ({
           <span className="deck-label">Tier {tier}</span>
         </div>
       ) : (
-        <div className="card-inner p-3">
+        <div className="card-inner p-1">
           <div className="card-header flex justify-between items-center">
             <div className="card-prestige-container">
               {prestigePoints > 0 && (
@@ -96,14 +97,14 @@ export const Card: React.FC<CardProps> = ({
             )}
           </div>
 
-          <div className="card-footer">
-            <div className="card-cost-grid flex justify-center gap-1 pb-2">
+          <div className="card-footer absolute bottom-1 w-full flex justify-center">
+            <div className="card-cost-grid flex justify-center -space-x-2 pb-2">
               {Object.entries(cost).map(([resource, amount]) => {
                 if (amount && amount > 0) {
                   return (
                     <div 
                       key={resource} 
-                      className={`cost-item cost-${resource.toLowerCase()}`}
+                      className={`cost-item cost-${resource.toLowerCase()} ring-1 ring-black`}
                       title={`${getDisplayName(resource as ResourceType)}: ${amount}`}
                     >
                       <span className="cost-icon-watermark">{resourceIcons[resource.toUpperCase() as ResourceType]}</span>
