@@ -252,8 +252,8 @@
       "acceptanceCriteria": [
         "1. 贵族卡比例协调（2:3 或圆形）。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-192",

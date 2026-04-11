@@ -1,6 +1,6 @@
 .patron-card-slot {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 2 / 3;
   max-width: 100px;
   background-color: #4a0e17; /* Dark burgundy */
   border: 2px solid var(--color-gold); /* Solid gold border */
