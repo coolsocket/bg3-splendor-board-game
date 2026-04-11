@@ -153,8 +153,8 @@
       "acceptanceCriteria": [
         "1. 卡牌成本圆圈紧凑居中。"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-183",
