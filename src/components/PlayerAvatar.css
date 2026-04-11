@@ -50,9 +50,9 @@
 
 .player-avatar-container {
   position: relative;
-  width: 32px;
-  height: 32px;
-  margin-right: 8px;
+  width: 48px;
+  height: 48px;
+  margin-right: 12px;
 }
 
 .player-avatar-img {
@@ -67,4 +67,24 @@
   width: 60%;
   height: 60%;
   fill: #a0a5b5;
+}
+
+.prestige-crest {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #bf953f 0%, #aa771c 100%);
+  border: 1px solid #5c4418;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  z-index: 5;
 }

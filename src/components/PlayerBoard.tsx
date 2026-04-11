@@ -96,23 +96,21 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
           <div style={{ transform: 'scale(0.75)', transformOrigin: 'top left', width: '133.33%' }}>
             <ResourceMatrix tokens={tokens} bonuses={bonuses} />
             
-            {reservedCards.length > 0 && (
-              <div className="section reserved-cards-section" style={{ marginTop: '1rem' }}>
-                <h3>Reserved Cards</h3>
-                <div className="reserved-slots-container">
-                  {[0, 1, 2].map(index => {
-                    const card = reservedCards[index];
-                    return card ? (
-                      <div key={card.id} className="reserve-slot filled micro-card">
-                        <Card {...card} />
-                      </div>
-                    ) : (
-                      <div key={`empty-slot-${index}`} className="reserve-slot empty" />
-                    );
-                  })}
-                </div>
+            <div className="section reserved-cards-section" style={{ marginTop: '1rem' }}>
+              <h3>Reserved Cards</h3>
+              <div className="reserved-slots-container">
+                {[0, 1, 2].map(index => {
+                  const card = reservedCards[index];
+                  return card ? (
+                    <div key={card.id} className="reserve-slot filled micro-card">
+                      <Card {...card} />
+                    </div>
+                  ) : (
+                    <div key={`empty-slot-${index}`} className="reserve-slot empty" />
+                  );
+                })}
               </div>
-            )}
+            </div>
 
             {patrons.length > 0 && (
               <div className="section patrons-section" style={{ marginTop: '1rem' }}>
@@ -158,23 +156,21 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
 
 
         {/* Reserved Cards */}
-        {reservedCards.length > 0 && (
-          <div className="section reserved-cards-section">
-            <h3>Reserved Cards</h3>
-            <div className="reserved-slots-container">
-              {[0, 1, 2].map(index => {
-                const card = reservedCards[index];
-                return card ? (
-                  <div key={card.id} className="reserve-slot filled micro-card">
-                    <Card {...card} />
-                  </div>
-                ) : (
-                  <div key={`empty-slot-${index}`} className="reserve-slot empty" />
-                );
-              })}
-            </div>
+        <div className="section reserved-cards-section">
+          <h3>Reserved Cards</h3>
+          <div className="reserved-slots-container">
+            {[0, 1, 2].map(index => {
+              const card = reservedCards[index];
+              return card ? (
+                <div key={card.id} className="reserve-slot filled micro-card">
+                  <Card {...card} />
+                </div>
+              ) : (
+                <div key={`empty-slot-${index}`} className="reserve-slot empty" />
+              );
+            })}
           </div>
-        )}
+        </div>
 
         {/* Visited Patrons */}
         {patrons.length > 0 && (

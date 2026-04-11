@@ -2,7 +2,6 @@ import React from 'react';
 import './PlayerAvatar.css';
 import galeImg from '../assets/gale_portrait.png';
 import astarionImg from '../assets/astarion_portrait.png';
-import { PrestigeBadge } from './PrestigeBadge';
 
 interface PlayerAvatarProps {
   playerName: string;
@@ -35,7 +34,9 @@ export const PlayerAvatar: React.FC<PlayerAvatarProps> = ({
               </svg>
             </div>
           )}
-          <PrestigeBadge prestigePoints={prestigePoints} />
+          <div className="prestige-crest">
+            <span>{prestigePoints}</span>
+          </div>
         </div>
         <h2 className="player-name text-base font-bold text-white flex items-center min-w-0">
           <span className="truncate">{playerName}</span>

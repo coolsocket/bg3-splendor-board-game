@@ -6,7 +6,7 @@
   background-image: 
     radial-gradient(circle at 50% 50%, rgba(189, 147, 249, 0.05) 0%, rgba(189, 147, 249, 0.02) 70%, transparent 71%),
     linear-gradient(135deg, #0a0a0f 0%, #16171d 100%);
-  border: 4px solid #5c4418; /* Dark bronze */
+  border: 6px solid #3c2f1e; /* Thicker, wood-like or dark metal */
   border-radius: var(--radius-md);
   padding: 1rem 1rem 1.5rem 1rem;
   color: #E8E2D2;
@@ -15,7 +15,8 @@
     0 10px 30px rgba(0, 0, 0, 0.7),
     inset 0 0 15px rgba(0, 0, 0, 0.6),
     0 0 0 2px #bf953f,
-    inset 0 0 0 1px #8c6d23;
+    inset 0 0 0 1px #8c6d23,
+    inset 0 0 0 3px #1a1105;
   width: 260px;
   max-width: 260px;
   box-sizing: border-box;
@@ -44,12 +45,12 @@
 .player-board::before {
   content: '';
   position: absolute;
-  width: 6px;
-  height: 6px;
-  background-color: #bf953f;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 30%, #ffe599, #bf953f);
   border-radius: 50%;
-  top: 6px;
-  left: 6px;
+  top: 5px;
+  left: 5px;
   box-shadow: 
     242px 0 0 #bf953f,
     inset 0 1px 1px rgba(255, 255, 255, 0.5),
@@ -60,12 +61,12 @@
 .player-board::after {
   content: '';
   position: absolute;
-  width: 6px;
-  height: 6px;
-  background-color: #bf953f;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 30%, #ffe599, #bf953f);
   border-radius: 50%;
-  bottom: 6px;
-  left: 6px;
+  bottom: 5px;
+  left: 5px;
   box-shadow: 
     242px 0 0 #bf953f,
     inset 0 1px 1px rgba(255, 255, 255, 0.5),
@@ -74,7 +75,7 @@
 }
 
 .player-board:not(.active-player) {
-  filter: brightness(0.5);
+  filter: brightness(0.6);
   transition: filter 0.3s ease;
 }
 
