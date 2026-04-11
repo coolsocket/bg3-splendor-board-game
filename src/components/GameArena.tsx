@@ -3,7 +3,6 @@ import { PlayerBoard, type PlayerBoardProps } from './PlayerBoard';
 import { useGameSystemStore } from '../store/gameSystemStore';
 import { CardMarket, type CardMarketProps } from './CardMarket';
 import { PublicResourcePool } from './PublicResourcePool';
-import { PatronSlot } from './PatronSlot';
 import type { ResourceType } from './Token';
 import { useTokenSelection } from '../hooks/useTokenSelection';
 import { usePublicStore } from '../store/publicStore';
@@ -30,7 +29,6 @@ export const GameArena: React.FC<GameArenaProps> = ({
 }) => {
   const [expandedPlayerName, setExpandedPlayerName] = useState<string>(currentPlayer.playerName);
   const { currentPlayerIndex } = useGameSystemStore();
-  const { availablePatrons } = usePublicStore();
 
   const playerTotalTokens = Object.values(currentPlayer.tokens).reduce((sum, count) => sum + (count || 0), 0);
   const { selectedTokens, clearSelection, isValid } = useTokenSelection(resources, playerTotalTokens);
@@ -81,19 +79,6 @@ export const GameArena: React.FC<GameArenaProps> = ({
             disabledTokens={disabledTokens}
           />
           <CardMarket {...market} onCardInteract={onCardInteract} />
-        </div>
-      </div>
-      <div className="patron-area bg-obsidian-panel backdrop-blur-sm overflow-y-auto">
-        <div className="patron-header">
-          <h3 className="text-gold">Patrons</h3>
-        </div>
-        <div className="patron-cards-container">
-          {availablePatrons.map(patron => (
-            <PatronSlot key={patron.id} patron={patron} />
-          ))}
-          {Array.from({ length: Math.max(0, 4 - availablePatrons.length) }).map((_, i) => (
-            <PatronSlot key={`empty-${i}`} />
-          ))}
         </div>
       </div>
     </div>
