@@ -62,13 +62,20 @@
   box-sizing: border-box;
 }
 
+.card-prestige-container {
+  min-width: 0;
+}
+
 .card-prestige {
   font-family: var(--font-serif);
-  font-size: 36px;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: bold;
   color: var(--color-text-primary); /* Light parchment text */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* STORY-251 */
   padding-top: 0.5rem; /* pt-2 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-bonus-gem {
@@ -159,7 +166,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 42px; /* Enlarged by 30% */
+  font-size: clamp(1.5rem, 4vw, 2.625rem); /* Enlarged by 30% and made fluid */
   font-weight: 900;
   color: #fff;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Deepened shadow */

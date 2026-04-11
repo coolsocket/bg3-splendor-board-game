@@ -24,7 +24,7 @@ export const PlayerAvatar: React.FC<PlayerAvatarProps> = ({
   const avatarImg = getAvatarImg(playerName);
   return (
     <div className={`player-board-header flex items-center justify-between w-full ${isActive ? 'active-header' : ''}`}>
-      <div className="flex items-center">
+      <div className="flex items-center min-w-0">
         <div className="player-avatar-container">
           {avatarImg ? (
             <img src={avatarImg} alt={playerName} className="player-avatar-img" />
@@ -35,8 +35,8 @@ export const PlayerAvatar: React.FC<PlayerAvatarProps> = ({
           )}
           <PrestigeBadge prestigePoints={prestigePoints} />
         </div>
-        <h2 className="player-name text-base font-bold text-white flex items-center">
-          <span>{playerName}</span>
+        <h2 className="player-name text-base font-bold text-white flex items-center min-w-0">
+          <span className="truncate">{playerName}</span>
           {isActive && <span className="hourglass ml-2 text-amber-400" aria-label="Active turn">⏳</span>}
         </h2>
       </div>

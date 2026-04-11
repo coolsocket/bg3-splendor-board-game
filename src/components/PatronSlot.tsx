@@ -1,6 +1,7 @@
 import React from 'react';
 import './PatronSlot.css';
 import type { Patron } from '../domain/models';
+import { PrestigeBadge } from './PrestigeBadge';
 
 export interface PatronSlotProps {
   patron?: Patron;
@@ -27,9 +28,7 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
   return (
     <div className="patron-card-slot" title={patron.description}>
       <div className="patron-card-inner flex flex-col justify-between p-2 h-full relative">
-        <div className="absolute top-1 left-1">
-          <span className="patron-points text-gold font-serif text-xl font-bold">{patron.points}</span>
-        </div>
+        <PrestigeBadge prestigePoints={patron.points} />
         
         <div className="patron-name-container flex justify-center w-full mt-4">
           <span className="patron-name text-parchment text-xs font-bold text-center truncate max-w-[80px]">{patron.name}</span>
