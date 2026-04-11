@@ -1,0 +1,336 @@
+{
+  "branchName": "feature/phase6-aesthetics",
+  "baselineCommit": "",
+  "userStories": [
+    {
+      "id": "STORY-169",
+      "priority": "High",
+      "title": "修正菱形网格崩溃",
+      "description": "Gale 面板底部的菱形（Bonus）使用严格的 CSS Grid（grid-cols-6）来约束，并确保父容器有足够的 padding，防止错位和换行。",
+      "acceptanceCriteria": [
+        "1. Bonus 菱形严格按 6 列排列，不换行错位。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-170",
+      "priority": "High",
+      "title": "重塑菱形比例",
+      "description": "缩小菱形的长宽（例如 w-6 h-6），以防止它们互相重叠。",
+      "acceptanceCriteria": [
+        "1. 菱形尺寸适中，无重叠。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-171",
+      "priority": "Medium",
+      "title": "消除无效的行动指示器",
+      "description": "删掉 Gale 名字左侧的黄色播放键（三角），改为让 Gale 的名字发光，或用精致的奇幻风沙漏图标代替。",
+      "acceptanceCriteria": [
+        "1. 无效播放键被移除，替换为更高级的指示方式。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-172",
+      "priority": "Medium",
+      "title": "统一 Prestige 框基线",
+      "description": "强制左右两个面板采用完全一致的 Flex 布局和内边距（Padding），确保 Prestige 框位置一致。",
+      "acceptanceCriteria": [
+        "1. 所有玩家面板的 Prestige 框位置对齐一致。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-173",
+      "priority": "Medium",
+      "title": "废除“Resources & Bonuses”文本",
+      "description": "删除这行文本，视觉语言已经足够区分，这行文本纯粹是浪费垂直空间的噪音。",
+      "acceptanceCriteria": [
+        "1. “Resources & Bonuses”文本被移除。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-174",
+      "priority": "High",
+      "title": "补全对手状态",
+      "description": "将 Gale 的资源矩阵缩小比例后，同样显示 in Astarion 的面板中，而不是用极简文本。",
+      "acceptanceCriteria": [
+        "1. 对手面板显示完整的（缩小的）资源矩阵。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-175",
+      "priority": "High",
+      "title": "放大核心决策数值",
+      "description": "卡牌左上角的威望分数和卡牌底部的成本数字放大至少 1.5 倍。",
+      "acceptanceCriteria": [
+        "1. 卡牌分数和成本数字明显变大，易于阅读。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-176",
+      "priority": "High",
+      "title": "拯救对比度死局",
+      "description": "卡牌底部的成本数字改为纯白，并加上深色的阴影（text-shadow: 0 1px 2px black）。",
+      "acceptanceCriteria": [
+        "1. 有色圆圈内的数字为白色，对比度高。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-177",
+      "priority": "Medium",
+      "title": "清理代币内的冗余字母",
+      "description": "直接删除字母（如 AC, NB），只保留数量数字。",
+      "acceptanceCriteria": [
+        "1. 代币球体内无冗余字母。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-178",
+      "priority": "Medium",
+      "title": "重置字体垂直居中",
+      "description": "使用 flex items-center justify-center 配合 leading-none 修复球体内核数字偏下的问题。",
+      "acceptanceCriteria": [
+        "1. 球体内数字完美居中。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-179",
+      "priority": "High",
+      "title": "替换全局无衬线体",
+      "description": "将卡牌上的数字（分数、成本）替换为古典衬线体（Serif）。",
+      "acceptanceCriteria": [
+        "1. 卡牌数字统一为古典衬线体。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-180",
+      "priority": "High",
+      "title": "增加卡牌内边距 (Padding)",
+      "description": "给卡牌内部容器添加 p-2，让元素有呼吸感，不贴死边缘。",
+      "acceptanceCriteria": [
+        "1. 卡牌内部元素不贴边，有合适留白。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-181",
+      "priority": "Medium",
+      "title": "对齐卡牌头部元素",
+      "description": "将左上角的数字和右上角的菱形包裹在 flex justify-between items-center 容器中，保持水平对齐。",
+      "acceptanceCriteria": [
+        "1. 卡牌头部元素水平对齐。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-182",
+      "priority": "Medium",
+      "title": "收紧卡牌底部成本",
+      "description": "使用 justify-center gap-1 让成本圆圈紧凑地聚拢在底部居中位置。",
+      "acceptanceCriteria": [
+        "1. 卡牌成本圆圈紧凑居中。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-183",
+      "priority": "High",
+      "title": "重构牌库堆叠厚度",
+      "description": "使用纯 CSS 的 box-shadow（向右下方偏移的深色和金色交替阴影）来模拟纸牌堆叠，去除劣质多重边框。",
+      "acceptanceCriteria": [
+        "1. 牌库厚度效果高级，无劣质多边框。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-184",
+      "priority": "High",
+      "title": "压暗牌库底色",
+      "description": "牌库背面的底色改为深邃的暗红色、深棕色或羊皮纸背面的暗沉色。",
+      "acceptanceCriteria": [
+        "1. 牌库背面颜色深沉，不刺眼。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-185",
+      "priority": "Medium",
+      "title": "剥离“TIER”文本",
+      "description": "直接在数字下放置三个古罗马数字（如 III）或三颗星，去掉“TIER”字样。",
+      "acceptanceCriteria": [
+        "1. 牌库无“TIER”文本，使用符号表示等级。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-186",
+      "priority": "High",
+      "title": "清除“WILDCARD”纯文本",
+      "description": "删掉粉色球上方的文本，在粉球中心叠加一个皇冠或星星的 SVG 图标。",
+      "acceptanceCriteria": [
+        "1. 无“WILDCARD”文本，使用图标代替。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-187",
+      "priority": "High",
+      "title": "重构分隔线",
+      "description": "使用一条贯穿上下的细线（透明度 20% 的暗金色）作为分割，并确保对称。",
+      "acceptanceCriteria": [
+        "1. 分隔线贯穿、对称且颜色高级。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-188",
+      "priority": "High",
+      "title": "修复球体高光方向",
+      "description": "统一光源假设在左上方，所有球的径向渐变中心点必须一致。",
+      "acceptanceCriteria": [
+        "1. 所有资源球的高光方向一致。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-189",
+      "priority": "Medium",
+      "title": "消除容器不合理留白",
+      "description": "调整父容器的 padding，让球体在整个暗色框内绝对垂直居中，无多余黑洞。",
+      "acceptanceCriteria": [
+        "1. 资源池垂直居中，无多余留白。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-190",
+      "priority": "High",
+      "title": "补全招募成本",
+      "description": "在每个 Patron 框底部加上成本图标（需要多少个哪种颜色的 Bonus）。",
+      "acceptanceCriteria": [
+        "1. 贵族卡显示招募成本，功能完整。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-191",
+      "priority": "Medium",
+      "title": "重设贵族卡比例",
+      "description": "拉长为符合人物肖像的塔罗牌比例（2:3），或做成厚重金属边框的圆形徽章。",
+      "acceptanceCriteria": [
+        "1. 贵族卡比例协调（2:3 或圆形）。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-192",
+      "priority": "High",
+      "title": "替换纯文本占位符",
+      "description": "用一个居中的神秘学阵纹或阵营标志（图标）来代替红底上的“PATRON”文字。",
+      "acceptanceCriteria": [
+        "1. 无“PATRON”纯文本，使用图标占位。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-193",
+      "priority": "Medium",
+      "title": "收紧右侧面板间距",
+      "description": "减小整体 Grid 布局中列与列之间的 gap，视线移动更自然。",
+      "acceptanceCriteria": [
+        "1. 右侧面板间距缩减，布局紧凑。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-194",
+      "priority": "High",
+      "title": "全局定制滚动条",
+      "description": "使用 ::-webkit-scrollbar 将滚动条定制为极细的暗金色线条，轨道设为透明。",
+      "acceptanceCriteria": [
+        "1. 滚动条为极细暗金线，不破坏奇幻感。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-195",
+      "priority": "High",
+      "title": "卡牌激活态高亮",
+      "description": "当玩家资源足以购买某张卡时，该卡牌边框亮起显著的魔法光晕（ring-2 ring-blue-500）。",
+      "acceptanceCriteria": [
+        "1. 可购买的卡牌有明显高亮反馈。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-196",
+      "priority": "Medium",
+      "title": "防误触选择 (User-Select)",
+      "description": "在所有文本（数字、标题）上应用 select-none，防止意外选中变蓝。",
+      "acceptanceCriteria": [
+        "1. 文本不可被系统选中。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-197",
+      "priority": "Medium",
+      "title": "空卡槽底纹深化",
+      "description": "提高菱形暗纹对比度，或使用粗糙羊皮纸纹理填充，不留死黑。",
+      "acceptanceCriteria": [
+        "1. 空卡槽有质感底纹，不显空洞。"
+      ],
+      "passes": true,
+      "attempts": 1
+    },
+    {
+      "id": "STORY-198",
+      "priority": "High",
+      "title": "优化 Hover 物理反馈",
+      "description": "添加 transition-all，悬停时卡牌稍微放大并上浮（-translate-y-1）。",
+      "acceptanceCriteria": [
+        "1. 悬停有自然的缩放和上浮动效。"
+      ],
+      "passes": true,
+      "attempts": 1
+    }
+  ]
+}

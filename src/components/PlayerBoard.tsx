@@ -95,6 +95,45 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
         <div className="player-board-content">
           <div style={{ transform: 'scale(0.75)', transformOrigin: 'top left', width: '133.33%' }}>
             <ResourceMatrix tokens={tokens} bonuses={bonuses} />
+            
+            <div className="section reserved-cards-section" style={{ marginTop: '1rem' }}>
+              <h3>Reserved Cards</h3>
+              <div className="reserved-slots-container">
+                {[0, 1, 2].map(index => {
+                  const card = reservedCards[index];
+                  return card ? (
+                    <div key={card.id} className="reserve-slot filled micro-card">
+                      <Card {...card} />
+                    </div>
+                  ) : (
+                    <div key={`empty-slot-${index}`} className="reserve-slot empty" />
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="section patrons-section" style={{ marginTop: '1rem' }}>
+              <h3>Visited Patrons</h3>
+              <div className="patron-slots-container">
+                {[0, 1].map(index => {
+                  const patron = patrons[index];
+                  return patron ? (
+                    <div key={patron.id} className="patron-slot filled">
+                      {patron.imageUrl ? (
+                        <img src={patron.imageUrl} alt={`Patron ${patron.id}`} className="patron-image" />
+                      ) : (
+                        <div className="patron-placeholder">
+                          <span>Patron</span>
+                          <span className="patron-vp">+{patron.prestigePoints} VP</span>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div key={`empty-slot-${index}`} className="patron-slot empty" />
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

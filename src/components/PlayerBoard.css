@@ -40,10 +40,12 @@
   font-family: var(--font-serif);
   margin-top: 0;
   margin-bottom: 1rem;
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   color: #c5ccd8;
   border-bottom: 1px solid #2e3542;
   padding-bottom: 0.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* Asset Matrix */
@@ -221,7 +223,7 @@
 
 .player-board.active-player .player-name {
   color: #fff;
-  text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
 }
 
 

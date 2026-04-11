@@ -18,7 +18,7 @@ const resourceTypes: ResourceType[] = [
 
 export const ResourceMatrix: React.FC<ResourceMatrixProps> = ({ tokens, bonuses }) => {
   return (
-    <div className="asset-matrix grid grid-cols-6 gap-1">
+    <div className="asset-matrix grid grid-cols-6 gap-1 w-full max-w-full">
       {resourceTypes.map(type => (
         <Token key={`token-${type}`} type={type} count={tokens[type] || 0} />
       ))}
