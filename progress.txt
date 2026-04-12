@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-021
+- **What was implemented**:
+  - **STORY-021**: 修复左下角设置齿轮孤立。将设置齿轮图标从 `PublicResourcePool.tsx` 移动到 `GameArena.tsx` 的左侧资产栏底部，使其与其他 UI 元素对齐，消除了孤立感。同时将设置 Modal 也移至 `GameArena.tsx` 中。
+- **Files changed**: `src/components/PublicResourcePool.tsx`, `src/components/GameArena.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 移动组件时，需要注意状态（如 `isSettingsOpen`）和副作用（如修改 document 样式的 `handleScaleChange`）的迁移。
+  - 将孤立的 UI 元素移动到逻辑相关的区域（如将设置按钮移至左侧控制/资产面板底部）可以提升 UI 的整体感和对齐度。
+---
+
 ## [2026-04-12] - STORY-020
 - **What was implemented**:
   - **STORY-020**: 优化历史抽屉入口。将 `GameArena.tsx` 中历史抽屉入口按钮的位置调整为 `fixed bottom-4 right-4`，并将图标替换为精致的羊皮纸卷轴图标 `📜`。
@@ -103,7 +112,7 @@ This file tracks the progress of the Ralph loop iterations.
   - **STORY-009**: 顶部悬浮框融入主界面。移除了 `GameArena.tsx` 中 Turns 指示器的外框样式（背景、边框、阴影），使其变成纯文本和头像的组合，不再像个独立的弹窗，更好地融入了主界面。
 - **Files changed**: `src/components/GameArena.tsx`
 - **💣 踩坑与经验 (Learnings):**
-  - 对于漂浮在页面顶部的独立小组件，如果其背景和边框使其看起来像个脱离文档流的“Debug 弹窗”，去掉外框样式使其变成纯文本/图标组合，往往能更好地融入整体 UI。
+  - 对于漂浮在页面顶部的独立小组件，如果其背景 and 边框使其看起来像个脱离文档流的“Debug 弹窗”，去掉外框样式使其变成纯文本/图标组合，往往能更好地融入整体 UI。
 ---
 
 ## [2026-04-12] - STORY-008
@@ -130,7 +139,6 @@ This file tracks the progress of the Ralph loop iterations.
   - 在深色背景下，`text-parchment` 可能亮度不足或未正确解析，使用明确的金色十六进制颜色（如 `#bf953f`）可以显著提升可见度和视觉效果。
 ---
 
-
 ## [2026-04-12] - STORY-005
 - **What was implemented**:
   - **STORY-005**: 修复了贵族威望分数的物理碰撞。将 `PrestigeBadge.tsx` 中的定位从 `top-1 right-1` 改为 `-top-2 -right-2`，并使 `PatronSlot.tsx` 的外层容器为 `relative`，将 `PrestigeBadge` 移出带有 `overflow-hidden` 的内层容器，确保角标悬浮显示且不被裁剪。
@@ -139,7 +147,6 @@ This file tracks the progress of the Ralph loop iterations.
   - 当子元素需要超出父容器边界显示（如负值的 absolute 定位）时，必须确保父容器没有 `overflow-hidden`。
   - 如果父容器必须使用 `overflow-hidden`，可以将需要溢出显示的子元素移到与该容器同级的位置，并使用共同的 `relative` 祖先容器进行定位。
 ---
-
 
 ## [2026-04-12] - STORY-004
 - **What was implemented**:

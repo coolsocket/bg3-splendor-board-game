@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Token } from './Token';
 import type { ResourceType } from './TokenTypes';
 import { useAudioStore } from '../store/audioStore';
@@ -7,7 +7,7 @@ import { usePlayerStore } from '../store/playerStore';
 import { ResourceType as DomainResourceType } from '../domain/models';
 import { WildcardPool } from './WildcardPool';
 
-const Modal = React.lazy(() => import('./common/Modal').then(m => ({ default: m.Modal })));
+
 
 
 interface PublicResourcePoolProps {
@@ -26,18 +26,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   const totalTokens = Object.values(storePlayer.resources).reduce((sum, count) => sum + (count || 0), 0);
   const isTokenLimitReached = totalTokens >= 10;
 
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [scale, setScale] = useState(() => {
-    if (typeof document !== 'undefined') {
-      return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-scale')) || 0.9;
-    }
-    return 0.9;
-  });
 
-  const handleScaleChange = (newScale: number) => {
-    setScale(newScale);
-    document.documentElement.style.setProperty('--card-scale', newScale.toString());
-  };
   
   const resources: Record<ResourceType, number> = {
     RADIANT_GEM: storeResources[DomainResourceType.RADIANT_GEM] || 0,
@@ -60,22 +49,6 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
     <div className="public-resource-pool flex justify-between items-center py-2 bg-gradient-to-br from-[#1a1c23]/95 to-[#101216]/95 border-b-2 border-gold-dark/30 shadow-heavy z-elevated global-hud backdrop-blur-sm">
       <div className="flex items-center gap-4 flex-1 global-info">
         <div className="relative">
-          <React.Suspense fallback={null}>
-            <Modal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} title="Settings">
-              <div className="flex flex-col gap-2">
-                <label className="text-gold text-sm block">Card Scale: {scale.toFixed(1)}</label>
-                <input
-                  type="range"
-                  min="0.5"
-                  max="1.5"
-                  step="0.1"
-                  value={scale}
-                  onChange={(e) => handleScaleChange(parseFloat(e.target.value))}
-                  className="w-full accent-gold"
-                />
-              </div>
-            </Modal>
-          </React.Suspense>
         </div>
       </div>
       
@@ -129,16 +102,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
               />
             </div>
           </div>
-          <button 
-            className="text-gold p-2 rounded hover:bg-white/10 transition-all hover:scale-105 hover:shadow-[0_0_8px_rgba(212,175,55,0.5)] ml-2"
-            onClick={() => setIsSettingsOpen(true)}
-            aria-label="Settings"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="3"></circle>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
-          </button>
+
         </div>
       </div>
 

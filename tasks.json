@@ -205,13 +205,13 @@
     },
     {
       "id": "STORY-021",
-      "title": "统一代币几何形态（百搭代币圆形化）",
-      "description": "前 5 个是圆球，百搭代币（5）是圆角矩形。统一为圆形。",
+      "title": "修复左下角设置齿轮孤立",
+      "description": "齿轮图标孤立。将其移动到左侧资产栏的顶部或底部，使其与其他 UI 元素对齐，消除孤立感。",
       "acceptanceCriteria": [
-        "1. 百搭代币变为圆形"
+        "1. 齿轮图标与左侧资产栏对齐"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-022",

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PlayerBoard, type PlayerBoardProps } from './PlayerBoard';
 import { useGameSystemStore } from '../store/gameSystemStore';
 import { CardMarket, type CardMarketProps } from './CardMarket';
@@ -13,6 +13,7 @@ import { useUIStore } from '../store/uiStore';
 import { usePlayerActions } from '../hooks/usePlayerActions';
 
 const EventLog = React.lazy(() => import('./EventLog').then(m => ({ default: m.EventLog })));
+const Modal = React.lazy(() => import('./common/Modal').then(m => ({ default: m.Modal })));
 
 import { AssetRepository } from '../repositories/assetRepository';
 import { Avatar } from './common/Avatar';
@@ -36,6 +37,18 @@ export const GameArena: React.FC<GameArenaProps> = ({
   disabledTokens = []
 }) => {
   const { isHistoryOpen, expandedPlayerName, setHistoryOpen, setExpandedPlayerName } = useUIStore();
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [scale, setScale] = useState(() => {
+    if (typeof document !== 'undefined') {
+      return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-scale')) || 0.9;
+    }
+    return 0.9;
+  });
+
+  const handleScaleChange = (newScale: number) => {
+    setScale(newScale);
+    document.documentElement.style.setProperty('--card-scale', newScale.toString());
+  };
   const { currentPlayerIndex } = useGameSystemStore();
   const availablePatrons = usePublicStore((state) => state.availablePatrons);
 
@@ -148,6 +161,19 @@ export const GameArena: React.FC<GameArenaProps> = ({
           <div className="mt-auto">
             <PlayerBoard {...currentPlayer} isCurrentPlayer={true} isActive={currentPlayerIndex === 0} />
           </div>
+          
+          <div className="flex justify-center mt-4">
+            <button 
+              className="text-gold p-2 rounded hover:bg-white/10 transition-all hover:scale-105 hover:shadow-[0_0_8px_rgba(212,175,55,0.5)]"
+              onClick={() => setIsSettingsOpen(true)}
+              aria-label="Settings"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div 
@@ -185,6 +211,23 @@ export const GameArena: React.FC<GameArenaProps> = ({
       >
         <span className="text-xl">📜</span>
       </button>
+
+      <React.Suspense fallback={null}>
+        <Modal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} title="Settings">
+          <div className="flex flex-col gap-2">
+            <label className="text-gold text-sm block">Card Scale: {scale.toFixed(1)}</label>
+            <input
+              type="range"
+              min="0.5"
+              max="1.5"
+              step="0.1"
+              value={scale}
+              onChange={(e) => handleScaleChange(parseFloat(e.target.value))}
+              className="w-full accent-gold"
+            />
+          </div>
+        </Modal>
+      </React.Suspense>
 
       <React.Suspense fallback={null}>
         <EventLog isOpen={isHistoryOpen} onClose={() => setHistoryOpen(false)} />
