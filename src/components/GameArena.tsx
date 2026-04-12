@@ -179,14 +179,11 @@ export const GameArena: React.FC<GameArenaProps> = ({
       
       {/* Scroll Icon Trigger for History */}
       <button
-        className="fixed bottom-6 right-6 bg-[var(--color-bg-obsidian)] border border-gold-dark/50 p-3 rounded-full shadow-heavy hover:bg-white/10 transition-colors z-40"
+        className="fixed bottom-4 right-4 bg-[var(--color-bg-obsidian)] border border-gold-dark/50 p-3 rounded-full shadow-heavy hover:bg-white/10 transition-colors z-40 flex items-center justify-center"
         onClick={() => setHistoryOpen(true)}
         aria-label="Open History"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#c9a063]">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-        </svg>
+        <span className="text-xl">📜</span>
       </button>
 
       <React.Suspense fallback={null}>
