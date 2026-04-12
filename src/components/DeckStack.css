@@ -45,6 +45,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2px;
 }
 
 .deck-count {
@@ -52,8 +53,8 @@
   font-size: 2rem;
   font-weight: bold;
   color: var(--color-gold);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-  line-height: 1;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8), 0 1px 1px rgba(255, 255, 255, 0.2);
+  line-height: 0.9;
 }
 
 .deck-label {
@@ -63,7 +64,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
-  line-height: 1;
-  margin-top: 2px;
+  line-height: 0.9;
+  text-shadow: 0 -0.5px 0.5px rgba(0, 0, 0, 0.8), 0 0.5px 0.5px rgba(255, 255, 255, 0.2);
 }
 
