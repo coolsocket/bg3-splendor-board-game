@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Token, type ResourceType } from './Token';
 import './PublicResourcePool.css';
+import { useAudioStore } from '../store/audioStore';
 import { usePublicStore } from '../store/publicStore';
 import { usePlayerStore } from '../store/playerStore';
 import { ResourceType as DomainResourceType } from '../domain/models';
@@ -16,6 +17,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   disabledTokens = [],
 }) => {
   const storeResources = usePublicStore((state) => state.availableResources);
+  const playAudio = useAudioStore((state) => state.playAudio);
   
   const storePlayer = usePlayerStore();
   const totalTokens = Object.values(storePlayer.resources).reduce((sum, count) => sum + (count || 0), 0);
@@ -116,11 +118,14 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
           <div className="normal-tokens-slot">
             <div className="colored-tokens">
               {resourceTypes.map((type) => (
-                <div key={type} className={`token-stack-container stack-${type.toLowerCase()} ${(resources[type] || 0) <= 0 ? 'empty' : ''}`} data-audio-action="take-token">
+                <div key={type} className={`token-stack-container stack-${type.toLowerCase()} ${(resources[type] || 0) <= 0 ? 'empty' : ''}`}>
                   <Token
                     type={type}
                     count={resources[type] || 0}
-                    onClick={() => onTokenClick && onTokenClick(type)}
+                    onClick={() => {
+                      playAudio('take-token');
+                      onTokenClick && onTokenClick(type);
+                    }}
                     disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
                     hideLabel={true}
                   />
@@ -129,10 +134,13 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
             </div>
           </div>
           <div className="wildcard-token-slot">
-            <div className={`wildcard-token ${(resources['TRUE_SOUL_TADPOLE'] || 0) <= 0 ? 'empty' : ''}`} data-audio-action="take-tadpole">
+            <div className={`wildcard-token ${(resources['TRUE_SOUL_TADPOLE'] || 0) <= 0 ? 'empty' : ''}`}>
               <WildcardPool
                 count={resources['TRUE_SOUL_TADPOLE'] || 0}
-                onClick={() => onTokenClick && onTokenClick('TRUE_SOUL_TADPOLE')}
+                onClick={() => {
+                  playAudio('take-tadpole');
+                  onTokenClick && onTokenClick('TRUE_SOUL_TADPOLE');
+                }}
                 disabled={disabledTokens.includes('TRUE_SOUL_TADPOLE') || (resources['TRUE_SOUL_TADPOLE'] || 0) <= 0}
               />
             </div>

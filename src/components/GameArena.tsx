@@ -13,14 +13,7 @@ import { PatronSlot } from './PatronSlot';
 import { useUIStore } from '../store/uiStore';
 import { usePlayerActions } from '../hooks/usePlayerActions';
 import './GameArena.css';
-import galeImg from '../assets/gale_portrait.png';
-import astarionImg from '../assets/astarion_portrait.png';
-
-const getAvatarImg = (name: string) => {
-  if (name === 'Gale') return galeImg;
-  if (name === 'Astarion') return astarionImg;
-  return null;
-};
+import { AssetRepository } from '../repositories/AssetRepository';
 
 export interface GameArenaProps {
   currentPlayer: PlayerBoardProps;
@@ -99,7 +92,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
             <div className="flex items-center gap-2">
               {[currentPlayer, ...opponents].map((player, index) => {
                 const isActive = index === currentPlayerIndex;
-                const avatarImg = getAvatarImg(player.playerName);
+                const avatarImg = AssetRepository.getAvatar(player.playerName);
                 return (
                   <React.Fragment key={player.playerName}>
                     <div className="flex flex-col items-center gap-0.5">

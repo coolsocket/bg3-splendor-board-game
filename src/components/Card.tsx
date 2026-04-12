@@ -2,6 +2,7 @@ import React from 'react';
 import './Card.css';
 import type { ResourceType } from './Token';
 import { getDisplayName } from './Token';
+import { useAudioStore } from '../store/audioStore';
 
 const resourceIcons: Record<ResourceType, string> = {
   RADIANT_GEM: '☀️',
@@ -42,11 +43,13 @@ export const Card: React.FC<CardProps> = ({
   const tierClass = `border-tier-${tier}`;
   const [isReserving, setIsReserving] = React.useState(false);
   const [isBuying, setIsBuying] = React.useState(false);
+  const playAudio = useAudioStore((state) => state.playAudio);
   
   const handleAction = (action: 'buy' | 'reserve' | 'select', e: React.MouseEvent) => {
     e.stopPropagation();
     if (action === 'reserve') {
       setIsReserving(true);
+      playAudio('reserve-card');
       setTimeout(() => {
         if (onInteract) {
           onInteract(action, id);
@@ -54,6 +57,7 @@ export const Card: React.FC<CardProps> = ({
       }, 600);
     } else if (action === 'buy') {
       setIsBuying(true);
+      playAudio('buy-card');
       setTimeout(() => {
         if (onInteract) {
           onInteract(action, id);
@@ -122,14 +126,12 @@ export const Card: React.FC<CardProps> = ({
               className="action-btn action-buy" 
               onClick={(e) => handleAction('buy', e)}
               disabled={!isAffordable}
-              data-audio-action="buy-card"
             >
               Buy
             </button>
             <button 
               className="action-btn action-reserve" 
               onClick={(e) => handleAction('reserve', e)}
-              data-audio-action="reserve-card"
             >
               Reserve
             </button>
