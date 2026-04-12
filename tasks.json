@@ -230,8 +230,8 @@
       "acceptanceCriteria": [
         "1. 设置齿轮与代币垂直居中对齐"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-024",
