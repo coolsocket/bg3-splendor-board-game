@@ -1,0 +1,26 @@
+.card-base {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-md, 8px);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-hoverable {
+  cursor: pointer;
+}
+
+.card-hoverable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.5);
+  z-index: 10;
+}
+
+.card-selected {
+  outline: 3px solid var(--color-arcane, #38bdf8);
+  outline-offset: 2px;
+}

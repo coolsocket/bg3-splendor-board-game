@@ -1,16 +1,8 @@
 .patron-card-slot {
   width: 100px;
-  aspect-ratio: 2 / 3;
   background-color: #4a0e17; /* Dark burgundy */
   border: 2px solid transparent;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.8);
-  overflow: hidden;
 }
 
 .patron-card-slot::before {

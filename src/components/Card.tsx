@@ -3,6 +3,7 @@ import './Card.css';
 import type { ResourceType } from './Token';
 import { getDisplayName } from './Token';
 import { useAudioStore } from '../store/audioStore';
+import { CardBase } from './common/CardBase';
 
 const resourceIcons: Record<ResourceType, string> = {
   RADIANT_GEM: '☀️',
@@ -71,9 +72,11 @@ export const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <div 
-      className={`card ${tierClass} ${isAffordable ? 'affordable' : 'unaffordable'} ${isSelected ? 'selected' : ''} ${isReserving ? 'reserving' : ''} ${isBuying ? 'buying' : ''} ${isDeck ? 'is-deck' : ''}`}
+    <CardBase 
+      className={`card ${tierClass} ${isAffordable ? 'affordable' : 'unaffordable'} ${isReserving ? 'reserving' : ''} ${isBuying ? 'buying' : ''} ${isDeck ? 'is-deck' : ''}`}
       onClick={(e) => !isDeck && handleAction('select', e)}
+      isHoverable={!isDeck}
+      isSelected={isSelected}
       role="button"
       aria-label={isDeck ? `Deck tier ${tier}, count ${deckCount}` : `Card tier ${tier}, prestige points ${prestigePoints}, bonus ${providedBonus}`}
     >
@@ -138,6 +141,6 @@ export const Card: React.FC<CardProps> = ({
           </div>
         </div>
       )}
-    </div>
+    </CardBase>
   );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import './PatronSlot.css';
 import type { Patron } from '../domain/models';
 import { PrestigeBadge } from './PrestigeBadge';
+import { CardBase } from './common/CardBase';
 
 export interface PatronSlotProps {
   patron?: Patron;
@@ -11,7 +12,7 @@ export interface PatronSlotProps {
 export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
   if (!patron) {
     return (
-      <div className="patron-card-slot empty">
+      <CardBase className="patron-card-slot empty" isHoverable={false}>
         <div className="patron-card-inner">
           <div className="patron-center-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="patron-icon-svg opacity-30">
@@ -21,12 +22,12 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
           </div>
           {children || <span className="patron-placeholder-text">Patron</span>}
         </div>
-      </div>
+      </CardBase>
     );
   }
 
   return (
-    <div className="patron-card-slot" title={patron.description}>
+    <CardBase className="patron-card-slot" title={patron.description} aria-label={`Patron ${patron.name}`}>
       <div className="patron-card-inner flex flex-col justify-between p-2 h-full relative">
         <div className="patron-name-container flex justify-center w-full min-w-0 mb-1">
           <span className="patron-name text-gold text-sm font-serif font-bold text-center truncate w-full">{patron.name}</span>
@@ -71,6 +72,6 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
           </div>
         </div>
       </div>
-    </div>
+    </CardBase>
   );
 };

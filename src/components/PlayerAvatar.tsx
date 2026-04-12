@@ -1,7 +1,7 @@
 import React from 'react';
 import './PlayerAvatar.css';
-import galeImg from '../assets/gale_portrait.png';
-import astarionImg from '../assets/astarion_portrait.png';
+import { Avatar } from './common/Avatar';
+import { AssetRepository } from '../repositories/AssetRepository';
 
 interface PlayerAvatarProps {
   playerName: string;
@@ -9,37 +9,24 @@ interface PlayerAvatarProps {
   prestigePoints: number;
 }
 
-const getAvatarImg = (name: string) => {
-  if (name === 'Gale') return galeImg;
-  if (name === 'Astarion') return astarionImg;
-  return null;
-};
-
 export const PlayerAvatar: React.FC<PlayerAvatarProps> = ({
   playerName,
   isActive = false,
   prestigePoints
 }) => {
-  const avatarImg = getAvatarImg(playerName);
+  const avatarImg = AssetRepository.getAvatar(playerName);
   return (
     <div className={`player-board-header flex items-center justify-between w-full ${isActive ? 'active-header' : ''}`}>
       <div className="flex items-center min-w-0">
-        <div className="relative mr-3">
-          <div className="player-avatar-container" style={{ width: '96px', height: '96px', flex: '0 0 96px', overflow: 'hidden', borderRadius: '50%' }}>
-            {avatarImg ? (
-              <img src={avatarImg} alt={playerName} className="player-avatar-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            ) : (
-              <div className="player-avatar-img bg-gray-700 flex items-center justify-center">
-                <svg className="avatar-placeholder-icon" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
-                </svg>
-              </div>
-            )}
-          </div>
-          <div className="prestige-crest">
-            <span>{prestigePoints}</span>
-          </div>
-        </div>
+        <Avatar
+          imageUrl={avatarImg || undefined}
+          name={playerName}
+          size="lg"
+          isActive={isActive}
+          prestigePoints={prestigePoints}
+          showPrestigeShield={true}
+          className="mr-3"
+        />
         <h2 className="player-name text-base font-bold text-white flex items-center min-w-0">
           <span className="truncate">{playerName}</span>
           {isActive && <span className="hourglass ml-2 text-amber-400" aria-label="Active turn">⏳</span>}

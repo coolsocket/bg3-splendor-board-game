@@ -14,6 +14,7 @@ import { useUIStore } from '../store/uiStore';
 import { usePlayerActions } from '../hooks/usePlayerActions';
 import './GameArena.css';
 import { AssetRepository } from '../repositories/AssetRepository';
+import { Avatar } from './common/Avatar';
 
 export interface GameArenaProps {
   currentPlayer: PlayerBoardProps;
@@ -96,18 +97,13 @@ export const GameArena: React.FC<GameArenaProps> = ({
                 return (
                   <React.Fragment key={player.playerName}>
                     <div className="flex flex-col items-center gap-0.5">
-                      <div className={`relative border ${isActive ? 'border-gold shadow-[0_0_5px_rgba(212,175,55,0.8)]' : 'border-gray-600 opacity-70'}`} style={{ width: '32px', height: '32px', flex: '0 0 32px', overflow: 'hidden', borderRadius: '50%' }}>
-                        {avatarImg ? (
-                          <img src={avatarImg} alt={player.playerName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                        ) : (
-                          <div className="w-full h-full bg-gray-700 flex items-center justify-center text-white font-bold text-sm">
-                            {player.playerName.charAt(0)}
-                          </div>
-                        )}
-                        {isActive && (
-                          <div className="absolute inset-0 border border-gold animate-pulse rounded-full"></div>
-                        )}
-                      </div>
+                      <Avatar
+                        imageUrl={avatarImg || undefined}
+                        name={player.playerName}
+                        size="sm"
+                        isActive={isActive}
+                        className={!isActive ? 'opacity-70' : ''}
+                      />
                       <span className={`text-2xs ${isActive ? 'text-gold font-bold' : 'text-parchment opacity-70'}`}>{player.playerName}</span>
                     </div>
                     {index < [currentPlayer, ...opponents].length - 1 && (

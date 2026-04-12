@@ -1,17 +1,7 @@
 /* Card.css */
 
 .card {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  border-radius: var(--radius-md);
-  position: relative;
-  cursor: pointer;
-  transition: all 0.2s ease;
   background-color: var(--color-bg-underdark); /* Fallback */
-  box-sizing: border-box;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
   transform: scale(var(--card-scale));
 }
 
