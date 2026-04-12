@@ -55,7 +55,6 @@
   flex: 0 0 96px;
   overflow: hidden;
   border-radius: 50%;
-  margin-right: 12px;
 }
 
 .player-avatar-img {
@@ -74,7 +73,7 @@
 
 .prestige-crest {
   position: absolute;
-  bottom: -4px;
+  bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, #bf953f 0%, #aa771c 100%);

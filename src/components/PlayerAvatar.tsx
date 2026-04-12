@@ -24,16 +24,18 @@ export const PlayerAvatar: React.FC<PlayerAvatarProps> = ({
   return (
     <div className={`player-board-header flex items-center justify-between w-full ${isActive ? 'active-header' : ''}`}>
       <div className="flex items-center min-w-0">
-        <div className="player-avatar-container" style={{ width: '96px', height: '96px', flex: '0 0 96px', overflow: 'hidden', borderRadius: '50%' }}>
-          {avatarImg ? (
-            <img src={avatarImg} alt={playerName} className="player-avatar-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          ) : (
-            <div className="player-avatar-img bg-gray-700 flex items-center justify-center">
-              <svg className="avatar-placeholder-icon" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
-              </svg>
-            </div>
-          )}
+        <div className="relative mr-3">
+          <div className="player-avatar-container" style={{ width: '96px', height: '96px', flex: '0 0 96px', overflow: 'hidden', borderRadius: '50%' }}>
+            {avatarImg ? (
+              <img src={avatarImg} alt={playerName} className="player-avatar-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            ) : (
+              <div className="player-avatar-img bg-gray-700 flex items-center justify-center">
+                <svg className="avatar-placeholder-icon" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
+                </svg>
+              </div>
+            )}
+          </div>
           <div className="prestige-crest">
             <span>{prestigePoints}</span>
           </div>

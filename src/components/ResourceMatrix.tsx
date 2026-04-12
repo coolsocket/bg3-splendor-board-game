@@ -31,13 +31,23 @@ export const ResourceMatrix: React.FC<ResourceMatrixProps> = ({ tokens, bonuses 
         <div key={type} className="resource-matrix-item">
           <span className="resource-icon">{resourceIcons[type]}</span>
           <span className="resource-divider">:</span>
-          <span className="resource-values">{tokens[type] || 0} / {bonuses[type] || 0}</span>
+          <span className="resource-values">
+            <span>{tokens[type] || 0}</span>
+            {bonuses[type] > 0 ? (
+              <span> / {bonuses[type]}</span>
+            ) : (
+              <span className="opacity-30"> / 0</span>
+            )}
+          </span>
         </div>
       ))}
       <div className="resource-matrix-item wildcard">
         <span className="resource-icon">{resourceIcons['TRUE_SOUL_TADPOLE']}</span>
         <span className="resource-divider">:</span>
-        <span className="resource-values">{tokens['TRUE_SOUL_TADPOLE'] || 0} / 0</span>
+        <span className="resource-values">
+          <span>{tokens['TRUE_SOUL_TADPOLE'] || 0}</span>
+          <span className="opacity-30"> / 0</span>
+        </span>
       </div>
     </div>
   );
