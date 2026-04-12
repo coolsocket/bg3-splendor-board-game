@@ -183,14 +183,14 @@
 
 /* TRUE_SOUL_TADPOLE (Wildcard) - Astral Prism */
 .token.true_soul_tadpole {
-  background: radial-gradient(circle at 25% 25%, #ffffff, #fef08a, #d4af37, #451a03);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-  border: 2px solid #d4af37; /* Gold border */
-  border-radius: var(--radius-md) !important; /* STORY-253: Non-spherical badge */
+  background: radial-gradient(circle at 25% 25%, #ffffff, #fffbeb, #ffd700, #b8860b);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.9), 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  border: 2px solid #ffd700; /* Gold border */
+  border-radius: 50% !important; /* Fulfill guardrails: Circles for consumables */
 }
 
 .token.true_soul_tadpole .token-inner {
-  border-radius: calc(var(--radius-md) - 2px) !important; /* STORY-253 */
+  border-radius: 50% !important;
 }
 .token.true_soul_tadpole:hover:not(.disabled) {
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 10px 15px -3px rgba(0, 0, 0, 0.5);

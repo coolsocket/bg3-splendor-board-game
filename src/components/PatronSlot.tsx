@@ -46,13 +46,23 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
           <div className="patron-cost-grid flex justify-center gap-1 flex-wrap">
             {Object.entries(patron.requirements).map(([resource, amount]) => {
               if (amount && amount > 0) {
+                const isWildcard = resource === 'TRUE_SOUL_TADPOLE';
                 return (
                   <div 
                     key={resource} 
-                    className={`patron-cost-item cost-${resource.toLowerCase()}`}
+                    className={`patron-cost-item cost-${resource.toLowerCase()} ${isWildcard ? 'is-wildcard' : ''}`}
                     title={`${resource}: ${amount}`}
                   >
-                    <span className="cost-amount text-white text-xl font-bold">{amount}</span>
+                    {isWildcard ? (
+                      <div className="relative flex items-center justify-center w-full h-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ffd700" stroke="#b8860b" strokeWidth="1" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" style={{ transform: 'translate(-50%, -50%) rotate(-45deg)' }}>
+                          <path d="M2 4 L5 12 L12 6 L19 12 L22 4 L18 20 L6 20 Z" />
+                        </svg>
+                        <span className="cost-amount text-white text-xl font-bold z-10">{amount}</span>
+                      </div>
+                    ) : (
+                      <span className="cost-amount text-white text-xl font-bold">{amount}</span>
+                    )}
                   </div>
                 );
               }
