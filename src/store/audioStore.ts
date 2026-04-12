@@ -6,7 +6,7 @@ interface AudioState {
   playAudio: (action: AudioAction) => void;
 }
 
-export const useAudioStore = create<AudioState>((_set) => ({
+export const useAudioStore = create<AudioState>(() => ({
   playAudio: (action) => {
     // For now, we just log the action.
     // In a full implementation, this would load and play the audio file.

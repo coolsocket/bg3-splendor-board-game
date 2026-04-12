@@ -6,7 +6,7 @@ import {
     getWinners,
     createPlayer,
 } from './domain/logic';
-import { ResourceType, CardTier, CardType } from './domain/models';
+import { CardTier } from './domain/models';
 import { executeAITurn as aiExecuteTurn, SHADOWHEART_AI } from './ai/GreedyAI';
 import type { Player, GameState, CardDeck, Patron } from './domain/models';
 import { TIER_1_CARDS, TIER_2_CARDS, TIER_3_CARDS, ALL_PATRONS } from './data/initialData';
