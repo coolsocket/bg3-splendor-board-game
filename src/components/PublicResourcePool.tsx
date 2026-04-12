@@ -91,26 +91,29 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
           <div className="absolute top-0 left-0 h-full bg-gold w-1/3 shadow-[0_0_5px_#d4af37]"></div>
         </div>
         <div className={`pool-tokens ${isTokenLimitReached ? 'tokens-disabled' : ''}`}>
-          <div className="colored-tokens">
-            {resourceTypes.map((type) => (
-              <div key={type} className={`token-stack-container stack-${type.toLowerCase()} ${(resources[type] || 0) <= 0 ? 'empty' : ''}`} data-audio-action="take-token">
-                <Token
-                  type={type}
-                  count={resources[type] || 0}
-                  onClick={() => onTokenClick && onTokenClick(type)}
-                  disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
-                  hideLabel={true}
-                />
-              </div>
-            ))}
+          <div className="normal-tokens-slot">
+            <div className="colored-tokens">
+              {resourceTypes.map((type) => (
+                <div key={type} className={`token-stack-container stack-${type.toLowerCase()} ${(resources[type] || 0) <= 0 ? 'empty' : ''}`} data-audio-action="take-token">
+                  <Token
+                    type={type}
+                    count={resources[type] || 0}
+                    onClick={() => onTokenClick && onTokenClick(type)}
+                    disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
+                    hideLabel={true}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="pool-separator"></div>
-          <div className={`wildcard-token ${(resources['TRUE_SOUL_TADPOLE'] || 0) <= 0 ? 'empty' : ''}`} data-audio-action="take-tadpole">
-            <WildcardPool
-              count={resources['TRUE_SOUL_TADPOLE'] || 0}
-              onClick={() => onTokenClick && onTokenClick('TRUE_SOUL_TADPOLE')}
-              disabled={disabledTokens.includes('TRUE_SOUL_TADPOLE') || (resources['TRUE_SOUL_TADPOLE'] || 0) <= 0}
-            />
+          <div className="wildcard-token-slot">
+            <div className={`wildcard-token ${(resources['TRUE_SOUL_TADPOLE'] || 0) <= 0 ? 'empty' : ''}`} data-audio-action="take-tadpole">
+              <WildcardPool
+                count={resources['TRUE_SOUL_TADPOLE'] || 0}
+                onClick={() => onTokenClick && onTokenClick('TRUE_SOUL_TADPOLE')}
+                disabled={disabledTokens.includes('TRUE_SOUL_TADPOLE') || (resources['TRUE_SOUL_TADPOLE'] || 0) <= 0}
+              />
+            </div>
           </div>
         </div>
       </div>
