@@ -1,8 +1,8 @@
 .card-market {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 20px;
+  gap: 0.67rem; /* STORY-422: Reduced gap */
+  padding: 10px; /* STORY-421: Reduced padding by 50% */
   background-color: rgba(26, 20, 15, 0.8); /* bg-camp-table-ish, dark brown translucent */
   border-radius: 8px;
   border: 1px solid rgba(212, 175, 55, 0.4); /* STORY-255: Goldish border */
@@ -19,7 +19,7 @@
   font-weight: bold;
   letter-spacing: 2px;
   color: #E8E2D2; /* text-parchment */
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* STORY-423: Reduced margin-bottom */
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   text-align: center;
   display: flex;

@@ -1,8 +1,9 @@
 .market-row {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5rem; /* STORY-422: Reduced gap */
   align-items: center;
+  justify-content: center; /* STORY-425: Center absolute alignment */
 }
 
 .deck-container {
@@ -12,9 +13,10 @@
 .cards-container {
   grid-column: span 4;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* STORY-424: Dynamic width */
+  gap: 0.5rem; /* STORY-422: Reduced gap */
   perspective: 1000px;
+  justify-content: center; /* STORY-425: Center absolute alignment */
 }
 
 @keyframes card-flip-in {
@@ -30,6 +32,6 @@
 
 .cards-container .card {
   animation: card-flip-in 0.5s ease-out;
-  max-width: 85%;
-  margin: 0 auto;
+  /* STORY-424: Removed max-width and margin to allow cards to fill space */
 }
+
