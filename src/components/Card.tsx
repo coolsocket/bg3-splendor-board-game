@@ -95,7 +95,7 @@ export const Card = React.memo(({
 
   return (
     <CardBase 
-      className={`group bg-bg-underdark shadow-heavy ${isAffordable ? 'shadow-glow-arcane animate-card-breathe' : 'grayscale-[40%] brightness-70'} ${isReserving ? 'animate-card-reserve' : ''} ${isBuying ? 'animate-card-buy' : ''} ${isDeck ? 'is-deck' : ''}`}
+      className={`group bg-bg-underdark shadow-heavy border-2 ${isAffordable ? 'border-[#bf953f] shadow-[0_0_15px_rgba(212,175,55,0.6)] animate-pulse' : 'border-[#bf953f]/30 grayscale-[40%] brightness-70'} ${isReserving ? 'animate-card-reserve' : ''} ${isBuying ? 'animate-card-buy' : ''} ${isDeck ? 'is-deck' : ''}`}
       onClick={(e) => !isDeck && handleAction('select', e)}
       isHoverable={!isDeck}
       isSelected={isSelected}
@@ -141,7 +141,7 @@ export const Card = React.memo(({
                   return (
                     <div 
                       key={resource} 
-                      className={`relative w-[48px] h-[48px] rounded-full flex items-center justify-center font-fantasy text-2xl font-black text-white text-shadow ring-1 ring-black shadow-md ${costGradients[resourceType]}`}
+                      className={`relative z-10 w-[48px] h-[48px] rounded-full flex items-center justify-center font-fantasy text-2xl font-black text-white text-shadow ring-1 ring-black shadow-md ${costGradients[resourceType]}`}
                       title={`${getDisplayName(resourceType)}: ${amount}`}
                     >
                       <span className="absolute text-[14px] opacity-25 z-0">{resourceIcons[resourceType]}</span>
@@ -156,20 +156,20 @@ export const Card = React.memo(({
 
           <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center gap-3 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 backdrop-blur-sm z-badge pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto">
             <button 
-              className="w-[80%] p-2 rounded-sm border border-gold bg-dark-red text-white font-fantasy font-bold text-sm cursor-pointer transition-all hover:bg-gold hover:text-black hover:shadow-glow-gold hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-500 disabled:bg-deep-black disabled:shadow-none" 
+              className="w-[80%] p-2 rounded-sm border border-[#bf953f] bg-[#2a0808] text-[#E8E2D2] font-fantasy font-bold text-sm cursor-pointer transition-all hover:bg-[#fbbf24] hover:text-black hover:shadow-[0_0_10px_rgba(251,191,36,0.8)] hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-500 disabled:bg-[#1a1a1a] disabled:shadow-none" 
               onClick={(e) => handleAction('select', e)}
             >
               Select
             </button>
             <button 
-              className="w-[80%] p-2 rounded-sm border border-gold bg-dark-red text-white font-fantasy font-bold text-sm cursor-pointer transition-all hover:bg-arcane hover:shadow-glow-arcane hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-500 disabled:bg-deep-black disabled:shadow-none" 
+              className="w-[80%] p-2 rounded-sm border border-[#bf953f] bg-[#2a0808] text-[#E8E2D2] font-fantasy font-bold text-sm cursor-pointer transition-all hover:bg-[#38bdf8] hover:text-black hover:shadow-[0_0_10px_rgba(56,189,248,0.8)] hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-500 disabled:bg-[#1a1a1a] disabled:shadow-none" 
               onClick={(e) => handleAction('buy', e)}
               disabled={!isAffordable}
             >
               Buy
             </button>
             <button 
-              className="w-[80%] p-2 rounded-sm border border-gold bg-dark-red text-white font-fantasy font-bold text-sm cursor-pointer transition-all hover:bg-infernal hover:shadow-glow-infernal hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-500 disabled:bg-deep-black disabled:shadow-none" 
+              className="w-[80%] p-2 rounded-sm border border-[#bf953f] bg-[#2a0808] text-[#E8E2D2] font-fantasy font-bold text-sm cursor-pointer transition-all hover:bg-[#f87171] hover:text-black hover:shadow-[0_0_10px_rgba(248,113,113,0.8)] hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-500 disabled:bg-[#1a1a1a] disabled:shadow-none" 
               onClick={(e) => handleAction('reserve', e)}
             >
               Reserve

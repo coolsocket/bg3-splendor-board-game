@@ -22,6 +22,7 @@ This skill codifies the hard-earned lessons, user emphases, and common agent mis
 - **Empty State Black Holes**: Do not leave pure black boxes for empty lists. Use wireframes or textured placeholders.
 - **Micro-Labels**: Do not put tiny, unreadable text inside small icons.
 - **Ignoring Proportions**: Do not scale down elements until they become unreadable.
+- **Layering Ignorance**: Do not forget to add `relative z-10` to elements inside containers with complex backgrounds or filters (like `backdrop-blur`) if they need to avoid being covered by overlays.
 
 ## 4. Architecture & Documentation Standards
 - **Layered Architecture**: Stick to Pure Domain -> Store -> UI -> Network.
