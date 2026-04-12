@@ -90,8 +90,8 @@
       "acceptanceCriteria": [
         "1. 悬浮框不再孤立，融入主界面"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-010",

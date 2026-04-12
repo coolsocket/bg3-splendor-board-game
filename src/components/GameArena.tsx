@@ -99,7 +99,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
         />
       )}
       
-      <div className="bg-[var(--color-bg-obsidian)] backdrop-blur-sm border border-gold-dark/30 p-2 flex items-center justify-center gap-3 my-2 rounded-lg shadow-heavy text-xs mx-auto w-fit max-w-lg">
+      <div className="p-2 flex items-center justify-center gap-3 my-2 text-xs mx-auto w-fit max-w-lg">
         <span className="text-[#c9a063] text-xs uppercase tracking-wider font-serif font-bold">Turns</span>
         <div className="flex items-center gap-2">
           {[currentPlayer, ...opponents].map((player, index) => {
