@@ -1,7 +1,7 @@
 import React from 'react';
 import './PlayerAvatar.css';
 import { Avatar } from './common/Avatar';
-import { AssetRepository } from '../repositories/AssetRepository';
+import { AssetRepository } from '../repositories/assetRepository';
 
 interface PlayerAvatarProps {
   playerName: string;

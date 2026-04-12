@@ -15,7 +15,7 @@ import './GameArena.css';
 
 const EventLog = React.lazy(() => import('./EventLog').then(m => ({ default: m.EventLog })));
 
-import { AssetRepository } from '../repositories/AssetRepository';
+import { AssetRepository } from '../repositories/assetRepository';
 import { Avatar } from './common/Avatar';
 
 export interface GameArenaProps {
