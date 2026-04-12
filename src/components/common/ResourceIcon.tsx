@@ -31,7 +31,7 @@ export const ResourceIcon = React.memo(({
 
   return (
     <span 
-      className={`resource-icon ${sizeClasses[size]} ${className}`}
+      className={`resource-icon inline-flex items-center justify-center aspect-square shrink-0 ${sizeClasses[size]} ${className}`}
       title={type.replace('_', ' ')}
     >
       {icon}

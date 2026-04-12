@@ -220,8 +220,8 @@
       "acceptanceCriteria": [
         "1. 所有代币保持正圆"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-023",

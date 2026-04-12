@@ -33,7 +33,7 @@ const getTokenClasses = (
   isSelected: boolean,
   className: string
 ) => {
-  const baseClasses = "token w-full aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 relative select-none box-border border-2 border-black/30";
+  const baseClasses = "token w-full aspect-square shrink-0 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 relative select-none box-border border-2 border-black/30";
   
   const sizeClasses = {
     sm: "max-w-[40px]",

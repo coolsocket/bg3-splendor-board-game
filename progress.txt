@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-022
+- **What was implemented**:
+  - **STORY-022**: 防止代币挤压变形。为 `Token.tsx` 的基础类增加了 `shrink-0`（已有 `aspect-square`），并为 `ResourceIcon.tsx` 增加了 `inline-flex items-center justify-center aspect-square shrink-0`，确保代币和图标在任何情况下都保持正圆/正方形，不被挤压。
+- **Files changed**: `src/components/Token.tsx`, `src/components/common/ResourceIcon.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在 Flex 布局中，即使设置了 `aspect-square`，如果不设置 `shrink-0`，元素在空间不足时仍会被挤压变形。
+  - 为 `ResourceIcon` 这种纯文本图标添加 `inline-flex` 和 `aspect-square` 可以使其表现得像一个真正的正方形图标容器。
+---
+
 ## [2026-04-12] - STORY-021
 - **What was implemented**:
   - **STORY-021**: 修复左下角设置齿轮孤立。将设置齿轮图标从 `PublicResourcePool.tsx` 移动到 `GameArena.tsx` 的左侧资产栏底部，使其与其他 UI 元素对齐，消除了孤立感。同时将设置 Modal 也移至 `GameArena.tsx` 中。
