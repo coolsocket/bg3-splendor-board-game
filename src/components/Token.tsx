@@ -1,6 +1,6 @@
 import React from 'react';
 import './Token.css';
-import { ResourceType, getDisplayName } from './TokenTypes';
+import { type ResourceType, getDisplayName } from './TokenTypes';
 
 interface TokenProps {
   type: ResourceType;

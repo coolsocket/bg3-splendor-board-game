@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.css';
-import { ResourceType, getDisplayName } from './TokenTypes';
+import { type ResourceType, getDisplayName } from './TokenTypes';
 import { useAudioStore } from '../store/audioStore';
 import { CardBase } from './common/CardBase';
 
