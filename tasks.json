@@ -300,8 +300,8 @@
       "acceptanceCriteria": [
         "1. 蝴蝶 Emoji 被删除"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     }
   ]
 }

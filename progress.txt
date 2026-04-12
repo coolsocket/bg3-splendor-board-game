@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-030
+- **What was implemented**:
+  - **STORY-030**: 删除 Gale 头像旁的蝴蝶 Emoji。经检查，`src/components/PlayerAvatar.tsx` 和 `src/components/PlayerBoard.tsx` 中均未发现蝴蝶 Emoji（🦋），项目中其他地方也未发现。确认该 Emoji 不存在或已被删除，符合暗黑奇幻的严肃风格。
+- **Files changed**: 无 (Confirmed clean)
+- **💣 踩坑与经验 (Learnings):**
+  - 有时任务要求的“删除”操作可能在当前代码库中已经完成，或者该元素从未存在。在这种情况下，通过全局搜索确认其不存在也是一种完成任务的方式。
+  - 搜索时排除了 `node_modules` 可以避免被第三方库的大量无用数据干扰。
+---
+
 ## [2026-04-12] - STORY-029
 - **What was implemented**:
   - **STORY-029**: 使用奇幻指针。将 `src/index.css` 中 `body` 和交互元素的自定义指针从 570KB 的 PNG 图片替换为轻量级的 Base64 编码 SVG 剑形指针，提升了加载性能并确保了奇幻风格。
