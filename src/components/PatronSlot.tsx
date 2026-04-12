@@ -39,7 +39,7 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
       title={patron.description}
       aria-label={`Patron ${patron.name}`}
     >
-      <div className="w-full h-full bg-[#4a0e17] rounded-md flex flex-col justify-between p-2 relative z-10 text-[#F5E6C4] overflow-hidden">
+      <div className="w-full h-full bg-[#4a0e17] bg-[radial-gradient(circle_at_center,#6b1a24_0%,#2a050a_100%)] rounded-md flex flex-col justify-between p-2 relative z-10 text-[#F5E6C4] overflow-hidden shadow-[inset_0_0_15px_rgba(0,0,0,0.8)]">
         <div className="flex justify-center w-full min-w-0 mb-1 pt-1">
           <span className="text-[#ffd700] text-[11px] font-serif font-bold text-center w-full">{patron.name}</span>
         </div>

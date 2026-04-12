@@ -250,8 +250,8 @@
       "acceptanceCriteria": [
         "1. Patron 底板有纹理感"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-026",

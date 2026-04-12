@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-025
+- **What was implemented**:
+  - **STORY-025**: 强化 Patron 底色质感。为 `PatronSlot.tsx` 中的贵族卡牌深红色底板增加了径向渐变（`radial-gradient`）和深色内阴影（`shadow-inner`），消除了原有的扁平“塑料感”，使其更符合暗黑奇幻风格。
+- **Files changed**: `src/components/PatronSlot.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在 Tailwind 中使用任意值语法（如 `bg-[radial-gradient(...)]`）可以非常方便地实现复杂的背景效果，而无需在 CSS 文件中定义类。
+  - 增加内阴影 `shadow-[inset_0_0_15px_rgba(0,0,0,0.8)]` 可以有效增加元素的体积感和深度感，消除扁平感。
+---
+
 ## [2026-04-12] - STORY-024
 - **What was implemented**:
   - **STORY-024**: 替换 Wildcard Emoji 为矢量图。将 `ResourceIcon.tsx` 中的 `TRUE_SOUL_TADPOLE` 从纯文本字符 '✹' 替换为精致的 SVG 灵吸怪/蝌蚪图标，使其符合暗黑奇幻风格。
