@@ -1,6 +1,6 @@
 import React from 'react';
 import './PlayerBoard.css';
-import { type ResourceType } from './Token';
+import type { ResourceType } from './TokenTypes';
 import { Card, type CardProps } from './Card';
 import { usePlayerStore } from '../store/playerStore';
 import type { ResourceCollection, Card as DomainCard } from '../domain/models';

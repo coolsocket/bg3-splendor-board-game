@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Token, type ResourceType } from './Token';
+import { Token } from './Token';
+import type { ResourceType } from './TokenTypes';
 import './PublicResourcePool.css';
 import { useAudioStore } from '../store/audioStore';
 import { usePublicStore } from '../store/publicStore';

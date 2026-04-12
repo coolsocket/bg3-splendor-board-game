@@ -5,7 +5,7 @@ import { usePublicStore } from '../store/publicStore';
 import { usePlayerStore } from '../store/playerStore';
 import { calculateEffectiveCost } from '../domain/logic';
 import { CardTier, ResourceType as DomainResourceType, type Card as DomainCard } from '../domain/models';
-import type { ResourceType } from './Token';
+import type { ResourceType } from './TokenTypes';
 import { MarketRow } from './MarketRow';
 
 export interface CardMarketProps {

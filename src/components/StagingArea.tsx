@@ -1,5 +1,6 @@
 import React from 'react';
-import { Token, type ResourceType } from './Token';
+import { Token } from './Token';
+import type { ResourceType } from './TokenTypes';
 import { Button } from './common/Button';
 import './StagingArea.css';
 
@@ -18,7 +19,7 @@ export const StagingArea: React.FC<StagingAreaProps> = ({
   onRemoveToken,
   isValid
 }) => {
-  const totalTokens = Object.values(tokens).reduce((sum, count) => sum + (count || 0), 0);
+  const totalTokens = Object.values(tokens).reduce((sum: number, count) => sum + (count || 0), 0);
 
   if (totalTokens === 0) return null;
 

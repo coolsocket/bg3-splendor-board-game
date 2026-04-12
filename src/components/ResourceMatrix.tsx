@@ -1,6 +1,6 @@
 import React from 'react';
 import './ResourceMatrix.css';
-import { type ResourceType } from './Token';
+import type { ResourceType } from './TokenTypes';
 import { ResourceIcon } from './common/ResourceIcon';
 
 interface ResourceMatrixProps {

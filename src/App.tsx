@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { GameArena } from './components/GameArena';
-import type { ResourceType } from './components/Token';
+import type { ResourceType } from './components/TokenTypes';
 import type { PlayerBoardProps } from './components/PlayerBoard';
 import type { CardMarketProps } from './components/CardMarket';
 import { usePublicStore } from './store/publicStore';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { type ResourceType } from '../Token';
+import type { ResourceType } from '../TokenTypes';
 
 interface ResourceIconProps {
   type: ResourceType;

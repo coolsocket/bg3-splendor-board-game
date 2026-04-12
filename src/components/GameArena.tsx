@@ -3,7 +3,7 @@ import { PlayerBoard, type PlayerBoardProps } from './PlayerBoard';
 import { useGameSystemStore } from '../store/gameSystemStore';
 import { CardMarket, type CardMarketProps } from './CardMarket';
 import { PublicResourcePool } from './PublicResourcePool';
-import type { ResourceType as TokenResourceType } from './Token';
+import type { ResourceType as TokenResourceType } from './TokenTypes';
 import { ResourceType as DomainResourceType } from '../domain/models';
 import { useTokenSelection } from '../hooks/useTokenSelection';
 import { usePublicStore } from '../store/publicStore';
