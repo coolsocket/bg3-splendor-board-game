@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-011
+- **What was implemented**:
+  - **STORY-011**: 优化卡背“二维红漆”。将 `DeckStack.tsx` 中卡背红圈的颜色改为暗血红色（`bg-[#8B0000]`），并移除了复杂的径向渐变和阴影，改用强烈的内阴影（`shadow-inner`），以模拟封蜡的体积感。同时修复了 `ResourceMatrix.tsx` 中的 lint 错误。
+- **Files changed**: `src/components/DeckStack.tsx`, `src/components/ResourceMatrix.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在处理视觉优化任务时，遵循具体指令（如使用 `shadow-inner` 和 `bg-[#8B0000]`）可以快速达到预期效果。
+  - 顺手修复无关文件的 lint 错误（如未使用的变量）可以保持项目的健康状态，确保后续流程顺利进行。
+---
+
 ## [2026-04-12] - STORY-010
 - **What was implemented**:
   - **STORY-010**: 卡牌数字加大。将 `Card.tsx` 中卡牌底部成本圆圈里的数字字号从 `text-2xl` 加大到 `text-3xl`，使其明显变大。

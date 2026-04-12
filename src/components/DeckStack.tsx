@@ -24,7 +24,7 @@ export const DeckStack: React.FC<DeckStackProps> = ({ tier, deckCount }) => {
           backgroundSize: '80%, cover'
         }}
       >
-        <div className="w-[70px] h-[70px] rounded-full bg-[#8b0000] bg-[radial-gradient(circle_at_30%_30%,#b22222,#7a0000_70%)] border border-white/20 shadow-[inset_0_3px_6px_rgba(255,255,255,0.6),inset_0_-3px_6px_rgba(0,0,0,0.8),0_5px_10px_rgba(0,0,0,0.7)] flex flex-col items-center justify-center">
+        <div className="w-[70px] h-[70px] rounded-full bg-[#8B0000] shadow-inner border border-white/20 flex flex-col items-center justify-center">
           <span className="font-serif text-2xl font-bold text-[#ffd700] leading-none text-shadow-[-1px_-1px_0_rgba(0,0,0,0.8),1px_1px_0_rgba(255,255,255,0.3),0_0_4px_rgba(0,0,0,0.5)]">{deckCount}</span>
           <span className="font-serif text-lg text-[#ffd700] uppercase tracking-wider font-bold leading-none text-shadow-[-0.5px_-0.5px_0_rgba(0,0,0,0.8),0.5px_0.5px_0_rgba(255,255,255,0.3)]">{tier === 1 ? 'I' : tier === 2 ? 'II' : 'III'}</span>
         </div>

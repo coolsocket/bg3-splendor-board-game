@@ -110,8 +110,8 @@
       "acceptanceCriteria": [
         "1. 卡背红圈有体积感，颜色符合暗黑奇幻"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-012",
