@@ -120,8 +120,8 @@
       "acceptanceCriteria": [
         "1. 魔法阵绝对居中"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-013",

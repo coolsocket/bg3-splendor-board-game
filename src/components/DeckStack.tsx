@@ -15,16 +15,20 @@ export const DeckStack: React.FC<DeckStackProps> = ({ tier, deckCount }) => {
       aria-label={`Deck tier ${tier}, count ${deckCount}`}
     >
       <div 
-        className="w-full h-full flex items-center justify-center"
+        className="w-full h-full flex items-center justify-center relative"
         style={{
           backgroundColor: 'var(--color-card-back-bg)',
-          backgroundImage: `url("${cardBackSvg}"), linear-gradient(to bottom, var(--color-card-back-gradient-start), var(--color-card-back-bg))`,
-          backgroundRepeat: 'no-repeat, no-repeat',
-          backgroundPosition: 'center, center',
-          backgroundSize: '80%, cover'
+          backgroundImage: `linear-gradient(to bottom, var(--color-card-back-gradient-start), var(--color-card-back-bg))`,
         }}
       >
-        <div className="w-[70px] h-[70px] rounded-full bg-[#8B0000] shadow-inner border border-white/20 flex flex-col items-center justify-center">
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] aspect-square bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url("${cardBackSvg}")`,
+            backgroundSize: 'contain'
+          }}
+        />
+        <div className="relative w-[70px] h-[70px] rounded-full bg-[#8B0000] shadow-inner border border-white/20 flex flex-col items-center justify-center">
           <span className="font-serif text-2xl font-bold text-[#ffd700] leading-none text-shadow-[-1px_-1px_0_rgba(0,0,0,0.8),1px_1px_0_rgba(255,255,255,0.3),0_0_4px_rgba(0,0,0,0.5)]">{deckCount}</span>
           <span className="font-serif text-lg text-[#ffd700] uppercase tracking-wider font-bold leading-none text-shadow-[-0.5px_-0.5px_0_rgba(0,0,0,0.8),0.5px_0.5px_0_rgba(255,255,255,0.3)]">{tier === 1 ? 'I' : tier === 2 ? 'II' : 'III'}</span>
         </div>

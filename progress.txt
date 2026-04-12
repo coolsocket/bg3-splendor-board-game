@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-012
+- **What was implemented**:
+  - **STORY-012**: 居中卡背魔法阵。将 `DeckStack.tsx` 中背景的魔法阵 SVG 移出 background-image，改为独立的绝对定位 `div`，使用 `top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2` 确保其与卡背和红圈绝对居中，消除了 Y 轴偏移。
+- **Files changed**: `src/components/DeckStack.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在使用 `background-position: center` 时，如果容器与背景图片的宽高比不一致，可能会因为浏览器的解析差异导致微小的 Y 轴偏移。
+  - 使用绝对定位 `top-1/2 left-1/2` 配合 `translate` 是确保元素在父容器中绝对居中的最可靠方法，尤其是在需要多个层叠元素完美对齐的场景下。
+---
+
 ## [2026-04-12] - STORY-011
 - **What was implemented**:
   - **STORY-011**: 优化卡背“二维红漆”。将 `DeckStack.tsx` 中卡背红圈的颜色改为暗血红色（`bg-[#8B0000]`），并移除了复杂的径向渐变和阴影，改用强烈的内阴影（`shadow-inner`），以模拟封蜡的体积感。同时修复了 `ResourceMatrix.tsx` 中的 lint 错误。
