@@ -84,95 +84,19 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
 
   const { viewMode = 'full', onClick } = props;
 
-  if (viewMode === 'summary') {
-    return (
-      <div 
-        className={`player-board summary-view ${isCurrent ? 'current-player' : ''} ${props.isActive ? 'active-player glow-arcane' : ''}`}
-        onClick={onClick}
-        style={{ cursor: 'pointer' }}
-      >
-        <PlayerAvatar playerName={playerName} isActive={props.isActive} prestigePoints={prestigePoints} />
-        <div className="player-board-content">
-          <div style={{ transform: 'scale(0.75)', transformOrigin: 'top left', width: '133.33%' }}>
-            <ResourceMatrix tokens={tokens} bonuses={bonuses} />
-            
-            <div className="section reserved-cards-section" style={{ marginTop: '1rem' }}>
-              <h3>Reserved Cards</h3>
-              <div className="reserved-slots-container">
-                {[0, 1, 2].map(index => {
-                  const card = reservedCards[index];
-                  return card ? (
-                    <div key={card.id} className="reserve-slot filled micro-card">
-                      <Card {...card} />
-                    </div>
-                  ) : (
-                    <div key={`empty-slot-${index}`} className="reserve-slot empty" />
-                  );
-                })}
-              </div>
-            </div>
-
-            {patrons.length > 0 && (
-              <div className="section patrons-section" style={{ marginTop: '1rem' }}>
-                <h3>Visited Patrons</h3>
-                <div className="patron-slots-container">
-                  {[0, 1].map(index => {
-                    const patron = patrons[index];
-                    return patron ? (
-                      <div key={patron.id} className="patron-slot filled">
-                        {patron.imageUrl ? (
-                          <img src={patron.imageUrl} alt={`Patron ${patron.id}`} className="patron-image" />
-                        ) : (
-                          <div className="patron-placeholder">
-                            <span>Patron</span>
-                            <span className="patron-vp">+{patron.prestigePoints} VP</span>
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-                      <div key={`empty-slot-${index}`} className="patron-slot empty" />
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className={`player-board ${isCurrent ? 'current-player' : ''} ${props.isActive ? 'active-player glow-arcane' : ''}`}>
-
-
-      <PlayerAvatar playerName={playerName} isActive={props.isActive} prestigePoints={prestigePoints} />
-
-      <div className="player-board-content">
-        {/* Resource Grid */}
-        <div className="section resource-grid-section">
-          <ResourceMatrix tokens={tokens} bonuses={bonuses} />
-        </div>
-
-
-        {/* Reserved Cards */}
-        <div className="section reserved-cards-section">
-          <h3>Reserved Cards</h3>
-          <div className="reserved-slots-container">
-            {[0, 1, 2].map(index => {
-              const card = reservedCards[index];
-              return card ? (
-                <div key={card.id} className="reserve-slot filled micro-card">
-                  <Card {...card} />
-                </div>
-              ) : (
-                <div key={`empty-slot-${index}`} className="reserve-slot empty" />
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Visited Patrons */}
+    <div 
+      className={`border-container player-board ${viewMode}-view ${isCurrent ? 'current-player' : ''} ${props.isActive ? 'active-player glow-arcane' : 'inactive-player'}`}
+      onClick={onClick}
+      style={viewMode === 'summary' ? { cursor: 'pointer' } : undefined}
+    >
+      <div className="portrait-slot">
+        <PlayerAvatar playerName={playerName} isActive={props.isActive} prestigePoints={prestigePoints} />
+      </div>
+      
+      <div className="stats-grid">
+        <ResourceMatrix tokens={tokens} bonuses={bonuses} />
+        
         {patrons.length > 0 && (
           <div className="section patrons-section">
             <h3>Visited Patrons</h3>
@@ -198,6 +122,23 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
           </div>
         )}
       </div>
-    </div>
+      
+      <div className="reserved-cards">
+        <div className="section reserved-cards-section">
+          <h3>Reserved Cards</h3>
+          <div className="reserved-slots-container">
+            {[0, 1, 2].map(index => {
+              const card = reservedCards[index];
+              return card ? (
+                <div key={card.id} className="reserve-slot filled micro-card">
+                  <Card {...card} />
+                </div>
+              ) : (
+                <div key={`empty-slot-${index}`} className="reserve-slot empty dashed-border" />
+              );
+            })}
+          </div>
+        </div>
+      </div>
   );
 };
