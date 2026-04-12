@@ -1,5 +1,4 @@
 import React from 'react';
-import './Card.css';
 import { type ResourceType, getDisplayName } from './TokenTypes';
 import { useAudioStore } from '../store/audioStore';
 import { CardBase } from './common/CardBase';
@@ -11,6 +10,31 @@ const resourceIcons: Record<ResourceType, string> = {
   INFERNAL_IRON: '🔥',
   DARK_QUARTZ: '🌑',
   TRUE_SOUL_TADPOLE: '⭐'
+};
+
+const bonusGradients: Record<ResourceType, string> = {
+  'RADIANT_GEM': "bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,var(--color-radiant)_25%,var(--color-radiant-mid)_70%,var(--color-radiant-dark)_100%)]",
+  'ARCANE_CRYSTAL': "bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,var(--color-arcane)_25%,var(--color-arcane-mid)_70%,var(--color-arcane-dark)_100%)]",
+  'NATURES_BLESSING': "bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,var(--color-natures)_25%,var(--color-natures-mid)_70%,var(--color-natures-dark)_100%)]",
+  'INFERNAL_IRON': "bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,var(--color-infernal)_25%,var(--color-infernal-mid)_70%,var(--color-infernal-dark)_100%)]",
+  'DARK_QUARTZ': "bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,var(--color-dark)_25%,var(--color-dark-mid)_70%,var(--color-dark-dark)_100%)]",
+  'TRUE_SOUL_TADPOLE': "bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,var(--color-wildcard-pink)_25%,var(--color-wildcard-pink-mid)_70%,var(--color-wildcard-pink-dark)_100%)]"
+};
+
+const costGradients: Record<ResourceType, string> = {
+  'RADIANT_GEM': "bg-[radial-gradient(circle_at_25%_25%,#fef08a,#ca8a04)]",
+  'ARCANE_CRYSTAL': "bg-[radial-gradient(circle_at_25%_25%,#38bdf8,#0284c7)]",
+  'NATURES_BLESSING': "bg-[radial-gradient(circle_at_25%_25%,#4ade80,#16a34a)]",
+  'INFERNAL_IRON': "bg-[radial-gradient(circle_at_25%_25%,#f87171,#dc2626)]",
+  'DARK_QUARTZ': "bg-[radial-gradient(circle_at_25%_25%,#c084fc,#9333ea)]",
+  'TRUE_SOUL_TADPOLE': "bg-[radial-gradient(circle_at_25%_25%,#f472b6,#db2777)]"
+};
+
+const cardInnerStyle = {
+  backgroundColor: 'var(--color-parchment)',
+  backgroundImage: `linear-gradient(rgba(232, 226, 210, 0.5), rgba(216, 206, 180, 0.7)), url('../assets/parchment_texture.png')`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
 };
 
 export interface CardProps {
@@ -40,7 +64,6 @@ export const Card = React.memo(({
   isDeck = false,
   deckCount = 0
 }: CardProps) => {
-  const tierClass = `border-tier-${tier}`;
   const [isReserving, setIsReserving] = React.useState(false);
   const [isBuying, setIsBuying] = React.useState(false);
   const playAudio = useAudioStore((state) => state.playAudio);
@@ -72,49 +95,57 @@ export const Card = React.memo(({
 
   return (
     <CardBase 
-      className={`card ${tierClass} ${isAffordable ? 'affordable' : 'unaffordable'} ${isReserving ? 'reserving' : ''} ${isBuying ? 'buying' : ''} ${isDeck ? 'is-deck' : ''}`}
+      className={`group bg-bg-underdark shadow-heavy ${isAffordable ? 'shadow-glow-arcane animate-card-breathe' : 'grayscale-[40%] brightness-70'} ${isReserving ? 'animate-card-reserve' : ''} ${isBuying ? 'animate-card-buy' : ''} ${isDeck ? 'is-deck' : ''}`}
       onClick={(e) => !isDeck && handleAction('select', e)}
       isHoverable={!isDeck}
       isSelected={isSelected}
-      role="button"
+      role={isDeck ? "button" : "article"}
       aria-label={isDeck ? `Deck tier ${tier}, count ${deckCount}` : `Card tier ${tier}, prestige points ${prestigePoints}, bonus ${providedBonus}`}
+      tabIndex={isDeck ? undefined : -1}
     >
       {isDeck ? (
-        <div className="card-inner deck-content flex flex-col items-center justify-center">
+        <div 
+          className="w-full h-full flex flex-col items-center justify-center"
+          style={cardInnerStyle}
+        >
           <span className="deck-count">{deckCount}</span>
           <span className="deck-label">Tier {tier}</span>
         </div>
       ) : (
-        <div className="card-inner p-1">
-          <div className="card-header flex justify-between items-center">
-            <div className="card-prestige-container">
+        <div 
+          className="w-full h-full flex flex-col justify-between p-1 box-border relative"
+          style={cardInnerStyle}
+        >
+          <div className="flex justify-between items-center p-2 mix-blend-multiply">
+            <div className="min-w-0">
               {prestigePoints > 0 && (
-                <span className="card-prestige">{prestigePoints}</span>
+                <span className="font-fantasy text-3xl font-bold text-text-dark text-shadow-sm">{prestigePoints}</span>
               )}
             </div>
-            <div className={`card-bonus-gem bonus-${providedBonus.toLowerCase()}`} />
+            <div className={`w-[38px] h-[38px] flex items-center justify-center filter drop-shadow-md [clip-path:polygon(50%_0%,100%_50%,50%_100%,0%_50%)] border border-white/60 ${bonusGradients[providedBonus]}`} />
           </div>
           
-          <div className="card-image-container">
+          <div className="flex-grow m-0 bg-bg-obsidian overflow-hidden flex items-center justify-center relative shadow-inner mix-blend-multiply">
             {imageUrl ? (
-              <img src={imageUrl} alt={`Card ${id}`} className="card-image" />
+              <img src={imageUrl} alt={`Card ${id}`} className="w-full h-full object-cover" />
             ) : (
-              <div className="card-image-placeholder" />
+              <div className="w-full h-full bg-gradient-to-br from-[#141414] to-[#050505] shadow-inner flex items-center justify-center" />
             )}
           </div>
 
-          <div className="card-footer absolute bottom-1 w-full flex justify-center">
-            <div className="card-cost-grid flex justify-center -space-x-2 pb-2">
+          <div className="absolute bottom-0 left-0 right-0 flex justify-center p-1 bg-black/60 backdrop-blur-sm border-top border-white/10 rounded-b-md z-10">
+            <div className="flex flex-wrap justify-center gap-1 mb-1">
               {Object.entries(cost).map(([resource, amount]) => {
                 if (amount && amount > 0) {
+                  const resourceType = resource.toUpperCase() as ResourceType;
                   return (
                     <div 
                       key={resource} 
-                      className={`cost-item cost-${resource.toLowerCase()} ring-1 ring-black`}
-                      title={`${getDisplayName(resource as ResourceType)}: ${amount}`}
+                      className={`relative w-[48px] h-[48px] rounded-full flex items-center justify-center font-fantasy text-2xl font-black text-white text-shadow ring-1 ring-black shadow-md ${costGradients[resourceType]}`}
+                      title={`${getDisplayName(resourceType)}: ${amount}`}
                     >
-                      <span className="cost-icon-watermark">{resourceIcons[resource.toUpperCase() as ResourceType]}</span>
-                      <span className="cost-amount">{amount}</span>
+                      <span className="absolute text-[14px] opacity-25 z-0">{resourceIcons[resourceType]}</span>
+                      <span className="relative z-10">{amount}</span>
                     </div>
                   );
                 }
@@ -123,16 +154,22 @@ export const Card = React.memo(({
             </div>
           </div>
 
-          <div className="card-actions-overlay">
+          <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center gap-3 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 backdrop-blur-sm z-badge pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto">
             <button 
-              className="action-btn action-buy" 
+              className="w-[80%] p-2 rounded-sm border border-gold bg-dark-red text-white font-fantasy font-bold text-sm cursor-pointer transition-all hover:bg-gold hover:text-black hover:shadow-glow-gold hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-500 disabled:bg-deep-black disabled:shadow-none" 
+              onClick={(e) => handleAction('select', e)}
+            >
+              Select
+            </button>
+            <button 
+              className="w-[80%] p-2 rounded-sm border border-gold bg-dark-red text-white font-fantasy font-bold text-sm cursor-pointer transition-all hover:bg-arcane hover:shadow-glow-arcane hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-500 disabled:bg-deep-black disabled:shadow-none" 
               onClick={(e) => handleAction('buy', e)}
               disabled={!isAffordable}
             >
               Buy
             </button>
             <button 
-              className="action-btn action-reserve" 
+              className="w-[80%] p-2 rounded-sm border border-gold bg-dark-red text-white font-fantasy font-bold text-sm cursor-pointer transition-all hover:bg-infernal hover:shadow-glow-infernal hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-500 disabled:bg-deep-black disabled:shadow-none" 
               onClick={(e) => handleAction('reserve', e)}
             >
               Reserve
