@@ -2,6 +2,16 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-005
+- **What was implemented**:
+  - **STORY-005**: 修复了贵族威望分数的物理碰撞。将 `PrestigeBadge.tsx` 中的定位从 `top-1 right-1` 改为 `-top-2 -right-2`，并使 `PatronSlot.tsx` 的外层容器为 `relative`，将 `PrestigeBadge` 移出带有 `overflow-hidden` 的内层容器，确保角标悬浮显示且不被裁剪。
+- **Files changed**: `src/components/PrestigeBadge.tsx`, `src/components/PatronSlot.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 当子元素需要超出父容器边界显示（如负值的 absolute 定位）时，必须确保父容器没有 `overflow-hidden`。
+  - 如果父容器必须使用 `overflow-hidden`，可以将需要溢出显示的子元素移到与该容器同级的位置，并使用共同的 `relative` 祖先容器进行定位。
+---
+
+
 ## [2026-04-12] - STORY-004
 - **What was implemented**:
   - **STORY-004**: 修复了贵族名字被截断的问题。将 `PatronSlot.tsx` 中卡牌的宽度从 `w-[100px]` 扩大至 `w-[120px]`，并将名字字体大小从 `text-xs` 缩小至 `text-[11px]`，同时移除了 `truncate` 类，确保名字（如 WITHERS, RAPHAEL, VLAAKITH）能够完整显示。

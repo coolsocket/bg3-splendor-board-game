@@ -35,7 +35,7 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
 
   return (
     <div 
-      className="w-[120px] aspect-[2/3] bg-gradient-to-br from-[#bf953f] via-[#fcf6ba] to-[#aa771c] p-[2px] rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.5),inset_0_0_20px_rgba(0,0,0,0.8)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_12px_rgba(0,0,0,0.6),0_0_15px_rgba(212,175,55,0.5)]"
+      className="relative w-[120px] aspect-[2/3] bg-gradient-to-br from-[#bf953f] via-[#fcf6ba] to-[#aa771c] p-[2px] rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.5),inset_0_0_20px_rgba(0,0,0,0.8)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_12px_rgba(0,0,0,0.6),0_0_15px_rgba(212,175,55,0.5)]"
       title={patron.description}
       aria-label={`Patron ${patron.name}`}
     >
@@ -44,7 +44,6 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
           <span className="text-[#ffd700] text-[11px] font-serif font-bold text-center w-full">{patron.name}</span>
         </div>
         
-        <PrestigeBadge prestigePoints={patron.points} />
         
         <div className="flex-grow flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#ffd700] opacity-50">
@@ -83,6 +82,7 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
           </div>
         </div>
       </div>
+      <PrestigeBadge prestigePoints={patron.points} />
     </div>
   );
 };
