@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-029
+- **What was implemented**:
+  - **STORY-029**: 使用奇幻指针。将 `src/index.css` 中 `body` 和交互元素的自定义指针从 570KB 的 PNG 图片替换为轻量级的 Base64 编码 SVG 剑形指针，提升了加载性能并确保了奇幻风格。
+- **Files changed**: `src/index.css`
+- **💣 踩坑与经验 (Learnings):**
+  - 使用 Data URI（Base64）嵌入 SVG 作为光标可以避免外部图片加载失败的问题，且文件体积极小。
+  - 在 SVG 中使用 `linearGradient` 和 `rgba` 可以制作出具有金属质感和发光效果授权的指针。
+---
+
 ## [2026-04-12] - STORY-028
 - **What was implemented**:
   - **STORY-028**: 添加交互层视觉反馈。为 `Card.tsx` 增加了 `hover:scale-105` 效果；为 `Token.tsx` 增加了 `hover:scale-105` 效果（非禁用状态下），提升了可交互元素的视觉反馈。卡牌已有的 `isAffordable` 状态已经具备高亮边框和呼吸灯效果（`animate-pulse`），符合验收标准。

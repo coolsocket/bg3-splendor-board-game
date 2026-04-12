@@ -290,8 +290,8 @@
       "acceptanceCriteria": [
         "1. 替换为自定义指针"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-030",
