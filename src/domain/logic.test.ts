@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { checkPatronVisits, createPlayer, createEmptyResourceCollection, calculateEffectiveCost, getWinners, SeededRandom } from './logic';
+import { checkPatronVisits, createPlayer, createEmptyResourceCollection, calculateEffectiveCost, getWinners, SeededRandom, hasEnoughResources, reserveCard } from './logic';
 import { ResourceType, CardTier, CardType } from './models';
-import type { Patron, GameState } from './models';
+import type { Patron, GameState, Card } from './models';
 
 describe('checkPatronVisits', () => {
     const player = createPlayer('1', 'Test Player');
@@ -179,5 +179,46 @@ describe('SeededRandom', () => {
         const rng1 = new SeededRandom('seed1');
         const rng2 = new SeededRandom('seed2');
         expect(rng1.next()).not.toBe(rng2.next());
+    });
+});
+
+describe('hasEnoughResources', () => {
+    it('should return true if available has more or equal resources', () => {
+        const available = { [ResourceType.RADIANT_GEM]: 3 };
+        const required = { [ResourceType.RADIANT_GEM]: 2 };
+        expect(hasEnoughResources(available, required)).toBe(true);
+    });
+
+    it('should return false if available has less resources', () => {
+        const available = { [ResourceType.RADIANT_GEM]: 1 };
+        const required = { [ResourceType.RADIANT_GEM]: 2 };
+        expect(hasEnoughResources(available, required)).toBe(false);
+    });
+
+    it('should return true if required is empty', () => {
+        const available = { [ResourceType.RADIANT_GEM]: 1 };
+        const required = {};
+        expect(hasEnoughResources(available, required)).toBe(true);
+    });
+});
+
+describe('reserveCard', () => {
+    const player = createPlayer('1', 'Test Player');
+    const card = { id: '1', name: 'Card' } as Card;
+
+    it('should allow reserving a card if less than 3 reserved', () => {
+        const result = reserveCard(player, card);
+        expect(result).toBeTruthy();
+        expect(result?.reservedCards.length).toBe(1);
+        expect(result?.reservedCards[0].id).toBe('1');
+    });
+
+    it('should NOT allow reserving more than 3 cards', () => {
+        const fullPlayer = {
+            ...player,
+            reservedCards: [card, card, card],
+        };
+        const result = reserveCard(fullPlayer, card);
+        expect(result).toBeNull();
     });
 });
