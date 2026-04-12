@@ -235,13 +235,13 @@
     },
     {
       "id": "STORY-024",
-      "title": "优化 Patron 成本排列",
-      "description": "贵族卡下方成本是对角线堆叠。改成水平并排（flex-row gap-1）。",
+      "title": "替换 Wildcard Emoji 为矢量图",
+      "description": "百搭代币使用矢量图标。相关代码可能在 `src/components/common/ResourceIcon.tsx` 中，或者在其他渲染百搭代币（True Soul Tadpole）的地方。目前它可能是一个字符 '✹'，但任务要求将其替换为 SVG 蝌蚪或灵吸怪图标。",
       "acceptanceCriteria": [
-        "1. Patron 成本水平排列"
+        "1. 百搭代币使用矢量图标"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-025",

@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-024
+- **What was implemented**:
+  - **STORY-024**: 替换 Wildcard Emoji 为矢量图。将 `ResourceIcon.tsx` 中的 `TRUE_SOUL_TADPOLE` 从纯文本字符 '✹' 替换为精致的 SVG 灵吸怪/蝌蚪图标，使其符合暗黑奇幻风格。
+- **Files changed**: `src/components/common/ResourceIcon.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在 React 中，将 `Record<string, string>` 的字典值类型改为 `Record<string, React.ReactNode>` 可以非常方便地将纯文本 Emoji 替换为复杂的 SVG 图标，而不需要修改使用该字典的渲染逻辑。
+  - 使用 SVG 的 `width="1em"` 和 `height="1em"` 可以让 SVG 图标自动继承父元素的字体大小，非常适合用作文本内嵌图标。
+---
+
 ## [2026-04-12] - STORY-023
 - **What was implemented**:
   - **STORY-023**: 对齐设置齿轮。将设置齿轮按钮从 `GameArena.tsx` 左侧列底部移动到 `ResourceMatrix.tsx` 中，与 True Soul Tadpole 代币（资源图标）水平居中对齐，消除了孤立感并确保了视觉对齐。
