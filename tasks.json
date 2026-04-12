@@ -160,8 +160,8 @@
       "acceptanceCriteria": [
         "1. 盾牌位置优化，视觉更和谐"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-017",
