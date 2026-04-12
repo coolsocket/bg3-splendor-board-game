@@ -203,45 +203,55 @@
 /* Actions Overlay */
 .card-actions-overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
-  justify-content: space-around;
-  padding: 8px;
-  transform: translateY(100%);
-  transition: transform 0.2s ease;
-  backdrop-filter: blur(2px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  z-index: 5;
 }
 
 .card:hover .card-actions-overlay {
-  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .action-btn {
-  padding: 4px 8px;
+  width: 80%;
+  padding: 8px 12px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-gold); /* Gold border */
   background: #1a0a0a; /* Dark background */
   color: #ffffff; /* White text */
   cursor: pointer;
   font-family: var(--font-fantasy);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: bold;
-  transition: background 0.2s, transform 0.1s;
+  transition: all 0.2s ease;
+  text-align: center;
 }
 
 .action-btn.action-buy:hover:not(:disabled) {
   background: var(--color-arcane);
   color: #ffffff;
-  box-shadow: 0 0 10px var(--color-arcane);
+  box-shadow: 0 0 15px var(--color-arcane);
+  transform: scale(1.05);
 }
 
 .action-btn.action-reserve:hover:not(:disabled) {
   background: var(--color-infernal);
   color: #ffffff;
-  box-shadow: 0 0 10px var(--color-infernal);
+  box-shadow: 0 0 15px var(--color-infernal);
+  transform: scale(1.05);
 }
 
 .action-btn:active:not(:disabled) {

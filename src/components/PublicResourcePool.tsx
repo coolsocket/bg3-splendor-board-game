@@ -97,7 +97,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
         <div className={`pool-tokens ${isTokenLimitReached ? 'tokens-disabled' : ''}`}>
           <div className="colored-tokens">
             {resourceTypes.map((type) => (
-              <div key={type} className={`token-stack-container stack-${type.toLowerCase()}`} data-audio-action="take-token">
+              <div key={type} className={`token-stack-container stack-${type.toLowerCase()} ${(resources[type] || 0) <= 0 ? 'empty' : ''}`} data-audio-action="take-token">
                 <Token
                   type={type}
                   count={resources[type] || 0}
@@ -109,7 +109,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
             ))}
           </div>
           <div className="pool-separator"></div>
-          <div className="wildcard-token" data-audio-action="take-tadpole">
+          <div className={`wildcard-token ${(resources['TRUE_SOUL_TADPOLE'] || 0) <= 0 ? 'empty' : ''}`} data-audio-action="take-tadpole">
             <WildcardPool
               count={resources['TRUE_SOUL_TADPOLE'] || 0}
               onClick={() => onTokenClick && onTokenClick('TRUE_SOUL_TADPOLE')}

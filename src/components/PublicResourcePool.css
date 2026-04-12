@@ -148,6 +148,13 @@
   box-shadow: 0 0 15px var(--glow-color);
 }
 
+.token-stack-container.empty,
+.wildcard-token.empty {
+  filter: grayscale(100%) brightness(50%);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .stack-radiant_gem { --glow-color: var(--color-radiant); }
 .stack-arcane_crystal { --glow-color: var(--color-arcane); }
 .stack-natures_blessing { --glow-color: var(--color-natures); }
