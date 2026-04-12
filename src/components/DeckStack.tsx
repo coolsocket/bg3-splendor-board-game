@@ -10,7 +10,7 @@ const cardBackSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/
 export const DeckStack: React.FC<DeckStackProps> = ({ tier, deckCount }) => {
   return (
     <div 
-      className={`w-full aspect-[2/3] rounded-md relative overflow-hidden transition-transform duration-300 border-2 border-[var(--color-tier-${tier})] shadow-[2px_2px_0_#1c0d02,3px_3px_0_#b58a3e,5px_5px_0_#1c0d02,6px_6px_0_#b58a3e,8px_8px_0_#1c0d02,9px_9px_0_#b58a3e,11px_11px_15px_rgba(0,0,0,0.6)] hover:-translate-y-1 cursor-pointer`}
+      className={`w-full aspect-[2/3] rounded-md relative overflow-hidden transition-transform duration-300 border-2 border-[var(--color-tier-${tier})] shadow-[2px_2px_0_#1c0d02,3px_3px_0_#e8e2d2,5px_5px_0_#1c0d02,6px_6px_0_#e8e2d2,8px_8px_0_#1c0d02,9px_9px_0_#e8e2d2,11px_11px_15px_rgba(0,0,0,0.6)] hover:-translate-y-1 cursor-pointer`}
       role="button" 
       aria-label={`Deck tier ${tier}, count ${deckCount}`}
     >

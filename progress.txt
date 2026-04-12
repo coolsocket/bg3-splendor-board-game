@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-015
+- **What was implemented**:
+  - **STORY-015**: 修复牌库厚度色彩割裂。将 `DeckStack.tsx` 中模拟牌库厚度的侧边线条颜色从黄色（`#b58a3e`）改为羊皮纸色（`#e8e2d2`），使牌库侧边颜色与整体风格统一，消除色彩割裂感。
+- **Files changed**: `src/components/DeckStack.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在处理卡牌堆叠效果时，使用阴影（`box-shadow`）来模拟厚度是一种常见手法。如果线条颜色与正面材质或边框颜色不一致，会导致色彩割裂。
+  - 将黄色线条改为羊皮纸色（`#e8e2d2`）能更好地模拟羊皮纸卡牌堆叠的物理质感，提升整体的材质感。
+---
+
 ## [2026-04-12] - STORY-014
 - **What was implemented**:
   - **STORY-014**: 替换卡牌右上角菱形为奇幻图标。将 `Card.tsx` 中右上角代表产出的菱形 `div` 替换为使用 `ResourceIcon` 组件，并移除 `clip-path` 改为 `rounded-full` 圆形背景，使图标与左侧资产栏风格一致。
