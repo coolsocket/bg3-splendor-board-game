@@ -43,7 +43,7 @@ export const Avatar: React.FC<AvatarProps> = ({
         )}
       </div>
       {showPrestigeShield && prestigePoints !== undefined && (
-        <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 bg-gradient-to-br from-[#bf953f] to-[#aa771c] border border-[#5c4418] rounded-full w-[22px] h-[22px] flex items-center justify-center text-white font-bold text-[0.8rem] shadow-[0_2px_4px_rgba(0,0,0,0.6)] z-[var(--z-badge)]">
+        <div className="absolute -top-1 -left-1 bg-gradient-to-br from-[#bf953f] to-[#aa771c] border border-[#5c4418] rounded-full w-[22px] h-[22px] flex items-center justify-center text-white font-bold text-[0.8rem] shadow-[0_2px_4px_rgba(0,0,0,0.6)] z-[var(--z-badge)]">
           <span>{prestigePoints}</span>
         </div>
       )}

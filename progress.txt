@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-016
+- **What was implemented**:
+  - **STORY-016**: 优化威望盾牌锚点。将 `Avatar.tsx` 中威望盾牌（Prestige Badge）的定位从头像下方的 `bottom-[-6px] left-1/2 -translate-x-1/2` 移至左上角的 `-top-1 -left-1`，作为角标显示，消除了原先悬浮在头像下方的突兀感，使视觉更和谐。
+- **Files changed**: `src/components/common/Avatar.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在处理绝对定位的角标时，将其移至角落（如 `-top-1 -left-1`）通常比悬挂在边缘居中（如 `bottom-[-6px] left-1/2`）更符合常见的 UI 规范，视觉上也更稳定。
+  - 复用现有的 `rounded-full` 样式 and 渐变色，只需调整定位即可快速改善视觉平衡。
+---
+
 ## [2026-04-12] - STORY-015
 - **What was implemented**:
   - **STORY-015**: 修复牌库厚度色彩割裂。将 `DeckStack.tsx` 中模拟牌库厚度的侧边线条颜色从黄色（`#b58a3e`）改为羊皮纸色（`#e8e2d2`），使牌库侧边颜色与整体风格统一，消除色彩割裂感。
