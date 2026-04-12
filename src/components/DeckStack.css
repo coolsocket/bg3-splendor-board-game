@@ -31,9 +31,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: var(--z-above);
   gap: 0;
 }
+
 
 .deck-stamp {
   width: 70px;

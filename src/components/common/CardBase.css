@@ -17,8 +17,9 @@
 .card-hoverable:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.5);
-  z-index: 10;
+  z-index: var(--z-interactive);
 }
+
 
 .card-selected {
   outline: 3px solid var(--color-arcane, #38bdf8);

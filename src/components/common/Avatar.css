@@ -74,8 +74,9 @@
   font-weight: bold;
   font-size: 0.8rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.6);
-  z-index: 5;
+  z-index: var(--z-badge);
 }
+
 
 .avatar-letter {
   font-family: var(--font-serif, serif);

@@ -10,7 +10,7 @@
   position: absolute;
   top: -2px; left: -2px; right: -2px; bottom: -2px;
   background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-  z-index: 0;
+  z-index: var(--z-base);
   border-radius: 8px;
   pointer-events: none;
 }
@@ -42,7 +42,7 @@
   justify-content: space-between;
   padding: 0.5rem;
   position: relative;
-  z-index: 1;
+  z-index: var(--z-above);
 }
 
 .patron-placeholder-text {

@@ -4,8 +4,9 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 100;
+  z-index: var(--z-elevated);
   width: 250px;
+
   max-height: 200px;
   overflow-y: auto;
   background-color: rgba(26, 28, 35, 0.8);
