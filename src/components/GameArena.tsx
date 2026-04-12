@@ -36,8 +36,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
   onCardInteract,
   disabledTokens = []
 }) => {
-  const { isHistoryOpen, expandedPlayerName, setHistoryOpen, setExpandedPlayerName } = useUIStore();
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const { isHistoryOpen, expandedPlayerName, setHistoryOpen, setExpandedPlayerName, isSettingsOpen, setSettingsOpen } = useUIStore();
   const [scale, setScale] = useState(() => {
     if (typeof document !== 'undefined') {
       return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-scale')) || 0.9;
@@ -162,18 +161,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
             <PlayerBoard {...currentPlayer} isCurrentPlayer={true} isActive={currentPlayerIndex === 0} />
           </div>
           
-          <div className="flex justify-center mt-4">
-            <button 
-              className="text-gold p-2 rounded hover:bg-white/10 transition-all hover:scale-105 hover:shadow-[0_0_8px_rgba(212,175,55,0.5)]"
-              onClick={() => setIsSettingsOpen(true)}
-              aria-label="Settings"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-              </svg>
-            </button>
-          </div>
+          {/* Settings button moved to ResourceMatrix */}
         </div>
 
         <div 
@@ -213,7 +201,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
       </button>
 
       <React.Suspense fallback={null}>
-        <Modal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} title="Settings">
+        <Modal isOpen={isSettingsOpen} onClose={() => setSettingsOpen(false)} title="Settings">
           <div className="flex flex-col gap-2">
             <label className="text-gold text-sm block">Card Scale: {scale.toFixed(1)}</label>
             <input
