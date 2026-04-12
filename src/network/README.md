@@ -1,17 +1,24 @@
 # Network Layer
 
-This directory contains network communication logic, specifically for WebSockets, to handle real-time synchronization with the server.
+This directory contains the logic for network communication and real-time synchronization in the BG3 Splendor game.
 
 ## Main Files
 
--   `NetworkManager.ts`: Handles connecting to the WebSocket server, sending messages, and listening for incoming events.
+- `NetworkManager.ts`: The central service for WebSocket communication. It provides:
+    - **Connection Management**: Handling WebSocket lifecycle (connect, disconnect, reconnect).
+    - **Message Dispatching**: Sending local player actions to the server.
+    - **Event Handling**: Listening for server-side updates (e.g., opponent moves, game start) and updating local stores.
+    - **Synchronization**: Ensuring the local `GameState` remains consistent with the server's authoritative state.
 
 ## Architectural Role
 
-The Network Layer handles real-time synchronization with the server.
--   It is responsible for all external communication.
--   It should notify the Store Layer (`src/store`) of incoming events from the server.
--   The Store Layer may also use the Network Manager to send actions performed by the user to the server.
--   This ensures that the game state is synchronized across all clients.
+The Network Layer acts as the application's gateway to the outside world.
+1. **Side Effect Isolation**: All networking side effects are confined to this layer.
+2. **Store Integration**: It interacts with `src/store` to push updates into the application state and pull state for outgoing messages.
+3. **Abstraction**: Higher-level components and hooks use the `NetworkManager` without needing to know the details of the underlying protocol (WebSockets).
 
-Refer to `implementation_plan.md` for the industrialization principles regarding the Network Layer.
+## Principles
+
+- **Authoritative Server**: The client sends "intentions" (actions), but the server returns the "truth" (new state).
+- **Resilience**: The manager should handle network interruptions gracefully.
+- **Latency Compensation**: (Future) Potential for optimistic UI updates before server confirmation.
