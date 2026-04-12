@@ -4,14 +4,7 @@ import { useAudioStore } from '../store/audioStore';
 import { CardBase } from './common/CardBase';
 import { ResourceIcon } from './common/ResourceIcon';
 
-const resourceIcons: Record<ResourceType, string> = {
-  RADIANT_GEM: '☀️',
-  ARCANE_CRYSTAL: '🔮',
-  NATURES_BLESSING: '🍃',
-  INFERNAL_IRON: '🔥',
-  DARK_QUARTZ: '🌑',
-  TRUE_SOUL_TADPOLE: '⭐'
-};
+
 
 const bonusGradients: Record<ResourceType, string> = {
   'RADIANT_GEM': "bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,var(--color-radiant)_25%,var(--color-radiant-mid)_70%,var(--color-radiant-dark)_100%)]",
@@ -147,7 +140,7 @@ export const Card = React.memo(({
                       className={`relative z-10 w-[48px] h-[48px] rounded-full flex items-center justify-center font-fantasy text-3xl font-black text-white text-shadow ring-1 ring-black shadow-md ${costGradients[resourceType]}`}
                       title={`${getDisplayName(resourceType)}: ${amount}`}
                     >
-                      <span className="absolute text-[14px] opacity-25 z-0">{resourceIcons[resourceType]}</span>
+                      <ResourceIcon type={resourceType} size="sm" className="absolute opacity-25 z-0" />
                       <span className="relative z-10">{amount}</span>
                     </div>
                   );

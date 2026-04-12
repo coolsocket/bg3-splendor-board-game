@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-017
+- **What was implemented**:
+  - **STORY-017**: 统一卡牌成本符号与资产图标。将 `Card.tsx` 中渲染卡牌底部成本要求的地方，从使用普通的 Emoji 图标替换为使用 `ResourceIcon` 组件，从而与左侧资产栏的奇幻符号保持一致。
+- **Files changed**: `src/components/Card.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在替换硬编码的图形或 Emoji 时，复用已有的业务组件（如 `ResourceIcon`）不仅能快速实现风格的统一，还能保证符号与资产列表的完全一致。
+  - 注意 `ResourceIcon` 组件的尺寸属性，选择合适的尺寸（如 `sm`）以匹配原有的布局大小。
+---
+
 ## [2026-04-12] - STORY-016
 - **What was implemented**:
   - **STORY-016**: 优化威望盾牌锚点。将 `Avatar.tsx` 中威望盾牌（Prestige Badge）的定位从头像下方的 `bottom-[-6px] left-1/2 -translate-x-1/2` 移至左上角的 `-top-1 -left-1`，作为角标显示，消除了原先悬浮在头像下方的突兀感，使视觉更和谐。
