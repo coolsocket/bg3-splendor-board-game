@@ -126,7 +126,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-[250px_1fr_200px] grid-cols-1 gap-4 flex-grow min-h-0">
+      <div className="grid lg:grid-cols-[260px_1fr_260px] grid-cols-1 gap-6 flex-grow min-h-0">
         <div className="flex flex-col gap-6 items-stretch max-w-[300px] overflow-y-auto pl-2">
           
           <div className="flex flex-col gap-6 relative before:content-[''] before:absolute before:top-4 before:left-[10px] before:w-[1px] before:h-[calc(100%-2rem)] before:bg-gradient-to-b before:from-[rgba(201,160,99,0.8)] before:to-[rgba(201,160,99,0.2)] before:z-[var(--z-base)]">

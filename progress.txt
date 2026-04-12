@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-019
+- **What was implemented**:
+  - **STORY-019**: 平衡网格列间距。调整了 `GameArena.tsx` 中主 Grid 的列宽为对称的 `[260px_1fr_260px]` 并将 `gap` 从 `4` 增加到 `6`，确保左侧与中间的间距、中间与右侧的间距平衡一致，消除了视觉重心偏左的问题。
+- **Files changed**: `src/components/GameArena.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 当使用 CSS Grid 布局时，如果两侧列宽不一致（如 250px vs 200px），会导致中间的 `1fr` 列偏离屏幕中心，造成视觉重心偏移。
+  - 将两侧列宽调整为对称的尺寸（如 260px）并统一使用 `gap`，可以有效使整体布局居中平衡。
+---
+
 ## [2026-04-12] - STORY-018
 - **What was implemented**:
   - **STORY-018**: 增加保留卡槽 Padding。为 `PlayerBoard.tsx` 中 `RESERVED CARDS` 下方的虚线框容器增加了 `pb-4`，确保它们不会紧贴下边缘，留出呼吸空间。
