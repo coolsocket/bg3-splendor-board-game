@@ -5,7 +5,6 @@ import { usePublicStore } from '../store/publicStore';
 import { usePlayerStore } from '../store/playerStore';
 import { ResourceType as DomainResourceType } from '../domain/models';
 import { WildcardPool } from './WildcardPool';
-import { PatronSlot } from './PatronSlot';
 
 interface PublicResourcePoolProps {
   onTokenClick?: (type: ResourceType) => void;
@@ -17,7 +16,6 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   disabledTokens = [],
 }) => {
   const storeResources = usePublicStore((state) => state.availableResources);
-  const availablePatrons = usePublicStore((state) => state.availablePatrons);
   
   const storePlayer = usePlayerStore();
   const totalTokens = Object.values(storePlayer.resources).reduce((sum, count) => sum + (count || 0), 0);
@@ -119,14 +117,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
         </div>
       </div>
 
-      <div className="hud-right patron-area-horizontal">
-        {availablePatrons.map(patron => (
-          <PatronSlot key={patron.id} patron={patron} />
-        ))}
-        {Array.from({ length: Math.max(0, 4 - availablePatrons.length) }).map((_, i) => (
-          <PatronSlot key={`empty-${i}`} />
-        ))}
-      </div>
+
     </div>
   );
 };

@@ -9,6 +9,7 @@ import { usePublicStore } from '../store/publicStore';
 import { StagingArea } from './StagingArea';
 import { EventLog } from './EventLog';
 import { useEventLogStore } from '../store/eventLogStore';
+import { PatronSlot } from './PatronSlot';
 import './GameArena.css';
 import galeImg from '../assets/gale_portrait.png';
 import astarionImg from '../assets/astarion_portrait.png';
@@ -40,6 +41,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
 }) => {
   const [expandedPlayerName, setExpandedPlayerName] = useState<string>(currentPlayer.playerName);
   const { currentPlayerIndex } = useGameSystemStore();
+  const availablePatrons = usePublicStore((state) => state.availablePatrons);
 
   const playerTotalTokens = Object.values(currentPlayer.tokens).reduce((sum, count) => sum + (count || 0), 0);
   const { selectedTokens, selectToken, deselectToken, clearSelection, isValid, totalSelected } = useTokenSelection(resources, playerTotalTokens);
@@ -91,11 +93,6 @@ export const GameArena: React.FC<GameArenaProps> = ({
 
   return (
     <div className="game-arena bg-underdark">
-      <PublicResourcePool
-        onTokenClick={selectToken}
-        disabledTokens={disabledTokens}
-      />
-      
       {totalSelected > 0 && (
         <StagingArea
           tokens={selectedTokens}
@@ -158,9 +155,22 @@ export const GameArena: React.FC<GameArenaProps> = ({
           </div>
         </div>
         <div className="main-area bg-camp-table">
+          <PublicResourcePool
+            onTokenClick={selectToken}
+            disabledTokens={disabledTokens}
+          />
           <div className="h-full overflow-y-auto pb-20">
             <CardMarket {...market} onCardInteract={handleCardInteract} />
           </div>
+        </div>
+        <div className="patron-column">
+          <h3 className="text-gold font-serif mb-2 border-bottom border-gold/20 pb-1">Patrons</h3>
+          {availablePatrons.map(patron => (
+            <PatronSlot key={patron.id} patron={patron} />
+          ))}
+          {Array.from({ length: Math.max(0, 4 - availablePatrons.length) }).map((_, i) => (
+            <PatronSlot key={`empty-${i}`} />
+          ))}
         </div>
       </div>
       <EventLog />
