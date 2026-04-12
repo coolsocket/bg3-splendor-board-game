@@ -50,8 +50,8 @@
       "acceptanceCriteria": [
         "1. 威望分数变成悬浮角标，不压迫边框"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-006",
