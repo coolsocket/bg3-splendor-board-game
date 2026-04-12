@@ -8,11 +8,13 @@ import { type ResourceCollection } from '../domain/models';
 import { useTokenSelection } from '../hooks/useTokenSelection';
 import { usePublicStore } from '../store/publicStore';
 import { StagingArea } from './StagingArea';
-import { EventLog } from './EventLog';
 import { PatronSlot } from './PatronSlot';
 import { useUIStore } from '../store/uiStore';
 import { usePlayerActions } from '../hooks/usePlayerActions';
 import './GameArena.css';
+
+const EventLog = React.lazy(() => import('./EventLog').then(m => ({ default: m.EventLog })));
+
 import { AssetRepository } from '../repositories/AssetRepository';
 import { Avatar } from './common/Avatar';
 
@@ -165,7 +167,9 @@ export const GameArena: React.FC<GameArenaProps> = ({
         </svg>
       </button>
 
-      <EventLog isOpen={isHistoryOpen} onClose={() => setHistoryOpen(false)} />
+      <React.Suspense fallback={null}>
+        <EventLog isOpen={isHistoryOpen} onClose={() => setHistoryOpen(false)} />
+      </React.Suspense>
     </div>
   );
 };

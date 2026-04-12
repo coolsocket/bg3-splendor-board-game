@@ -6,7 +6,9 @@ import { usePublicStore } from '../store/publicStore';
 import { usePlayerStore } from '../store/playerStore';
 import { ResourceType as DomainResourceType } from '../domain/models';
 import { WildcardPool } from './WildcardPool';
-import { Modal } from './common/Modal';
+
+const Modal = React.lazy(() => import('./common/Modal').then(m => ({ default: m.Modal })));
+
 
 interface PublicResourcePoolProps {
   onTokenClick?: (type: ResourceType) => void;
@@ -69,20 +71,22 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
               <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
             </svg>
           </button>
-          <Modal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} title="Settings">
-            <div className="flex flex-col gap-2">
-              <label className="text-gold text-sm block">Card Scale: {scale.toFixed(1)}</label>
-              <input
-                type="range"
-                min="0.5"
-                max="1.5"
-                step="0.1"
-                value={scale}
-                onChange={(e) => handleScaleChange(parseFloat(e.target.value))}
-                className="w-full accent-gold"
-              />
-            </div>
-          </Modal>
+          <React.Suspense fallback={null}>
+            <Modal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} title="Settings">
+              <div className="flex flex-col gap-2">
+                <label className="text-gold text-sm block">Card Scale: {scale.toFixed(1)}</label>
+                <input
+                  type="range"
+                  min="0.5"
+                  max="1.5"
+                  step="0.1"
+                  value={scale}
+                  onChange={(e) => handleScaleChange(parseFloat(e.target.value))}
+                  className="w-full accent-gold"
+                />
+              </div>
+            </Modal>
+          </React.Suspense>
         </div>
       </div>
       
