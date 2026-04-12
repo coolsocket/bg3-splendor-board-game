@@ -1,5 +1,6 @@
 import React from 'react';
 import { Token, type ResourceType } from './Token';
+import { Button } from './common/Button';
 import './StagingArea.css';
 
 interface StagingAreaProps {
@@ -42,19 +43,19 @@ export const StagingArea: React.FC<StagingAreaProps> = ({
         })}
       </div>
       <div className="staging-actions flex justify-center gap-4">
-        <button 
-          className={`action-btn confirm-btn ${isValid ? 'active' : 'disabled'}`}
+        <Button 
+          variant="primary"
           onClick={onConfirm}
           disabled={!isValid}
         >
           CONFIRM
-        </button>
-        <button 
-          className="action-btn cancel-btn"
+        </Button>
+        <Button 
+          variant="secondary"
           onClick={onCancel}
         >
           CANCEL
-        </button>
+        </Button>
       </div>
     </div>
   );

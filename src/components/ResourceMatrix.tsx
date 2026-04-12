@@ -1,6 +1,7 @@
 import React from 'react';
 import './ResourceMatrix.css';
 import { type ResourceType } from './Token';
+import { ResourceIcon } from './common/ResourceIcon';
 
 interface ResourceMatrixProps {
   tokens: Record<ResourceType, number>;
@@ -15,21 +16,12 @@ const regularResourceTypes: ResourceType[] = [
   'DARK_QUARTZ'
 ];
 
-const resourceIcons: Record<ResourceType, string> = {
-  RADIANT_GEM: '☀️',
-  ARCANE_CRYSTAL: '🔮',
-  NATURES_BLESSING: '🍃',
-  INFERNAL_IRON: '🔥',
-  DARK_QUARTZ: '🌑',
-  TRUE_SOUL_TADPOLE: '⭐'
-};
-
 export const ResourceMatrix: React.FC<ResourceMatrixProps> = ({ tokens, bonuses }) => {
   return (
     <div className="resource-matrix-grid">
       {regularResourceTypes.map(type => (
         <div key={type} className="resource-matrix-item">
-          <span className="resource-icon">{resourceIcons[type]}</span>
+          <ResourceIcon type={type} />
           <span className="resource-divider">:</span>
           <span className="resource-values">
             <span>{tokens[type] || 0}</span>
@@ -42,7 +34,7 @@ export const ResourceMatrix: React.FC<ResourceMatrixProps> = ({ tokens, bonuses 
         </div>
       ))}
       <div className="resource-matrix-item wildcard">
-        <span className="resource-icon">{resourceIcons['TRUE_SOUL_TADPOLE']}</span>
+        <ResourceIcon type="TRUE_SOUL_TADPOLE" />
         <span className="resource-divider">:</span>
         <span className="resource-values">
           <span>{tokens['TRUE_SOUL_TADPOLE'] || 0}</span>
