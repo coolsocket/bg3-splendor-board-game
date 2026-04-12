@@ -2,6 +2,14 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-026
+- **What was implemented**:
+  - **STORY-026**: 居中空卡占位符文本。修改了 `PatronSlot.tsx` 中渲染空卡槽占位符的布局，将原有的 `flex-col justify-between` 和绝对定位的文本改为 `flex-col items-center justify-center gap-2`，确保了文字和三角形图标在容器内绝对居中。
+- **Files changed**: `src/components/PatronSlot.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在需要将多个元素作为一个整体在容器中居中时，使用 `flex flex-col items-center justify-center` 并配合 `gap` 是最可靠的方法，避免了绝对定位带来的居中偏移问题。
+---
+
 ## [2026-04-12] - STORY-025
 - **What was implemented**:
   - **STORY-025**: 强化 Patron 底色质感。为 `PatronSlot.tsx` 中的贵族卡牌深红色底板增加了径向渐变（`radial-gradient`）和深色内阴影（`shadow-inner`），消除了原有的扁平“塑料感”，使其更符合暗黑奇幻风格。

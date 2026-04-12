@@ -20,14 +20,12 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
   if (!patron) {
     return (
       <div className="w-[120px] aspect-[2/3] bg-gradient-to-br from-[#5a4a22] via-[#3a2f15] to-[#5a4a22] p-[2px] rounded-lg shadow-inner">
-        <div className="w-full h-full bg-[#1a0508] bg-[radial-gradient(circle_at_center,#2a0b10_0%,#0f0204_100%)] rounded-md flex flex-col justify-between p-2 relative z-10 text-[#F5E6C4]">
-          <div className="flex-grow flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="opacity-30">
-              <circle cx="12" cy="12" r="10"/>
-              <polygon points="12 2 22 12 12 22 2 12"/>
-            </svg>
-          </div>
-          {children || <span className="text-xs font-bold uppercase tracking-wider text-shadow-[1px_1px_2px_rgba(0,0,0,0.8)] absolute bottom-2.5 left-0 right-0 text-center">Patron</span>}
+        <div className="w-full h-full bg-[#1a0508] bg-[radial-gradient(circle_at_center,#2a0b10_0%,#0f0204_100%)] rounded-md flex flex-col items-center justify-center gap-2 p-2 relative z-10 text-[#F5E6C4]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="opacity-30">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="12 2 22 12 12 22 2 12"/>
+          </svg>
+          {children || <span className="text-xs font-bold uppercase tracking-wider text-shadow-[1px_1px_2px_rgba(0,0,0,0.8)] text-center">Patron</span>}
         </div>
       </div>
     );

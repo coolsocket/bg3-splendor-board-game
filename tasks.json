@@ -260,8 +260,8 @@
       "acceptanceCriteria": [
         "1. 文本和图标绝对居中"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-027",
