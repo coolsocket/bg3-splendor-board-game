@@ -1,5 +1,4 @@
 import React from 'react';
-import './CardMarket.css';
 import { type CardProps } from './Card';
 import { usePublicStore } from '../store/publicStore';
 import { usePlayerStore } from '../store/playerStore';
@@ -69,8 +68,12 @@ export const CardMarket: React.FC<CardMarketProps> = ({
   const tier3DeckCount = decks[CardTier.TIER_3]?.length || 0;
 
   return (
-    <div className="card-market">
-      <h2 className="market-title">Card Market</h2>
+    <div className="flex flex-col gap-2 p-2 bg-bg-obsidian backdrop-blur-sm rounded-lg border border-gold-dark/40 shadow-heavy flex-grow">
+      <h2 className="font-serif font-bold text-2xl tracking-wider text-parchment mb-0 text-center flex items-center justify-center gap-4">
+        <span className="w-[60px] h-[3px] bg-gradient-to-l from-gold-dark to-transparent shadow-md"></span>
+        Card Market
+        <span className="w-[60px] h-[3px] bg-gradient-to-r from-gold-dark to-transparent shadow-md"></span>
+      </h2>
       <MarketRow tier={3} cards={tier3Cards} deckCount={tier3DeckCount} onCardInteract={onCardInteract} />
       <MarketRow tier={2} cards={tier2Cards} deckCount={tier2DeckCount} onCardInteract={onCardInteract} />
       <MarketRow tier={1} cards={tier1Cards} deckCount={tier1DeckCount} onCardInteract={onCardInteract} />

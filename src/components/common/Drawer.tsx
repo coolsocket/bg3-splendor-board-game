@@ -28,7 +28,7 @@ export const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, title, children
       )}
       
       {/* Drawer */}
-      <div className={`bg-obsidian-panel backdrop-blur-md border-l border-gold-dark/30 shadow-heavy transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'} fixed top-0 right-0 h-full w-96 z-50 flex flex-col`}>
+      <div className={`bg-bg-obsidian backdrop-blur-md border-l border-gold-dark/30 shadow-heavy transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'} fixed top-0 right-0 h-full w-96 z-50 flex flex-col`}>
         <div className="p-4 border-b border-gold-dark/20 flex justify-between items-center">
           <span className="text-gold text-lg uppercase tracking-wider font-serif font-bold">{title}</span>
           <Button 

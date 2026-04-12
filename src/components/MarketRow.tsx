@@ -1,5 +1,4 @@
 import React from 'react';
-import './MarketRow.css';
 import { Card, type CardProps } from './Card';
 import { EmptyCardSlot } from './EmptyCardSlot';
 import { DeckStack } from './DeckStack';
@@ -18,13 +17,15 @@ export const MarketRow: React.FC<MarketRowProps> = ({
   onCardInteract
 }) => {
   return (
-    <div className={`market-row tier-${tier}`}>
-      <div className="deck-container">
+    <div className="grid grid-cols-5 gap-2 items-center justify-center">
+      <div className="col-span-1">
         <DeckStack tier={tier} deckCount={deckCount} />
       </div>
-      <div className="cards-container">
+      <div className="col-span-4 grid grid-cols-4 gap-2 [perspective:1000px] justify-center">
         {cards.map(card => (
-          <Card key={card.id} {...card} onInteract={onCardInteract} />
+          <div key={card.id} className="animate-card-flip">
+            <Card {...card} onInteract={onCardInteract} />
+          </div>
         ))}
         {/* Fill empty slots if less than 4 cards */}
         {Array.from({ length: Math.max(0, 4 - cards.length) }).map((_, index) => (

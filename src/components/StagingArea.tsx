@@ -2,7 +2,6 @@ import React from 'react';
 import { Token } from './Token';
 import type { ResourceType } from './TokenTypes';
 import { Button } from './common/Button';
-import './StagingArea.css';
 
 interface StagingAreaProps {
   tokens: Partial<Record<ResourceType, number>>;
@@ -24,17 +23,17 @@ export const StagingArea: React.FC<StagingAreaProps> = ({
   if (totalTokens === 0) return null;
 
   return (
-    <div className="staging-area bg-obsidian-panel backdrop-blur-md border border-gold-dark/50 rounded-lg p-4 shadow-2xl">
-      <div className="staging-area-title text-gold text-sm uppercase tracking-wider font-serif mb-2 text-center">
+    <div className="fixed top-[100px] left-1/2 -translate-x-1/2 z-[var(--z-dropdown)] min-w-[300px] max-w-[90vw] bg-[#1a1c23]/95 border-2 border-[var(--color-gold-dark)] shadow-[0_10px_25px_rgba(0,0,0,0.8),inset_0_0_15px_rgba(212,175,55,0.2)] animate-slide-down backdrop-blur-md rounded-lg p-4">
+      <div className="text-gold text-sm uppercase tracking-wider font-serif mb-2 text-center text-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
         Staging Area
       </div>
-      <div className="staged-tokens flex justify-center gap-2 mb-4">
+      <div className="staged-tokens flex justify-center gap-2 mb-4 p-2 bg-black/30 rounded-md border border-[#d4af37]/10 min-h-[60px] items-center">
         {Object.entries(tokens).map(([type, count]) => {
           if (!count || count <= 0) return null;
           return Array.from({ length: count }).map((_, index) => (
             <div 
               key={`${type}-${index}`} 
-              className="staged-token-wrapper cursor-pointer transform hover:scale-105 transition-transform"
+              className="cursor-pointer transform hover:scale-105 transition-transform"
               onClick={() => onRemoveToken?.(type as ResourceType)}
               title="Click to remove"
               role="button"
@@ -45,12 +44,12 @@ export const StagingArea: React.FC<StagingAreaProps> = ({
                 }
               }}
             >
-              <Token type={type as ResourceType} count={1} hideLabel={true} />
+              <Token type={type as ResourceType} count={1} hideLabel={true} size="md" />
             </div>
           ));
         })}
       </div>
-      <div className="staging-actions flex justify-center gap-4">
+      <div className="flex justify-center gap-4">
         <Button 
           variant="primary"
           onClick={onConfirm}

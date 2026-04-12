@@ -30,8 +30,8 @@
       "acceptanceCriteria": [
         "1. Gale 名字完整显示"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-004",
@@ -40,8 +40,8 @@
       "acceptanceCriteria": [
         "1. Patrons 名字完整显示"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-005",

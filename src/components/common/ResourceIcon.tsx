@@ -8,12 +8,12 @@ interface ResourceIconProps {
 }
 
 const resourceIcons: Record<ResourceType, string> = {
-  RADIANT_GEM: '☀️',
-  ARCANE_CRYSTAL: '🔮',
-  NATURES_BLESSING: '🍃',
-  INFERNAL_IRON: '🔥',
-  DARK_QUARTZ: '🌑',
-  TRUE_SOUL_TADPOLE: '⭐'
+  RADIANT_GEM: '❂',
+  ARCANE_CRYSTAL: '✦',
+  NATURES_BLESSING: '❦',
+  INFERNAL_IRON: '▲',
+  DARK_QUARTZ: '◆',
+  TRUE_SOUL_TADPOLE: '✹'
 };
 
 export const ResourceIcon = React.memo(({

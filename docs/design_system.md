@@ -36,7 +36,7 @@
 
 ### 3. 空间与网格 (Spacing & Grid)
 *   遵循 `technical.md` 规范，采用 CSS Grid 进行全局布局。
-*   主游戏区划分为 `col-span-3`（左侧玩家面板）和 `col-span-9`（右侧核心博弈区）。
+*   主游戏区采用三列网格布局：左侧玩家面板 (`250px`)，中间核心博弈区 (`1fr`)，右侧贵族面板 (`200px`)。
 
 ---
 
@@ -52,7 +52,7 @@
 
 ### 2. 资源代币 (Tokens)
 *   放弃原有的纯色圆圈设计。
-*   使用 CSS 径向渐变 (`radial-gradient`) 和内阴影 (`inner-shadow`) 模拟具有体积感的 3D 球体或硬币。
+*   使用 CSS 渐变（如 `conic-gradient` 或 `radial-gradient`）和内阴影模拟具有体积感的 3D 球体或硬币。
 *   交互时配合 `translate-y-[-4px]` 和发光滤镜。
 
 ### 3. UI 容器 (Containers)

@@ -18,6 +18,10 @@ export function useTokenSelection(availableResources: ResourceCollection, player
   })();
 
   const canSelect = useCallback((type: ResourceType) => {
+    console.log(`canSelect called for ${type}`);
+    console.log(`currentCount: ${selectedTokens[type] || 0}, available: ${availableResources[type] || 0}`);
+    console.log(`totalSelected: ${totalSelected}, selectedTypes: ${selectedTypes}`);
+    
     if (type === ResourceType.TRUE_SOUL_TADPOLE) return false; // Cannot take tadpoles directly
     if (playerTotalTokens + totalSelected >= 10) return false; // Max 10 tokens
     
@@ -46,7 +50,11 @@ export function useTokenSelection(availableResources: ResourceCollection, player
   }, [selectedTokens, availableResources, playerTotalTokens, totalSelected, selectedTypes]);
 
   const selectToken = useCallback((type: ResourceType) => {
-    if (!canSelect(type)) return;
+    console.log(`selectToken called for ${type}`);
+    if (!canSelect(type)) {
+      console.log(`canSelect returned false for ${type}`);
+      return;
+    }
     
     setSelectedTokens((prev) => ({
       ...prev,

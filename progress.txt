@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-004
+- **What was implemented**:
+  - **STORY-004**: 修复了贵族名字被截断的问题。将 `PatronSlot.tsx` 中卡牌的宽度从 `w-[100px]` 扩大至 `w-[120px]`，并将名字字体大小从 `text-xs` 缩小至 `text-[11px]`，同时移除了 `truncate` 类，确保名字（如 WITHERS, RAPHAEL, VLAAKITH）能够完整显示。
+- **Files changed**: `src/components/PatronSlot.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在右侧边栏宽度允许的情况下，适当增加卡牌宽度是解决长文本截断的有效方法。
+  - 结合微调字号和移除 `truncate` 可以确保内容在容器内完整呈现，避免不必要的省略号。
+---
+
 ## [2026-04-12] - STORY-003
 - **What was implemented**:
   - **STORY-003**: 修复了 Gale 名字被截断的问题。移除了 `PlayerAvatar.tsx` 中包裹玩家名字的 `span` 上的 `truncate` 类，确保名字完整显示。

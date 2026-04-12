@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Token } from './Token';
 import type { ResourceType } from './TokenTypes';
-import './PublicResourcePool.css';
 import { useAudioStore } from '../store/audioStore';
 import { usePublicStore } from '../store/publicStore';
 import { usePlayerStore } from '../store/playerStore';
@@ -58,19 +57,9 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   ];
 
   return (
-    <div className="public-resource-pool global-hud bg-obsidian-panel backdrop-blur-sm flex items-center">
-      <div className="hud-left global-info flex items-center gap-4">
+    <div className="public-resource-pool flex justify-between items-center py-2 bg-gradient-to-br from-[#1a1c23]/95 to-[#101216]/95 border-b-2 border-gold-dark/30 shadow-heavy z-elevated global-hud backdrop-blur-sm">
+      <div className="flex items-center gap-4 flex-1 global-info">
         <div className="relative">
-          <button 
-            className="settings-btn text-gold p-2 rounded hover:bg-white/10"
-            onClick={() => setIsSettingsOpen(true)}
-            aria-label="Settings"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="3"></circle>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
-          </button>
           <React.Suspense fallback={null}>
             <Modal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} title="Settings">
               <div className="flex flex-col gap-2">
@@ -90,15 +79,27 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
         </div>
       </div>
       
-      <div className="hud-middle flex flex-col items-center">
-        <div className="turn-tracker-placeholder w-64 h-2 bg-black/60 rounded-full border border-gold/30 mb-2 relative overflow-hidden" title="Turn Tracker (Placeholder)">
-          <div className="absolute top-0 left-0 h-full bg-gold w-1/3 shadow-[0_0_5px_#d4af37]"></div>
+      <div className="flex flex-col items-center flex-none">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="font-fantasy text-sm font-bold text-gold uppercase tracking-wider">Turns</span>
+          <div className="w-64 h-2 bg-[#0a0a0f] rounded-full border border-[#bf953f] relative overflow-hidden" title="Turn Tracker (Placeholder)">
+            <div className="absolute top-0 left-0 h-full bg-gold w-1/3 shadow-[0_0_5px_#d4af37]"></div>
+          </div>
         </div>
-        <div className={`pool-tokens ${isTokenLimitReached ? 'tokens-disabled' : ''}`}>
-          <div className="normal-tokens-slot">
-            <div className="colored-tokens">
+        <div className={`flex items-center gap-6 ${isTokenLimitReached ? 'filter grayscale-[100%] opacity-50 pointer-events-none' : ''}`}>
+          <div className="bg-[#0a0a0f] p-3 rounded-xl border border-[#bf953f]/40 shadow-[inset_0_2px_10px_rgba(0,0,0,0.8)]">
+            <div className="flex gap-3">
               {resourceTypes.map((type) => (
-                <div key={type} className={`token-stack-container stack-${type.toLowerCase()} ${(resources[type] || 0) <= 0 ? 'empty' : ''}`}>
+                <div 
+                  key={type} 
+                  className={`flex flex-col items-center relative transition-all duration-200 cursor-pointer rounded-full shadow-md hover:scale-110 aspect-square min-w-[2rem] flex-shrink-0 ${(resources[type] || 0) <= 0 ? 'filter grayscale-[100%] brightness-50 cursor-not-allowed pointer-events-none' : ''} ${
+                    type === 'RADIANT_GEM' ? 'hover:shadow-[0_0_15px_var(--color-radiant)]' :
+                    type === 'ARCANE_CRYSTAL' ? 'hover:shadow-[0_0_15px_var(--color-arcane)]' :
+                    type === 'NATURES_BLESSING' ? 'hover:shadow-[0_0_15px_var(--color-natures)]' :
+                    type === 'INFERNAL_IRON' ? 'hover:shadow-[0_0_15px_var(--color-infernal)]' :
+                    type === 'DARK_QUARTZ' ? 'hover:shadow-[0_0_15px_var(--color-dark)]' : ''
+                  }`}
+                >
                   <Token
                     type={type}
                     count={resources[type] || 0}
@@ -108,13 +109,14 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
                     }}
                     disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
                     hideLabel={true}
+                    size="lg"
                   />
                 </div>
               ))}
             </div>
           </div>
-          <div className="wildcard-token-slot">
-            <div className={`wildcard-token ${(resources['TRUE_SOUL_TADPOLE'] || 0) <= 0 ? 'empty' : ''}`}>
+          <div className="bg-gold/15 p-2 rounded-full border border-gold/50 shadow-md">
+            <div className={`flex items-center ${(resources['TRUE_SOUL_TADPOLE'] || 0) <= 0 ? 'filter grayscale-[100%] brightness-50 cursor-not-allowed pointer-events-none' : ''} hover:scale-110 transition-all duration-200 hover:shadow-[0_0_15px_var(--color-wildcard)] rounded-full`}>
               <WildcardPool
                 count={resources['TRUE_SOUL_TADPOLE'] || 0}
                 onClick={() => {
@@ -122,13 +124,25 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
                   onTokenClick?.('TRUE_SOUL_TADPOLE');
                 }}
                 disabled={disabledTokens.includes('TRUE_SOUL_TADPOLE') || (resources['TRUE_SOUL_TADPOLE'] || 0) <= 0}
+                size="lg"
               />
             </div>
           </div>
+          <button 
+            className="text-gold p-2 rounded hover:bg-white/10 transition-all hover:scale-105 hover:shadow-[0_0_8px_rgba(212,175,55,0.5)] ml-2"
+            onClick={() => setIsSettingsOpen(true)}
+            aria-label="Settings"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
         </div>
       </div>
 
-
+      <div className="flex justify-end items-center flex-1 pr-4">
+      </div>
     </div>
   );
 };

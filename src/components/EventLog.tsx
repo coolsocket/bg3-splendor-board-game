@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEventLogStore } from '../store/eventLogStore';
-import './EventLog.css';
 import { Drawer } from './common/Drawer';
 
 export interface EventLogProps {

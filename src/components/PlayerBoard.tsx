@@ -84,7 +84,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
 
   return (
     <div 
-      className={`relative bg3-panel p-4 pb-6 text-[#E8E2D2] font-fantasy w-[260px] max-w-[260px] flex-shrink-0 min-w-0 max-h-[90vh] overflow-y-auto transition-all duration-300 ${props.isActive ? 'animate-gold-breathe scale-[1.02] shadow-[0_0_20px_rgba(212,175,55,0.5)]' : 'brightness-[0.6]'} ${isCurrent ? 'border-[#8a2be2]/60 shadow-[0_4px_20px_rgba(138,43,226,0.15)]' : ''} ${viewMode === 'summary' ? 'cursor-pointer' : ''}`}
+      className={`relative bg3-panel p-4 pb-6 text-[#E8E2D2] font-fantasy w-[260px] max-w-[260px] flex-shrink-0 min-w-0 max-h-[90vh] overflow-y-auto transition-all duration-300 ${props.isActive ? 'animate-gold-breathe scale-[1.02] shadow-[0_0_20px_rgba(212,175,55,0.5)]' : 'brightness-[0.6]'} ${isCurrent ? 'shadow-[0_4px_20px_rgba(138,43,226,0.15)]' : ''} ${viewMode === 'summary' ? 'cursor-pointer' : ''}`}
       onClick={onClick}
       role="button"
       tabIndex={0}
@@ -106,7 +106,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
       
       <div className="grid grid-cols-1 gap-2">
         <div className="bg-transparent border-none shadow-none px-0">
-          <h3 className="text-sm text-[#94a3b8] mb-2">Assets</h3>
+          <h3 className="font-fantasy text-sm text-[#94a3b8] mb-2">Assets</h3>
           <ResourceMatrix tokens={tokens} bonuses={bonuses} />
         </div>
         
@@ -137,7 +137,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
       </div>
       
       <div className="mt-4">
-        <div className="bg-[#222731] border border-[#2e3542] rounded-md p-3">
+        <div className="bg-[#222731] border border-[#2e3542] rounded-md p-4">
           <h3 className="font-fantasy text-[clamp(0.9rem,1.5vw,1.1rem)] text-[#e2e8f0] border-b border-[#2e3542] pb-2 mb-2">Reserved Cards</h3>
           <div className="flex gap-3 justify-start mt-2 p-2">
             {[0, 1, 2].map(index => {
