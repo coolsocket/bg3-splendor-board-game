@@ -170,8 +170,8 @@
       "acceptanceCriteria": [
         "1. 成本要求与资产图标符号一致"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-018",
@@ -180,8 +180,8 @@
       "acceptanceCriteria": [
         "1. 保留卡槽下方有呼吸空间"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-019",

@@ -2,6 +2,14 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-018
+- **What was implemented**:
+  - **STORY-018**: 增加保留卡槽 Padding。为 `PlayerBoard.tsx` 中 `RESERVED CARDS` 下方的虚线框容器增加了 `pb-4`，确保它们不会紧贴下边缘，留出呼吸空间。
+- **Files changed**: `src/components/PlayerBoard.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在 Flex 布局中，为容器增加 `pb-4` 可以有效拉开与下方内容的间距，提供呼吸感。
+---
+
 ## [2026-04-12] - STORY-017
 - **What was implemented**:
   - **STORY-017**: 统一卡牌成本符号与资产图标。将 `Card.tsx` 中渲染卡牌底部成本要求的地方，从使用普通的 Emoji 图标替换为使用 `ResourceIcon` 组件，从而与左侧资产栏的奇幻符号保持一致。

@@ -139,7 +139,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
       <div className="mt-4">
         <div className="bg-[#222731] border border-[#2e3542] rounded-md p-4">
           <h3 className="font-fantasy text-[clamp(0.9rem,1.5vw,1.1rem)] text-[#e2e8f0] border-b border-[#2e3542] pb-2 mb-2">Reserved Cards</h3>
-          <div className="flex gap-3 justify-start mt-2 p-2">
+          <div className="flex gap-3 justify-start mt-2 p-2 pb-4">
             {[0, 1, 2].map(index => {
               const card = reservedCards[index];
               return card ? (
