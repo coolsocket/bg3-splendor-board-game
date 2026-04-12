@@ -30,4 +30,6 @@
 
 .cards-container .card {
   animation: card-flip-in 0.5s ease-out;
+  max-width: 85%;
+  margin: 0 auto;
 }

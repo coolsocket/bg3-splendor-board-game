@@ -55,8 +55,6 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   return (
     <div className="public-resource-pool global-hud bg-obsidian-panel backdrop-blur-sm flex items-center">
       <div className="hud-left global-info flex items-center gap-4">
-        <span className="room-number text-gold">Room: #12345</span>
-        <span className="target-score text-gold">Target: 15</span>
         <div className="relative">
           <button 
             className="settings-btn text-gold p-2 rounded hover:bg-white/10"

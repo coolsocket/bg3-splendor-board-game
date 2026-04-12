@@ -30,7 +30,7 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
       <div className="patron-card-inner flex flex-col justify-between p-2 h-full relative">
         <PrestigeBadge prestigePoints={patron.points} />
         
-        <div className="patron-name-container flex justify-center w-full mt-4">
+        <div className="patron-name-container flex justify-center w-full mt-4 min-w-0">
           <span className="patron-name text-parchment text-xs font-bold text-center truncate max-w-[80px]">{patron.name}</span>
         </div>
         

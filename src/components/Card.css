@@ -71,7 +71,7 @@
 }
 
 .card-prestige {
-  font-family: var(--font-fantasy);
+  font-family: 'Cinzel', serif;
   font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: bold;
   color: var(--color-text-dark); /* Dark text for parchment */
@@ -152,6 +152,10 @@
   background: rgba(0, 0, 0, 0.6); /* Deep dark band */
   backdrop-filter: blur(4px); /* Glassmorphism effect */
   border-radius: 0 0 var(--radius-md) var(--radius-md); /* Match card bottom corners */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .card-cost-grid {
@@ -170,7 +174,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-fantasy);
+  font-family: 'Cinzel', serif;
   font-size: clamp(1.75rem, 5vw, 2.625rem); /* Enlarged by 30% and made fluid */
   font-weight: 900;
   color: #fff;
@@ -349,11 +353,11 @@
 }
 
 .deck-count {
-  font-family: var(--font-fantasy);
+  font-family: 'Cinzel', serif;
 }
 
 .deck-label {
-  font-family: var(--font-fantasy);
+  font-family: 'Cinzel', serif;
 }
 
 /* Dealing Animation */
