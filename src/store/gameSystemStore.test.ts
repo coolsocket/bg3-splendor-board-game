@@ -22,9 +22,9 @@ describe('gameSystemStore', () => {
   });
 
   it('should update phase', () => {
-    useGameSystemStore.setState({ phase: GamePhase.PLAYING });
+    useGameSystemStore.setState({ phase: GamePhase.IN_PROGRESS });
     const state = useGameSystemStore.getState();
-    expect(state.phase).toBe(GamePhase.PLAYING);
+    expect(state.phase).toBe(GamePhase.IN_PROGRESS);
   });
 
   it('should update currentPlayerIndex', () => {

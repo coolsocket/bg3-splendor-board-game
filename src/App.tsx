@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { GameArena } from './components/GameArena';
 import type { ResourceType } from './components/Token';
 import type { PlayerBoardProps } from './components/PlayerBoard';

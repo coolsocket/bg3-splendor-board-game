@@ -9,7 +9,7 @@ export type ResourceType =
   | 'DARK_QUARTZ'
   | 'TRUE_SOUL_TADPOLE';
 
-const getDisplayName = (type: ResourceType) => {
+export const getDisplayName = (type: ResourceType) => {
   switch (type) {
     case 'RADIANT_GEM': return 'Fairy Gold';
     case 'ARCANE_CRYSTAL': return 'Enchanted Agate';
