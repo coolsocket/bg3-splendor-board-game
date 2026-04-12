@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-006
+- **What was implemented**:
+  - **STORY-006**: 修复了 CARD MARKET 标题不可见。将 `CardMarket.tsx` 中标题的颜色从 `text-parchment` 改为高亮的金色 `text-[#bf953f]`，确保在深色背景下清晰可见。
+- **Files changed**: `src/components/CardMarket.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在深色背景下，`text-parchment` 可能亮度不足或未正确解析，使用明确的金色十六进制颜色（如 `#bf953f`）可以显著提升可见度和视觉效果。
+---
+
+
 ## [2026-04-12] - STORY-005
 - **What was implemented**:
   - **STORY-005**: 修复了贵族威望分数的物理碰撞。将 `PrestigeBadge.tsx` 中的定位从 `top-1 right-1` 改为 `-top-2 -right-2`，并使 `PatronSlot.tsx` 的外层容器为 `relative`，将 `PrestigeBadge` 移出带有 `overflow-hidden` 的内层容器，确保角标悬浮显示且不被裁剪。

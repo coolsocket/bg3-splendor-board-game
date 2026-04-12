@@ -60,8 +60,8 @@
       "acceptanceCriteria": [
         "1. CARD MARKET 标题清晰可见"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-007",

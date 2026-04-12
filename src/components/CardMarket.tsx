@@ -69,7 +69,7 @@ export const CardMarket: React.FC<CardMarketProps> = ({
 
   return (
     <div className="flex flex-col gap-2 p-2 bg-bg-obsidian backdrop-blur-sm rounded-lg border border-gold-dark/40 shadow-heavy flex-grow">
-      <h2 className="font-serif font-bold text-2xl tracking-wider text-parchment mb-0 text-center flex items-center justify-center gap-4">
+      <h2 className="font-serif font-bold text-2xl tracking-wider text-[#bf953f] mb-0 text-center flex items-center justify-center gap-4">
         <span className="w-[60px] h-[3px] bg-gradient-to-l from-gold-dark to-transparent shadow-md"></span>
         Card Market
         <span className="w-[60px] h-[3px] bg-gradient-to-r from-gold-dark to-transparent shadow-md"></span>
