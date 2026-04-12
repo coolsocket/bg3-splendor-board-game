@@ -311,3 +311,7 @@
 .reserved-cards {
   margin-bottom: 1rem;
 }
+
+.summary-view {
+  cursor: pointer;
+}

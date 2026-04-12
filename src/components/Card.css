@@ -61,7 +61,7 @@
 }
 
 .card-prestige {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-fantasy);
   font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: bold;
   color: var(--color-text-dark); /* Dark text for parchment */
@@ -84,22 +84,22 @@
 
 /* Gem Colors (Matching Token.css) */
 .bonus-radiant_gem {
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #fef08a 25%, #ca8a04 70%, #713f12 100%);
+  background: radial-gradient(circle at 30% 30%, var(--color-pure-white) 0%, var(--color-radiant) 25%, var(--color-radiant-mid) 70%, var(--color-radiant-dark) 100%);
 }
 .bonus-arcane_crystal {
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #38bdf8 25%, #0284c7 70%, #0c4a6e 100%);
+  background: radial-gradient(circle at 30% 30%, var(--color-pure-white) 0%, var(--color-arcane) 25%, var(--color-arcane-mid) 70%, var(--color-arcane-dark) 100%);
 }
 .bonus-natures_blessing {
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #4ade80 25%, #16a34a 70%, #14532d 100%);
+  background: radial-gradient(circle at 30% 30%, var(--color-pure-white) 0%, var(--color-natures) 25%, var(--color-natures-mid) 70%, var(--color-natures-dark) 100%);
 }
 .bonus-infernal_iron {
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f87171 25%, #dc2626 70%, #7f1d1d 100%);
+  background: radial-gradient(circle at 30% 30%, var(--color-pure-white) 0%, var(--color-infernal) 25%, var(--color-infernal-mid) 70%, var(--color-infernal-dark) 100%);
 }
 .bonus-dark_quartz {
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #c084fc 25%, #9333ea 70%, #3b0764 100%);
+  background: radial-gradient(circle at 30% 30%, var(--color-pure-white) 0%, var(--color-dark) 25%, var(--color-dark-mid) 70%, var(--color-dark-dark) 100%);
 }
 .bonus-true_soul_tadpole {
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f472b6 25%, #db2777 70%, #500724 100%);
+  background: radial-gradient(circle at 30% 30%, var(--color-pure-white) 0%, var(--color-wildcard-pink) 25%, var(--color-wildcard-pink-mid) 70%, var(--color-wildcard-pink-dark) 100%);
 }
 
 /* Image Container */
@@ -173,10 +173,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-fantasy);
   font-size: clamp(1.75rem, 5vw, 2.625rem); /* Enlarged by 30% and made fluid */
   font-weight: 900;
-  color: #fff;
+  color: var(--color-pure-white);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 2px rgba(0, 0, 0, 0.9); /* Sharp black shadow */
   box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 0 4px 8px rgba(0, 0, 0, 0.7); /* Deepened shadow */
 }
@@ -233,8 +233,8 @@
   padding: 8px 12px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-gold); /* Gold border */
-  background: #1a0a0a; /* Dark background */
-  color: #ffffff; /* White text */
+  background: var(--color-dark-red); /* Dark background */
+  color: var(--color-pure-white); /* White text */
   cursor: pointer;
   font-family: var(--font-fantasy);
   font-size: 14px;
@@ -265,8 +265,8 @@
 .action-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  border-color: #555;
-  background: #1a1a1a;
+  border-color: var(--color-gray-500);
+  background: var(--color-deep-black);
   box-shadow: none;
 }
 
@@ -275,7 +275,7 @@
 /* Default Hover */
 .card:hover {
   transform: translateY(-2px) scale(calc(var(--card-scale) * 1.05)); /* STORY-258 */
-  box-shadow: 0 0 15px rgba(218, 165, 32, 0.5), 0 25px 50px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--shadow-glow-gold), 0 25px 50px rgba(0, 0, 0, 0.8);
   z-index: 10;
   filter: brightness(1.1);
 }
@@ -353,11 +353,11 @@
 }
 
 .deck-count {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-fantasy);
 }
 
 .deck-label {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-fantasy);
 }
 
 /* Dealing Animation */

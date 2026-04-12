@@ -88,7 +88,6 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
     <div 
       className={`border-container player-board ${viewMode}-view ${isCurrent ? 'current-player' : ''} ${props.isActive ? 'active-player glow-arcane' : 'inactive-player'}`}
       onClick={onClick}
-      style={viewMode === 'summary' ? { cursor: 'pointer' } : undefined}
     >
       <div className="portrait-slot">
         <PlayerAvatar playerName={playerName} isActive={props.isActive} prestigePoints={prestigePoints} />

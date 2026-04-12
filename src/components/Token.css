@@ -65,7 +65,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-fantasy);
-  color: #E8E2D2; /* Parchment color */
+  color: var(--color-text-primary); /* Parchment color */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.6), inset 0 2px 6px rgba(255, 255, 255, 0.4), inset 0 -2px 6px rgba(0, 0, 0, 0.6);
 }
@@ -101,23 +101,23 @@
 
 /* Selection State */
 .token.selected {
-  box-shadow: 0 0 0 4px #facc15, 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 4px var(--color-wildcard-mid), 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 }
 
 /* Gem Specific Gradients and Glows */
 
 /* RADIANT_GEM (Cleric/Paladin) - Gold/Yellow */
 .token.radiant_gem {
-  background: conic-gradient(from 45deg, #713f12, #ca8a04 25%, #fffbeb 50%, #ca8a04 75%, #713f12);
+  background: conic-gradient(from 45deg, var(--color-radiant-dark), var(--color-radiant-mid) 25%, var(--color-radiant-light) 50%, var(--color-radiant-mid) 75%, var(--color-radiant-dark));
   box-shadow: var(--shadow-depth);
 }
 .token.radiant_gem:hover:not(.disabled) {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px #fef08a;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px var(--color-radiant);
 }
 
 /* ARCANE_CRYSTAL (Wizard/Sorcerer) - Blue */
 .token.arcane_crystal {
-  background: conic-gradient(from 45deg, #05204a, #0d47a1 25%, #e3f2fd 50%, #0d47a1 75%, #05204a);
+  background: conic-gradient(from 45deg, var(--color-arcane-dark), var(--color-arcane-mid) 25%, var(--color-arcane-light) 50%, var(--color-arcane-mid) 75%, var(--color-arcane-dark));
   box-shadow: var(--shadow-depth);
 }
 .token.arcane_crystal:hover:not(.disabled) {
@@ -126,7 +126,7 @@
 
 /* NATURES_BLESSING (Druid/Ranger) - Green (Poison Bottle) */
 .token.natures_blessing {
-  background: conic-gradient(from 45deg, #0a3d12, #1b5e20 25%, #e8f5e9 50%, #1b5e20 75%, #0a3d12);
+  background: conic-gradient(from 45deg, var(--color-natures-dark), var(--color-natures-mid) 25%, var(--color-natures-light) 50%, var(--color-natures-mid) 75%, var(--color-natures-dark));
   box-shadow: var(--shadow-depth);
   position: relative;
 }
@@ -138,21 +138,21 @@
   transform: translateX(-50%);
   width: 14px;
   height: 8px;
-  background: #1b5e20;
+  background: var(--color-natures-mid);
   border-radius: 2px 2px 0 0;
   border: 2px solid rgba(0, 0, 0, 0.3);
   border-bottom: none;
   z-index: 1;
 }
 .token.natures_blessing:hover:not(.disabled) {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px #2e7d32;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px var(--color-natures);
 }
 
 /* INFERNAL_IRON (Karlach/Hellish) - Red (Soul Coin) */
 .token.infernal_iron {
-  background: conic-gradient(from 45deg, #000000, #7f1d1d 25%, #fecaca 50%, #7f1d1d 75%, #000000);
-  box-shadow: var(--shadow-depth), inset 0 0 10px #dc2626;
-  border: 2px solid #991b1b;
+  background: conic-gradient(from 45deg, var(--color-infernal-dark), var(--color-infernal-mid) 25%, var(--color-infernal-light) 50%, var(--color-infernal-mid) 75%, var(--color-infernal-dark));
+  box-shadow: var(--shadow-depth), inset 0 0 10px var(--color-infernal);
+  border: 2px solid var(--color-infernal-mid);
 }
 .token.infernal_iron::before {
   content: '';
@@ -161,18 +161,18 @@
   left: 4px;
   right: 4px;
   bottom: 4px;
-  border: 1px dashed #dc2626;
+  border: 1px dashed var(--color-infernal);
   border-radius: 50%;
   opacity: 0.6;
   pointer-events: none;
 }
 .token.infernal_iron:hover:not(.disabled) {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px #dc2626;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px var(--color-infernal);
 }
 
 /* DARK_QUARTZ (Rogue/Warlock) - Purple/Dark (Parasite) */
 .token.dark_quartz {
-  background: conic-gradient(from 45deg, #3b0764, #9333ea 25%, #faf5ff 50%, #9333ea 75%, #3b0764);
+  background: conic-gradient(from 45deg, var(--color-dark-dark), var(--color-dark-mid) 25%, var(--color-dark-light) 50%, var(--color-dark-mid) 75%, var(--color-dark-dark));
   box-shadow: var(--shadow-depth);
   border-radius: 70% 30% 30% 70% / 60% 40% 60% 40% !important;
 }
@@ -180,14 +180,14 @@
   border-radius: 70% 30% 30% 70% / 60% 40% 60% 40% !important;
 }
 .token.dark_quartz:hover:not(.disabled) {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px #c084fc;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 0 15px var(--color-dark);
 }
 
 /* TRUE_SOUL_TADPOLE (Wildcard) - Astral Prism */
 .token.true_soul_tadpole {
-  background: conic-gradient(from 45deg, #b8860b, #ffd700 25%, #ffffff 50%, #ffd700 75%, #b8860b);
+  background: conic-gradient(from 45deg, var(--color-wildcard-dark), var(--color-wildcard-mid) 25%, var(--color-wildcard-light) 50%, var(--color-wildcard-mid) 75%, var(--color-wildcard-dark));
   box-shadow: 0 0 25px rgba(255, 215, 0, 0.9), 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-  border: 2px solid #ffd700; /* Gold border */
+  border: 2px solid var(--color-wildcard-mid); /* Gold border */
   border-radius: 50% !important; /* Fulfill guardrails: Circles for consumables */
 }
 
@@ -241,11 +241,11 @@
 
 /* STORY-249 & STORY-251: Fix contrast and reset text shadow */
 .token.radiant_gem .token-count {
-  color: #000000;
+  color: var(--color-pure-black);
   text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.8), 1px 1px 0px rgba(255, 255, 255, 0.15);
 }
 
 .token.natures_blessing .token-count {
-  color: #000000;
+  color: var(--color-pure-black);
   text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.8), 1px 1px 0px rgba(255, 255, 255, 0.15);
 }

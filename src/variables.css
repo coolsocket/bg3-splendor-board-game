@@ -18,13 +18,55 @@
   --color-text-secondary: #a0a5b5;
   --color-text-dark: #2c1a04;
   
-  /* Gems */
+  /* Gems (Primary/Glow) */
   --color-radiant: #fef08a;
   --color-arcane: #38bdf8;
   --color-natures: #4ade80;
   --color-infernal: #f87171;
   --color-dark: #c084fc;
   --color-wildcard: #f472b6;
+
+  /* Gem Gradients */
+  --color-radiant-light: #fffbeb;
+  --color-radiant-mid: #ca8a04;
+  --color-radiant-dark: #713f12;
+
+  --color-arcane-light: #e3f2fd;
+  --color-arcane-mid: #0d47a1;
+  --color-arcane-dark: #05204a;
+
+  --color-natures-light: #e8f5e9;
+  --color-natures-mid: #1b5e20;
+  --color-natures-dark: #0a3d12;
+
+  --color-infernal-light: #fecaca;
+  --color-infernal-mid: #7f1d1d;
+  --color-infernal-dark: #000000;
+
+  --color-dark-light: #faf5ff;
+  --color-dark-mid: #9333ea;
+  --color-dark-dark: #3b0764;
+
+  --color-wildcard-light: #ffffff;
+  --color-wildcard-mid: #ffd700;
+  --color-wildcard-dark: #b8860b;
+  --color-wildcard-pink: #f472b6;
+  --color-wildcard-pink-mid: #db2777;
+  --color-wildcard-pink-dark: #500724;
+  
+  /* Additional UI Colors */
+  --color-pure-white: #ffffff;
+  --color-pure-black: #000000;
+  --color-deep-black: #1a1a1a;
+  --color-dark-red: #1a0a0a;
+  --color-gray-500: #555555;
+  
+  /* Card Back Pattern Colors */
+  --color-card-back-bg: rgba(15, 15, 20, 0.8);
+  --color-card-back-glow: rgba(139, 115, 85, 0.2);
+  --color-card-back-glow-dim: rgba(139, 115, 85, 0.1);
+  --color-card-back-glow-mid: rgba(139, 115, 85, 0.15);
+  --color-card-back-gradient-start: rgba(35, 30, 25, 0.4);
   
   /* Fonts */
   --font-serif: 'Cinzel', 'Playfair Display', Georgia, serif;

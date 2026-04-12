@@ -84,3 +84,10 @@
 .cost-infernal_iron { background: radial-gradient(circle at 25% 25%, #f87171, #dc2626); }
 .cost-dark_quartz { background: radial-gradient(circle at 25% 25%, #c084fc, #9333ea); }
 .cost-true_soul_tadpole { background: radial-gradient(circle at 25% 25%, #1f1f1f, #0d0d0d); }
+
+.patron-wildcard-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
