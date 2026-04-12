@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { PlayerBoard, type PlayerBoardProps } from './PlayerBoard';
 import { useGameSystemStore } from '../store/gameSystemStore';
 import { CardMarket, type CardMarketProps } from './CardMarket';
 import { PublicResourcePool } from './PublicResourcePool';
-import type { ResourceType } from './Token';
+import type { ResourceType as TokenResourceType } from './Token';
+import { type ResourceCollection } from '../domain/models';
 import { useTokenSelection } from '../hooks/useTokenSelection';
 import { usePublicStore } from '../store/publicStore';
 import { StagingArea } from './StagingArea';
 import { EventLog } from './EventLog';
-import { useEventLogStore } from '../store/eventLogStore';
 import { PatronSlot } from './PatronSlot';
+import { useUIStore } from '../store/uiStore';
+import { usePlayerActions } from '../hooks/usePlayerActions';
 import './GameArena.css';
 import galeImg from '../assets/gale_portrait.png';
 import astarionImg from '../assets/astarion_portrait.png';
@@ -24,10 +26,10 @@ export interface GameArenaProps {
   currentPlayer: PlayerBoardProps;
   opponents: PlayerBoardProps[];
   market: CardMarketProps;
-  resources: Record<ResourceType, number>;
-  onTokenClick?: (type: ResourceType) => void;
+  resources: Record<TokenResourceType, number>;
+  onTokenClick?: (type: TokenResourceType) => void;
   onCardInteract?: (action: 'buy' | 'reserve' | 'select', cardId: string) => void;
-  disabledTokens?: ResourceType[];
+  disabledTokens?: TokenResourceType[];
 }
 
 export const GameArena: React.FC<GameArenaProps> = ({
@@ -35,17 +37,34 @@ export const GameArena: React.FC<GameArenaProps> = ({
   opponents,
   market,
   resources,
-  onTokenClick,
   onCardInteract,
   disabledTokens = []
 }) => {
-  const [expandedPlayerName, setExpandedPlayerName] = useState<string>(currentPlayer.playerName);
-  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const { isHistoryOpen, expandedPlayerName, setHistoryOpen, setExpandedPlayerName } = useUIStore();
   const { currentPlayerIndex } = useGameSystemStore();
   const availablePatrons = usePublicStore((state) => state.availablePatrons);
 
+  const currentExpandedPlayer = expandedPlayerName || currentPlayer.playerName;
+
+  const domainResources = Object.entries(resources).reduce((acc, [key, value]) => {
+    acc[key.toLowerCase()] = value;
+    return acc;
+  }, {} as any);
+
   const playerTotalTokens = Object.values(currentPlayer.tokens).reduce((sum, count) => sum + (count || 0), 0);
-  const { selectedTokens, selectToken, deselectToken, clearSelection, isValid, totalSelected } = useTokenSelection(resources, playerTotalTokens);
+  const { selectedTokens, selectToken, deselectToken, clearSelection, isValid, totalSelected } = useTokenSelection(domainResources, playerTotalTokens);
+
+  const { handleConfirmTokens, handleCardInteract } = usePlayerActions({
+    playerName: currentPlayer.playerName,
+    selectedTokens,
+    clearSelection,
+    onCardInteractProp: onCardInteract
+  });
+
+  const tokenSelectedTokens = Object.entries(selectedTokens).reduce((acc, [key, value]) => {
+    acc[key.toUpperCase()] = value;
+    return acc;
+  }, {} as any);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -53,53 +72,23 @@ export const GameArena: React.FC<GameArenaProps> = ({
         clearSelection();
       } else if (e.key === 'Enter') {
         if (isValid) {
-          console.log('Confirmed token selection:', selectedTokens);
-          clearSelection();
+          handleConfirmTokens();
         }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [clearSelection, isValid, selectedTokens]);
-
-  const handleConfirmTokens = () => {
-    console.log('Confirmed token selection:', selectedTokens);
-    const eventLogStore = useEventLogStore.getState();
-    eventLogStore.addEvent(`${currentPlayer.playerName} took tokens: ${JSON.stringify(selectedTokens)}`);
-    // Here we would normally send action to network manager
-    clearSelection();
-  };
-
-  const handleCardInteract = (action: 'buy' | 'reserve' | 'select', cardId: string) => {
-    const eventLogStore = useEventLogStore.getState();
-    
-    if (action === 'reserve') {
-      eventLogStore.addEvent(`${currentPlayer.playerName} reserved card ${cardId}`);
-      // STORY-333: Implement wild card auto-trigger
-      const publicStore = usePublicStore.getState();
-      const tadpoleCount = publicStore.availableResources['TRUE_SOUL_TADPOLE'] || 0;
-      if (tadpoleCount > 0) {
-        eventLogStore.addEvent(`Auto-triggered Wildcard (Tadpole) from pool`);
-        // Logic placeholder: in a real app we would update stores or send network action
-      }
-    } else if (action === 'buy') {
-      eventLogStore.addEvent(`${currentPlayer.playerName} bought card ${cardId}`);
-    }
-    
-    if (onCardInteract) {
-      onCardInteract(action, cardId);
-    }
-  };
+  }, [clearSelection, isValid, handleConfirmTokens]);
 
   return (
     <div className="game-arena bg-underdark">
       {totalSelected > 0 && (
         <StagingArea
-          tokens={selectedTokens}
+          tokens={tokenSelectedTokens}
           onConfirm={handleConfirmTokens}
           onCancel={clearSelection}
-          onRemoveToken={deselectToken}
+          onRemoveToken={(type) => deselectToken(type.toLowerCase() as any)}
           isValid={isValid}
         />
       )}
@@ -138,7 +127,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
           </div>
           <div className="opponents-container">
             {opponents.map((opponent, index) => {
-              const isExpanded = opponent.playerName === expandedPlayerName;
+              const isExpanded = opponent.playerName === currentExpandedPlayer;
               return (
                 <PlayerBoard
                   key={index}
@@ -157,7 +146,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
         </div>
         <div className="main-area bg-camp-table">
           <PublicResourcePool
-            onTokenClick={selectToken}
+            onTokenClick={(type) => selectToken(type.toLowerCase() as any)}
             disabledTokens={disabledTokens}
           />
           <div className="h-full overflow-y-auto pb-20">
@@ -178,7 +167,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
       {/* Scroll Icon Trigger for History */}
       <button
         className="fixed bottom-6 right-6 bg-obsidian-panel border border-gold-dark/50 p-3 rounded-full shadow-heavy hover:bg-white/10 transition-colors z-40"
-        onClick={() => setIsHistoryOpen(true)}
+        onClick={() => setHistoryOpen(true)}
         aria-label="Open History"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
@@ -187,7 +176,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
         </svg>
       </button>
 
-      <EventLog isOpen={isHistoryOpen} onClose={() => setIsHistoryOpen(false)} />
+      <EventLog isOpen={isHistoryOpen} onClose={() => setHistoryOpen(false)} />
     </div>
   );
 };
