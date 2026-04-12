@@ -99,34 +99,35 @@ export const GameArena: React.FC<GameArenaProps> = ({
         />
       )}
       
+      <div className="bg-[var(--color-bg-obsidian)] backdrop-blur-sm border border-gold-dark/30 p-2 flex items-center justify-center gap-3 my-2 rounded-lg shadow-heavy text-xs mx-auto w-fit max-w-lg">
+        <span className="text-[#c9a063] text-xs uppercase tracking-wider font-serif font-bold">Turns</span>
+        <div className="flex items-center gap-2">
+          {[currentPlayer, ...opponents].map((player, index) => {
+            const isActive = index === currentPlayerIndex;
+            const avatarImg = AssetRepository.getAvatar(player.playerName);
+            return (
+              <React.Fragment key={player.playerName}>
+                <div className="flex flex-col items-center gap-0.5">
+                  <Avatar
+                    imageUrl={avatarImg || undefined}
+                    name={player.playerName}
+                    size="sm"
+                    isActive={isActive}
+                    className={!isActive ? 'opacity-70' : ''}
+                  />
+                  <span className={`text-2xs text-[#E8E2D2] ${isActive ? 'font-bold' : ''}`}>{player.playerName}</span>
+                </div>
+                {index < [currentPlayer, ...opponents].length - 1 && (
+                  <span className="text-[#c9a063] opacity-50 text-sm font-bold self-center mb-2">→</span>
+                )}
+              </React.Fragment>
+            );
+          })}
+        </div>
+      </div>
+
       <div className="grid lg:grid-cols-[250px_1fr_200px] grid-cols-1 gap-4 flex-grow min-h-0">
-        <div className="flex flex-col gap-6 items-stretch max-w-[300px] overflow-y-auto">
-          <div className="bg-[var(--color-bg-obsidian)] backdrop-blur-sm border border-gold-dark/30 p-2 flex items-center justify-center gap-3 my-2 rounded-lg shadow-heavy text-xs">
-            <span className="text-[#c9a063] text-xs uppercase tracking-wider font-serif font-bold">Turns</span>
-            <div className="flex items-center gap-2">
-              {[currentPlayer, ...opponents].map((player, index) => {
-                const isActive = index === currentPlayerIndex;
-                const avatarImg = AssetRepository.getAvatar(player.playerName);
-                return (
-                  <React.Fragment key={player.playerName}>
-                    <div className="flex flex-col items-center gap-0.5">
-                      <Avatar
-                        imageUrl={avatarImg || undefined}
-                        name={player.playerName}
-                        size="sm"
-                        isActive={isActive}
-                        className={!isActive ? 'opacity-70' : ''}
-                      />
-                      <span className={`text-2xs ${isActive ? 'text-[#c9a063] font-bold' : 'text-[#E8E2D2]'}`}>{player.playerName}</span>
-                    </div>
-                    {index < [currentPlayer, ...opponents].length - 1 && (
-                      <span className="text-[#c9a063] opacity-50 text-sm font-bold self-center mb-2">→</span>
-                    )}
-                  </React.Fragment>
-                );
-              })}
-            </div>
-          </div>
+        <div className="flex flex-col gap-6 items-stretch max-w-[300px] overflow-y-auto pl-2">
           
           <div className="flex flex-col gap-6 relative before:content-[''] before:absolute before:top-4 before:left-[10px] before:w-[1px] before:h-[calc(100%-2rem)] before:bg-gradient-to-b before:from-[rgba(201,160,99,0.8)] before:to-[rgba(201,160,99,0.2)] before:z-[var(--z-base)]">
             {opponents.map((opponent, index) => {
@@ -165,8 +166,8 @@ export const GameArena: React.FC<GameArenaProps> = ({
         </div>
 
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-        <div className="flex flex-col gap-4 p-4 rounded-lg border border-[rgba(181,138,62,0.2)] bg-[var(--color-bg-obsidian)] overflow-y-auto focus:outline-none focus:ring-2 focus:ring-[#c9a063]" tabIndex={0} role="region" aria-label="Available Patrons">
-          <h3 className="text-[#c9a063] font-serif mb-2 border-b border-[#c9a063]/20 pb-1">Patrons</h3>
+        <div className="flex flex-col gap-6 p-4 rounded-lg border border-[rgba(181,138,62,0.2)] bg-[var(--color-bg-obsidian)] overflow-y-auto focus:outline-none focus:ring-2 focus:ring-[#c9a063] items-center" tabIndex={0} role="region" aria-label="Available Patrons">
+          <h3 className="text-[#c9a063] font-serif mb-2 border-b border-[#c9a063]/20 pb-1 w-full text-center">Patrons</h3>
           {availablePatrons.map(patron => (
             <PatronSlot key={patron.id} patron={patron} />
           ))}
