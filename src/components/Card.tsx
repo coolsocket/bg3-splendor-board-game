@@ -28,7 +28,7 @@ export interface CardProps {
   deckCount?: number;
 }
 
-export const Card: React.FC<CardProps> = ({
+export const Card = React.memo(({
   id,
   tier,
   prestigePoints,
@@ -40,7 +40,7 @@ export const Card: React.FC<CardProps> = ({
   onInteract,
   isDeck = false,
   deckCount = 0
-}) => {
+}: CardProps) => {
   const tierClass = `border-tier-${tier}`;
   const [isReserving, setIsReserving] = React.useState(false);
   const [isBuying, setIsBuying] = React.useState(false);
@@ -143,4 +143,4 @@ export const Card: React.FC<CardProps> = ({
       )}
     </CardBase>
   );
-};
+});

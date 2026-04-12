@@ -16,11 +16,11 @@ const resourceIcons: Record<ResourceType, string> = {
   TRUE_SOUL_TADPOLE: '⭐'
 };
 
-export const ResourceIcon: React.FC<ResourceIconProps> = ({
+export const ResourceIcon = React.memo(({
   type,
   size = 'md',
   className = ''
-}) => {
+}: ResourceIconProps) => {
   const icon = resourceIcons[type] || '❓'; // Fallback to question mark
   
   const sizeClasses = {
@@ -37,4 +37,4 @@ export const ResourceIcon: React.FC<ResourceIconProps> = ({
       {icon}
     </span>
   );
-};
+});

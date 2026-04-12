@@ -32,7 +32,7 @@ interface TokenProps {
   hideLabel?: boolean;
 }
 
-export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = false, isSelected = false, size = 'md', variant = 'consumable', hideLabel = false }) => {
+export const Token = React.memo(({ type, count, onClick, disabled = false, isSelected = false, size = 'md', variant = 'consumable', hideLabel = false }: TokenProps) => {
   const [isAnimating, setIsAnimating] = React.useState(false);
 
   const getLabel = (type: ResourceType) => {
@@ -92,4 +92,4 @@ export const Token: React.FC<TokenProps> = ({ type, count, onClick, disabled = f
       )}
     </>
   );
-};
+});
