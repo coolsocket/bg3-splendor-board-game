@@ -2,6 +2,7 @@ import React from 'react';
 import { type ResourceType, getDisplayName } from './TokenTypes';
 import { useAudioStore } from '../store/audioStore';
 import { CardBase } from './common/CardBase';
+import { ResourceIcon } from './common/ResourceIcon';
 
 const resourceIcons: Record<ResourceType, string> = {
   RADIANT_GEM: '☀️',
@@ -122,7 +123,9 @@ export const Card = React.memo(({
                 <span className="font-fantasy text-3xl font-bold text-text-dark text-shadow-sm">{prestigePoints}</span>
               )}
             </div>
-            <div className={`w-[38px] h-[38px] flex items-center justify-center filter drop-shadow-md [clip-path:polygon(50%_0%,100%_50%,50%_100%,0%_50%)] border border-white/60 ${bonusGradients[providedBonus]}`} />
+            <div className={`w-[38px] h-[38px] flex items-center justify-center filter drop-shadow-md rounded-full border border-white/60 ${bonusGradients[providedBonus]}`}>
+              <ResourceIcon type={providedBonus} size="lg" className="text-white" />
+            </div>
           </div>
           
           <div className="flex-grow m-0 bg-bg-obsidian overflow-hidden flex items-center justify-center relative shadow-inner mix-blend-multiply">

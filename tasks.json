@@ -140,8 +140,8 @@
       "acceptanceCriteria": [
         "1. 菱形替换为奇幻风格图标"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-015",
