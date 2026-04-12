@@ -2,6 +2,15 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-028
+- **What was implemented**:
+  - **STORY-028**: 添加交互层视觉反馈。为 `Card.tsx` 增加了 `hover:scale-105` 效果；为 `Token.tsx` 增加了 `hover:scale-105` 效果（非禁用状态下），提升了可交互元素的视觉反馈。卡牌已有的 `isAffordable` 状态已经具备高亮边框和呼吸灯效果（`animate-pulse`），符合验收标准。
+- **Files changed**: `src/components/Card.tsx`, `src/components/Token.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在为已有复杂 Hover 效果的组件（如 `CardBase`）增加新的 Hover 效果（如 `scale`）时，可以直接在外部传入的 `className` 中追加 Tailwind 类，而不需要修改基础组件。
+  - 对于代币等小元素，增加 `hover:scale-105` 可以显著提升“可点击”的暗示，同时需要注意在 `disabled` 状态下禁用该缩放效果，避免给用户错误的反馈。
+---
+
 ## [2026-04-12] - STORY-027
 - **What was implemented**:
   - **STORY-027**: 加大非行动玩家的视觉降级。将 `PlayerBoard.tsx` 中渲染非当前回合玩家面板的类从 `brightness-[0.6]` 改为 `opacity-60`，使其明显变暗且半透明，拉大了与当前行动玩家的视觉差距。

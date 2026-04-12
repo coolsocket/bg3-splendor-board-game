@@ -89,7 +89,7 @@ export const Card = React.memo(({
 
   return (
     <CardBase 
-      className={`group bg-bg-underdark shadow-heavy border-2 ${isAffordable ? 'border-[#bf953f] shadow-[0_0_15px_rgba(212,175,55,0.6)] animate-pulse' : 'border-[#bf953f]/30 grayscale-[40%] brightness-70'} ${isReserving ? 'animate-card-reserve' : ''} ${isBuying ? 'animate-card-buy' : ''} ${isDeck ? 'is-deck' : ''}`}
+      className={`group bg-bg-underdark shadow-heavy border-2 ${isAffordable ? 'border-[#bf953f] shadow-[0_0_15px_rgba(212,175,55,0.6)] animate-pulse' : 'border-[#bf953f]/30 grayscale-[40%] brightness-70'} ${isReserving ? 'animate-card-reserve' : ''} ${isBuying ? 'animate-card-buy' : ''} ${isDeck ? 'is-deck' : ''} hover:scale-105`}
       onClick={(e) => !isDeck && handleAction('select', e)}
       isHoverable={!isDeck}
       isSelected={isSelected}

@@ -49,6 +49,8 @@ const getTokenClasses = (
   
   const selectedClasses = isSelected ? "shadow-[0_0_0_4px_var(--color-wildcard-mid),0_4px_6px_-1px_rgba(0,0,0,0.5)]" : "";
 
+  const hoverClasses = disabled ? "" : "hover:scale-105";
+
   // Gem specific classes (gradients, shapes, pseudo-elements)
   let gemClasses = "";
   switch (type) {
@@ -75,7 +77,7 @@ const getTokenClasses = (
   // Glossy overlay (after element)
   const glossyOverlay = "after:content-[''] after:absolute after:top-[2px] after:left-1/2 after:-translate-x-1/2 after:w-[70%] after:h-[25%] after:bg-gradient-to-b after:from-white/50 after:to-white/5 after:rounded-full after:pointer-events-none";
 
-  return `${baseClasses} ${sizeClasses} ${variantClasses} ${disabledClasses} ${selectedClasses} ${gemClasses} ${glossyOverlay} ${className}`;
+  return `${baseClasses} ${sizeClasses} ${variantClasses} ${disabledClasses} ${selectedClasses} ${gemClasses} ${glossyOverlay} ${hoverClasses} ${className}`;
 };
 
 export const Token = React.memo(({ type, count, onClick, disabled = false, isSelected = false, size = 'md', variant = 'consumable', hideLabel = false, className = '' }: TokenProps) => {
