@@ -2,6 +2,14 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-010
+- **What was implemented**:
+  - **STORY-010**: 卡牌数字加大。将 `Card.tsx` 中卡牌底部成本圆圈里的数字字号从 `text-2xl` 加大到 `text-3xl`，使其明显变大。
+- **Files changed**: `src/components/Card.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在 Tailwind 中，从 `text-2xl` 提升到 `text-3xl` 可以有效增加字号约 25%（从 24px 到 30px），满足“字号加大 20%”的要求。
+---
+
 ## [2026-04-12] - STORY-009
 - **What was implemented**:
   - **STORY-009**: 顶部悬浮框融入主界面。移除了 `GameArena.tsx` 中 Turns 指示器的外框样式（背景、边框、阴影），使其变成纯文本和头像的组合，不再像个独立的弹窗，更好地融入了主界面。

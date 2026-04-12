@@ -141,7 +141,7 @@ export const Card = React.memo(({
                   return (
                     <div 
                       key={resource} 
-                      className={`relative z-10 w-[48px] h-[48px] rounded-full flex items-center justify-center font-fantasy text-2xl font-black text-white text-shadow ring-1 ring-black shadow-md ${costGradients[resourceType]}`}
+                      className={`relative z-10 w-[48px] h-[48px] rounded-full flex items-center justify-center font-fantasy text-3xl font-black text-white text-shadow ring-1 ring-black shadow-md ${costGradients[resourceType]}`}
                       title={`${getDisplayName(resourceType)}: ${amount}`}
                     >
                       <span className="absolute text-[14px] opacity-25 z-0">{resourceIcons[resourceType]}</span>

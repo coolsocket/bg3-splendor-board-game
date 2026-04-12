@@ -100,8 +100,8 @@
       "acceptanceCriteria": [
         "1. 成本圆圈内的数字明显变大"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-011",
