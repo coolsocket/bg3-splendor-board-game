@@ -22,7 +22,7 @@ export const ResourceMatrix: React.FC<ResourceMatrixProps> = ({ tokens, bonuses 
       {regularResourceTypes.map(type => {
         const isZero = (tokens[type] || 0) === 0 && (bonuses[type] || 0) === 0;
         return (
-          <div key={type} className={`flex items-center gap-1 font-serif text-base text-[#e2e8f0] transition-opacity duration-200 ${isZero ? 'opacity-40' : 'opacity-100'}`} data-resource-type={type}>
+          <div key={type} className="flex items-center gap-1 font-serif text-base text-[#e2e8f0] transition-opacity duration-200 opacity-100" data-resource-type={type}>
             <ResourceIcon type={type} size="lg" className="filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]" />
             <span className="text-[#64748b]">:</span>
             <span className="font-bold text-shadow-[0_1px_2px_rgba(0,0,0,0.8)] text-2xl text-white">
@@ -36,7 +36,7 @@ export const ResourceMatrix: React.FC<ResourceMatrixProps> = ({ tokens, bonuses 
           </div>
         );
       })}
-      <div className={`flex items-center gap-1 font-serif text-base text-[#e2e8f0] w-full border-t border-white/10 pt-1 mt-1 transition-opacity duration-200 ${isTadpoleZero ? 'opacity-40' : 'opacity-100'}`} data-resource-type="TRUE_SOUL_TADPOLE">
+      <div className="flex items-center gap-1 font-serif text-base text-[#e2e8f0] w-full border-t border-white/10 pt-1 mt-1 transition-opacity duration-200 opacity-100" data-resource-type="TRUE_SOUL_TADPOLE">
         <ResourceIcon type="TRUE_SOUL_TADPOLE" size="lg" className="filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]" />
         <span className="text-[#64748b]">:</span>
         <span className="font-bold text-shadow-[0_1px_2px_rgba(0,0,0,0.8)] text-2xl text-white">

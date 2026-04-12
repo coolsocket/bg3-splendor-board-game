@@ -2,6 +2,14 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-007
+- **What was implemented**:
+  - **STORY-007**: 修复了资产列表的过度黯淡。移除了 `ResourceMatrix.tsx` 中资源项的条件透明度，统一改为常驻的 `opacity-100`，确保玩家在任何时候都能清晰看到资产数量。
+- **Files changed**: `src/components/ResourceMatrix.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 为了强调“资产数量”的可见性，应避免在零值时过度降低透明度。移除不必要的条件透明度判断，直接拉满透明度（`opacity-100`），可以有效提升 UI 的可读性。
+---
+
 ## [2026-04-12] - STORY-006
 - **What was implemented**:
   - **STORY-006**: 修复了 CARD MARKET 标题不可见。将 `CardMarket.tsx` 中标题的颜色从 `text-parchment` 改为高亮的金色 `text-[#bf953f]`，确保在深色背景下清晰可见。
