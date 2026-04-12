@@ -122,6 +122,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.card-image-container::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  box-shadow: inset 0 4px 8px rgba(0,0,0,0.8);
+  pointer-events: none;
 }
 
 .card-image {
@@ -178,7 +187,7 @@
   font-size: clamp(1.75rem, 5vw, 2.625rem); /* Enlarged by 30% and made fluid */
   font-weight: 900;
   color: #fff;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Deepened shadow */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 2px rgba(0, 0, 0, 0.9); /* Sharp black shadow */
   box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 0 4px 8px rgba(0, 0, 0, 0.7); /* Deepened shadow */
 }
 
@@ -195,12 +204,12 @@
 }
 
 /* Cost item colors match gems */
-.cost-radiant_gem { background: radial-gradient(circle at 25% 25%, #d4af37, #8a6d1c); }
-.cost-arcane_crystal { background: radial-gradient(circle at 25% 25%, #4682b4, #1c3b5e); }
-.cost-natures_blessing { background: radial-gradient(circle at 25% 25%, #556b2f, #253314); }
-.cost-infernal_iron { background: radial-gradient(circle at 25% 25%, #8b0000, #4a0000); }
-.cost-dark_quartz { background: radial-gradient(circle at 25% 25%, #5c3a6f, #2b123a); }
-.cost-true_soul_tadpole { background: radial-gradient(circle at 25% 25%, #a55d70, #5a2a37); }
+.cost-radiant_gem { background: radial-gradient(circle at 25% 25%, #fef08a, #ca8a04); }
+.cost-arcane_crystal { background: radial-gradient(circle at 25% 25%, #38bdf8, #0284c7); }
+.cost-natures_blessing { background: radial-gradient(circle at 25% 25%, #4ade80, #16a34a); }
+.cost-infernal_iron { background: radial-gradient(circle at 25% 25%, #f87171, #dc2626); }
+.cost-dark_quartz { background: radial-gradient(circle at 25% 25%, #c084fc, #9333ea); }
+.cost-true_soul_tadpole { background: radial-gradient(circle at 25% 25%, #f472b6, #db2777); }
 
 /* .card-tier removed */
 
@@ -278,6 +287,7 @@
   transform: translateY(-2px) scale(calc(var(--card-scale) * 1.05)); /* STORY-258 */
   box-shadow: 0 0 15px rgba(218, 165, 32, 0.5), 0 25px 50px rgba(0, 0, 0, 0.8);
   z-index: 10;
+  filter: brightness(1.1);
 }
 
 /* Unaffordable State */

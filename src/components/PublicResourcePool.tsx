@@ -74,7 +74,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
                 onClick={() => setIsSettingsOpen(false)}
               />
               {/* Modal */}
-              <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-obsidian-panel border border-gold-dark/30 p-6 rounded-lg z-50 shadow-heavy min-w-[300px]">
+              <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-obsidian-panel border border-gold-dark/30 p-6 rounded-lg z-50 shadow-heavy min-w-[300px] font-serif">
                 <div className="flex justify-between items-center mb-4 border-b border-gold-dark/20 pb-2">
                   <h3 className="text-gold font-serif text-lg font-bold">Settings</h3>
                   <button 

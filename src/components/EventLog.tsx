@@ -61,7 +61,7 @@ export const EventLog: React.FC<EventLogProps> = ({ isOpen, onClose }) => {
                 {[...events].reverse().map((event) => {
                   const { player, action } = parseEventMessage(event.message);
                   return (
-                    <tr key={event.id} className="text-parchment text-sm border-b border-gold-dark/10 hover:bg-white/5">
+                    <tr key={event.id} className="text-parchment text-sm border-b border-gold-dark/10 hover:bg-white/5 font-serif">
                       <td className="py-2 pr-2 whitespace-nowrap text-xs text-gold-dark opacity-70">
                         {event.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                       </td>

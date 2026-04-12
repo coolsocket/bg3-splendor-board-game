@@ -89,6 +89,7 @@
 /* Hover state */
 .token:hover:not(.disabled) {
   transform: translateY(-2px); /* STORY-258 */
+  filter: brightness(1.1);
 }
 
 /* Disabled state */

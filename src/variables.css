@@ -4,7 +4,7 @@
   /* Colors */
   --color-bg-underdark: #16171d;
   --color-bg-underdark-end: #0a0b0e;
-  --color-bg-camp-table: #1a110b;
+  --color-bg-camp-table: #0f0a06;
   --color-bg-obsidian: rgba(10, 10, 15, 0.8);
   
   --color-parchment: #e8e2d2;
@@ -40,7 +40,7 @@
   --shadow-heavy: 0 10px 20px rgba(0, 0, 0, 0.5), 0 6px 6px rgba(0, 0, 0, 0.5);
   --shadow-glow-gold: 0 0 15px rgba(212, 175, 55, 0.5);
   --shadow-glow-arcane: 0 0 15px rgba(56, 189, 248, 0.5);
-  --shadow-depth: 0 15px 30px rgba(0, 0, 0, 0.7), 0 5px 15px rgba(0, 0, 0, 0.5);
+  --shadow-depth: 0 15px 30px rgba(35, 20, 10, 0.7), 0 5px 15px rgba(0, 0, 0, 0.5);
   --glow-arcane: 0 0 20px rgba(56, 189, 248, 0.8), 0 0 40px rgba(56, 189, 248, 0.4);
   
   /* Card Scale */

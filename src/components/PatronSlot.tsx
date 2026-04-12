@@ -28,11 +28,11 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
   return (
     <div className="patron-card-slot" title={patron.description}>
       <div className="patron-card-inner flex flex-col justify-between p-2 h-full relative">
-        <PrestigeBadge prestigePoints={patron.points} />
-        
-        <div className="patron-name-container flex justify-center w-full mt-4 min-w-0">
-          <span className="patron-name text-parchment text-xs font-bold text-center truncate max-w-[80px]">{patron.name}</span>
+        <div className="patron-name-container flex justify-center w-full min-w-0 mb-1">
+          <span className="patron-name text-gold text-sm font-serif font-bold text-center truncate w-full">{patron.name}</span>
         </div>
+        
+        <PrestigeBadge prestigePoints={patron.points} />
         
         <div className="patron-center-icon flex-grow flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="patron-icon-svg text-gold opacity-50">
@@ -43,7 +43,7 @@ export const PatronSlot: React.FC<PatronSlotProps> = ({ patron, children }) => {
         </div>
         
         <div className="patron-footer w-full">
-          <div className="patron-cost-grid flex justify-center gap-1 flex-wrap">
+          <div className="patron-cost-grid flex flex-row justify-center gap-1">
             {Object.entries(patron.requirements).map(([resource, amount]) => {
               if (amount && amount > 0) {
                 const isWildcard = resource === 'TRUE_SOUL_TADPOLE';
