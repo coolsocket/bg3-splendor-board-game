@@ -130,8 +130,8 @@
       "acceptanceCriteria": [
         "1. 成本圆圈与卡牌底边有合适间距"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-014",

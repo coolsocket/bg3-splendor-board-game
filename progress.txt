@@ -2,6 +2,14 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-013
+- **What was implemented**:
+  - **STORY-013**: 卡牌底部成本增加 Padding。将 `Card.tsx` 中包裹底部成本圆圈的容器的 `p-1` 改为 `pt-1 px-1 pb-2`，增加了底部的间距，确保成本圆圈的下边缘不会紧贴或切穿卡牌的外框。
+- **Files changed**: `src/components/Card.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在使用 Tailwind 调整特定方向的 padding 时，如果原先使用的是 `p-x`（四周统一），改为 `pt-x px-x pb-y` 的组合可以更精准地控制特定方向的间距，同时保持其他方向一致，避免因类名覆盖顺序导致的非预期效果。
+---
+
 ## [2026-04-12] - STORY-012
 - **What was implemented**:
   - **STORY-012**: 居中卡背魔法阵。将 `DeckStack.tsx` 中背景的魔法阵 SVG 移出 background-image，改为独立的绝对定位 `div`，使用 `top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2` 确保其与卡背和红圈绝对居中，消除了 Y 轴偏移。

@@ -133,7 +133,7 @@ export const Card = React.memo(({
             )}
           </div>
 
-          <div className="absolute bottom-0 left-0 right-0 flex justify-center p-1 bg-black/60 backdrop-blur-sm border-top border-white/10 rounded-b-md z-10">
+          <div className="absolute bottom-0 left-0 right-0 flex justify-center pt-1 px-1 pb-2 bg-black/60 backdrop-blur-sm border-top border-white/10 rounded-b-md z-10">
             <div className="flex flex-wrap justify-center gap-1 mb-1">
               {Object.entries(cost).map(([resource, amount]) => {
                 if (amount && amount > 0) {
