@@ -27,8 +27,14 @@ export const CardBase: React.FC<CardBaseProps> = ({
       className={`card-base ${isHoverable ? 'card-hoverable' : ''} ${isSelected ? 'card-selected' : ''} ${className}`}
       onClick={onClick}
       role={role}
+      tabIndex={onClick ? 0 : undefined}
       aria-label={ariaLabel}
       title={title}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+          onClick(e as unknown as React.MouseEvent);
+        }
+      }}
     >
       {children}
     </div>

@@ -146,8 +146,8 @@ describe('getWinners', () => {
     });
 
     it('should break ties with fewer cards', () => {
-        const p1 = { ...player1, prestigePoints: 15, acquiredCards: [{}, {}, {}] as any };
-        const p2 = { ...player2, prestigePoints: 15, acquiredCards: [{}, {}] as any };
+        const p1 = { ...player1, prestigePoints: 15, acquiredCards: [{}, {}, {}] as unknown as Card[] };
+        const p2 = { ...player2, prestigePoints: 15, acquiredCards: [{}, {}] as unknown as Card[] };
         const state = {
             players: [p1, p2],
         } as GameState;
@@ -157,8 +157,8 @@ describe('getWinners', () => {
     });
 
     it('should return both if tied on points and cards', () => {
-        const p1 = { ...player1, prestigePoints: 15, acquiredCards: [{}, {}] as any };
-        const p2 = { ...player2, prestigePoints: 15, acquiredCards: [{}, {}] as any };
+        const p1 = { ...player1, prestigePoints: 15, acquiredCards: [{}, {}] as unknown as Card[] };
+        const p2 = { ...player2, prestigePoints: 15, acquiredCards: [{}, {}] as unknown as Card[] };
         const state = {
             players: [p1, p2],
         } as GameState;

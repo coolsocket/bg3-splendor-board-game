@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Token, type ResourceType } from './Token';
 import './PublicResourcePool.css';
 import { useAudioStore } from '../store/audioStore';
@@ -27,13 +27,12 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   const isTokenLimitReached = totalTokens >= 10;
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [scale, setScale] = useState(0.9);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const initialScale = parseFloat(getComputedStyle(root).getPropertyValue('--card-scale')) || 0.9;
-    setScale(initialScale);
-  }, []);
+  const [scale, setScale] = useState(() => {
+    if (typeof document !== 'undefined') {
+      return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-scale')) || 0.9;
+    }
+    return 0.9;
+  });
 
   const handleScaleChange = (newScale: number) => {
     setScale(newScale);
@@ -104,7 +103,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
                     count={resources[type] || 0}
                     onClick={() => {
                       playAudio('take-token');
-                      onTokenClick && onTokenClick(type);
+                      onTokenClick?.(type);
                     }}
                     disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
                     hideLabel={true}
@@ -119,7 +118,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
                 count={resources['TRUE_SOUL_TADPOLE'] || 0}
                 onClick={() => {
                   playAudio('take-tadpole');
-                  onTokenClick && onTokenClick('TRUE_SOUL_TADPOLE');
+                  onTokenClick?.('TRUE_SOUL_TADPOLE');
                 }}
                 disabled={disabledTokens.includes('TRUE_SOUL_TADPOLE') || (resources['TRUE_SOUL_TADPOLE'] || 0) <= 0}
               />

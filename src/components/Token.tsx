@@ -9,7 +9,7 @@ export type ResourceType =
   | 'DARK_QUARTZ'
   | 'TRUE_SOUL_TADPOLE';
 
-export const getDisplayName = (type: ResourceType) => {
+const getDisplayName = (type: ResourceType) => {
   switch (type) {
     case 'RADIANT_GEM': return 'Fairy Gold';
     case 'ARCANE_CRYSTAL': return 'Enchanted Agate';
@@ -64,7 +64,13 @@ export const Token = React.memo(({ type, count, onClick, disabled = false, isSel
         className={`token ${type.toLowerCase()} ${disabled ? 'disabled' : ''} ${isSelected ? 'selected' : ''} token-${size} token-${variant}`} 
         onClick={handleClick}
         role="button"
+        tabIndex={disabled ? -1 : 0}
         aria-label={`${getDisplayName(type)} token, count: ${count}`}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            handleClick();
+          }
+        }}
       >
         <div className="token-inner">
           {type === 'TRUE_SOUL_TADPOLE' ? (

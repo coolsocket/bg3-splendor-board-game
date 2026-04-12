@@ -1,10 +1,9 @@
 import React from 'react';
 import './PlayerBoard.css';
-import { Token, type ResourceType } from './Token';
+import { type ResourceType } from './Token';
 import { Card, type CardProps } from './Card';
 import { usePlayerStore } from '../store/playerStore';
 import type { ResourceCollection, Card as DomainCard } from '../domain/models';
-import { PrestigeBadge } from './PrestigeBadge';
 import { PlayerAvatar } from './PlayerAvatar';
 import { ResourceMatrix } from './ResourceMatrix';
 
@@ -88,6 +87,13 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
     <div 
       className={`border-container player-board ${viewMode}-view ${isCurrent ? 'current-player' : ''} ${props.isActive ? 'active-player glow-arcane' : 'inactive-player'}`}
       onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          onClick?.();
+        }
+      }}
     >
       <div className="portrait-slot">
         <PlayerAvatar playerName={playerName} isActive={props.isActive} prestigePoints={prestigePoints} />

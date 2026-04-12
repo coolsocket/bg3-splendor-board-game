@@ -34,8 +34,15 @@ export const StagingArea: React.FC<StagingAreaProps> = ({
             <div 
               key={`${type}-${index}`} 
               className="staged-token-wrapper cursor-pointer transform hover:scale-105 transition-transform"
-              onClick={() => onRemoveToken && onRemoveToken(type as ResourceType)}
+              onClick={() => onRemoveToken?.(type as ResourceType)}
               title="Click to remove"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  onRemoveToken?.(type as ResourceType);
+                }
+              }}
             >
               <Token type={type as ResourceType} count={1} hideLabel={true} />
             </div>

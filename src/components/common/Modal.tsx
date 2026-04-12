@@ -17,6 +17,14 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
       <div 
         className="fixed inset-0 bg-black/60 z-50"
         onClick={onClose}
+        role="button"
+        tabIndex={0}
+        aria-label="Close modal"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            onClose();
+          }
+        }}
       />
       {/* Modal */}
       <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-obsidian-panel border border-gold-dark/30 p-6 rounded-lg z-50 shadow-heavy min-w-[300px] font-serif">

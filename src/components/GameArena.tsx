@@ -4,7 +4,7 @@ import { useGameSystemStore } from '../store/gameSystemStore';
 import { CardMarket, type CardMarketProps } from './CardMarket';
 import { PublicResourcePool } from './PublicResourcePool';
 import type { ResourceType as TokenResourceType } from './Token';
-import { type ResourceCollection } from '../domain/models';
+import { ResourceType as DomainResourceType } from '../domain/models';
 import { useTokenSelection } from '../hooks/useTokenSelection';
 import { usePublicStore } from '../store/publicStore';
 import { StagingArea } from './StagingArea';
@@ -45,7 +45,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
   const domainResources = Object.entries(resources).reduce((acc, [key, value]) => {
     acc[key.toLowerCase()] = value;
     return acc;
-  }, {} as any);
+  }, {} as Record<string, number>);
 
   const playerTotalTokens = Object.values(currentPlayer.tokens).reduce((sum, count) => sum + (count || 0), 0);
   const { selectedTokens, selectToken, deselectToken, clearSelection, isValid, totalSelected } = useTokenSelection(domainResources, playerTotalTokens);
@@ -60,7 +60,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
   const tokenSelectedTokens = Object.entries(selectedTokens).reduce((acc, [key, value]) => {
     acc[key.toUpperCase()] = value;
     return acc;
-  }, {} as any);
+  }, {} as Record<string, number>);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -84,7 +84,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
           tokens={tokenSelectedTokens}
           onConfirm={handleConfirmTokens}
           onCancel={clearSelection}
-          onRemoveToken={(type) => deselectToken(type.toLowerCase() as any)}
+          onRemoveToken={(type) => deselectToken(type.toLowerCase() as DomainResourceType)}
           isValid={isValid}
         />
       )}
@@ -137,7 +137,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
         </div>
         <div className="main-area bg-camp-table">
           <PublicResourcePool
-            onTokenClick={(type) => selectToken(type.toLowerCase() as any)}
+            onTokenClick={(type) => selectToken(type.toLowerCase() as DomainResourceType)}
             disabledTokens={disabledTokens}
           />
           <div className="h-full overflow-y-auto pb-20">

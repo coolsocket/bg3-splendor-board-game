@@ -6,7 +6,7 @@ import type { GameState } from '../domain/models';
 export class NetworkManager {
     private ws: WebSocket | null = null;
     private connected: boolean = false;
-    private pingInterval: any = null;
+    private pingInterval: ReturnType<typeof setInterval> | null = null;
 
     constructor() {}
 
@@ -59,7 +59,7 @@ export class NetworkManager {
         }
     }
 
-    send(message: any) {
+    send(message: unknown) {
         if (this.ws && this.ws.readyState === WebSocket.OPEN) {
             this.ws.send(JSON.stringify(message));
         } else {
@@ -67,7 +67,14 @@ export class NetworkManager {
         }
     }
 
-    private handleMessage(message: any) {
+    private handleMessage(message: { 
+        type: string; 
+        payload?: { 
+            playerId?: string; 
+            playerName?: string; 
+            gameState?: GameState 
+        } 
+    }) {
         switch (message.type) {
             case 'success':
                 if (message.payload?.playerId) {

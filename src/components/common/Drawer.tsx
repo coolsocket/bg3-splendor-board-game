@@ -16,6 +16,14 @@ export const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, title, children
         <div 
           className="fixed inset-0 bg-black/50 z-40 transition-opacity"
           onClick={onClose}
+          role="button"
+          tabIndex={0}
+          aria-label="Close drawer"
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              onClose();
+            }
+          }}
         />
       )}
       
