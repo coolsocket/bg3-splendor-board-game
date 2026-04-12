@@ -2,6 +2,14 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-027
+- **What was implemented**:
+  - **STORY-027**: 加大非行动玩家的视觉降级。将 `PlayerBoard.tsx` 中渲染非当前回合玩家面板的类从 `brightness-[0.6]` 改为 `opacity-60`，使其明显变暗且半透明，拉大了与当前行动玩家的视觉差距。
+- **Files changed**: `src/components/PlayerBoard.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 使用 `opacity-60` 代替 `brightness-[0.6]` 可以更好地让背景透出，从而在视觉上弱化非活动组件，达到更好的“降级”效果。
+---
+
 ## [2026-04-12] - STORY-026
 - **What was implemented**:
   - **STORY-026**: 居中空卡占位符文本。修改了 `PatronSlot.tsx` 中渲染空卡槽占位符的布局，将原有的 `flex-col justify-between` 和绝对定位的文本改为 `flex-col items-center justify-center gap-2`，确保了文字和三角形图标在容器内绝对居中。

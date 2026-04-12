@@ -270,8 +270,8 @@
       "acceptanceCriteria": [
         "1. 非当前回合玩家面板明显变暗（opacity 60%）"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-028",

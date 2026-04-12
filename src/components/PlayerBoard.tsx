@@ -84,7 +84,7 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
 
   return (
     <div 
-      className={`relative bg3-panel p-4 pb-6 text-[#E8E2D2] font-fantasy w-[260px] max-w-[260px] flex-shrink-0 min-w-0 max-h-[90vh] overflow-y-auto transition-all duration-300 ${props.isActive ? 'animate-gold-breathe scale-[1.02] shadow-[0_0_20px_rgba(212,175,55,0.5)]' : 'brightness-[0.6]'} ${isCurrent ? 'shadow-[0_4px_20px_rgba(138,43,226,0.15)]' : ''} ${viewMode === 'summary' ? 'cursor-pointer' : ''}`}
+      className={`relative bg3-panel p-4 pb-6 text-[#E8E2D2] font-fantasy w-[260px] max-w-[260px] flex-shrink-0 min-w-0 max-h-[90vh] overflow-y-auto transition-all duration-300 ${props.isActive ? 'animate-gold-breathe scale-[1.02] shadow-[0_0_20px_rgba(212,175,55,0.5)]' : 'opacity-60'} ${isCurrent ? 'shadow-[0_4px_20px_rgba(138,43,226,0.15)]' : ''} ${viewMode === 'summary' ? 'cursor-pointer' : ''}`}
       onClick={onClick}
       role="button"
       tabIndex={0}
