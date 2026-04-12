@@ -70,8 +70,8 @@
       "acceptanceCriteria": [
         "1. 左侧资产图标和数字亮度明显提升"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-008",
@@ -80,8 +80,8 @@
       "acceptanceCriteria": [
         "1. 进度条有明确的文字说明"
       ],
-      "passes": false,
-      "attempts": 0
+      "passes": true,
+      "attempts": 1
     },
     {
       "id": "STORY-009",

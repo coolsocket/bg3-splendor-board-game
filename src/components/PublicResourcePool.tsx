@@ -85,6 +85,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
           <div className="w-64 h-2 bg-[#0a0a0f] rounded-full border border-[#bf953f] relative overflow-hidden" title="Turn Tracker (Placeholder)">
             <div className="absolute top-0 left-0 h-full bg-gold w-1/3 shadow-[0_0_5px_#d4af37]"></div>
           </div>
+          <span className="text-xs text-gold/70 ml-1" aria-label="Turn Progress">Turn Progress</span>
         </div>
         <div className={`flex items-center gap-6 ${isTokenLimitReached ? 'filter grayscale-[100%] opacity-50 pointer-events-none' : ''}`}>
           <div className="bg-[#0a0a0f] p-3 rounded-xl border border-[#bf953f]/40 shadow-[inset_0_2px_10px_rgba(0,0,0,0.8)]">

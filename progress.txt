@@ -2,6 +2,14 @@
 
 This file tracks the progress of the Ralph loop iterations.
 
+## [2026-04-12] - STORY-008
+- **What was implemented**:
+  - **STORY-008**: 顶部 TURNS 进度条增加解释。在 `PublicResourcePool.tsx` 中，为黄色的进度条增加了一个显式的 `Turn Progress` Label，解释了进度条代表的具体业务含义。
+- **Files changed**: `src/components/PublicResourcePool.tsx`
+- **💣 踩坑与经验 (Learnings):**
+  - 在为无状态或仅有视觉呈现的组件（如 Placeholder 进度条）增加解释时，使用清晰的文字 Label（如 "Turn Progress"）可以有效提升用户的理解度，避免猜测。
+---
+
 ## [2026-04-12] - STORY-007
 - **What was implemented**:
   - **STORY-007**: 修复了资产列表的过度黯淡。移除了 `ResourceMatrix.tsx` 中资源项的条件透明度，统一改为常驻的 `opacity-100`，确保玩家在任何时候都能清晰看到资产数量。
