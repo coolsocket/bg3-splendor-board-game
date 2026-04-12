@@ -40,6 +40,7 @@ export const GameArena: React.FC<GameArenaProps> = ({
   disabledTokens = []
 }) => {
   const [expandedPlayerName, setExpandedPlayerName] = useState<string>(currentPlayer.playerName);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const { currentPlayerIndex } = useGameSystemStore();
   const availablePatrons = usePublicStore((state) => state.availablePatrons);
 
@@ -102,39 +103,39 @@ export const GameArena: React.FC<GameArenaProps> = ({
           isValid={isValid}
         />
       )}
-      <div className="turn-tracker bg-obsidian-panel backdrop-blur-sm border border-gold-dark/30 p-3 flex items-center justify-center gap-6 my-2 rounded-lg shadow-heavy">
-        <span className="text-gold text-sm uppercase tracking-wider font-serif font-bold">Turn Order</span>
-        <div className="flex items-center gap-3">
-          {[currentPlayer, ...opponents].map((player, index) => {
-            const isActive = index === currentPlayerIndex;
-            const avatarImg = getAvatarImg(player.playerName);
-            return (
-              <React.Fragment key={player.playerName}>
-                <div className="flex flex-col items-center gap-1">
-                  <div className={`relative w-12 h-12 rounded-full border-2 ${isActive ? 'border-gold shadow-[0_0_10px_rgba(212,175,55,0.8)]' : 'border-gray-600 opacity-70'} overflow-hidden`}>
-                    {avatarImg ? (
-                      <img src={avatarImg} alt={player.playerName} className="w-full h-full object-cover" />
-                    ) : (
-                      <div className="w-full h-full bg-gray-700 flex items-center justify-center text-white font-bold text-lg">
-                        {player.playerName.charAt(0)}
-                      </div>
-                    )}
-                    {isActive && (
-                      <div className="absolute inset-0 border-2 border-gold animate-pulse rounded-full"></div>
-                    )}
-                  </div>
-                  <span className={`text-xs ${isActive ? 'text-gold font-bold' : 'text-parchment opacity-70'}`}>{player.playerName}</span>
-                </div>
-                {index < [currentPlayer, ...opponents].length - 1 && (
-                  <span className="text-gold opacity-50 text-xl font-bold self-center mb-4">→</span>
-                )}
-              </React.Fragment>
-            );
-          })}
-        </div>
-      </div>
       <div className="arena-content">
         <div className="sidebar overflow-y-auto">
+          <div className="turn-tracker bg-obsidian-panel backdrop-blur-sm border border-gold-dark/30 p-2 flex items-center justify-center gap-3 my-2 rounded-lg shadow-heavy text-xs">
+            <span className="text-gold text-xs uppercase tracking-wider font-serif font-bold">Turns</span>
+            <div className="flex items-center gap-2">
+              {[currentPlayer, ...opponents].map((player, index) => {
+                const isActive = index === currentPlayerIndex;
+                const avatarImg = getAvatarImg(player.playerName);
+                return (
+                  <React.Fragment key={player.playerName}>
+                    <div className="flex flex-col items-center gap-0.5">
+                      <div className={`relative border ${isActive ? 'border-gold shadow-[0_0_5px_rgba(212,175,55,0.8)]' : 'border-gray-600 opacity-70'}`} style={{ width: '32px', height: '32px', flex: '0 0 32px', overflow: 'hidden', borderRadius: '50%' }}>
+                        {avatarImg ? (
+                          <img src={avatarImg} alt={player.playerName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        ) : (
+                          <div className="w-full h-full bg-gray-700 flex items-center justify-center text-white font-bold text-sm">
+                            {player.playerName.charAt(0)}
+                          </div>
+                        )}
+                        {isActive && (
+                          <div className="absolute inset-0 border border-gold animate-pulse rounded-full"></div>
+                        )}
+                      </div>
+                      <span className={`text-2xs ${isActive ? 'text-gold font-bold' : 'text-parchment opacity-70'}`}>{player.playerName}</span>
+                    </div>
+                    {index < [currentPlayer, ...opponents].length - 1 && (
+                      <span className="text-gold opacity-50 text-sm font-bold self-center mb-2">→</span>
+                    )}
+                  </React.Fragment>
+                );
+              })}
+            </div>
+          </div>
           <div className="opponents-container">
             {opponents.map((opponent, index) => {
               const isExpanded = opponent.playerName === expandedPlayerName;
@@ -173,7 +174,20 @@ export const GameArena: React.FC<GameArenaProps> = ({
           ))}
         </div>
       </div>
-      <EventLog />
+      
+      {/* Scroll Icon Trigger for History */}
+      <button
+        className="fixed bottom-6 right-6 bg-obsidian-panel border border-gold-dark/50 p-3 rounded-full shadow-heavy hover:bg-white/10 transition-colors z-40"
+        onClick={() => setIsHistoryOpen(true)}
+        aria-label="Open History"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+      </button>
+
+      <EventLog isOpen={isHistoryOpen} onClose={() => setIsHistoryOpen(false)} />
     </div>
   );
 };

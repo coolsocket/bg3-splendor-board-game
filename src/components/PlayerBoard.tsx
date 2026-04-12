@@ -140,5 +140,6 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
           </div>
         </div>
       </div>
+    </div>
   );
 };

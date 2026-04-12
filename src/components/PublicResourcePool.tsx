@@ -58,7 +58,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
         <div className="relative">
           <button 
             className="settings-btn text-gold p-2 rounded hover:bg-white/10"
-            onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+            onClick={() => setIsSettingsOpen(true)}
             aria-label="Settings"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -67,21 +67,43 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
             </svg>
           </button>
           {isSettingsOpen && (
-            <div className="absolute top-full left-0 mt-2 bg-obsidian-panel border border-gold-dark/30 p-4 rounded-lg z-50 shadow-heavy min-w-[200px]">
-              <h3 className="text-gold font-serif mb-2 border-bottom border-gold/20 pb-1">Settings</h3>
-              <div className="flex flex-col gap-2">
-                <label className="text-gold text-sm block">Card Scale: {scale.toFixed(1)}</label>
-                <input
-                  type="range"
-                  min="0.5"
-                  max="1.5"
-                  step="0.1"
-                  value={scale}
-                  onChange={(e) => handleScaleChange(parseFloat(e.target.value))}
-                  className="w-full accent-gold"
-                />
+            <>
+              {/* Backdrop */}
+              <div 
+                className="fixed inset-0 bg-black/60 z-50"
+                onClick={() => setIsSettingsOpen(false)}
+              />
+              {/* Modal */}
+              <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-obsidian-panel border border-gold-dark/30 p-6 rounded-lg z-50 shadow-heavy min-w-[300px]">
+                <div className="flex justify-between items-center mb-4 border-b border-gold-dark/20 pb-2">
+                  <h3 className="text-gold font-serif text-lg font-bold">Settings</h3>
+                  <button 
+                    onClick={() => setIsSettingsOpen(false)}
+                    className="text-gold hover:text-white transition-colors"
+                    aria-label="Close Settings"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-gold text-sm block">Card Scale: {scale.toFixed(1)}</label>
+                    <input
+                      type="range"
+                      min="0.5"
+                      max="1.5"
+                      step="0.1"
+                      value={scale}
+                      onChange={(e) => handleScaleChange(parseFloat(e.target.value))}
+                      className="w-full accent-gold"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
+            </>
           )}
         </div>
       </div>

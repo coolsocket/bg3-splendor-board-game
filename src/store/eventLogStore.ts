@@ -22,7 +22,7 @@ export const useEventLogStore = create<EventLogState>((set) => ({
         message,
         timestamp: new Date(),
       }
-    ].slice(-5) // Keep only last 5 events for minimal log
+    ].slice(-50) // Keep more events for history drawer
   })),
   clearEvents: () => set({ events: [] }),
 }));
