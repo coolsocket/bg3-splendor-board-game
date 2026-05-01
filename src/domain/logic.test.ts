@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { checkPatronVisits, createPlayer, createEmptyResourceCollection, calculateEffectiveCost, getWinners, SeededRandom, hasEnoughResources, reserveCard } from './logic';
+import { checkPatronVisits, createPlayer, createEmptyResourceCollection, calculateEffectiveCost, getWinners, SeededRandom, hasEnoughResources, reserveCard, nextTurn } from './logic';
 import { ResourceType, CardTier, CardType } from './models';
 import type { Patron, GameState, Card } from './models';
 
@@ -204,7 +204,7 @@ describe('hasEnoughResources', () => {
 
 describe('reserveCard', () => {
     const player = createPlayer('1', 'Test Player');
-    const card = { id: '1', name: 'Card' } as Card;
+    const card = { id: '1', assetId: '1', name: 'Card' } as Card;
 
     it('should allow reserving a card if less than 3 reserved', () => {
         const result = reserveCard(player, card);
@@ -220,5 +220,28 @@ describe('reserveCard', () => {
         };
         const result = reserveCard(fullPlayer, card);
         expect(result).toBeNull();
+    });
+});
+
+describe('nextTurn', () => {
+    const player1 = createPlayer('1', 'P1');
+    const player2 = createPlayer('2', 'P2');
+    const state = {
+        players: [player1, player2],
+        currentPlayerIndex: 0,
+        turnNumber: 0,
+    } as GameState;
+
+    it('should advance to next player', () => {
+        const nextState = nextTurn(state);
+        expect(nextState.currentPlayerIndex).toBe(1);
+        expect(nextState.turnNumber).toBe(1);
+    });
+
+    it('should wrap around to player 0 and increment turn number properly', () => {
+        const stateAtEnd = { ...state, currentPlayerIndex: 1, turnNumber: 1 };
+        const nextState = nextTurn(stateAtEnd);
+        expect(nextState.currentPlayerIndex).toBe(0);
+        expect(nextState.turnNumber).toBe(2);
     });
 });

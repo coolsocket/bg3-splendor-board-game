@@ -1,0 +1,23 @@
+.gcloudignore
+.git
+.gitignore
+node_modules
+dist
+.gemini
+docs
+tests
+scripts
+test-results
+archive
+*.log
+.DS_Store
+
+# EXCLUDE LOCAL ASSETS (Hosted on GCS)
+public/assets/audio/
+src/assets/cards/
+src/assets/portraits/
+src/assets/ui/
+archive/
+debug_tokens.png
+screenshot.png
+progress.txt

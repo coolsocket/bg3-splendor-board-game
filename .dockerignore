@@ -1,0 +1,8 @@
+node_modules
+dist
+.git
+.gemini
+docs/LLM_log
+tests/llm_probes
+*.log
+.DS_Store

@@ -26,3 +26,24 @@ export const useEventLogStore = create<EventLogState>((set) => ({
   })),
   clearEvents: () => set({ events: [] }),
 }));
+
+// --- LOCAL MULTIPLAYER SIMULATION ---
+// Syncs event log state across multiple browser windows.
+// NOTE: Basic singleton implementation. Does not close channel on unmount.
+const logBc = new BroadcastChannel('splendor-event-log');
+let isReceivingLog = false;
+
+useEventLogStore.subscribe((state) => {
+  if (!isReceivingLog) {
+    const { addEvent, clearEvents, ...pureState } = state;
+    logBc.postMessage(pureState);
+  }
+});
+
+logBc.onmessage = (event) => {
+  isReceivingLog = true;
+  useEventLogStore.setState(event.data);
+  setTimeout(() => {
+    isReceivingLog = false;
+  }, 0);
+};

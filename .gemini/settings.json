@@ -1,0 +1,25 @@
+{
+  "model": {
+    "compressionThreshold": 0.3
+  },
+  "contextManagement": {
+    "historyWindow": {
+      "maxTokens": 800000,
+      "retainedTokens": 100000
+    }
+  },
+  "hooks": {
+    "BeforeTool": [
+      {
+        "matcher": "write_file|replace",
+        "hooks": [
+          {
+            "name": "enforce-test-driven",
+            "type": "command",
+            "command": "node .gemini/hooks/enforce_tests.cjs"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "EmptyCardSlot": {
+    "path": "src/components/EmptyCardSlot.tsx",
+    "dependencies": [
+      "../store/gameStateStore"
+    ],
+    "hasHardcodedColors": true
+  },
+  "EventLog": {
+    "path": "src/components/EventLog.tsx",
+    "dependencies": [
+      "../store/eventLogStore",
+      "../store/gameStateStore"
+    ],
+    "hasHardcodedColors": false
+  },
+  "GameArena": {
+    "path": "src/components/GameArena.tsx",
+    "dependencies": [
+      "../store/gameStateStore",
+      "../store/playerStore",
+      "../domain/models",
+      "../domain/rules/purchaseRules",
+      "../domain/logic",
+      "../domain/models",
+      "../store/audioStore"
+    ],
+    "hasHardcodedColors": true
+  },
+  "PatronSlot": {
+    "path": "src/components/PatronSlot.tsx",
+    "dependencies": [
+      "../domain/models",
+      "../store/gameStateStore"
+    ],
+    "hasHardcodedColors": true
+  },
+  "PlayerAvatar": {
+    "path": "src/components/PlayerAvatar.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": true
+  },
+  "PlayerBoard": {
+    "path": "src/components/PlayerBoard.tsx",
+    "dependencies": [
+      "../store/gameStateStore"
+    ],
+    "hasHardcodedColors": true
+  },
+  "PrestigeBadge": {
+    "path": "src/components/PrestigeBadge.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": false
+  },
+  "PublicResourcePool": {
+    "path": "src/components/PublicResourcePool.tsx",
+    "dependencies": [
+      "../store/gameStateStore",
+      "../store/playerStore",
+      "../domain/models"
+    ],
+    "hasHardcodedColors": false
+  },
+  "ResourceStack": {
+    "path": "src/components/ResourceStack.tsx",
+    "dependencies": [
+      "../store/gameStateStore"
+    ],
+    "hasHardcodedColors": true
+  },
+  "StagingArea": {
+    "path": "src/components/StagingArea.tsx",
+    "dependencies": [
+      "../store/gameStateStore"
+    ],
+    "hasHardcodedColors": false
+  },
+  "AnimationOverlay": {
+    "path": "src/components/animation/AnimationOverlay.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": false
+  },
+  "Avatar": {
+    "path": "src/components/common/Avatar.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": true
+  },
+  "Button": {
+    "path": "src/components/common/Button.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": false
+  },
+  "CardBase": {
+    "path": "src/components/common/CardBase.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": true
+  },
+  "CardFlight": {
+    "path": "src/components/common/CardFlight.tsx",
+    "dependencies": [
+      "../../domain/models",
+      "../../store/gameStateStore"
+    ],
+    "hasHardcodedColors": false
+  },
+  "DevToolsPanel": {
+    "path": "src/components/common/DevToolsPanel.tsx",
+    "dependencies": [
+      "../../store/gameStateStore",
+      "../../domain/models"
+    ],
+    "hasHardcodedColors": false
+  },
+  "Drawer": {
+    "path": "src/components/common/Drawer.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": false
+  },
+  "Floaters": {
+    "path": "src/components/common/Floaters.tsx",
+    "dependencies": [
+      "../../store/floaterStore"
+    ],
+    "hasHardcodedColors": false
+  },
+  "HeroAvatar": {
+    "path": "src/components/common/HeroAvatar.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": true
+  },
+  "Modal": {
+    "path": "src/components/common/Modal.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": false
+  },
+  "NotificationOverlay": {
+    "path": "src/components/common/NotificationOverlay.tsx",
+    "dependencies": [
+      "../../store/notificationStore"
+    ],
+    "hasHardcodedColors": true
+  },
+  "PatronFlight": {
+    "path": "src/components/common/PatronFlight.tsx",
+    "dependencies": [
+      "../../domain/models",
+      "../../store/gameStateStore"
+    ],
+    "hasHardcodedColors": false
+  },
+  "ResourceIcon": {
+    "path": "src/components/common/ResourceIcon.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": true
+  },
+  "TokenParticles": {
+    "path": "src/components/common/TokenParticles.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": false
+  },
+  "TokenTransfer": {
+    "path": "src/components/common/TokenTransfer.tsx",
+    "dependencies": [
+      "../../store/gameStateStore"
+    ],
+    "hasHardcodedColors": true
+  },
+  "TurnAnnouncer": {
+    "path": "src/components/common/TurnAnnouncer.tsx",
+    "dependencies": [
+      "../../store/gameStateStore",
+      "../../domain/models"
+    ],
+    "hasHardcodedColors": true
+  },
+  "UnifiedToken": {
+    "path": "src/components/common/UnifiedToken.tsx",
+    "dependencies": [
+      "../../store/gameStateStore"
+    ],
+    "hasHardcodedColors": false
+  },
+  "VictoryVFX": {
+    "path": "src/components/common/VictoryVFX.tsx",
+    "dependencies": [
+      "../../store/gameStateStore",
+      "../../domain/models",
+      "../../store/audioStore"
+    ],
+    "hasHardcodedColors": false
+  },
+  "PerformanceMonitor": {
+    "path": "src/components/debug/PerformanceMonitor.tsx",
+    "dependencies": [
+      "../../store/gameStateStore"
+    ],
+    "hasHardcodedColors": false
+  },
+  "Card": {
+    "path": "src/components/features/market/Card.tsx",
+    "dependencies": [
+      "../../../store/gameStateStore",
+      "../../../store/playerStore"
+    ],
+    "hasHardcodedColors": true
+  },
+  "CardMarket": {
+    "path": "src/components/features/market/CardMarket.tsx",
+    "dependencies": [
+      "../../../store/gameStateStore",
+      "../../../domain/models",
+      "../../../domain/rules/purchaseRules"
+    ],
+    "hasHardcodedColors": false
+  },
+  "DeckStack": {
+    "path": "src/components/features/market/DeckStack.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": true
+  },
+  "MarketRow": {
+    "path": "src/components/features/market/MarketRow.tsx",
+    "dependencies": [],
+    "hasHardcodedColors": false
+  },
+  "SyncStatus": {
+    "path": "src/components/network/SyncStatus.tsx",
+    "dependencies": [
+      "../../store/gameStateStore"
+    ],
+    "hasHardcodedColors": true
+  }
+}

@@ -10,9 +10,10 @@ export interface PlayerState {
   reservedCards: Card[];
   patrons: Patron[];
   prestigePoints: number;
+  setName: (name: string) => void;
 }
 
-export const usePlayerStore = create<PlayerState>(() => ({
+export const usePlayerStore = create<PlayerState>((set) => ({
   id: '',
   name: '',
   resources: {},
@@ -21,4 +22,5 @@ export const usePlayerStore = create<PlayerState>(() => ({
   reservedCards: [],
   patrons: [],
   prestigePoints: 0,
+  setName: (name: string) => set({ name }),
 }));

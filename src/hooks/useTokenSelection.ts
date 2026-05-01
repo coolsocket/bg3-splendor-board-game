@@ -1,65 +1,39 @@
 import { useState, useCallback } from 'react';
 import { ResourceType, type ResourceCollection } from '../domain/models';
+import { canSelectToken, validateTokenTake } from '../domain/rules/tokenRules';
+import { useAudioStore } from '../store/audioStore';
 
-export function useTokenSelection(availableResources: ResourceCollection, playerTotalTokens: number) {
+export function useTokenSelection(availableResources: ResourceCollection) {
   const [selectedTokens, setSelectedTokens] = useState<ResourceCollection>({});
+  const [tokenOrigins, setTokenOrigins] = useState<Partial<Record<ResourceType, { x: number, y: number }>>>({});
 
   const totalSelected = Object.values(selectedTokens).reduce((sum, count) => sum + (count || 0), 0);
-  const selectedTypes = Object.keys(selectedTokens).filter((type) => (selectedTokens[type as ResourceType] || 0) > 0) as ResourceType[];
-
-  const isValid = (() => {
-    if (totalSelected === 3 && selectedTypes.length === 3) return true;
-    if (totalSelected === 2 && selectedTypes.length === 1) {
-      const type = selectedTypes[0];
-      const available = availableResources[type] || 0;
-      return available >= 4;
-    }
-    return false;
-  })();
+  
+  const isValid = validateTokenTake(selectedTokens, availableResources);
 
   const canSelect = useCallback((type: ResourceType) => {
-    console.log(`canSelect called for ${type}`);
-    console.log(`currentCount: ${selectedTokens[type] || 0}, available: ${availableResources[type] || 0}`);
-    console.log(`totalSelected: ${totalSelected}, selectedTypes: ${selectedTypes}`);
-    
-    if (type === ResourceType.TRUE_SOUL_TADPOLE) return false; // Cannot take tadpoles directly
-    if (playerTotalTokens + totalSelected >= 10) return false; // Max 10 tokens
-    
-    const currentCount = selectedTokens[type] || 0;
-    const available = availableResources[type] || 0;
-    
-    if (available <= currentCount) return false; // Not enough in pool
-    
-    if (totalSelected === 0) return true;
-    
-    if (selectedTypes.length === 1 && totalSelected === 1) {
-      if (selectedTypes.includes(type)) {
-        // Trying to take a second of the same color
-        return available >= 4;
-      }
-      // Trying to take a different color
-      return true;
-    }
-    
-    if (selectedTypes.length === 2 && totalSelected === 2) {
-      // Can only select a 3rd different color
-      return !selectedTypes.includes(type);
-    }
-    
-    return false;
-  }, [selectedTokens, availableResources, playerTotalTokens, totalSelected, selectedTypes]);
+    return canSelectToken(type, selectedTokens, availableResources);
+  }, [selectedTokens, availableResources]);
 
-  const selectToken = useCallback((type: ResourceType) => {
-    console.log(`selectToken called for ${type}`);
+  const selectToken = useCallback((type: ResourceType, x?: number, y?: number) => {
     if (!canSelect(type)) {
-      console.log(`canSelect returned false for ${type}`);
+      useAudioStore.getState().playAudio('error_thud');
       return;
     }
+    
+    useAudioStore.getState().playAudio('gem_clink');
     
     setSelectedTokens((prev) => ({
       ...prev,
       [type]: (prev[type] || 0) + 1,
     }));
+
+    if (x !== undefined && y !== undefined) {
+      setTokenOrigins(prev => ({
+        ...prev,
+        [type]: { x, y }
+      }));
+    }
   }, [canSelect]);
 
   const deselectToken = useCallback((type: ResourceType) => {
@@ -78,10 +52,12 @@ export function useTokenSelection(availableResources: ResourceCollection, player
 
   const clearSelection = useCallback(() => {
     setSelectedTokens({});
+    setTokenOrigins({});
   }, []);
 
   return {
     selectedTokens,
+    tokenOrigins,
     selectToken,
     deselectToken,
     clearSelection,

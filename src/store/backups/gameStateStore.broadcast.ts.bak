@@ -1,0 +1,169 @@
+import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
+import { type GameState, type Player, GamePhase, CardTier, ResourceType } from '../domain/models';
+import { TIER_1_CARDS, TIER_2_CARDS, TIER_3_CARDS, ALL_PATRONS } from '../data/initialData';
+
+interface GameStateStore extends GameState {
+  language: 'EN' | 'ZH';
+  lastActionId: string;
+  setGameState: (state: Partial<GameState>) => void;
+  reset: (playerNames?: string[]) => void;
+  toggleLanguage: () => void;
+}
+
+const shuffle = <T>(array: T[]): T[] => {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+};
+
+export const createInitialState = (playerNames: string[] = ['Gale', 'Astarion']): GameState => {
+  const t1Cards = shuffle([...TIER_1_CARDS]);
+  const t2Cards = shuffle([...TIER_2_CARDS]);
+  const t3Cards = shuffle([...TIER_3_CARDS]);
+
+  const faceUpT1 = t1Cards.splice(0, 4);
+  const faceUpT2 = t2Cards.splice(0, 4);
+  const faceUpT3 = t3Cards.splice(0, 4);
+
+  const players: Player[] = playerNames.map((name, index) => ({
+    id: `player-${index + 1}`,
+    name,
+    resources: {
+      [ResourceType.RADIANT_GEM]: 0,
+      [ResourceType.ARCANE_CRYSTAL]: 0,
+      [ResourceType.NATURES_BLESSING]: 0,
+      [ResourceType.INFERNAL_IRON]: 0,
+      [ResourceType.DARK_QUARTZ]: 0,
+      [ResourceType.TRUE_SOUL_TADPOLE]: 0,
+    },
+    bonuses: {},
+    acquiredCards: [],
+    reservedCards: [],
+    patrons: [],
+    prestigePoints: 0,
+  }));
+
+  const playerCount = players.length;
+  const tokenCount = playerCount === 2 ? 4 : playerCount === 3 ? 5 : 7;
+
+  return {
+    phase: GamePhase.IN_PROGRESS,
+    players,
+    currentPlayerIndex: 0,
+    availableResources: {
+      [ResourceType.RADIANT_GEM]: tokenCount,
+      [ResourceType.ARCANE_CRYSTAL]: tokenCount,
+      [ResourceType.NATURES_BLESSING]: tokenCount,
+      [ResourceType.INFERNAL_IRON]: tokenCount,
+      [ResourceType.DARK_QUARTZ]: tokenCount,
+      [ResourceType.TRUE_SOUL_TADPOLE]: 5,
+    },
+    decks: {
+      [CardTier.TIER_1]: t1Cards,
+      [CardTier.TIER_2]: t2Cards,
+      [CardTier.TIER_3]: t3Cards,
+    },
+    faceUpCards: {
+      [CardTier.TIER_1]: faceUpT1,
+      [CardTier.TIER_2]: faceUpT2,
+      [CardTier.TIER_3]: faceUpT3,
+    },
+    availablePatrons: shuffle([...ALL_PATRONS]).slice(0, 3),
+    turnNumber: 1,
+  };
+};
+
+const activeSlot = localStorage.getItem('bg3-active-slot') || 'bg3-splendor-session-1';
+
+export const useGameStateStore = create<GameStateStore>()(
+  persist(
+    (set) => ({
+      ...createInitialState(),
+      language: 'ZH',
+      lastActionId: '',
+      setGameState: (newState) => set((state) => {
+        const actionId = `action-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+        return { 
+          ...state, 
+          ...newState, 
+          lastActionId: actionId 
+        };
+      }),
+      reset: (playerNames) => {
+          const initialState = createInitialState(playerNames);
+          set({ 
+            ...initialState, 
+            lastActionId: 'reset-' + Date.now() + '-' + Math.random().toString(36).substring(7) 
+          });
+      },
+      toggleLanguage: () => set((state) => ({ language: state.language === 'EN' ? 'ZH' : 'EN' })),
+    }),
+    {
+      name: activeSlot,
+      storage: createJSONStorage(() => localStorage),
+
+      partialize: (state) => {
+        // Exclude methods and personal preferences from persistence
+        const syncableState = { ...state } as any;
+        delete syncableState.language;
+        delete syncableState.setGameState;
+        delete syncableState.reset;
+        delete syncableState.toggleLanguage;
+        return syncableState;
+      },
+      onRehydrateStorage: (_state) => {
+        return (rehydratedState, error) => {
+          if (error) {
+            console.error('Failed to rehydrate game state:', error);
+          } else if (rehydratedState) {
+            // Validate version or force reset if state is corrupted
+            if (!rehydratedState.players || rehydratedState.players.length === 0) {
+                console.warn('Corrupted state detected, resetting to initial...');
+                useGameStateStore.getState().reset();
+            }
+          }
+        };
+      },
+    }
+  )
+);
+
+// --- LOCAL MULTIPLAYER SIMULATION ---
+const bc = new BroadcastChannel('splendor-game-state');
+let isReceiving = false;
+
+useGameStateStore.subscribe((state) => {
+  if (!isReceiving) {
+    // Only broadcast the syncable parts
+    const { language, setGameState, reset, toggleLanguage, ...pureState } = state;
+    bc.postMessage({ type: 'STATE_SYNC', state: pureState });
+  }
+});
+
+bc.onmessage = (event) => {
+  if (event.data.type === 'STATE_SYNC') {
+    isReceiving = true;
+    const currentState = useGameStateStore.getState();
+    // Merge remote state but KEEP local language
+    useGameStateStore.setState({
+        ...event.data.state,
+        language: currentState.language 
+    });
+    setTimeout(() => { isReceiving = false; }, 0);
+  } else if (event.data.type === 'ANIMATION_EVENT') {
+    const customEvent = new CustomEvent(event.data.eventName, {
+      detail: { ...event.data.detail, fromNetwork: true }
+    });
+    window.dispatchEvent(customEvent);
+  }
+};
+
+export const broadcastAnimationEvent = (eventName: string, detail: any) => {
+  if (detail?.fromNetwork) return;
+  bc.postMessage({ type: 'ANIMATION_EVENT', eventName, detail });
+};
+if (typeof window !== 'undefined') { (window as any).__ZUSTAND_STORE__ = useGameStateStore; }

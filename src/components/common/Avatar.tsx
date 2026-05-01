@@ -1,4 +1,5 @@
 import React from 'react';
+import { PrestigeBadge } from '../PrestigeBadge';
 
 export interface AvatarProps {
   imageUrl?: string;
@@ -14,7 +15,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   imageUrl,
   name,
   size = 'md',
-  isActive = false,
+  
   prestigePoints,
   showPrestigeShield = false,
   className = ''
@@ -27,7 +28,7 @@ export const Avatar: React.FC<AvatarProps> = ({
 
   return (
     <div className={`relative inline-block flex-shrink-0 ${sizeClasses[size]} ${className}`}>
-      <div className={`rounded-full overflow-hidden flex items-center justify-center border-2 w-full h-full ${isActive ? 'border-[var(--color-gold,#d4af37)] shadow-[0_0_10px_var(--color-gold,#d4af37)]' : 'border-[var(--color-gold-dark,#bf953f)]'} bg-[var(--color-bg-obsidian,#1a1a1a)]`}>
+      <div className={`rounded-full overflow-hidden flex items-center justify-center w-full h-full bg-[var(--color-bg-obsidian,#1a1a1a)]`}>
         {imageUrl ? (
           <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
         ) : (
@@ -42,10 +43,12 @@ export const Avatar: React.FC<AvatarProps> = ({
           </div>
         )}
       </div>
-      {showPrestigeShield && prestigePoints !== undefined && (
-        <div className="absolute -top-1 -left-1 bg-gradient-to-br from-[#bf953f] to-[#aa771c] border border-[#5c4418] rounded-full w-[22px] h-[22px] flex items-center justify-center text-white font-bold text-[0.8rem] shadow-[0_2px_4px_rgba(0,0,0,0.6)] z-[var(--z-badge)]">
-          <span>{prestigePoints}</span>
-        </div>
+      {showPrestigeShield && prestigePoints !== undefined && prestigePoints > 0 && (
+        <PrestigeBadge 
+          prestigePoints={prestigePoints} 
+          size="md"
+          className="absolute top-[-8px] left-[-8px]" 
+        />
       )}
     </div>
   );

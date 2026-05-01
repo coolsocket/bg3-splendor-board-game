@@ -79,7 +79,7 @@ describe('takeTokensAction', () => {
 
         expect(result.success).toBe(false);
         if (!result.success) {
-            expect(result.error).toContain('Can only take 2 of the same color if 4+ are available');
+            expect(result.error).toContain('Invalid token selection pattern');
         }
     });
 
@@ -123,7 +123,7 @@ describe('takeTokensAction', () => {
 
         expect(result.success).toBe(false);
         if (!result.success) {
-            expect(result.error).toContain('Must take either 3 different tokens OR 2 of the same color');
+            expect(result.error).toContain('Invalid token selection pattern');
         }
     });
 
@@ -160,7 +160,7 @@ describe('takeTokensAction', () => {
         }
     });
 
-    it('should fail if player exceeds 10 tokens limit', () => {
+    it('should allow player to exceed 10 tokens limit (discard handled by UI)', () => {
         const richPlayer = {
             ...player1,
             resources: {
@@ -180,10 +180,7 @@ describe('takeTokensAction', () => {
 
         const result = takeTokensAction(state, '1', tokens);
 
-        expect(result.success).toBe(false);
-        if (!result.success) {
-            expect(result.error).toContain('Cannot exceed 10 total tokens');
-        }
+        expect(result.success).toBe(true);
     });
 });
 

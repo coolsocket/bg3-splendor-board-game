@@ -1,17 +1,12 @@
 import React from 'react';
-import { Token } from './Token';
 import type { ResourceType } from './TokenTypes';
-import { useAudioStore } from '../store/audioStore';
-import { usePublicStore } from '../store/publicStore';
+import { useGameStateStore } from '../store/gameStateStore';
 import { usePlayerStore } from '../store/playerStore';
 import { ResourceType as DomainResourceType } from '../domain/models';
-import { WildcardPool } from './WildcardPool';
-
-
-
+import { UnifiedToken } from './common/UnifiedToken';
 
 interface PublicResourcePoolProps {
-  onTokenClick?: (type: ResourceType) => void;
+  onTokenClick?: (type: ResourceType, x: number, y: number) => void;
   disabledTokens?: ResourceType[];
 }
 
@@ -19,15 +14,19 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   onTokenClick,
   disabledTokens = [],
 }) => {
-  const storeResources = usePublicStore((state) => state.availableResources);
-  const playAudio = useAudioStore((state) => state.playAudio);
+  const { availableResources, players, currentPlayerIndex } = useGameStateStore();
+  const localPlayerName = usePlayerStore((state) => state.name);
+  const storeResources = availableResources;
   
-  const storePlayer = usePlayerStore();
-  const totalTokens = Object.values(storePlayer.resources).reduce((sum, count) => sum + (count || 0), 0);
+  // Important: Find the LOCAL player to determine if they personally can take tokens
+  // not based on whose turn it is for UI feedback (though turn logic will still block the action)
+  const localPlayer = players.find(p => p.name === localPlayerName) || players[currentPlayerIndex];
+  const totalTokens = Object.values(localPlayer.resources).reduce((sum, count) => sum + (count || 0), 0);
   const isTokenLimitReached = totalTokens >= 10;
-
-
   
+  // Interaction check: only active if it's the local player's turn
+  const isMyTurn = players[currentPlayerIndex]?.name === localPlayerName;
+
   const resources: Record<ResourceType, number> = {
     RADIANT_GEM: storeResources[DomainResourceType.RADIANT_GEM] || 0,
     ARCANE_CRYSTAL: storeResources[DomainResourceType.ARCANE_CRYSTAL] || 0,
@@ -46,26 +45,19 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   ];
 
   return (
-    <div className="public-resource-pool flex justify-between items-center py-2 bg-gradient-to-br from-[#1a1c23]/95 to-[#101216]/95 border-b-2 border-gold-dark/30 shadow-heavy z-elevated global-hud backdrop-blur-sm">
-      <div className="flex items-center gap-4 flex-1 global-info">
-        <div className="relative">
-        </div>
-      </div>
-      
-      <div className="flex flex-col items-center flex-none">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="font-fantasy text-sm font-bold text-gold uppercase tracking-wider">Turns</span>
-          <div className="w-64 h-2 bg-[#0a0a0f] rounded-full border border-[#bf953f] relative overflow-hidden" title="Turn Tracker (Placeholder)">
-            <div className="absolute top-0 left-0 h-full bg-gold w-1/3 shadow-[0_0_5px_#d4af37]"></div>
-          </div>
-          <span className="text-xs text-gold/70 ml-1" aria-label="Turn Progress">Turn Progress</span>
-        </div>
-        <div className={`flex items-center gap-6 ${isTokenLimitReached ? 'filter grayscale-[100%] opacity-50 pointer-events-none' : ''}`}>
-          <div className="bg-[#0a0a0f] p-3 rounded-xl border border-[#bf953f]/40 shadow-[inset_0_2px_10px_rgba(0,0,0,0.8)]">
-            <div className="flex gap-3">
+    <div className="public-resource-pool flex flex-col items-center w-full bg-gradient-to-br from-bg-underdark/95 to-bg-underdark-end/95 border-b-2 border-gold-dark/30 shadow-heavy z-elevated global-hud backdrop-blur-sm pb-4 rounded-lg">
+      <div className="flex flex-col items-center w-full px-2 pt-4">
+        {/* Public Vault (Token Pool Pedestal) */}
+        <div className={`flex flex-col items-center w-full max-w-60 ${(!isMyTurn || isTokenLimitReached) ? 'filter grayscale-[100%] opacity-50 pointer-events-none' : ''}`}>
+          <div className="bg-ui-bg-vault p-3 rounded-xl border border-gold/50 shadow-[inset_0_4px_10px_rgba(0,0,0,0.8),0_8px_16px_rgba(0,0,0,0.6)] relative flex flex-col items-center w-full">
+            {/* Metallic top trim */}
+            <div className="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-70"></div>
+            
+            <div className="grid grid-cols-2 gap-x-6 gap-y-4 place-items-center w-full mt-2">
               {resourceTypes.map((type) => (
                 <div 
                   key={type} 
+                  data-testid={`token-${type}`}
                   className={`flex flex-col items-center relative transition-all duration-200 cursor-pointer rounded-full shadow-md hover:scale-110 aspect-square min-w-[2rem] flex-shrink-0 ${(resources[type] || 0) <= 0 ? 'filter grayscale-[100%] brightness-50 cursor-not-allowed pointer-events-none' : ''} ${
                     type === 'RADIANT_GEM' ? 'hover:shadow-[0_0_15px_var(--color-radiant)]' :
                     type === 'ARCANE_CRYSTAL' ? 'hover:shadow-[0_0_15px_var(--color-arcane)]' :
@@ -74,39 +66,40 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
                     type === 'DARK_QUARTZ' ? 'hover:shadow-[0_0_15px_var(--color-dark)]' : ''
                   }`}
                 >
-                  <Token
+                  <UnifiedToken
                     type={type}
-                    count={resources[type] || 0}
-                    onClick={() => {
-                      playAudio('take-token');
-                      onTokenClick?.(type);
+                    amount={resources[type] || 0}
+                    onClick={(e) => {
+                      if (!isMyTurn) return;
+                      onTokenClick?.(type, e.clientX, e.clientY);
                     }}
-                    disabled={disabledTokens.includes(type) || (resources[type] || 0) <= 0}
-                    hideLabel={true}
-                    size="lg"
+                    disabled={!isMyTurn || disabledTokens.includes(type) || (resources[type] || 0) <= 0}
+                    size="md"
+                    interactive={isMyTurn}
                   />
                 </div>
               ))}
-            </div>
-          </div>
-          <div className="bg-gold/15 p-2 rounded-full border border-gold/50 shadow-md">
-            <div className={`flex items-center ${(resources['TRUE_SOUL_TADPOLE'] || 0) <= 0 ? 'filter grayscale-[100%] brightness-50 cursor-not-allowed pointer-events-none' : ''} hover:scale-110 transition-all duration-200 hover:shadow-[0_0_15px_var(--color-wildcard)] rounded-full`}>
-              <WildcardPool
-                count={resources['TRUE_SOUL_TADPOLE'] || 0}
-                onClick={() => {
-                  playAudio('take-tadpole');
-                  onTokenClick?.('TRUE_SOUL_TADPOLE');
-                }}
-                disabled={disabledTokens.includes('TRUE_SOUL_TADPOLE') || (resources['TRUE_SOUL_TADPOLE'] || 0) <= 0}
-                size="lg"
-              />
-            </div>
-          </div>
 
+              {/* Wildcard */}
+              <div 
+                data-testid="token-TRUE_SOUL_TADPOLE"
+                className={`flex items-center ${(resources['TRUE_SOUL_TADPOLE'] || 0) <= 0 ? 'filter grayscale-[100%] brightness-50 cursor-not-allowed pointer-events-none' : ''} hover:scale-110 transition-all duration-200 hover:shadow-[0_0_15px_var(--color-wildcard)] rounded-full`}
+              >
+                <UnifiedToken
+                  type="TRUE_SOUL_TADPOLE"
+                  amount={resources['TRUE_SOUL_TADPOLE'] || 0}
+                  onClick={(e) => {
+                    if (!isMyTurn) return;
+                    onTokenClick?.('TRUE_SOUL_TADPOLE', e.clientX, e.clientY);
+                  }}
+                  disabled={!isMyTurn || disabledTokens.includes('TRUE_SOUL_TADPOLE') || (resources['TRUE_SOUL_TADPOLE'] || 0) <= 0}
+                  size="md"
+                  interactive={isMyTurn}
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="flex justify-end items-center flex-1 pr-4">
       </div>
     </div>
   );

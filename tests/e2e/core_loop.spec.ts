@@ -8,22 +8,13 @@ test('Core game loop: take 3 different tokens', async ({ page }) => {
   await expect(page.locator('.public-resource-pool')).toBeVisible();
 
   // Click 3 different tokens using JS evaluate to bypass any overlay/CSS issues
-  await page.evaluate(() => {
-    const el = document.querySelector('[aria-label*="Fairy Gold"]');
-    if (el instanceof HTMLElement) el.click();
-  });
+  await page.locator('[data-testid="token-RADIANT_GEM"]').click();
   await expect(page.locator('.staged-tokens .token')).toHaveCount(1);
 
-  await page.evaluate(() => {
-    const el = document.querySelector('[aria-label*="Enchanted Agate"]');
-    if (el instanceof HTMLElement) el.click();
-  });
+  await page.locator('[data-testid="token-ARCANE_CRYSTAL"]').click();
   await expect(page.locator('.staged-tokens .token')).toHaveCount(2);
 
-  await page.evaluate(() => {
-    const el = document.querySelector('[aria-label*="Poison Bottle"]');
-    if (el instanceof HTMLElement) el.click();
-  });
+  await page.locator('[data-testid="token-NATURES_BLESSING"]').click();
   await expect(page.locator('.staged-tokens .token')).toHaveCount(3);
 
   // Click CONFIRM

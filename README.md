@@ -1,73 +1,26 @@
-# React + TypeScript + Vite
+# BG3 Splendor: Digital Board Game Framework
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-fidelity implementation of the Splendor board game mechanics, reimagined within the dark fantasy universe of Baldur's Gate 3.
 
-Currently, two official plugins are available:
+## 🏛️ Engineering Philosophy (Sink-in Protocol)
+This project adheres to the **"Physicality First"** directive. UI elements are designed as nested physical objects rather than flat web components.
+- **Visual Depth**: Layered DIVs with custom blend modes and shadow offsets.
+- **Atmospheric Logic**: Dynamic lighting (CSS variables) reflects game state (e.g., affordability glows).
+- **Single Source of Truth**: All UI dimensions are configuration-driven via `GAME_CONFIG.ts`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Core Technologies
+- **State**: Zustand with multi-window synchronization via `BroadcastChannel`.
+- **Logic**: Immutable domain rules with complex tie-breaking and phase management.
+- **Assets**: Digital illustrations generated via Vertex AI, indexed by a strict `assetId` contract.
+- **Localization**: Full ZH/EN support with structured event logging.
 
-## React Compiler
+## 📂 Project Structure
+- `src/domain`: Pure game logic and rule enforcement.
+- `src/store`: Global state management and synchronization logic.
+- `src/components/common`: Physical UI component library.
+- `src/config`: Centralized balance and layout parameters.
+- `.skill`: Solidified project capabilities (Asset generation, Style research).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🚀 Development Standards
+Refer to `AGENTS.md` for strict coding standards regarding visual integrity, localization, and state isolation.
+EOF

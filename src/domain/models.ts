@@ -112,7 +112,10 @@ export interface Card {
     /** Unique identifier for the card */
     id: string;
 
-    /** Display name (e.g., "Fireball", "Elixir of Hill Giant Strength") */
+    /** ID for asset lookup (images, sounds) */
+    assetId?: string;
+
+    /** Display name */
     name: string;
 
     /** Card tier/level */
@@ -149,6 +152,9 @@ export interface CardDeck {
 export interface Patron {
     /** Unique identifier for the patron */
     id: string;
+
+    /** ID for asset lookup (images, sounds) */
+    assetId?: string;
 
     /** Display name (e.g., "Withers", "Raphael", "Vlaakith") */
     name: string;
@@ -209,6 +215,7 @@ export interface Player {
 export const GamePhase = {
     SETUP: 'setup',
     IN_PROGRESS: 'in_progress',
+    LAST_ROUND: 'last_round', // Round continues until the last player in order finishes
     COMPLETED: 'completed',
 } as const;
 export type GamePhase = typeof GamePhase[keyof typeof GamePhase];
@@ -254,3 +261,15 @@ export interface GameState {
     endGameTriggeredBy?: string;
 }
 
+
+/**
+ * Represents a discrete, syncable game action.
+ * Using actions instead of full state snapshots prevents most race conditions.
+ */
+export type GameAction = 
+    | { type: 'TAKE_TOKENS'; payload: { playerId: string; tokens: Record<string, number> } }
+    | { type: 'BUY_CARD'; payload: { playerId: string; cardId: string; fromReserved: boolean } }
+    | { type: 'RESERVE_CARD'; payload: { playerId: string; cardId?: string; fromDeck?: CardTier } }
+    | { type: 'DISCARD_TOKENS'; payload: { playerId: string; tokens: Record<string, number> } }
+    | { type: 'END_TURN'; payload: { playerId: string } }
+    | { type: 'RESET_GAME'; payload: { playerNames?: string[] } };

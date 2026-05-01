@@ -62,6 +62,36 @@
   --color-deep-black: #1a1a1a;
   --color-dark-red: #1a0a0a;
   --color-gray-500: #555555;
+
+  /* UI Actions */
+  --color-ui-recruit-start: #0b5345;
+  --color-ui-recruit-end: #062c25;
+  --color-ui-plot-start: #1b4f72;
+  --color-ui-plot-end: #0e2a3c;
+  --color-ui-border-tier1: #5c4a3d;
+  --color-ui-border-tier2: #e2e8f0;
+  
+  /* Patron & Empty Slots */
+  --color-ui-empty-start: #5a4a22;
+  --color-ui-empty-mid: #3a2f15;
+  --color-ui-patron-gold-start: #bf953f;
+  --color-ui-patron-gold-mid: #fcf6ba;
+  --color-ui-patron-gold-end: #aa771c;
+
+  /* BG3 Material System */
+  --color-ui-bg-panel: #0a0a0f;
+  --color-ui-bg-panel-alt: #16171d;
+  --color-ui-border-panel: #3c2f1e;
+  --color-ui-bg-vault: #050508;
+  --color-ui-bg-parchment: #e8dcc4;
+  --color-ui-bg-parchment-dark: #dccbb0;
+  --color-ui-text-parchment: #3a2f26;
+  --color-ui-text-accent: #4ade80;
+  --color-ui-border-reserved: rgba(191, 149, 63, 0.4);
+  --color-ui-bg-modal: #1a1612;
+  
+  /* Assets */
+  --svg-magic-circle: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23ffffff' stroke-width='1'/><circle cx='50' cy='50' r='35' fill='none' stroke='%23ffffff' stroke-width='0.5'/><polygon points='50,5 90,75 10,75' fill='none' stroke='%23ffffff' stroke-width='0.5'/><polygon points='50,95 90,25 10,25' fill='none' stroke='%23ffffff' stroke-width='0.5'/></svg>");
   
   /* Card Back Pattern Colors */
   --color-card-back-bg: rgba(15, 15, 20, 0.8);
@@ -120,6 +150,29 @@
   --color-dark-red: var(--color-dark-red);
   --color-deep-black: var(--color-deep-black);
   
+  --color-ui-recruit-start: var(--color-ui-recruit-start);
+  --color-ui-recruit-end: var(--color-ui-recruit-end);
+  --color-ui-plot-start: var(--color-ui-plot-start);
+  --color-ui-plot-end: var(--color-ui-plot-end);
+  --color-ui-border-tier1: var(--color-ui-border-tier1);
+  --color-ui-border-tier2: var(--color-ui-border-tier2);
+
+  --color-ui-empty-start: var(--color-ui-empty-start);
+  --color-ui-empty-mid: var(--color-ui-empty-mid);
+  --color-ui-patron-gold-start: var(--color-ui-patron-gold-start);
+  --color-ui-patron-gold-mid: var(--color-ui-patron-gold-mid);
+  --color-ui-patron-gold-end: var(--color-ui-patron-gold-end);
+
+  --color-ui-bg-panel: var(--color-ui-bg-panel);
+  --color-ui-bg-panel-alt: var(--color-ui-bg-panel-alt);
+  --color-ui-border-panel: var(--color-ui-border-panel);
+  --color-ui-bg-vault: var(--color-ui-bg-vault);
+  --color-ui-bg-parchment: var(--color-ui-bg-parchment);
+  --color-ui-bg-parchment-dark: var(--color-ui-bg-parchment-dark);
+  --color-ui-text-parchment: var(--color-ui-text-parchment);
+  --color-ui-text-accent: var(--color-ui-text-accent);
+  --color-ui-bg-modal: var(--color-ui-bg-modal);
+  
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
   --font-fantasy: var(--font-fantasy);
@@ -166,10 +219,22 @@
   --animation-card-buy: card-buy-scale 0.5s ease-in-out forwards;
 
   @keyframes card-breathe {
-    0%, 100% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.3), 0 10px 20px rgba(0, 0, 0, 0.5); }
-    50% { box-shadow: 0 0 15px rgba(34, 197, 94, 0.7), 0 10px 20px rgba(0, 0, 0, 0.5); }
+    0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.6), inset 0 0 15px rgba(212, 175, 55, 0.5); transform: scale(1); filter: brightness(1); }
+    50% { box-shadow: 0 0 35px rgba(212, 175, 55, 1), 0 0 60px rgba(212, 175, 55, 0.9), inset 0 0 30px rgba(212, 175, 55, 0.8); transform: scale(1.03); filter: brightness(1.2); }
   }
-  --animation-card-breathe: card-breathe 2.5s ease-in-out infinite;
+  --animation-card-breathe: card-breathe 2s ease-in-out infinite;
+
+  @keyframes arcane-shimmer {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 2px var(--shadow-glow-arcane)); }
+    50% { filter: brightness(1.2) drop-shadow(0 0 15px var(--shadow-glow-arcane)); }
+  }
+  --animation-arcane-shimmer: arcane-shimmer 4s infinite ease-in-out;
+
+  @keyframes wallet-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  --animation-wallet-bounce: wallet-bounce 0.3s ease-in-out;
 
   @keyframes card-deal {
     0% { transform: translateX(-100%) rotateY(180deg) scale(0.8); opacity: 0; }
@@ -189,21 +254,19 @@
   }
   --animation-slide-down: slide-down 0.3s ease-out;
 
-  @keyframes flyToPlayer {
-    0% {
-      transform: scale(1) translate(0, 0);
-      opacity: 1;
-    }
-    40% {
-      transform: scale(1.2) translate(-100px, -50px);
-      opacity: 0.9;
-    }
-    100% {
-      transform: scale(0.5) translate(-600px, 400px);
-      opacity: 0;
-    }
+  @keyframes light-sweep {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
   }
-  --animation-fly-to-player: flyToPlayer 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+  --animation-light-sweep: light-sweep 3s infinite linear;
+}
+
+.text-sweep {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: light-sweep 3s infinite linear;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 :root {
@@ -499,7 +562,7 @@ code {
   height: 100%;
   background-color: var(--color-parchment);
   background-image: linear-gradient(rgba(232, 226, 210, 0.5), rgba(216, 206, 180, 0.7)),
-                    url('../assets/parchment_texture.png');
+                    url('./assets/ui/parchment_texture.png');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -513,22 +576,23 @@ code {
 .card-inner > *:not(.card-actions-overlay) {
   mix-blend-mode: multiply;
 }
-
 /* BG3 Panel and Studs */
-.bg3-panel {
-  background-color: #0a0a0f;
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(189, 147, 249, 0.05) 0%, rgba(189, 147, 249, 0.02) 70%, transparent 71%),
-    linear-gradient(135deg, #0a0a0f 0%, #16171d 100%);
-  border: 6px solid #3c2f1e;
-  border-radius: var(--radius-md);
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.7),
-    inset 0 0 15px rgba(0, 0, 0, 0.6),
-    0 0 0 2px #bf953f,
-    inset 0 0 0 1px #8c6d23,
-    inset 0 0 0 3px #1a1105;
+@layer components {
+  .bg3-panel {
+    @apply bg-[#0a0a0f] relative;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(189, 147, 249, 0.05) 0%, rgba(189, 147, 249, 0.02) 70%, transparent 71%),
+      linear-gradient(135deg, #0a0a0f 0%, #16171d 100%);
+    border: 6px solid #3c2f1e;
+    border-radius: var(--radius-md);
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.7),
+      inset 0 0 15px rgba(0, 0, 0, 0.6),
+      0 0 0 2px #bf953f,
+      0 0 0 4px #0a0a0f;
+  }
 }
+
 
 .bg-stud {
   background: radial-gradient(circle at 30% 30%, #ffe599, #bf953f);

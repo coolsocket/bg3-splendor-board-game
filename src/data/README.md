@@ -1,22 +1,22 @@
-# Data Module
+# Game Data
 
-This directory contains the static game data definitions for the BG3 Splendor game.
+This directory handles the raw data definitions for the cards, patrons, and initial game states.
 
-## Overview
+## 1. `cardData.ts` (Card Abstraction Engine)
+The primary method for adding new cards to the game has been completely abstracted and decoupled.
 
-The data module holds the "blueprint" for the game's entities. It defines all the available cards and patrons that populate the game world.
+**Instead of hardcoding complex `createCard` factory logic everywhere, you simply define a `CardTemplate` JSON object.**
 
-## Main Files
+### The `CardTemplate` Pattern
+Each template in the arrays (`tier1Templates`, `tier2Templates`, etc.) contains:
+- `id` and `name`: Identifiers.
+- `bonus`: The permanent `ResourceType` gem provided by the card.
+- `cost`: The cost required to buy the card (represented as a dictionary of ResourceTypes).
+- `points`: The prestige points awarded (default 0).
+- `description`: The lore text.
 
-- `initialData.ts`: The primary source of game data. It defines:
-    - **Tier 1 Cards**: Entry-level spells and items (e.g., Sacred Flame, Magic Missile).
-    - **Tier 2 Cards**: Mid-tier abilities and legendary items (e.g., Fireball, Spirit Guardians).
-    - **Tier 3 Cards**: Powerful high-level spells and artifacts (e.g., Meteor Swarm, Blood of Lathander).
-    - **Patrons**: Noble/Divine entities that players can attract (e.g., Withers, Raphael, Mystra).
+### The `buildCards` Factory
+The script automatically iterates through these arrays, passing them into the `buildCards` or `buildPatrons` factory. This ensures the data is strictly bound to its corresponding Tier and generates a unified array (`GENERATED_TIER_1_CARDS`, etc.) that is exported cleanly to the Game Store.
 
-## Architectural Role
-
-The Data layer provides the initial state for the game engine.
-- It uses factory functions from `src/domain/logic.ts` (like `createCard` and `createPatron`) to ensure data consistency.
-- It is imported by the game store (`src/store`) during initialization to set up the card decks and patron pool.
-- Keeping data separate from logic allows for easier balancing and expansion of the game's content.
+## 2. `initialData.ts`
+Acts as the central export module. It pulls the generated arrays from `cardData.ts` and aliases them to the standard `TIER_1_CARDS`, `TIER_2_CARDS`, `TIER_3_CARDS`, and `ALL_PATRONS` variables expected by the rest of the codebase.

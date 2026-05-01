@@ -1,6 +1,8 @@
-import { ResourceType, CardTier } from './models';
+import { ResourceType, CardTier, GamePhase } from './models';
 import type { GameState, ResourceCollection, Card } from './models';
 import { addResourceToPlayer, getTotalResourceCount, calculateEffectiveCost, removeResourceFromPlayer, acquireCard, unreserveCard, reserveCard, checkPatronVisits } from './logic';
+import { validateTokenTake } from './rules/tokenRules';
+import { GAME_CONFIG } from '../config/gameConfig';
 
 /**
  * Action result type - either success with new state, or error with message
@@ -35,7 +37,6 @@ export function takeTokensAction(
     const player = state.players[playerIndex];
 
     // Validate token selection
-    const tokenTypes = Object.keys(tokens).filter((t) => (tokens[t] || 0) > 0);
     const totalTaken = Object.values(tokens).reduce((sum, count) => sum + (count || 0), 0);
 
     // Cannot take tadpoles directly
@@ -51,29 +52,6 @@ export function takeTokensAction(
         return { success: false, error: 'Must take at least one token' };
     }
 
-    // Check the two valid patterns
-    const isTakingThreeDifferent = tokenTypes.length === 3 && totalTaken === 3;
-    const isTakingTwoSame = tokenTypes.length === 1 && totalTaken === 2;
-
-    if (!isTakingThreeDifferent && !isTakingTwoSame) {
-        return {
-            success: false,
-            error: 'Must take either 3 different tokens OR 2 of the same color',
-        };
-    }
-
-    // If taking 2 of the same, verify at least 4 are available
-    if (isTakingTwoSame) {
-        const tokenType = tokenTypes[0] as ResourceType;
-        const available = state.availableResources[tokenType] || 0;
-        if (available < 4) {
-            return {
-                success: false,
-                error: 'Can only take 2 of the same color if 4+ are available',
-            };
-        }
-    }
-
     // Check if tokens are available on the board
     for (const [type, count] of Object.entries(tokens)) {
         const resourceType = type as ResourceType;
@@ -83,10 +61,13 @@ export function takeTokensAction(
         }
     }
 
-    // Check if player would exceed 10 tokens
-    const currentTokenCount = getTotalResourceCount(player);
-    if (currentTokenCount + totalTaken > 10) {
-        return { success: false, error: 'Cannot exceed 10 total tokens' };
+    // Use unified validation logic (allows "take 3", "take 2", or taking fewer if bank empty)
+    const isValid = validateTokenTake(tokens as any, state.availableResources);
+    if (!isValid) {
+        return {
+            success: false,
+            error: 'Invalid token selection pattern',
+        };
     }
 
     // Execute the action
@@ -268,12 +249,18 @@ export function buyCardAction(
     const newPlayers = [...state.players];
     newPlayers[playerIndex] = player;
 
+    // Sudden death: First to reach WINNING_PRESTIGE wins immediately
+    const finalPhase = player.prestigePoints >= GAME_CONFIG.WINNING_PRESTIGE 
+        ? GamePhase.COMPLETED 
+        : newState.phase;
+
     return {
         success: true,
         data: {
             ...newState,
             players: newPlayers,
             availablePatrons: remainingPatrons,
+            phase: finalPhase,
         },
     };
 }
@@ -411,5 +398,38 @@ export function reserveCardAction(
             ...newState,
             players: newPlayers,
         },
+    };
+}
+
+/**
+ * Action: Discard tokens back to the pool
+ */
+export function discardTokensAction(
+    state: GameState,
+    playerId: string,
+    tokens: TokenSelection
+): ActionResult<GameState> {
+    const playerIndex = state.players.findIndex((p) => p.id === playerId);
+    if (playerIndex === -1) return { success: false, error: 'Player not found' };
+
+    let player = state.players[playerIndex];
+    const updatedBoardResources = { ...state.availableResources };
+
+    for (const [type, count] of Object.entries(tokens)) {
+        const resourceType = type as ResourceType;
+        const amount = count || 0;
+        if (amount > 0) {
+            if ((player.resources[resourceType] || 0) < amount) return { success: false, error: `Not enough ${type} to discard` };
+            player = removeResourceFromPlayer(player, resourceType, amount);
+            updatedBoardResources[resourceType] = (updatedBoardResources[resourceType] || 0) + amount;
+        }
+    }
+
+    const newPlayers = [...state.players];
+    newPlayers[playerIndex] = player;
+
+    return {
+        success: true,
+        data: { ...state, players: newPlayers, availableResources: updatedBoardResources },
     };
 }

@@ -1,0 +1,450 @@
+{
+  "iron_flask.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": false,
+    "verdict": "Acceptable",
+    "feedback": "The image successfully passes the anti-text and composition checks, presenting a full canvas illustration without any text or borders. The magical urn and its dark, mossy stone setting perfectly align with Baldur's Gate 3 dark fantasy lore. However, the criterion for 'highly vivid facial expression' cannot be met as the subject is an inanimate object, not a character. While the object itself conveys a sense of power and mystery fitting the lore, it inherently lacks a face. This prevents the 'expression & lore' criterion from being fully passed, leading to an 'Acceptable' verdict rather than 'Correct'."
+  },
+  "barcus_wroot.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The character exhibits a highly vivid and stern expression, and its rugged, dark fantasy aesthetic, including the patched clothing and pointed ears, aligns perfectly with Baldur's Gate 3 lore. The composition is a clean, edge-to-edge illustration without any text or artificial borders."
+  },
+  "dammon.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a vivid and intense expression on a character that strongly aligns with Baldur's Gate 3's dark fantasy lore, particularly resembling a powerful Tiefling or infernal smith. The composition is full canvas, and there is no visible text."
+  },
+  "duergar_intruders.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image successfully avoids any visible text, is a full edge-to-edge composition, and features highly vivid, menacing expressions on the dwarf-like creatures, which perfectly align with Baldur's Gate 3 dark fantasy lore."
+  },
+  "spectator.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image flawlessly depicts a Beholder with a vivid, intense expression and powerful magical effects, perfectly aligning with Baldur's Gate 3 dark fantasy lore. The composition is a clean, edge-to-edge illustration with no extraneous text or borders."
+  },
+  "omeluum.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a vivid, menacing expression on the Illithid-like creature, perfectly aligning with Baldur's Gate 3 dark fantasy lore. It is an edge-to-edge illustration with no visible text or borders."
+  },
+  "flaming_fist.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image successfully avoids any text and presents a full-canvas composition. The character's vivid, stern expression, combined with the detailed, worn armor and the dark fantasy aesthetic, including the intriguing halo, aligns perfectly with Baldur's Gate 3 lore."
+  },
+  "sussur_tree.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image is an excellent fit, perfectly capturing the dark fantasy aesthetic of Baldur's Gate 3 with its mystical glowing tree and eerie cave environment. The composition is edge-to-edge, and there is no text. While the subject is a tree and lacks a literal 'facial expression,' its vivid, ancient, and magical presence strongly conveys a mood that aligns perfectly with the game's lore."
+  },
+  "auntie_ethel.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image perfectly depicts a grotesque dark fantasy character with a highly vivid and menacing expression, aligning flawlessly with Baldur's Gate 3 lore. It is an edge-to-edge illustration with no text or borders."
+  },
+  "adamantine_forge.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": false,
+    "verdict": "Acceptable",
+    "feedback": "The image successfully avoids text and has an excellent edge-to-edge composition. The dark fantasy forge theme aligns well with Baldur's Gate 3 lore, but the criterion for a 'highly vivid facial expression' is not met as there is no character with a face depicted in the image."
+  },
+  "zhentarim_hideout.png": {
+    "anti_text_passed": false,
+    "composition_passed": true,
+    "lore_expression_passed": false,
+    "verdict": "Incorrect",
+    "feedback": "The image contains visible text ('SMOKEPOWDER', 'EXPLOSIVE') and symbols on the barrels, failing the anti-text check. Additionally, the figures' faces are obscured by hoods, preventing any vivid facial expressions, which is a requirement for the expression and lore check, despite the overall dark fantasy theme fitting Baldur's Gate 3 lore."
+  },
+  "scratch.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": false,
+    "verdict": "Incorrect",
+    "feedback": "While the image is free of text and has a good composition, the subject's expression is not highly vivid, and the overall aesthetic of a fluffy dog in a bright, lush forest does not align with the dark fantasy lore and gritty tone of Baldur's Gate 3."
+  },
+  "emerald_grove.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": false,
+    "verdict": "Incorrect",
+    "feedback": "The image is a beautiful fantasy landscape with excellent composition and no visible text. However, it fails the 'Expression & Lore' criterion as it depicts a forest environment, not a character, and therefore lacks a 'highly vivid facial expression' as explicitly required. While mystical, the overall mood leans more enchanted than 'dark fantasy' for Baldur's Gate 3 lore."
+  },
+  "arcane_tower.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": false,
+    "verdict": "Acceptable",
+    "feedback": "The image successfully passes the anti-text and composition checks, providing a full canvas illustration without any text or borders. The dark fantasy aesthetic, glowing magical elements, and ancient structure strongly align with Baldur's Gate 3 lore. However, the criterion for a 'highly vivid facial expression' is not met as there are no characters with faces depicted in the image. While the environment itself conveys a strong mood, the literal interpretation of 'facial expression' is not applicable here. Due to the strong lore match and high quality of the environment, the verdict is 'Acceptable' despite the absence of a character's facial expression."
+  },
+  "sovereign_glut.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a highly detailed and menacing tree-like creature with vivid glowing green energy and red eyes, perfectly fitting the dark fantasy aesthetic of Baldur's Gate 3. Composition is excellent, and there is no text."
+  },
+  "dror_ragzlin.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a highly vivid and aggressive expression, perfectly aligning with Baldur's Gate 3's dark fantasy lore. The composition is edge-to-edge, and there is no visible text."
+  },
+  "selûnite_outpost.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image perfectly captures a mystical, ancient atmosphere fitting for Baldur's Gate 3, with a serene, glowing statue as the focal point in a ruined, cave-like setting. The composition is edge-to-edge, and no text or borders are present. The expression of the statue, while serene, is highly vivid in conveying its divine or magical nature within the dark fantasy lore."
+  },
+  "alfira.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a vivid and joyful expression on a lore-accurate Tiefling character, playing a lute with magical effects. The composition is edge-to-edge, and there is no visible text, perfectly aligning with all requirements."
+  },
+  "blurg.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image successfully avoids discernible text, features a full canvas composition, and presents a character with a vivid expression that aligns perfectly with Baldur's Gate 3's dark fantasy lore, especially with the magical scrolls and creature design."
+  },
+  "owlbear_cub.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image successfully passes all checks. There is no text, the composition is edge-to-edge, and the owl's vivid, fierce expression combined with the magical, dark fantasy aesthetic perfectly aligns with Baldur's Gate 3 lore."
+  },
+  "phase_spider_matriarch.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a menacing, shadowy spider creature with vivid glowing purple eyes, perfectly aligning with Baldur's Gate 3's dark fantasy aesthetic and lore. The composition is edge-to-edge, and there is no visible text."
+  },
+  "goblin_camp.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image contains no text, is a full canvas illustration, and perfectly captures the dark fantasy aesthetic and tribal ferocity consistent with Baldur's Gate 3 lore, particularly depicting goblins or similar monstrous humanoids with vivid, fitting expressions in a chaotic encampment."
+  },
+  "blighted_village.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The artwork perfectly captures a dark fantasy environment, aligning strongly with Baldur's Gate 3 lore through its depiction of a ruined, mist-shrouded village with an ominous purple glow, suggesting magical corruption or a cursed land. The composition is edge-to-edge, and there is no visible text. The atmospheric mood is highly vivid and expressive, fitting the game's aesthetic."
+  },
+  "volo.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image contains no discernible text, is a full canvas illustration, and features a highly vivid expression on a character that fits well within Baldur's Gate 3's dark fantasy lore, possibly as an eccentric bard or mage."
+  },
+  "grymforge.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": false,
+    "verdict": "Incorrect",
+    "feedback": "The image successfully avoids text and features an edge-to-edge composition. The dark fantasy environment, ruined architecture, and molten lava are highly consistent with Baldur's Gate 3 lore. However, the main subjects are statues with hooded or non-existent faces, which means they cannot display the 'highly vivid facial expression' explicitly required by the prompt."
+  },
+  "sovereign_spaw.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image successfully avoids text, features an edge-to-edge composition, and the subject's vivid, ancient expression and bioluminescent, fungal design perfectly align with Baldur's Gate 3's dark fantasy lore, evoking a sense of mystical, otherworldly life."
+  },
+  "true_soul_nere.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a Drow character with a vivid, intense expression, dark fantasy armor, and magical effects, all perfectly aligning with Baldur's Gate 3 lore and aesthetic. It is an edge-to-edge illustration with no visible text or borders."
+  },
+  "harper_stash.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": false,
+    "verdict": "Incorrect",
+    "feedback": "The subject (a chest) cannot display a facial expression. More critically, the harp symbol on the chest is a real-world emblem (Irish harp) and does not align with Baldur's Gate 3 dark fantasy lore or iconography."
+  },
+  "sazza.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a highly expressive goblin-like character with a vivid, cunning facial expression, perfectly aligning with Baldur's Gate 3's dark fantasy lore and art style. The composition is edge-to-edge, and there is no text present."
+  },
+  "zevlor.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The character's intense expression, demonic features, and attire perfectly align with Baldur's Gate 3 dark fantasy lore. The composition is full canvas, and there is no text present."
+  },
+  "yurgir.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a highly vivid and menacing demonic figure, perfectly aligning with Baldur's Gate 3's dark fantasy lore. It is an edge-to-edge illustration with no visible text or borders."
+  },
+  "isobel.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Acceptable",
+    "feedback": "The image successfully avoids text and features a full canvas composition. The subject's vivid and focused expression, combined with the magical theme, is fitting for a powerful character within the Baldur's Gate 3 universe. While the aesthetic leans more towards high fantasy than explicitly dark fantasy, it is not contradictory to the game's broader lore and character archetypes."
+  },
+  "thisobald_thorm.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a highly vivid and grotesque expression that perfectly aligns with Baldur's Gate 3 dark fantasy lore. It is a full canvas illustration with no text or borders, meeting all compositional and anti-text requirements."
+  },
+  "oliver.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image successfully avoids any text, is a full canvas illustration, and features a highly expressive and unsettling character that perfectly aligns with the dark fantasy aesthetic of Baldur's Gate 3. The glowing green eyes and spectral aura are particularly effective in conveying a sense of eerie magic and potential corruption."
+  },
+  "he_who_was.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The character's gaunt, intense expression and the dark fantasy setting with eerie green lighting perfectly align with Baldur's Gate 3 lore. The composition is edge-to-edge, and no text is present."
+  },
+  "shambling_mound.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image perfectly depicts a formidable, lore-accurate nature creature with a vivid, menacing expression, fitting seamlessly into Baldur's Gate 3's dark fantasy aesthetic. The composition is a clean, edge-to-edge illustration with no text or borders."
+  },
+  "dame_aylin.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a highly vivid and intense facial expression, perfectly matching the fierce demeanor expected in Baldur's Gate 3 dark fantasy lore. The composition is edge-to-edge with no text or borders, and the overall aesthetic aligns well with the game's themes of divine power and struggle."
+  },
+  "thaniel.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a mystical child figure with a compelling, serious expression, adorned with natural elements and glowing green energy, perfectly aligning with Baldur's Gate 3's dark fantasy and nature-based lore. No text or borders are present, and the illustration is edge-to-edge."
+  },
+  "mind_flayer_colony.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The artwork is an edge-to-edge illustration with no visible text. The dark, organic, and bioluminescent cave environment strongly aligns with the dark fantasy and aberrant themes found in Baldur's Gate 3 lore, conveying a vivid and mysterious atmosphere."
+  },
+  "art_cullagh.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image successfully passes all criteria. There is no visible text, the composition is edge-to-edge, and the character's peaceful sleeping expression, combined with the armor and setting, fits well within Baldur's Gate 3 dark fantasy lore, especially with the subtle glowing effect suggesting a magical or dreamlike state."
+  },
+  "malus_thorm.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a highly expressive and menacing character, perfectly aligning with Baldur's Gate 3's dark fantasy aesthetic. No text or artificial borders are present, making it an excellent fit."
+  },
+  "last_light_inn.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": false,
+    "verdict": "Acceptable",
+    "feedback": "The image successfully avoids text and presents an edge-to-edge composition. The dark fantasy setting and atmosphere align well with Baldur's Gate 3 lore. However, the individual figures lack highly vivid facial expressions, which was a specific requirement."
+  },
+  "balthazar.png": {
+    "anti_text_passed": false,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Incorrect",
+    "feedback": "The image contains visible runes/symbols on the character's face, which violates the 'absolutely NO TEXT' requirement. While the composition and lore/expression are strong, the presence of these symbols makes it incorrect based on the anti-text check."
+  },
+  "marcus.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a highly vivid and intense facial expression, perfectly matching the dark fantasy lore of Baldur's Gate 3 with its battle-hardened appearance, dark wings, and fiery background. There is no visible text, and the illustration is edge-to-edge without any borders."
+  },
+  "z'rell.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a highly vivid and menacing orc/half-orc character with a strong dark fantasy aesthetic, perfectly aligning with Baldur's Gate 3 lore. Composition is edge-to-edge, and no text is present."
+  },
+  "gerringothe_thorm.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The artwork features a vivid, menacing expression on a gold-encrusted creature, perfectly aligning with Baldur's Gate 3's dark fantasy lore, suggesting a cursed or avarice-driven entity. The composition is edge-to-edge, and there is no visible text."
+  },
+  "moonrise_towers.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image is a full canvas illustration with no visible text or borders. The dark, gothic architecture, stormy sky, and prominent arcane energy perfectly capture the ominous and magical dark fantasy aesthetic consistent with Baldur's Gate 3 lore. While there is no character with a facial expression, the overall scene conveys a vivid and appropriate mood for the game."
+  },
+  "wulbren_bongle.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The character's vivid, sinister expression and the dark fantasy elements, including the glowing magical substance and alchemical lab background, perfectly align with Baldur's Gate 3 lore. The composition is excellent, and there is no text."
+  },
+  "kar'niss.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image contains no text, is a full canvas illustration, and features a vivid, menacing expression on a spider-like dark elf creature, which perfectly aligns with Baldur's Gate 3's dark fantasy lore, particularly themes related to Drow and Lolth."
+  },
+  "crown_of_karsus.png": {
+    "anti_text_passed": false,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Incorrect",
+    "feedback": "The crown features visible runes etched into its metallic bands, which violates the 'absolutely NO TEXT' rule. While the subject does not have a facial expression, its design, materials, and magical aura strongly align with Baldur's Gate 3 dark fantasy lore."
+  },
+  "mystic_carrion.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image successfully avoids text, features an edge-to-edge composition, and presents a highly vivid undead character with glowing eyes and mystical green energy that perfectly aligns with Baldur's Gate 3's dark fantasy lore and themes of necromancy."
+  },
+  "orin_the_red.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features no text, is a full canvas illustration, and the subject's vivid, sinister expression and dark fantasy aesthetic perfectly align with Baldur's Gate 3 lore."
+  },
+  "the_emperor.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image perfectly captures a vivid, lore-appropriate character with a compelling expression, and meets all technical requirements for anti-text and composition."
+  },
+  "cazador_szarr.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image successfully avoids any text, presents a full canvas composition, and features a highly vivid and lore-appropriate expression for a dark fantasy setting like Baldur's Gate 3. The character's design and the atmospheric elements (bats, smoke, gothic background) strongly align with the game's aesthetic and themes."
+  },
+  "lord_enver_gortash.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a vivid character portrait with a confident, enigmatic expression, set against a dark fantasy background of red ethereal smoke and intricate gears, aligning perfectly with Baldur's Gate 3 lore. The composition is edge-to-edge, and no text or borders are present."
+  },
+  "ansur.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a highly expressive dragon with glowing eyes and lightning, perfectly fitting the dark fantasy aesthetic and lore of Baldur's Gate 3, with excellent edge-to-edge composition and no visible text."
+  },
+  "water_queen's_house.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image perfectly captures the dark fantasy aesthetic of Baldur's Gate 3 with its ancient, moss-covered ruins and turbulent, misty sea. The composition is full canvas, and there is no text. The scene evokes a strong sense of mystery and forgotten power, aligning well with the lore and providing a vivid 'expression' for a location card."
+  },
+  "sarevok_anchev.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The character exhibits a highly vivid and menacing facial expression, perfectly aligning with the dark fantasy aesthetic and lore of Baldur's Gate 3. The armor, horned helmet, skull motifs, and purple magical aura are all on-brand. The image is a full canvas illustration with no text or borders."
+  },
+  "prince_orpheus.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The character's somber expression and distinct fantasy features, including pointed ears and facial markings, align perfectly with Baldur's Gate 3 dark fantasy lore. The blue magical aura enhances the mystical feel. The illustration is edge-to-edge with no text or borders."
+  },
+  "steel_watch_titan.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": false,
+    "verdict": "Acceptable",
+    "feedback": "The image successfully avoids text and features an edge-to-edge composition. The character's design, including the molten armor and fiery sword, strongly aligns with Baldur's Gate 3 dark fantasy lore. However, the subject's face is completely obscured by a helmet, which, despite the vivid glowing eyes conveying a strong presence, prevents a 'highly vivid facial expression' in the literal sense."
+  },
+  "house_of_hope.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image is free of any text, presents a complete edge-to-edge composition, and perfectly embodies the dark, infernal aesthetic and ominous atmosphere consistent with Baldur's Gate 3 lore, particularly evoking realms like the Nine Hells."
+  },
+  "duke_ravengard.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image presents a highly detailed and expressive knight in ornate armor, perfectly aligning with Baldur's Gate 3 dark fantasy lore. The composition is full canvas, and there is no visible text."
+  },
+  "the_guildhall.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": false,
+    "verdict": "Acceptable",
+    "feedback": "The image successfully avoids text and presents a full canvas composition. The dark fantasy setting, glowing elements, and cloaked figures align well with Baldur's Gate 3 lore. However, the subjects' faces are obscured by hoods, making it impossible to assess 'highly vivid facial expressions' as required by the prompt."
+  },
+  "hope.png": {
+    "anti_text_passed": true,
+    "composition_passed": true,
+    "lore_expression_passed": true,
+    "verdict": "Correct",
+    "feedback": "The image features a highly vivid and emotional facial expression, perfectly aligning with the dark fantasy lore of Baldur's Gate 3. The composition is edge-to-edge, and there is no visible text."
+  }
+}

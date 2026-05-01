@@ -1,104 +1,75 @@
 import React from 'react';
 import type { ResourceType } from './TokenTypes';
 import { Card, type CardProps } from './features/market/Card';
-import { usePlayerStore } from '../store/playerStore';
-import type { ResourceCollection, Card as DomainCard } from '../domain/models';
-import { PlayerAvatar } from './PlayerAvatar';
-import { ResourceMatrix } from './ResourceMatrix';
+import { HeroAvatar } from './common/HeroAvatar';
+import { AssetRepository } from '../repositories/assetRepository';
+import { ResourceStack } from './ResourceStack';
+import { PrestigeBadge } from './PrestigeBadge';
+import { useGameStateStore } from '../store/gameStateStore';
+import { ZH, EN } from '../data/translations';
+import { GAME_CONFIG } from '../config/gameConfig';
 
+// Trigger hook test 2
 export interface PlayerBoardProps {
   playerName: string;
   prestigePoints: number;
   tokens: Record<ResourceType, number>;
   ownedCards: CardProps[];
   reservedCards: CardProps[];
-  patrons: Array<{ id: string; imageUrl?: string; prestigePoints: number }>;
+  patrons: Array<{ id: string; assetId: string; prestigePoints: number }>;
   isCurrentPlayer?: boolean;
   isActive?: boolean;
+  isLocalPlayer?: boolean;
   viewMode?: 'full' | 'summary';
   onClick?: () => void;
+  onReservedCardInteract?: (action: 'buy' | 'reserve' | 'select', cardId: string) => void;
+  interactiveTokens?: boolean;
+  onTokenClick?: (type: ResourceType) => void;
 }
 
-export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
-  const storePlayerName = usePlayerStore(s => s.name);
-  const storePlayerPrestigePoints = usePlayerStore(s => s.prestigePoints);
-  const storePlayerResources = usePlayerStore(s => s.resources);
-  const storePlayerAcquiredCards = usePlayerStore(s => s.acquiredCards);
-  const storePlayerReservedCards = usePlayerStore(s => s.reservedCards);
-  const storePlayerPatrons = usePlayerStore(s => s.patrons);
-  const storePlayerBonuses = usePlayerStore(s => s.bonuses);
+export const PlayerBoard: React.FC<PlayerBoardProps> = ({
+  playerName,
+  prestigePoints,
+  tokens,
+  ownedCards,
+  reservedCards,
+  patrons,
+  isCurrentPlayer,
+  isActive,
+  isLocalPlayer = false,
+  viewMode = 'full',
+  onClick,
+  onReservedCardInteract,
+  interactiveTokens = false,
+  onTokenClick
+}) => {
+  const language = useGameStateStore((state) => state.language);
+  const t = language === 'ZH' ? ZH : EN;
   
-  const isCurrent = props.isCurrentPlayer || props.playerName === storePlayerName;
-  
-  const playerName = isCurrent ? storePlayerName : props.playerName;
-  const prestigePoints = isCurrent ? storePlayerPrestigePoints : props.prestigePoints;
-  
-  const mapStoreTokens = (resources: ResourceCollection): Record<ResourceType, number> => {
-    const result: Record<ResourceType, number> = {
-      RADIANT_GEM: 0,
-      ARCANE_CRYSTAL: 0,
-      NATURES_BLESSING: 0,
-      INFERNAL_IRON: 0,
-      DARK_QUARTZ: 0,
-      TRUE_SOUL_TADPOLE: 0
+  const [isBouncing, setIsBouncing] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleImpact = () => {
+      setIsBouncing(true);
+      setTimeout(() => setIsBouncing(false), 300);
     };
-    for (const [type, amount] of Object.entries(resources)) {
-      result[type.toUpperCase() as ResourceType] = amount || 0;
-    }
-    return result;
-  };
-
-  const mapStoreCards = (cards: DomainCard[]): CardProps[] => {
-    return cards.map(card => {
-      const cost: Partial<Record<ResourceType, number>> = {};
-      for (const [type, amount] of Object.entries(card.cost)) {
-        cost[type.toUpperCase() as ResourceType] = amount;
-      }
-      return {
-        id: card.id,
-        tier: card.tier as 1 | 2 | 3,
-        prestigePoints: card.points,
-        providedBonus: card.bonus.toUpperCase() as ResourceType,
-        cost,
-        isAffordable: false,
-        isSelected: false,
-      };
-    });
-  };
-
-  const tokens = isCurrent ? mapStoreTokens(storePlayerResources) : props.tokens;
-  const ownedCards = isCurrent ? mapStoreCards(storePlayerAcquiredCards) : props.ownedCards;
-  const reservedCards = isCurrent ? mapStoreCards(storePlayerReservedCards) : props.reservedCards;
-  
-  const patrons = isCurrent ? storePlayerPatrons.map(p => ({
-    id: p.id,
-    prestigePoints: p.points,
-    imageUrl: undefined as string | undefined,
-  })) : props.patrons;
-
-  const bonuses: Record<ResourceType, number> = isCurrent 
-    ? mapStoreTokens(storePlayerBonuses)
-    : ownedCards.reduce((acc, card) => {
-        const bonus = card.providedBonus;
-        acc[bonus] = (acc[bonus] || 0) + 1;
-        return acc;
-      }, {} as Record<ResourceType, number>);
-
-
-
-  const { viewMode = 'full', onClick } = props;
+    window.addEventListener('token-impact', handleImpact);
+    return () => window.removeEventListener('token-impact', handleImpact);
+  }, []);
 
   return (
     <div 
-      className={`relative bg3-panel p-4 pb-6 text-[#E8E2D2] font-fantasy w-64 max-w-64 flex-shrink-0 min-w-0 max-h-[90vh] overflow-y-auto transition-all duration-300 ${props.isActive ? 'animate-gold-breathe scale-[1.02] shadow-[0_0_20px_rgba(212,175,55,0.5)]' : ''} ${isCurrent ? 'shadow-[0_4px_20px_rgba(138,43,226,0.15)]' : ''} ${viewMode === 'summary' ? 'cursor-pointer' : ''}`}
+      id={`player-board-${playerName.replace(/\s+/g, '-')}`}
+      className={`relative bg3-panel p-3 pb-3 text-[var(--color-text-primary)] font-fantasy flex-shrink-0 min-w-0 transition-all duration-1000 ease-in-out flex flex-col ${isActive ? 'z-50 opacity-100 brightness-110 shadow-[0_0_25px_rgba(212,175,55,0.6),inset_0_0_15px_rgba(212,175,55,0.2)]' : 'opacity-70 brightness-50 grayscale-[30%]'} ${viewMode === 'summary' ? 'cursor-pointer' : ''} ${isBouncing ? 'animate-wallet-bounce' : ''}`}
+      style={{ width: GAME_CONFIG.UI.PLAYER_BOARD_WIDTH, maxWidth: GAME_CONFIG.UI.PLAYER_BOARD_WIDTH }}
       onClick={onClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-          onClick?.();
+          onClick();
         }
-      }}
+      } : undefined}
     >
       {/* Decorative Studs */}
       <div className="absolute top-1 left-1 w-2 h-2 bg-stud shadow-stud rounded-full z-[10]"></div>
@@ -106,65 +77,125 @@ export const PlayerBoard: React.FC<PlayerBoardProps> = (props) => {
       <div className="absolute bottom-1 left-1 w-2 h-2 bg-stud shadow-stud rounded-full z-[10]"></div>
       <div className="absolute bottom-1 right-1 w-2 h-2 bg-stud shadow-stud rounded-full z-[10]"></div>
 
-      <div className="mb-4">
-        <PlayerAvatar playerName={playerName} isActive={props.isActive} prestigePoints={prestigePoints} />
-      </div>
-      
-      <div className="grid grid-cols-1 gap-2">
-        <div className="bg-transparent border-none shadow-none px-0">
-          <h3 className="font-fantasy text-sm text-[#94a3b8] mb-2">Assets</h3>
-          <ResourceMatrix tokens={tokens} bonuses={bonuses} size={props.viewMode === 'summary' ? 'sm' : 'lg'} />
+      {/* Top Section: Avatar & Name */}
+      <div className="flex items-center gap-3 mb-2 w-full">
+        <div className="relative shrink-0">
+          {isActive && (
+            <div className="absolute inset-[-2px] rounded-full animate-arcane-pulse z-0 pointer-events-none" />
+          )}
+          <div className="relative z-10">
+            <HeroAvatar
+              imageUrl={AssetRepository.getAvatar(playerName) || undefined}
+              name={playerName}
+              className="w-16 h-16 rounded-full"
+            />
+          </div>
+          {prestigePoints !== undefined && (
+            <PrestigeBadge prestigePoints={prestigePoints} size="sm" className="absolute -top-2 -right-2 z-20" />
+          )}
         </div>
-        
-        {patrons.length > 0 && (
-          <div className="bg-[#222731] border border-[#2e3542] rounded-md p-3">
-            <h3 className="font-fantasy text-[clamp(0.9rem,1.5vw,1.1rem)] text-[#e2e8f0] border-b border-[#2e3542] pb-2 mb-2">Visited Patrons</h3>
-            <div className="flex gap-3 justify-start mt-2">
-              {[0, 1].map(index => {
-                const patron = patrons[index];
-                return patron ? (
-                  <div key={patron.id} className="w-14 h-14 rounded-full relative overflow-hidden flex items-center justify-center border border-[#d4af37] bg-[#1a1c23]">
-                    {patron.imageUrl ? (
-                      <img src={patron.imageUrl} alt={`Patron ${patron.id}`} className="w-full h-full object-cover" />
-                    ) : (
-                      <div className="flex flex-col items-center justify-center h-full w-full p-1 text-center text-[0.65rem] text-[#a0a5b5]">
-                        <span>Patron</span>
-                        <span className="font-fantasy text-[#d4af37] font-bold mt-1 text-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">+{patron.prestigePoints} VP</span>
+        <div className="flex flex-col items-start gap-1 flex-grow">
+          <div 
+            className={`text-lg font-bold font-fantasy text-left whitespace-normal break-all shadow-lg ${isCurrentPlayer ? 'text-ui-text-accent' : 'text-text-primary'}`}
+            style={{ textShadow: '1px 1px 3px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,0.8)' }}
+          >
+            {playerName}
+          </div>
+          {isLocalPlayer && (
+            <span className="text-[10px] font-bold bg-gold text-black px-1.5 py-0.5 rounded uppercase tracking-wider shadow-md">
+              You
+            </span>
+          )}
+        </div>
+      </div>
+
+      {viewMode === 'full' && (
+        <>
+          <div className="w-full mb-2">
+            <ResourceStack 
+              tokens={tokens} 
+              ownedCards={ownedCards}
+              interactive={interactiveTokens}
+              onTokenClick={onTokenClick}
+            />
+          </div>
+          
+          <hr className="border-t border-pure-black shadow-[0_1px_0_rgba(255,255,255,0.1)] mb-2 shrink-0" />
+          
+          <div className="flex flex-col gap-2 flex-grow pr-1">
+            {patrons.length > 0 && (
+              <div className="pt-1">
+                <h3 className="font-fantasy text-[clamp(0.75rem,1.2vw,0.9rem)] text-ui-border-tier2 pb-1 mb-1">{t.patrons}</h3>
+                <div className="flex gap-2 justify-start mt-1">
+                  {[0, 1, 2].map(index => {
+                    const patron = patrons[index];
+                    const imageUrl = patron ? AssetRepository.getArt(patron.assetId) : null;
+                    return patron ? (
+                      <div key={patron.id} className="w-10 h-10 rounded-full relative overflow-visible flex items-center justify-center border border-gold bg-bg-underdark shrink-0">
+                        <div className="w-full h-full rounded-full overflow-hidden">
+                          {imageUrl ? (
+                            <img src={imageUrl} alt={`Patron ${patron.id}`} className="w-full h-full object-cover" />
+                          ) : (
+                            <div className="flex flex-col items-center justify-center h-full w-full p-1 text-center text-[0.55rem] text-text-secondary">
+                              <span>{t.patron}</span>
+                            </div>
+                          )}
+                        </div>
+                        <PrestigeBadge prestigePoints={patron.prestigePoints} size="sm" className="absolute -top-1 -right-1 z-30" />
                       </div>
-                    )}
-                  </div>
-                ) : (
-                  <div key={`empty-slot-${index}`} className="w-14 h-14 rounded-full relative overflow-hidden flex items-center justify-center border-2 border-dashed border-[#3a3f4d] bg-black/20" />
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </div>
-      
-      <div className="mt-4">
-        <div className="bg-[#222731] border border-[#2e3542] rounded-md p-4">
-          <h3 className="font-fantasy text-[clamp(0.9rem,1.5vw,1.1rem)] text-[#e2e8f0] border-b border-[#2e3542] pb-2 mb-2">Reserved Cards</h3>
-          <div className="flex gap-3 justify-start mt-2 p-2 pb-4">
-            {[0, 1, 2].map(index => {
-              const card = reservedCards[index];
-              return card ? (
-                <div key={card.id} className="w-14 aspect-[2/3] rounded-md relative overflow-hidden border border-[#bf953f]/40">
-                  <div className="absolute top-0 left-0 transform scale-[0.375] origin-top-left pointer-events-none">
-                    <Card {...card} />
-                  </div>
+                    ) : (
+                      <div key={`empty-slot-${index}`} className="w-10 h-10 rounded-full relative overflow-hidden flex items-center justify-center border border-dashed border-[#3a3f4d] bg-black/20 shrink-0" />
+                    );
+                  })}
                 </div>
-              ) : (
-                <div 
-                  key={`empty-slot-${index}`} 
-                  className="w-14 aspect-[2/3] rounded-md relative border border-[#bf953f]/40 bg-[#0a0a0f]/60 shadow-inner"
-                  style={{ backgroundImage: 'repeating-linear-gradient(45deg, rgba(191, 149, 63, 0.05), rgba(191, 149, 63, 0.05) 10px, rgba(0, 0, 0, 0) 10px, rgba(0, 0, 0, 0) 20px)' }}
-                />
-              );
-            })}
+              </div>
+            )}
           </div>
-        </div>
-      </div>
+          
+          <div className="mt-2 shrink-0 border-t border-pure-black shadow-[0_1px_0_rgba(255,255,255,0.1)] pt-2">
+            <div className="font-fantasy text-[clamp(0.75rem,1.2vw,0.9rem)] text-ui-border-tier2 pb-1 flex items-center justify-between select-none">
+              <span>{t.reservedCards} ({reservedCards.filter(Boolean).length}/3)</span>
+            </div>
+              <div className="flex gap-2 justify-start mt-2 pb-1 items-start">
+                {[0, 1, 2].map(index => {
+                  const card = reservedCards[index];
+                  return card ? (
+                    <div 
+                      key={card.id} 
+                      className="w-11 h-[66px] rounded-md relative border border-ui-border-reserved shrink-0 flex items-center justify-center overflow-visible group/reserved cursor-pointer hover:border-gold transition-colors"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (onReservedCardInteract) onReservedCardInteract('select', card.id);
+                      }}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.stopPropagation();
+                          if (onReservedCardInteract) onReservedCardInteract('select', card.id);
+                        }
+                      }}
+                    >
+                      <div className="w-[120px] transform scale-[0.35] pointer-events-none flex items-center justify-center shrink-0">
+                        <Card {...card} />
+                      </div>
+                      <div className="hidden group-hover/reserved:block fixed z-[9999] pointer-events-none scale-100 bg-black/90 rounded-lg shadow-heavy p-1 border border-gold-dark/60 w-[200px]"
+                           style={{ left: '14rem' }}>
+                        <Card {...card} />
+                      </div>
+                    </div>
+                  ) : (
+                    <div 
+                      key={`empty-slot-${index}`} 
+                      className="w-11 h-[66px] rounded-md relative border border-dashed border-amber-500/30 bg-[var(--color-ui-bg-panel)]/40 shadow-inner shrink-0"
+                      style={{ backgroundImage: 'repeating-linear-gradient(45deg, rgba(191, 149, 63, 0.05), rgba(191, 149, 63, 0.05) 5px, rgba(0, 0, 0, 0) 5px, rgba(0, 0, 0, 0) 10px)' }}
+                    />
+                  );
+                })}
+              </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
