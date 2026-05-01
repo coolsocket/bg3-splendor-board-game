@@ -28,6 +28,7 @@ import { VictoryVFX } from './common/VictoryVFX';
 import { DevToolsPanel } from './common/DevToolsPanel';
 import { GAME_CONFIG } from '../config/gameConfig';
 import { useAudioStore } from '../store/audioStore';
+import { TopRightHUD } from './common/TopRightHUD';
 
 export const GameArena: React.FC = () => {
   const players = useGameStateStore((state) => state.players);
@@ -38,7 +39,6 @@ export const GameArena: React.FC = () => {
   const reset = useGameStateStore((state) => state.reset);
   const phase = useGameStateStore((state) => state.phase);
   const language = useGameStateStore((state) => state.language);
-  const toggleLanguage = useGameStateStore((state) => state.toggleLanguage);
   const turnNumber = useGameStateStore((state) => state.turnNumber);
 
   const t = language === 'ZH' ? ZH : EN;
@@ -374,8 +374,6 @@ export const GameArena: React.FC = () => {
       <h1 className="sr-only">Splendor Game Arena</h1>
       <TurnAnnouncer />
       
-      <TopRightHUD onOpenSettings={() => setIsSettingsOpen(true)} />
-
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.8)] z-[40]"></div>
 
       <div className="grid grid-cols-1 gap-4 flex-grow min-h-0" style={{ gridTemplateColumns: `${GAME_CONFIG.UI.SIDEBAR_WIDTH_FULL}px 1fr 360px` }}>
@@ -390,7 +388,10 @@ export const GameArena: React.FC = () => {
           <div className="w-full"><CardMarket onCardInteract={handleCardInteractWithModal} /></div>
         </div>
 
-        <div className="flex flex-col gap-4 p-4 rounded-lg border border-[var(--color-ui-border-tier1)] bg-[var(--color-bg-underdark)] shadow-[inset_0_0_30px_rgba(0,0,0,0.9),inset_0_0_10px_rgba(0,0,0,0.8),0_8px_16px_rgba(0,0,0,0.6)] overflow-y-auto items-center min-w-[320px]">
+        <div className="flex flex-col gap-4 p-4 rounded-lg border border-[var(--color-ui-border-tier1)] bg-[var(--color-bg-underdark)] shadow-[inset_0_0_30px_rgba(0,0,0,0.9),inset_0_0_10px_rgba(0,0,0,0.8),0_8px_16px_rgba(0,0,0,0.6)] overflow-y-auto items-center min-w-[320px] relative z-50">
+          
+          <TopRightHUD onOpenSettings={() => setIsSettingsOpen(true)} />
+
           <div className="bg-[var(--color-bg-panel-alt)] border border-[var(--color-gold-dark)]/60 rounded-xl px-2 py-2 shadow-lg flex flex-col items-center gap-2 w-full max-w-60 mt-2">
             <div className="flex flex-col items-center w-full">
               <div className="flex justify-between w-full px-2 mb-1 font-fantasy">
@@ -518,17 +519,6 @@ const rulesContentZH = (
           <p className="text-xs">将卡牌收入私有手牌。<span className="font-bold">从此只有你能招募它</span>。同时获得一个<span className="text-purple-900 italic font-bold">夺心魔蝌蚪</span> (万能资源)。上限3张。</p>
         </div>
       </div>
-    </section>
-    <section>
-      <h4 className="text-[var(--color-text-dark)] font-fantasy text-xl border-b-2 border-[var(--color-ui-border-tier1)]/30 mb-3 uppercase tracking-wider font-bold">神祇眷顾</h4>
-      <p className="leading-relaxed text-sm">回合结束时，如果你满足了神祇或势力（贵族）的招募要求（永久加成数量），他们会自动造访并授予你丰厚的声望奖励。</p>
-    </section>
-    <div className="mt-6 pt-4 border-t border-[var(--color-ui-border-tier1)]/20 text-center">
-      <p className="text-xs italic text-[var(--color-ui-border-tier1)]/80">{ZH.elminsterQuote}</p>
-    </div>
-  </div>
-);
->
     </section>
     <section>
       <h4 className="text-[var(--color-text-dark)] font-fantasy text-xl border-b-2 border-[var(--color-ui-border-tier1)]/30 mb-3 uppercase tracking-wider font-bold">神祇眷顾</h4>

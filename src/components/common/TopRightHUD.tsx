@@ -8,14 +8,13 @@ interface TopRightHUDProps {
 
 export const TopRightHUD: React.FC<TopRightHUDProps> = ({ onOpenSettings }) => {
   const [isConnected, setIsConnected] = useState(false);
-  const [lastSync, setLastSync] = useState<number>(0);
   const language = useGameStateStore((state) => state.language);
   const toggleLanguage = useGameStateStore((state) => state.toggleLanguage);
   const t = language === 'ZH' ? ZH : EN;
 
   useEffect(() => {
     const checkSync = () => {
-      setLastSync(useGameStateStore.getState().lastSyncTimestamp);
+      // Still need to trigger some update to know if connected or rely on store
       setIsConnected(true);
     };
 
@@ -28,18 +27,15 @@ export const TopRightHUD: React.FC<TopRightHUDProps> = ({ onOpenSettings }) => {
   };
 
   return (
-    <div className="absolute top-4 right-6 z-[5000] flex items-center gap-4 bg-[var(--color-bg-panel)]/80 backdrop-blur-sm border border-[var(--color-gold-dark)]/40 rounded-xl px-4 py-2 shadow-lg shadow-black/50">
+    <div className="w-full flex justify-between items-center bg-[var(--color-bg-panel)]/80 backdrop-blur-sm border border-[var(--color-gold-dark)]/40 rounded-xl px-3 py-2 shadow-lg shadow-black/50 mb-2">
       {/* Sync Status */}
-      <div className="flex items-center gap-3 border-r border-[var(--color-gold-dark)]/30 pr-4">
-        <div className="flex flex-col items-end">
+      <div className="flex items-center gap-2">
+        <div className="flex flex-col items-start">
           <div className="flex items-center gap-2">
             <span className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500 shadow-[0_0_5px_#22c55e]' : 'bg-red-500'}`} />
             <span className="text-[10px] font-fantasy text-[var(--color-gold)]/80 uppercase tracking-tighter drop-shadow-md">
               {t.multiplayerLink}
             </span>
-          </div>
-          <div className="text-[9px] text-[var(--color-text-muted)]/70 font-mono">
-            Last Sync: {lastSync > 0 ? new Date(lastSync).toLocaleTimeString() : 'Never'}
           </div>
         </div>
         
@@ -54,22 +50,24 @@ export const TopRightHUD: React.FC<TopRightHUDProps> = ({ onOpenSettings }) => {
         </button>
       </div>
 
-      {/* Language Toggle */}
-      <button 
-        className="px-3 py-1 bg-black/40 border border-[var(--color-gold-dark)]/40 rounded text-[10px] text-[var(--color-gold)]/80 font-fantasy uppercase tracking-widest hover:bg-[var(--color-gold-dark)]/20 transition-colors shadow-inner" 
-        onClick={toggleLanguage}
-      >
-        {language === 'ZH' ? '中' : 'EN'}
-      </button>
+      <div className="flex items-center gap-3">
+        {/* Language Toggle */}
+        <button 
+          className="px-2 py-1 bg-black/40 border border-[var(--color-gold-dark)]/40 rounded text-[10px] text-[var(--color-gold)]/80 font-fantasy uppercase tracking-widest hover:bg-[var(--color-gold-dark)]/20 transition-colors shadow-inner" 
+          onClick={toggleLanguage}
+        >
+          {language === 'ZH' ? '中' : 'EN'}
+        </button>
 
-      {/* Settings Button */}
-      <button 
-        className="text-xl hover:scale-110 transition-transform drop-shadow-[0_0_8px_rgba(201,160,99,0.5)] opacity-80 hover:opacity-100 pl-1" 
-        onClick={onOpenSettings} 
-        aria-label="Open Settings"
-      >
-        ⚙️
-      </button>
+        {/* Settings Button */}
+        <button 
+          className="text-lg hover:scale-110 transition-transform drop-shadow-[0_0_8px_rgba(201,160,99,0.5)] opacity-80 hover:opacity-100" 
+          onClick={onOpenSettings} 
+          aria-label="Open Settings"
+        >
+          ⚙️
+        </button>
+      </div>
     </div>
   );
 };

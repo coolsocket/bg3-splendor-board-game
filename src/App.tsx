@@ -3,7 +3,6 @@ import { useGameStateStore } from './store/gameStateStore';
 import { usePlayerStore } from './store/playerStore';
 import { useAudioStore } from './store/audioStore';
 import { PerformanceMonitor } from './components/debug/PerformanceMonitor';
-import { SyncStatus } from './components/network/SyncStatus';
 
 function LoginScreen() {
   const players = useGameStateStore(state => state.players);
