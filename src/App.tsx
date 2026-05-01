@@ -93,7 +93,6 @@ function App() {
   return (
     <div className="app-container h-screen w-screen overflow-hidden">
       <GameArena />
-      <SyncStatus />
       <PerformanceMonitor />
     </div>
   );

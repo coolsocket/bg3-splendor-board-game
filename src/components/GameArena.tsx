@@ -293,18 +293,18 @@ export const GameArena: React.FC = () => {
         {detailedPatronProps && (
           <div className="scale-105 origin-top">
             <div 
-              className="group bg-[var(--color-ui-bg-panel)] border-[4px] rounded-xl border-[#2a1b3d] shadow-[inset_0_0_25px_rgba(168,85,247,0.2)] overflow-visible shadow-2xl shadow-[0_15px_40px_rgba(0,0,0,0.9)] w-[420px] flex flex-col relative"
+              className="group bg-[var(--color-ui-bg-panel)] border-[4px] rounded-xl border-[var(--color-bg-panel-alt)] shadow-[inset_0_0_25px_rgba(168,85,247,0.2)] overflow-visible shadow-2xl shadow-[0_15px_40px_rgba(0,0,0,0.9)] w-[420px] flex flex-col relative"
               onClick={(e) => e.stopPropagation()}
               role="dialog"
             >
-              <div className="absolute top-0 left-0 w-10 h-10 border-t-[6px] border-l-[6px] border-[#4a3b5c] opacity-80 z-30 rounded-tl-lg pointer-events-none shadow-[inset_4px_4px_10px_rgba(168,85,247,0.2)]" />
-              <div className="absolute top-0 right-0 w-10 h-10 border-t-[6px] border-r-[6px] border-[#4a3b5c] opacity-80 z-30 rounded-tr-lg pointer-events-none shadow-[inset_-4px_4px_10px_rgba(168,85,247,0.2)]" />
-              <div className="absolute bottom-0 left-0 w-10 h-10 border-b-[6px] border-l-[6px] border-[#4a3b5c] opacity-80 z-30 rounded-bl-lg pointer-events-none shadow-[inset_4px_-4px_10px_rgba(168,85,247,0.2)]" />
-              <div className="absolute bottom-0 right-0 w-10 h-10 border-b-[6px] border-r-[6px] border-[#4a3b5c] opacity-80 z-30 rounded-br-lg pointer-events-none shadow-[inset_-4px_-4px_10px_rgba(168,85,247,0.2)]" />
+              <div className="absolute top-0 left-0 w-10 h-10 border-t-[6px] border-l-[6px] border-[var(--color-ui-border-tier1)] opacity-80 z-30 rounded-tl-lg pointer-events-none shadow-[inset_4px_4px_10px_rgba(168,85,247,0.2)]" />
+              <div className="absolute top-0 right-0 w-10 h-10 border-t-[6px] border-r-[6px] border-[var(--color-ui-border-tier1)] opacity-80 z-30 rounded-tr-lg pointer-events-none shadow-[inset_-4px_4px_10px_rgba(168,85,247,0.2)]" />
+              <div className="absolute bottom-0 left-0 w-10 h-10 border-b-[6px] border-l-[6px] border-[var(--color-ui-border-tier1)] opacity-80 z-30 rounded-bl-lg pointer-events-none shadow-[inset_4px_-4px_10px_rgba(168,85,247,0.2)]" />
+              <div className="absolute bottom-0 right-0 w-10 h-10 border-b-[6px] border-r-[6px] border-[var(--color-ui-border-tier1)] opacity-80 z-30 rounded-br-lg pointer-events-none shadow-[inset_-4px_-4px_10px_rgba(168,85,247,0.2)]" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.05)_0%,transparent_80%)] pointer-events-none z-20 mix-blend-screen" />
 
               <button 
-                className="absolute -top-5 -right-5 w-12 h-12 rounded-full bg-[#140a1f] border-2 border-[#4a3b5c] text-[#a855f7] flex items-center justify-center hover:bg-[#2a1b3d] hover:text-white hover:border-[#a855f7] hover:shadow-[0_0_15px_rgba(168,85,247,0.6)] transition-all z-[100] shadow-2xl text-2xl font-bold cursor-pointer"
+                className="absolute -top-5 -right-5 w-12 h-12 rounded-full bg-[var(--color-bg-obsidian)] border-2 border-[var(--color-ui-border-tier1)] text-[var(--color-text-primary)] flex items-center justify-center hover:bg-[var(--color-bg-panel-alt)] hover:text-white hover:border-[var(--color-text-primary)] hover:shadow-[0_0_15px_rgba(168,85,247,0.6)] transition-all z-[100] shadow-2xl text-2xl font-bold cursor-pointer"
                 onClick={() => setDetailedPatronId(null)}
                 aria-label="Close detail"
               >
@@ -332,25 +332,25 @@ export const GameArena: React.FC = () => {
 
                 <div className="relative w-[360px] h-[360px] mx-auto mt-0 mb-4 group/patron-img">
                   <div className="absolute inset-0 bg-purple-900/20 blur-2xl rounded-full mix-blend-screen animate-pulse" />
-                  <div className="bg-bg-obsidian w-full h-full overflow-hidden rounded-lg border-[4px] border-[#2a1b3d] shadow-[0_0_50px_rgba(168,85,247,0.2),inset_0_0_60px_rgba(0,0,0,1)] flex items-center justify-center relative z-10 transition-transform duration-1000 ease-out group-hover/patron-img:scale-[1.02]">
+                  <div className="bg-bg-obsidian w-full h-full overflow-hidden rounded-lg border-[4px] border-[var(--color-bg-panel-alt)] shadow-[0_0_50px_rgba(168,85,247,0.2),inset_0_0_60px_rgba(0,0,0,1)] flex items-center justify-center relative z-10 transition-transform duration-1000 ease-out group-hover/patron-img:scale-[1.02]">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent pointer-events-none mix-blend-screen z-20" />
                     {detailedPatronProps.imageUrl ? (
                       <img src={detailedPatronProps.imageUrl} alt={detailedPatronProps.name} className="w-full h-full object-cover transition-transform duration-[10s] ease-out hover:scale-110" />
                     ) : (
-                      <div className="w-full h-full bg-[#1a0508] flex items-center justify-center text-[var(--color-parchment)] font-fantasy">Patron</div>
+                      <div className="w-full h-full bg-[var(--color-bg-underdark)] flex items-center justify-center text-[var(--color-parchment)] font-fantasy">Patron</div>
                     )}
                   </div>
                 </div>
 
-                <div className="px-6 flex-1 flex flex-col justify-start mt-2 bg-gradient-to-t from-black via-[#0a0510] to-transparent py-4 min-h-[140px] relative z-20">
+                <div className="px-6 flex-1 flex flex-col justify-start mt-2 bg-gradient-to-t from-black via-[var(--color-bg-underdark-end)] to-transparent py-4 min-h-[140px] relative z-20">
                   <div className="flex flex-wrap justify-center gap-6 mb-6">
                     {Object.entries(detailedPatronProps.requirements).map(([resource, amount]) => {
                       if (amount && amount > 0) {
                         return (
                           <div key={resource} className="relative flex items-center justify-center scale-125 hover:scale-150 transition-transform duration-300">
                             <UnifiedToken type={resource.toUpperCase() as any} size="md" className="shadow-[0_0_20px_rgba(168,85,247,0.3)]" />
-                            <div className="absolute -bottom-1 -right-1 bg-[#0a0510] border-[2px] border-[#4a3b5c] rounded-full w-6 h-6 flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.5)] z-10">
-                              <span className="font-fantasy text-[#d8b4fe] font-bold text-xs drop-shadow-md">{amount}</span>
+                            <div className="absolute -bottom-1 -right-1 bg-[var(--color-bg-underdark-end)] border-[2px] border-[var(--color-ui-border-tier1)] rounded-full w-6 h-6 flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.5)] z-10">
+                              <span className="font-fantasy text-[var(--color-text-primary)] font-bold text-xs drop-shadow-md">{amount}</span>
                             </div>
                           </div>
                         );
@@ -360,7 +360,7 @@ export const GameArena: React.FC = () => {
                   </div>
 
                   {detailedPatronProps.description && (
-                    <div className="px-6 py-5 bg-[#0a0510]/90 border-l-[4px] border-[#4a3b5c] italic text-[#e9d5ff] font-serif text-center leading-relaxed text-sm mb-4 rounded-r-lg mx-2 shadow-[0_4px_25px_rgba(0,0,0,0.9),inset_0_0_20px_rgba(168,85,247,0.05)] tracking-wide">
+                    <div className="px-6 py-5 bg-[var(--color-bg-underdark-end)]/90 border-l-[4px] border-[var(--color-ui-border-tier1)] italic text-[var(--color-text-primary)] font-serif text-center leading-relaxed text-sm mb-4 rounded-r-lg mx-2 shadow-[0_4px_25px_rgba(0,0,0,0.9),inset_0_0_20px_rgba(168,85,247,0.05)] tracking-wide">
                       "{detailedPatronProps.description}"
                     </div>
                   )}
@@ -374,10 +374,7 @@ export const GameArena: React.FC = () => {
       <h1 className="sr-only">Splendor Game Arena</h1>
       <TurnAnnouncer />
       
-      <div className="absolute top-4 right-6 z-50 flex gap-4 items-center">
-        <button className="px-3 py-1 bg-black/40 border border-[var(--color-gold-dark)]/40 rounded text-[10px] text-gold/80 font-fantasy uppercase tracking-widest hover:bg-gold/20 transition-colors shadow-lg" onClick={toggleLanguage}>{language === 'ZH' ? '中' : 'EN'}</button>
-        <button className="text-2xl hover:scale-110 transition-transform drop-shadow-[0_0_8px_rgba(201,160,99,0.5)] opacity-80 hover:opacity-100" onClick={() => setIsSettingsOpen(true)} aria-label="Open Settings">⚙️</button>
-      </div>
+      <TopRightHUD onOpenSettings={() => setIsSettingsOpen(true)} />
 
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.8)] z-[40]"></div>
 
@@ -393,19 +390,19 @@ export const GameArena: React.FC = () => {
           <div className="w-full"><CardMarket onCardInteract={handleCardInteractWithModal} /></div>
         </div>
 
-        <div className="flex flex-col gap-4 p-4 rounded-lg border border-[#3e2c1a] bg-[#0c0906] shadow-[inset_0_0_30px_rgba(0,0,0,0.9),inset_0_0_10px_rgba(0,0,0,0.8),0_8px_16px_rgba(0,0,0,0.6)] overflow-y-auto items-center min-w-[320px]">
+        <div className="flex flex-col gap-4 p-4 rounded-lg border border-[var(--color-ui-border-tier1)] bg-[var(--color-bg-underdark)] shadow-[inset_0_0_30px_rgba(0,0,0,0.9),inset_0_0_10px_rgba(0,0,0,0.8),0_8px_16px_rgba(0,0,0,0.6)] overflow-y-auto items-center min-w-[320px]">
           <div className="bg-[var(--color-bg-panel-alt)] border border-[var(--color-gold-dark)]/60 rounded-xl px-2 py-2 shadow-lg flex flex-col items-center gap-2 w-full max-w-60 mt-2">
             <div className="flex flex-col items-center w-full">
               <div className="flex justify-between w-full px-2 mb-1 font-fantasy">
                 <span className="text-sm text-[var(--color-parchment)] font-bold uppercase tracking-widest drop-shadow-md">{t.turn} {turnNumber}</span>
                 <span className="text-sm text-[var(--color-parchment)] font-bold uppercase tracking-widest drop-shadow-md">{t.time}: 45s</span>
               </div>
-              <div className="w-full h-2 bg-[var(--color-ui-bg-vault)] rounded-full border border-[var(--color-gold-dark)] relative overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.9)] bg-gradient-to-b from-[#1a1405] to-[var(--color-ui-bg-vault)]">
-                <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-gold/60 via-gold to-[#fffacd] w-3/4 shadow-[0_0_10px_var(--color-gold)]"></div>
+              <div className="w-full h-2 bg-[var(--color-ui-bg-vault)] rounded-full border border-[var(--color-gold-dark)] relative overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.9)] bg-gradient-to-b from-[var(--color-bg-underdark-end)] to-[var(--color-ui-bg-vault)]">
+                <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-gold/60 via-gold to-[var(--color-gold-light)] w-3/4 shadow-[0_0_10px_var(--color-gold)]"></div>
               </div>
             </div>
             <div className="flex gap-2 w-full mt-2">
-              <button className="flex-1 px-3 py-1 bg-gradient-to-b from-[#1b4f72] to-[#0e2a3c] border border-[var(--color-gold-dark)]/60 rounded text-xs text-[var(--color-parchment)] font-fantasy uppercase tracking-wider hover:brightness-125 transition-all shadow-md" onClick={() => setIsRulesOpen(true)}>📜 {t.rules}</button>
+              <button className="flex-1 px-3 py-1 bg-gradient-to-b from-[var(--color-ui-plot-start)] to-[var(--color-ui-plot-end)] border border-[var(--color-gold-dark)]/60 rounded text-xs text-[var(--color-parchment)] font-fantasy uppercase tracking-wider hover:brightness-125 transition-all shadow-md" onClick={() => setIsRulesOpen(true)}>📜 {t.rules}</button>
               <button className="flex-1 px-3 py-1 bg-[var(--color-bg-card)] border border-[var(--color-gold-dark)]/60 rounded text-xs text-gold/80 hover:bg-red-900/40 hover:text-white transition-colors" onClick={() => { if (confirm(t.resetConfirmation)) { reset(); clearSelection(); useGameStateStore.getState().setDiscardingInfo(null); setDiscardSelection({}); } }}>{t.reset}</button>
             </div>
           </div>
@@ -441,25 +438,25 @@ export const GameArena: React.FC = () => {
 const rulesContentEN = (
   <div className="text-[var(--color-ui-text-parchment)] font-serif space-y-6 animate-fade-in">
     <section>
-      <h4 className="text-[#2a1b0a] font-fantasy text-xl border-b-2 border-[#5c4a3d]/30 mb-3 uppercase tracking-wider font-bold">{EN.objective}</h4>
+      <h4 className="text-[var(--color-text-dark)] font-fantasy text-xl border-b-2 border-[var(--color-ui-border-tier1)]/30 mb-3 uppercase tracking-wider font-bold">{EN.objective}</h4>
       <p className="leading-relaxed text-base italic">{EN.ruleQuote}</p>
       <p className="leading-relaxed mt-2 text-sm">Race against other players to reach <span className="font-bold text-red-900 underline decoration-[var(--color-gold-dark)]">18 Prestige Points</span>. The gold number in the <span className="italic font-bold text-amber-900">top right corner</span> of a card indicates its value.</p>
     </section>
     <section>
-      <h4 className="text-[#2a1b0a] font-fantasy text-xl border-b-2 border-[#5c4a3d]/30 mb-3 uppercase tracking-wider font-bold">Resources & Recruitment</h4>
+      <h4 className="text-[var(--color-text-dark)] font-fantasy text-xl border-b-2 border-[var(--color-ui-border-tier1)]/30 mb-3 uppercase tracking-wider font-bold">Resources & Recruitment</h4>
       <div className="space-y-4">
-        <div className="bg-[var(--color-ui-bg-parchment-dark)]/60 p-3 rounded border border-[#5c4a3d]/20">
+        <div className="bg-[var(--color-ui-bg-parchment-dark)]/60 p-3 rounded border border-[var(--color-ui-border-tier1)]/20">
           <span className="text-amber-900 font-bold block mb-1">💎 Consumable Tokens</span>
-          <p className="text-xs leading-relaxed text-[#5c4a3d]">Collected from the bank. These are <span className="font-bold">discarded</span> after you use them to pay for a card.</p>
+          <p className="text-xs leading-relaxed text-[var(--color-ui-border-tier1)]">Collected from the bank. These are <span className="font-bold">discarded</span> after you use them to pay for a card.</p>
         </div>
-        <div className="bg-[var(--color-ui-bg-parchment-dark)]/60 p-3 rounded border border-[#5c4a3d]/20">
+        <div className="bg-[var(--color-ui-bg-parchment-dark)]/60 p-3 rounded border border-[var(--color-ui-border-tier1)]/20">
           <span className="text-emerald-900 font-bold block mb-1">✨ Permanent Bonuses</span>
-          <p className="text-xs leading-relaxed text-[#5c4a3d]">Every card you recruit grants a <span className="font-bold">permanent resource discount</span> (shown in the top left). These never disappear and can be reused every turn to lower the cost of future allies.</p>
+          <p className="text-xs leading-relaxed text-[var(--color-ui-border-tier1)]">Every card you recruit grants a <span className="font-bold">permanent resource discount</span> (shown in the top left). These never disappear and can be reused every turn to lower the cost of future allies.</p>
         </div>
       </div>
     </section>
     <section>
-      <h4 className="text-[#2a1b0a] font-fantasy text-xl border-b-2 border-[#5c4a3d]/30 mb-3 uppercase tracking-wider font-bold">{EN.yourTurn}</h4>
+      <h4 className="text-[var(--color-text-dark)] font-fantasy text-xl border-b-2 border-[var(--color-ui-border-tier1)]/30 mb-3 uppercase tracking-wider font-bold">{EN.yourTurn}</h4>
       <div className="space-y-3">
         <div className="bg-[var(--color-ui-bg-parchment-dark)]/40 p-3 border-l-4 border-emerald-800 rounded-r shadow-sm">
           <span className="text-emerald-900 font-bold block mb-1">🏺 {EN.scavenge}</span>
@@ -476,11 +473,11 @@ const rulesContentEN = (
       </div>
     </section>
     <section>
-      <h4 className="text-[#2a1b0a] font-fantasy text-xl border-b-2 border-[#5c4a3d]/30 mb-3 uppercase tracking-wider font-bold">Patrons</h4>
+      <h4 className="text-[var(--color-text-dark)] font-fantasy text-xl border-b-2 border-[var(--color-ui-border-tier1)]/30 mb-3 uppercase tracking-wider font-bold">Patrons</h4>
       <p className="leading-relaxed text-sm">At turn's end, gods and factions (Patrons) monitor your strength. If you meet their criteria (Permanent Bonuses), they visit automatically, granting significant Prestige. Only one Patron can visit per turn.</p>
     </section>
-    <div className="mt-6 pt-4 border-t border-[#5c4a3d]/20 text-center">
-      <p className="text-xs italic text-[#5c4a3d]/80">{EN.elminsterQuote}</p>
+    <div className="mt-6 pt-4 border-t border-[var(--color-ui-border-tier1)]/20 text-center">
+      <p className="text-xs italic text-[var(--color-ui-border-tier1)]/80">{EN.elminsterQuote}</p>
     </div>
   </div>
 );
@@ -488,25 +485,25 @@ const rulesContentEN = (
 const rulesContentZH = (
   <div className="text-[var(--color-ui-text-parchment)] font-serif space-y-6 animate-fade-in">
     <section>
-      <h4 className="text-[#2a1b0a] font-fantasy text-xl border-b-2 border-[#5c4a3d]/30 mb-3 uppercase tracking-wider font-bold">{ZH.objective}</h4>
+      <h4 className="text-[var(--color-text-dark)] font-fantasy text-xl border-b-2 border-[var(--color-ui-border-tier1)]/30 mb-3 uppercase tracking-wider font-bold">{ZH.objective}</h4>
       <p className="leading-relaxed text-base italic">{ZH.ruleQuote}</p>
       <p className="leading-relaxed mt-2 text-sm">与其他玩家竞争，率先达到 <span className="font-bold text-red-900 underline decoration-[var(--color-gold-dark)]">18 点声望值</span>。卡牌<span className="italic font-bold text-amber-900">右上角的金色数字</span>代表其价值。</p>
     </section>
     <section>
-      <h4 className="text-[#2a1b0a] font-fantasy text-xl border-b-2 border-[#5c4a3d]/30 mb-3 uppercase tracking-wider font-bold">资源与招募</h4>
+      <h4 className="text-[var(--color-text-dark)] font-fantasy text-xl border-b-2 border-[var(--color-ui-border-tier1)]/30 mb-3 uppercase tracking-wider font-bold">资源与招募</h4>
       <div className="space-y-4">
-        <div className="bg-[var(--color-ui-bg-parchment-dark)]/60 p-3 rounded border border-[#5c4a3d]/20">
+        <div className="bg-[var(--color-ui-bg-parchment-dark)]/60 p-3 rounded border border-[var(--color-ui-border-tier1)]/20">
           <span className="text-amber-900 font-bold block mb-1">💎 一次性代币</span>
-          <p className="text-xs leading-relaxed text-[#5c4a3d]">从公共库获取。在招募角色时作为货币支付，支付后<span className="font-bold">消失</span>并回流到库中。</p>
+          <p className="text-xs leading-relaxed text-[var(--color-ui-border-tier1)]">从公共库获取。在招募角色时作为货币支付，支付后<span className="font-bold">消失</span>并回流到库中。</p>
         </div>
-        <div className="bg-[var(--color-ui-bg-parchment-dark)]/60 p-3 rounded border border-[#5c4a3d]/20">
+        <div className="bg-[var(--color-ui-bg-parchment-dark)]/60 p-3 rounded border border-[var(--color-ui-border-tier1)]/20">
           <span className="text-emerald-900 font-bold block mb-1">✨ 永久资源加成</span>
-          <p className="text-xs leading-relaxed text-[#5c4a3d]">每当你招募一名角色，卡片左上角的图标就变为你的<span className="font-bold">永久折扣</span>。它们永远不会消失，可以每回合重复使用，减少未来招募所需的代币。</p>
+          <p className="text-xs leading-relaxed text-[var(--color-ui-border-tier1)]">每当你招募一名角色，卡片左上角的图标就变为你的<span className="font-bold">永久折扣</span>。它们永远不会消失，可以每回合重复使用，减少未来招募所需的代币。</p>
         </div>
       </div>
     </section>
     <section>
-      <h4 className="text-[#2a1b0a] font-fantasy text-xl border-b-2 border-[#5c4a3d]/30 mb-3 uppercase tracking-wider font-bold">{ZH.yourTurn}</h4>
+      <h4 className="text-[var(--color-text-dark)] font-fantasy text-xl border-b-2 border-[var(--color-ui-border-tier1)]/30 mb-3 uppercase tracking-wider font-bold">{ZH.yourTurn}</h4>
       <div className="space-y-3">
         <div className="bg-[var(--color-ui-bg-parchment-dark)]/40 p-3 border-l-4 border-emerald-800 rounded-r shadow-sm">
           <span className="text-emerald-900 font-bold block mb-1">🏺 {ZH.scavenge}</span>
@@ -523,11 +520,22 @@ const rulesContentZH = (
       </div>
     </section>
     <section>
-      <h4 className="text-[#2a1b0a] font-fantasy text-xl border-b-2 border-[#5c4a3d]/30 mb-3 uppercase tracking-wider font-bold">神祇眷顾</h4>
+      <h4 className="text-[var(--color-text-dark)] font-fantasy text-xl border-b-2 border-[var(--color-ui-border-tier1)]/30 mb-3 uppercase tracking-wider font-bold">神祇眷顾</h4>
       <p className="leading-relaxed text-sm">回合结束时，如果你满足了神祇或势力（贵族）的招募要求（永久加成数量），他们会自动造访并授予你丰厚的声望奖励。</p>
     </section>
-    <div className="mt-6 pt-4 border-t border-[#5c4a3d]/20 text-center">
-      <p className="text-xs italic text-[#5c4a3d]/80">{ZH.elminsterQuote}</p>
+    <div className="mt-6 pt-4 border-t border-[var(--color-ui-border-tier1)]/20 text-center">
+      <p className="text-xs italic text-[var(--color-ui-border-tier1)]/80">{ZH.elminsterQuote}</p>
+    </div>
+  </div>
+);
+>
+    </section>
+    <section>
+      <h4 className="text-[var(--color-text-dark)] font-fantasy text-xl border-b-2 border-[var(--color-ui-border-tier1)]/30 mb-3 uppercase tracking-wider font-bold">神祇眷顾</h4>
+      <p className="leading-relaxed text-sm">回合结束时，如果你满足了神祇或势力（贵族）的招募要求（永久加成数量），他们会自动造访并授予你丰厚的声望奖励。</p>
+    </section>
+    <div className="mt-6 pt-4 border-t border-[var(--color-ui-border-tier1)]/20 text-center">
+      <p className="text-xs italic text-[var(--color-ui-border-tier1)]/80">{ZH.elminsterQuote}</p>
     </div>
   </div>
 );
