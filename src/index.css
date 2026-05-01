@@ -24,7 +24,7 @@
   --color-radiant: #fef08a;
   --color-arcane: #38bdf8;
   --color-natures: #4ade80;
-  --color-infernal: #f87171;
+  --color-infernal: #ff4500;
   --color-dark: #c084fc;
   --color-wildcard: #f472b6;
 
@@ -41,9 +41,9 @@
   --color-natures-mid: #1b5e20;
   --color-natures-dark: #0a3d12;
 
-  --color-infernal-light: #fecaca;
-  --color-infernal-mid: #7f1d1d;
-  --color-infernal-dark: #000000;
+  --color-infernal-light: #ff7a45;
+  --color-infernal-mid: #8a2000;
+  --color-infernal-dark: #3b0e00;
 
   --color-dark-light: #faf5ff;
   --color-dark-mid: #9333ea;

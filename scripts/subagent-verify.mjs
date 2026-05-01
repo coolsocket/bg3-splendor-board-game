@@ -2,6 +2,7 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { performance } from 'perf_hooks';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -11,7 +12,9 @@ const fail = (msg) => {
     console.error(`\x1b[1m\x1b[31m[FAIL]\x1b[0m ${msg}`);
     process.exit(1);
 };
-const pass = (msg) => console.log(`\x1b[1m\x1b[32m[PASS]\x1b[0m ${msg}`);
+const pass = (msg, durationMs) => console.log(`\x1b[1m\x1b[32m[PASS]\x1b[0m ${msg} \x1b[2m(${durationMs.toFixed(2)}ms)\x1b[0m`);
+
+const startTime = performance.now();
 
 log('Analyzing uncommitted changes...');
 
@@ -37,11 +40,10 @@ let hasErrors = false;
 
 // 1. FAST SYNTAX CHECK (Only on changed files)
 log('Running targeted syntax check...');
+const tscStart = performance.now();
 try {
-    // We run tsc but just for typechecking. Since tsc on specific files ignores tsconfig, 
-    // we just use the global project build check here to be safe and comprehensive.
     execSync('npm run check', { stdio: 'ignore', cwd: ROOT });
-    pass('TypeScript Compilation: OK');
+    pass('TypeScript Compilation: OK', performance.now() - tscStart);
 } catch (e) {
     console.error(`\x1b[31mTypeScript Error detected in your changes. Please run 'npm run check' manually to see details and fix them.\x1b[0m`);
     hasErrors = true;
@@ -50,11 +52,11 @@ try {
 // 2. HARDCODE COLOR AUDIT (Only on changed UI files)
 if (uiFiles.length > 0) {
     log('Running Visual Auditor on modified UI components...');
+    const auditStart = performance.now();
     let auditErrors = 0;
     uiFiles.forEach(file => {
-        if (!fs.existsSync(file)) return; // Might be deleted
+        if (!fs.existsSync(file)) return;
         const content = fs.readFileSync(file, 'utf8');
-        // Simple regex check for fast feedback. AST engine can be used for deep audit.
         const hexMatch = content.match(/#[0-9a-fA-F]{3,6}\b/g);
         if (hexMatch && hexMatch.length > 0) {
             console.error(`  ❌ ${path.relative(ROOT, file)}: Contains unauthorized hardcoded hex colors (${hexMatch.join(', ')}). Use CSS variables instead.`);
@@ -65,7 +67,7 @@ if (uiFiles.length > 0) {
     if (auditErrors > 0) {
         hasErrors = true;
     } else {
-        pass('Visual Audit: OK (No hardcoded colors added)');
+        pass('Visual Audit: OK', performance.now() - auditStart);
     }
 }
 
@@ -73,6 +75,7 @@ if (uiFiles.length > 0) {
 const domainFiles = tsFiles.filter(f => f.includes('src/domain'));
 if (domainFiles.length > 0) {
     log('Running Layer Integrity check on Domain...');
+    const layerStart = performance.now();
     let layerErrors = 0;
     domainFiles.forEach(file => {
          if (!fs.existsSync(file)) return;
@@ -88,12 +91,13 @@ if (domainFiles.length > 0) {
     if (layerErrors > 0) {
         hasErrors = true;
     } else {
-        pass('Layer Integrity: OK');
+        pass('Layer Integrity: OK', performance.now() - layerStart);
     }
 }
 
+const totalTime = performance.now() - startTime;
 if (hasErrors) {
-    fail('VERIFICATION FAILED. You must fix the errors above before terminating your task.');
+    fail(`VERIFICATION FAILED after ${totalTime.toFixed(2)}ms. You must fix the errors above before terminating your task.`);
 } else {
-    log('\x1b[42m\x1b[30m ALL CHECKS PASSED. YOU MAY PROCEED WITH TASK COMPLETION. \x1b[0m');
+    log(`\x1b[42m\x1b[30m ALL CHECKS PASSED (${totalTime.toFixed(2)}ms). YOU MAY PROCEED WITH TASK COMPLETION. \x1b[0m`);
 }

@@ -251,10 +251,10 @@ export const GameArena: React.FC = () => {
         {language === 'ZH' ? rulesContentZH : rulesContentEN}
       </Modal>
 
-      <Modal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} title={t.audioSettings} variant="parchment">
+      <Modal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} title={t.audioSettings} variant="default">
         <div className="flex flex-col gap-6 p-4">
           <div className="space-y-4">
-            <h3 className="text-xl font-fantasy text-gold border-b border-gold/30 pb-2">{t.bgm}</h3>
+            <h3 className="text-xl font-fantasy text-[var(--color-gold)] border-b border-[var(--color-gold-dark)]/30 pb-2">{t.bgm}</h3>
             <input 
               type="range" 
               min="0" 
@@ -262,12 +262,12 @@ export const GameArena: React.FC = () => {
               step="0.05" 
               value={bgmVolume} 
               onChange={(e) => setBgmVolume(parseFloat(e.target.value))}
-              className="w-full accent-gold cursor-pointer"
+              className="w-full accent-[var(--color-gold)] cursor-pointer"
             />
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-xl font-fantasy text-gold border-b border-gold/30 pb-2">{t.sfx}</h3>
+            <h3 className="text-xl font-fantasy text-[var(--color-gold)] border-b border-[var(--color-gold-dark)]/30 pb-2">{t.sfx}</h3>
             <input 
               type="range" 
               min="0" 
@@ -275,8 +275,24 @@ export const GameArena: React.FC = () => {
               step="0.05" 
               value={globalVolume} 
               onChange={(e) => setVolume(parseFloat(e.target.value))}
-              className="w-full accent-gold cursor-pointer"
+              className="w-full accent-[var(--color-gold)] cursor-pointer"
             />
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-xl font-fantasy text-[var(--color-gold)] border-b border-[var(--color-gold-dark)]/30 pb-2">Display</h3>
+            <button 
+              onClick={() => {
+                if (!document.fullscreenElement) {
+                  document.documentElement.requestFullscreen().catch(err => console.error(err));
+                } else {
+                  document.exitFullscreen();
+                }
+              }}
+              className="w-full py-2 bg-[var(--color-bg-panel-alt)] border border-[var(--color-gold-dark)]/60 rounded text-[var(--color-parchment)] font-fantasy uppercase tracking-wider hover:bg-[var(--color-gold-dark)]/20 transition-colors shadow-md"
+            >
+              Toggle Fullscreen
+            </button>
           </div>
         </div>
       </Modal>
