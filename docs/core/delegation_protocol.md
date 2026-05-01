@@ -8,8 +8,7 @@ Instead, follow the **Pre-defined Verifiable Results (PVR)** pattern.
 
 1.  **Define the Goal**: State what needs to be changed.
 2.  **Define the Guardrails**: Remind the subagent of the architectural rules (e.g., "Do not use Tailwind hex codes").
-3.  **Define the Verifiable Exit Condition**: The subagent MUST run `node scripts/subagent-verify.mjs` to prove its work is correct BEFORE terminating.
-4.  **Git Commit Handover**: Once verified, the subagent MUST commit its changes (`git add .` and `git commit -m "feat/fix: ..."`) before terminating. The main agent reviews the git history, not raw code.
+3.  **Task Completion Gateway**: The subagent MUST run `node scripts/subagent-complete.mjs "commit message"` to finish the task. This script automatically runs the AST verifications and, if successful, creates a git commit.
 
 ## Example Prompts
 
@@ -19,16 +18,13 @@ Instead, follow the **Pre-defined Verifiable Results (PVR)** pattern.
 **Good Prompt (Contract-Driven):**
 > "Fix the red coin alignment and breathing effect.
 > **Exit Conditions (You must execute these before terminating):**
-> 1. Run `node scripts/subagent-verify.mjs`. This tool analyzes your uncommitted diffs and verifies syntax, visual purity, and layer integrity.
-> 2. You MUST receive the 'ALL CHECKS PASSED' message. If it fails, fix your code and run it again.
-> 3. Once passed, run `git add .` and `git commit -m "fix(ui): align red coin and enhance breathing"`.
-> Include the commit hash in your termination report."
+> 1. Run `node scripts/subagent-complete.mjs "fix(ui): align red coin and enhance breathing"`.
+> 2. You MUST receive the '[GATEWAY-ACCEPTED]' message. If it rejects your code, fix the errors and try again.
+> Include the final output of this gateway script in your termination report."
 
-## Subagent Verify Tool (`scripts/subagent-verify.mjs`)
-This is a dedicated CLI tool built for subagents. It automatically detects uncommitted Git changes and runs:
-1. **Targeted Syntax Check**: Ensures `npm run check` passes.
-2. **Visual Audit**: Scans modified UI files for prohibited hardcoded hex colors.
-3. **Layer Integrity**: Scans modified Domain files for prohibited imports (e.g., React, Zustand).
+## Subagent Tooling
+- **`scripts/subagent-verify.mjs`**: Analyzes uncommitted diffs for syntax, visual purity, and layer integrity.
+- **`scripts/subagent-complete.mjs`**: The unified gateway. Runs `verify`, stages all changes (`git add .`), and executes `git commit`.
 
 ## Benefits
 - **Zero Main-Agent Overhead**: The main agent acts purely as an orchestrator and doesn't need to waste turns running `grep` or `read_file` to check the subagent's homework.
