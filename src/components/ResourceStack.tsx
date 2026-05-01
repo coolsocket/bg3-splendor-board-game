@@ -26,7 +26,7 @@ const TYPE_COLORS: Record<ResourceType, { start: string, end: string }> = {
   RADIANT_GEM: { start: 'var(--color-radiant-mid)', end: 'var(--color-radiant-dark)' },
   ARCANE_CRYSTAL: { start: 'var(--color-arcane-mid)', end: 'var(--color-arcane-dark)' },
   NATURES_BLESSING: { start: 'var(--color-natures-mid)', end: 'var(--color-natures-dark)' },
-  INFERNAL_IRON: { start: 'var(--color-infernal-mid)', end: 'var(--color-infernal-dark)' },
+  INFERNAL_IRON: { start: 'var(--color-infernal)', end: 'var(--color-infernal-mid)' },
   DARK_QUARTZ: { start: 'var(--color-dark-mid)', end: 'var(--color-dark-dark)' },
   TRUE_SOUL_TADPOLE: { start: 'var(--color-wildcard-pink-mid)', end: 'var(--color-wildcard-pink-dark)' }
 };
@@ -86,7 +86,7 @@ export const ResourceStack: React.FC<ResourceStackProps> = ({ tokens, ownedCards
                      {imgUrl ? (
                          <img src={imgUrl} alt={card.name} className="w-full h-full object-cover origin-top scale-[1.3] card-stack-image" />
                      ) : (
-                         <div className={`w-full h-full border-t-[3px] ${card.tier === 1 ? 'border-[#5c4a3d] bg-[#3a2d22]' : card.tier === 2 ? 'border-[#e2e8f0] bg-[#4a5568]' : 'border-[var(--color-gold)] bg-[#745f21]'}`} />
+                         <div className={`w-full h-full border-t-[3px] ${card.tier === 1 ? 'border-[var(--color-ui-border-tier1)] bg-black/40' : card.tier === 2 ? 'border-[var(--color-ui-border-tier2)] bg-black/60' : 'border-[var(--color-gold)] bg-[var(--color-gold-dark)]/40'}`} />
                      )}
                   </div>
                 );

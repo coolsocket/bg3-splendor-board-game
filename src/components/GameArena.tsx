@@ -252,47 +252,70 @@ export const GameArena: React.FC = () => {
       </Modal>
 
       <Modal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} title={t.audioSettings} variant="default">
-        <div className="flex flex-col gap-6 p-4">
+        <div className="flex flex-col gap-8 px-2 py-4">
           <div className="space-y-4">
-            <h3 className="text-xl font-fantasy text-[var(--color-gold)] border-b border-[var(--color-gold-dark)]/30 pb-2">{t.bgm}</h3>
-            <input 
-              type="range" 
-              min="0" 
-              max="1" 
-              step="0.05" 
-              value={bgmVolume} 
-              onChange={(e) => setBgmVolume(parseFloat(e.target.value))}
-              className="w-full accent-[var(--color-gold)] cursor-pointer"
-            />
+            <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--color-text-secondary)] border-b border-[var(--color-ui-border-tier1)]/30 pb-2">{t.bgm}</h3>
+            <div className="flex items-center gap-4">
+              <span className="text-xs text-[var(--color-gold)] w-8 text-right">{Math.round(bgmVolume * 100)}%</span>
+              <input 
+                type="range" 
+                min="0" 
+                max="1" 
+                step="0.05" 
+                value={bgmVolume} 
+                onChange={(e) => setBgmVolume(parseFloat(e.target.value))}
+                className="flex-1 accent-[var(--color-gold)] cursor-pointer h-1.5 bg-black/50 rounded-full appearance-none"
+              />
+            </div>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-xl font-fantasy text-[var(--color-gold)] border-b border-[var(--color-gold-dark)]/30 pb-2">{t.sfx}</h3>
-            <input 
-              type="range" 
-              min="0" 
-              max="1" 
-              step="0.05" 
-              value={globalVolume} 
-              onChange={(e) => setVolume(parseFloat(e.target.value))}
-              className="w-full accent-[var(--color-gold)] cursor-pointer"
-            />
+            <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--color-text-secondary)] border-b border-[var(--color-ui-border-tier1)]/30 pb-2">{t.sfx}</h3>
+            <div className="flex items-center gap-4">
+              <span className="text-xs text-[var(--color-gold)] w-8 text-right">{Math.round(globalVolume * 100)}%</span>
+              <input 
+                type="range" 
+                min="0" 
+                max="1" 
+                step="0.05" 
+                value={globalVolume} 
+                onChange={(e) => setVolume(parseFloat(e.target.value))}
+                className="flex-1 accent-[var(--color-gold)] cursor-pointer h-1.5 bg-black/50 rounded-full appearance-none"
+              />
+            </div>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-xl font-fantasy text-[var(--color-gold)] border-b border-[var(--color-gold-dark)]/30 pb-2">Display</h3>
-            <button 
-              onClick={() => {
-                if (!document.fullscreenElement) {
-                  document.documentElement.requestFullscreen().catch(err => console.error(err));
-                } else {
-                  document.exitFullscreen();
-                }
-              }}
-              className="w-full py-2 bg-[var(--color-bg-panel-alt)] border border-[var(--color-gold-dark)]/60 rounded text-[var(--color-parchment)] font-fantasy uppercase tracking-wider hover:bg-[var(--color-gold-dark)]/20 transition-colors shadow-md"
-            >
-              Toggle Fullscreen
-            </button>
+            <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--color-text-secondary)] border-b border-[var(--color-ui-border-tier1)]/30 pb-2">System</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <button 
+                onClick={() => {
+                  if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => console.error(err));
+                  } else {
+                    document.exitFullscreen();
+                  }
+                }}
+                className="py-3 bg-black/40 border border-[var(--color-gold-dark)]/40 rounded text-xs text-[var(--color-gold)] font-fantasy uppercase tracking-wider hover:bg-[var(--color-gold-dark)]/20 transition-all shadow-inner"
+              >
+                {document.fullscreenElement ? 'Exit Fullscreen' : 'Enter Fullscreen'}
+              </button>
+
+              <button 
+                onClick={() => {
+                  const url = new URL(window.location.href);
+                  if (url.searchParams.has('debug')) {
+                    url.searchParams.delete('debug');
+                  } else {
+                    url.searchParams.set('debug', 'true');
+                  }
+                  window.location.href = url.toString();
+                }}
+                className="py-3 bg-black/40 border border-[var(--color-gold-dark)]/40 rounded text-xs text-[var(--color-gold)] font-fantasy uppercase tracking-wider hover:bg-[var(--color-gold-dark)]/20 transition-all shadow-inner"
+              >
+                Toggle Observability
+              </button>
+            </div>
           </div>
         </div>
       </Modal>
