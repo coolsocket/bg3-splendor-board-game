@@ -27,7 +27,7 @@ export const MarketRow: React.FC<MarketRowProps> = ({
       </div>
       <div className="col-span-4 grid grid-cols-4 gap-4 [perspective:1000px] justify-center">
         {cards.map(card => (
-          <div key={card.id} className="animate-card-flip">
+          <div key={card.id} className="card-appear-flip">
             <Card {...card} onInteract={onCardInteract} />
           </div>
         ))}

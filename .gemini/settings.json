@@ -11,6 +11,16 @@
   "hooks": {
     "BeforeTool": [
       {
+        "matcher": "run_shell_command|invoke_agent",
+        "hooks": [
+          {
+            "name": "cognitive-guard-reminder",
+            "type": "command",
+            "command": "node .gemini/hooks/ast_reflection_reminder.cjs"
+          }
+        ]
+      },
+      {
         "matcher": "write_file|replace",
         "hooks": [
           {

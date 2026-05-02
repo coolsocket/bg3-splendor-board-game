@@ -48,7 +48,7 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
     <div className="public-resource-pool flex flex-col items-center w-full bg-gradient-to-br from-bg-underdark/95 to-bg-underdark-end/95 border-b-2 border-gold-dark/30 shadow-heavy z-elevated global-hud backdrop-blur-sm pb-4 rounded-lg">
       <div className="flex flex-col items-center w-full px-2 pt-4">
         {/* Public Vault (Token Pool Pedestal) */}
-        <div className={`flex flex-col items-center w-full max-w-60 ${(!isMyTurn || isTokenLimitReached) ? 'filter grayscale-[100%] opacity-50 pointer-events-none' : ''}`}>
+        <div className={`flex flex-col items-center w-full max-w-60 ${(!isMyTurn) ? 'filter grayscale-[100%] opacity-50 pointer-events-none' : ''}`}>
           <div className="bg-ui-bg-vault p-3 rounded-xl border border-gold/50 shadow-[inset_0_4px_10px_rgba(0,0,0,0.8),0_8px_16px_rgba(0,0,0,0.6)] relative flex flex-col items-center w-full">
             {/* Metallic top trim */}
             <div className="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-70"></div>
