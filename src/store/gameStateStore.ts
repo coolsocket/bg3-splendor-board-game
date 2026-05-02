@@ -216,8 +216,8 @@ const getSocketUrl = () => {
   if (import.meta.env?.VITE_WS_URL) return import.meta.env.VITE_WS_URL;
   if (typeof window === 'undefined') return 'http://localhost:3001';
   
-  // If we are on the Vite preview port (4173), the backend is likely on 3001
-  if (window.location.port === '4173' || window.location.port === '5173') {
+  // If we are on the Vite preview port or dev port, the backend is likely on 3001
+  if (window.location.port.startsWith('417') || window.location.port.startsWith('517')) {
     return 'http://localhost:3001';
   }
   
