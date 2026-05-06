@@ -21,12 +21,9 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   // Important: Find the LOCAL player to determine if they personally can take tokens
   // not based on whose turn it is for UI feedback (though turn logic will still block the action)
   const localPlayer = players.find(p => p.name === localPlayerName) || players[currentPlayerIndex];
-  const totalTokens = Object.values(localPlayer.resources).reduce((sum, count) => sum + (count || 0), 0);
-  const isTokenLimitReached = totalTokens >= 10;
-  
+
   // Interaction check: only active if it's the local player's turn
   const isMyTurn = players[currentPlayerIndex]?.name === localPlayerName;
-
   const resources: Record<ResourceType, number> = {
     RADIANT_GEM: storeResources[DomainResourceType.RADIANT_GEM] || 0,
     ARCANE_CRYSTAL: storeResources[DomainResourceType.ARCANE_CRYSTAL] || 0,
