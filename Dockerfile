@@ -1,21 +1,21 @@
 # Stage 1: Build the React application
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 COPY . .
 RUN npm run build
 
 # Stage 2: Serve the application with Node.js Express (which also runs Socket.io)
-FROM node:20-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
 # Only install production dependencies
 COPY --from=builder /app/package*.json ./
-RUN npm install --omit=dev
+RUN npm ci --omit=dev
 
 # Copy built frontend assets and the backend server
 COPY --from=builder /app/dist ./dist

@@ -11,22 +11,34 @@
   "hooks": {
     "BeforeTool": [
       {
-        "matcher": "run_shell_command|invoke_agent",
-        "hooks": [
-          {
-            "name": "cognitive-guard-reminder",
-            "type": "command",
-            "command": "node .gemini/hooks/ast_reflection_reminder.cjs"
-          }
-        ]
-      },
-      {
         "matcher": "write_file|replace",
         "hooks": [
           {
             "name": "enforce-test-driven",
             "type": "command",
             "command": "node .gemini/hooks/enforce_tests.cjs"
+          }
+        ]
+      },
+      {
+        "matcher": ".*run_shell_command.*",
+        "hooks": [
+          {
+            "name": "terminal-spooler",
+            "type": "command",
+            "command": "node .gemini/hooks/terminal_spooler.cjs"
+          }
+        ]
+      }
+    ],
+    "AfterTool": [
+      {
+        "matcher": "run_shell_command|invoke_agent",
+        "hooks": [
+          {
+            "name": "cognitive-guard-reminder",
+            "type": "command",
+            "command": "node .gemini/hooks/ast_reflection_reminder.cjs"
           }
         ]
       }
