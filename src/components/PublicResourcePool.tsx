@@ -17,10 +17,6 @@ export const PublicResourcePool: React.FC<PublicResourcePoolProps> = ({
   const { availableResources, players, currentPlayerIndex } = useGameStateStore();
   const localPlayerName = usePlayerStore((state) => state.name);
   const storeResources = availableResources;
-  
-  // Important: Find the LOCAL player to determine if they personally can take tokens
-  // not based on whose turn it is for UI feedback (though turn logic will still block the action)
-  const localPlayer = players.find(p => p.name === localPlayerName) || players[currentPlayerIndex];
 
   // Interaction check: only active if it's the local player's turn
   const isMyTurn = players[currentPlayerIndex]?.name === localPlayerName;
