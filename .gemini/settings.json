@@ -29,6 +29,16 @@
             "command": "node .gemini/hooks/terminal_spooler.cjs"
           }
         ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "token-counter-before",
+            "type": "command",
+            "command": "node .gemini/hooks/token_counter.cjs"
+          }
+        ]
       }
     ],
     "AfterTool": [
@@ -39,6 +49,16 @@
             "name": "cognitive-guard-reminder",
             "type": "command",
             "command": "node .gemini/hooks/ast_reflection_reminder.cjs"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "token-counter-after",
+            "type": "command",
+            "command": "node .gemini/hooks/token_counter.cjs"
           }
         ]
       }

@@ -2,9 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import ts from 'typescript';
+import { parseArgs } from 'util';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.join(__dirname, '..');
+const ROOT = path.join(__dirname, '../../..');
 
 const log = (msg, color = '\x1b[36m') => console.log(`\x1b[1m${color}${msg}\x1b[0m`);
 const warn = (msg) => console.log(`\x1b[33m⚠️  ${msg}\x1b[0m`);
@@ -131,7 +132,15 @@ function runSync() {
 }
 
 async function main() {
-    const cmd = process.argv[2];
+    const options = {
+        verify: { type: 'boolean' },
+        audit: { type: 'boolean' },
+        sync: { type: 'boolean' },
+        digest: { type: 'boolean' }
+    };
+    const { values, positionals } = parseArgs({ args: process.argv.slice(2), options, allowPositionals: true });
+
+    const cmd = positionals[0];
     switch (cmd) {
         case 'verify': verify(); break;
         case 'audit': auditColors(); break;

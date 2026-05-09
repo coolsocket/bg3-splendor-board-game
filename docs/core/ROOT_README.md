@@ -16,17 +16,17 @@ High-level documents covering architecture, design system, and game rules.
 - **[Onboarding Guide](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/core/onboarding.md)**: Quick start and debug tips.
 - **[Troubleshooting](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/core/troubleshooting.md)**: Symptom to cause mapping.
 
-### [Modules](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/modules/)
+### [UI/UX Modules](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/UIUX/)
 Feature-centric documentation organized by page and component.
 
 #### Game Arena (主游戏界面)
-- **[Overview](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/modules/game_arena/overview.md)**: Layout and atmosphere of the main page.
-- **[Public Resource Pool](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/modules/game_arena/resource_pool.md)**: UI, interactions, and code for the token pool.
-- **[Card Market](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/modules/game_arena/card_market.md)**: Grid of cards, selection, and purchase flow.
-- **[Player Board](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/modules/game_arena/player_board.md)**: Player assets, avatar, and reserved cards.
-- **[Patrons](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/modules/game_arena/patrons.md)**: Noble cards and acquisition logic.
+- **[Overview](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/UIUX/game_arena/overview.md)**: Layout and atmosphere of the main page.
+- **[Public Resource Pool](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/UIUX/game_arena/resource_pool.md)**: UI, interactions, and code for the token pool.
+- **[Card Market](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/UIUX/game_arena/card_market.md)**: Grid of cards, selection, and purchase flow.
+- **[Player Board](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/UIUX/game_arena/player_board.md)**: Player assets, avatar, and reserved cards.
+- **[Patrons](file:///Users/yehao/Desktop/Code/Claude/bg3_splendor_game_2/docs/UIUX/game_arena/patrons.md)**: Noble cards and acquisition logic.
 
 ---
 
 ## 🤝 Contributing
-When adding new features or modifying existing ones, please ensure that the corresponding documentation in `modules/` or `core/` is updated to reflect the changes.
+When adding new features or modifying existing ones, please ensure that the corresponding documentation in `UIUX/` or `core/` is updated to reflect the changes.
