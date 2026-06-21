@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { GameArena } from './components/GameArena';
 import { useGameStateStore } from './store/gameStateStore';
 import { usePlayerStore } from './store/playerStore';
@@ -81,9 +82,11 @@ function LoginScreen() {
 function App() {
   const localPlayerName = usePlayerStore(state => state.name);
 
-  if (typeof window !== 'undefined') {
-    (window as any).__LOCAL_PLAYER_NAME__ = localPlayerName;
-  }
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      (window as any).__LOCAL_PLAYER_NAME__ = localPlayerName;
+    }
+  }, [localPlayerName]);
 
   if (!localPlayerName) {
     return <LoginScreen />;

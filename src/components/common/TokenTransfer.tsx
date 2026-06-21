@@ -284,7 +284,7 @@ const FlyingCoin: React.FC<FlyingCoinProps> = ({
     y: Math.min(startY, targetPos.y) - 200 - Math.random() * 200
   }));
 
-  const bounceOffset = React.useMemo(() => (Math.random() - 0.5) * 15, []);
+  const [bounceOffset] = useState(() => (Math.random() - 0.5) * 15);
 
   return (
     <motion.div

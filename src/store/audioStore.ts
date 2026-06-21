@@ -17,12 +17,18 @@ interface AudioState {
   isMuted: boolean;
   bgmPlaylist: string[];
   currentBgmIndex: number;
+  isShuffle: boolean;
+  isBgmPlaying: boolean;
   setVolume: (volume: number) => void;
   setBgmVolume: (volume: number) => void;
   toggleMute: () => void;
   playAudio: (action: AudioAction) => void;
   playBgm: () => void;
   pauseBgm: () => void;
+  nextBgm: () => void;
+  prevBgm: () => void;
+  setShuffle: (shuffle: boolean) => void;
+  getCurrentTrackName: () => string;
   _getBgmHowl: () => Howl | null;
 }
 
@@ -80,20 +86,33 @@ const BGM_PLAYLIST = [
   `${GCS_BASE}/bgm_i_want_to_live.mp3`,
   `${GCS_BASE}/bgm_nightsong.mp3`,
   `${GCS_BASE}/bgm_gather_your_allies.mp3`,
-  `${GCS_BASE}/bgm_main.mp3`, // Repetitions for now to reach 10
-  `${GCS_BASE}/bgm_i_want_to_live.mp3`,
-  `${GCS_BASE}/bgm_nightsong.mp3`,
-  `${GCS_BASE}/bgm_raphael.mp3`
+  `${GCS_BASE}/bgm_song_of_baldur.mp3`,
+  `${GCS_BASE}/bgm_the_power.mp3`,
+  `${GCS_BASE}/bgm_combat.mp3`
 ];
 
 let bgmHowl: Howl | null = null;
+let bgmDurationTimeout: any = null;
 
-export const useAudioStore = create<AudioState>((set, get) => ({
-  globalVolume: 0.5,
-  bgmVolume: 0.3,
-  isMuted: false,
-  bgmPlaylist: BGM_PLAYLIST,
-  currentBgmIndex: 0,
+export const useAudioStore = create<AudioState>((set, get) => {
+  // Fisher-Yates shuffle helper for initial playlist
+  const initialShuffle = (playlist: string[]) => {
+    const shuffled = [...playlist];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  return {
+    globalVolume: 0.5,
+    bgmVolume: 0.3,
+    isMuted: false,
+    bgmPlaylist: initialShuffle(BGM_PLAYLIST),
+    currentBgmIndex: 0,
+    isShuffle: true,
+    isBgmPlaying: false,
   
   setVolume: (volume: number) => {
     const newVol = Math.max(0, Math.min(1, volume));
@@ -123,6 +142,8 @@ export const useAudioStore = create<AudioState>((set, get) => ({
 
     if (!bgmHowl) {
       const trackSrc = bgmPlaylist[currentBgmIndex];
+      debugLog(`Initializing track index ${currentBgmIndex}: ${trackSrc}`);
+      
       bgmHowl = new Howl({
         src: [trackSrc],
         html5: true,
@@ -130,11 +151,18 @@ export const useAudioStore = create<AudioState>((set, get) => ({
         volume: bgmVolume,
         preload: true,
         onend: () => {
-          // Play the next track
-          const nextIndex = (get().currentBgmIndex + 1) % bgmPlaylist.length;
-          set({ currentBgmIndex: nextIndex });
-          bgmHowl = null; // Reset so the next playBgm call instantiates the new track
-          get().playBgm();
+          debugLog(`Track ended naturally: ${trackSrc}`);
+          get().nextBgm();
+        },
+        onloaderror: (_id, err) => {
+          debugLog(`LOAD ERROR on track ${trackSrc}: ${err}. Skipping track...`, true);
+          bgmHowl = null;
+          get().nextBgm();
+        },
+        onplayerror: (_id, err) => {
+          debugLog(`PLAY ERROR on track ${trackSrc}: ${err}. Skipping track...`, true);
+          bgmHowl = null;
+          get().nextBgm();
         }
       });
     }
@@ -142,13 +170,119 @@ export const useAudioStore = create<AudioState>((set, get) => ({
     if (!bgmHowl.playing()) {
       bgmHowl.play();
     }
+    set({ isBgmPlaying: true });
     Howler.mute(isMuted);
+
+    // Dynamic duration cap: restrict any single track to 5 minutes max for snappy pacing
+    if (bgmDurationTimeout) clearTimeout(bgmDurationTimeout);
+    bgmDurationTimeout = setTimeout(() => {
+      if (bgmHowl && get().isBgmPlaying) {
+        debugLog('BGM track exceeded 5-minute limit. Smoothly fading out to next track...');
+        const currentVol = get().bgmVolume;
+        bgmHowl.fade(currentVol, 0, 3000);
+        setTimeout(() => {
+          get().nextBgm();
+        }, 3100);
+      }
+    }, 300000); // 300 seconds (5 minutes)
   },
 
   pauseBgm: () => {
+    if (bgmDurationTimeout) {
+      clearTimeout(bgmDurationTimeout);
+      bgmDurationTimeout = null;
+    }
     if (bgmHowl && bgmHowl.playing()) {
       bgmHowl.pause();
     }
+    set({ isBgmPlaying: false });
+  },
+
+  nextBgm: () => {
+    if (bgmDurationTimeout) {
+      clearTimeout(bgmDurationTimeout);
+      bgmDurationTimeout = null;
+    }
+    if (bgmHowl) {
+      bgmHowl.stop();
+      bgmHowl = null;
+    }
+
+    const { bgmPlaylist, currentBgmIndex } = get();
+    const nextIndex = (currentBgmIndex + 1) % bgmPlaylist.length;
+    set({ currentBgmIndex: nextIndex, isBgmPlaying: false });
+    debugLog(`Manual skip / Auto advance: index changed to ${nextIndex}`);
+    
+    get().playBgm();
+  },
+
+  prevBgm: () => {
+    if (bgmDurationTimeout) {
+      clearTimeout(bgmDurationTimeout);
+      bgmDurationTimeout = null;
+    }
+    if (bgmHowl) {
+      bgmHowl.stop();
+      bgmHowl = null;
+    }
+
+    const { bgmPlaylist, currentBgmIndex } = get();
+    const prevIndex = (currentBgmIndex - 1 + bgmPlaylist.length) % bgmPlaylist.length;
+    set({ currentBgmIndex: prevIndex, isBgmPlaying: false });
+    debugLog(`Manual previous: index changed to ${prevIndex}`);
+    
+    get().playBgm();
+  },
+
+  setShuffle: (shuffle: boolean) => {
+    if (typeof window === 'undefined') return;
+    const rawPlaylist = [...BGM_PLAYLIST];
+    
+    if (shuffle) {
+      debugLog('Enabling shuffle mode. Shuffling playlist...');
+      const currentTrack = get().bgmPlaylist[get().currentBgmIndex];
+      
+      // Shuffle BGM playlist (Fisher-Yates)
+      const shuffled = [...rawPlaylist];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      
+      // Relocate current track to match its index or put it at 0 to avoid abrupt cuts
+      const newIndex = shuffled.indexOf(currentTrack);
+      set({
+        isShuffle: true,
+        bgmPlaylist: shuffled,
+        currentBgmIndex: newIndex >= 0 ? newIndex : 0
+      });
+    } else {
+      debugLog('Disabling shuffle mode. Restoring original playlist...');
+      const currentTrack = get().bgmPlaylist[get().currentBgmIndex];
+      const originalIndex = rawPlaylist.indexOf(currentTrack);
+      
+      set({
+        isShuffle: false,
+        bgmPlaylist: rawPlaylist,
+        currentBgmIndex: originalIndex >= 0 ? originalIndex : 0
+      });
+    }
+  },
+
+  getCurrentTrackName: () => {
+    const { bgmPlaylist, currentBgmIndex } = get();
+    const fileUrl = bgmPlaylist[currentBgmIndex];
+    if (!fileUrl) return 'Silent';
+    
+    const parts = fileUrl.split('/');
+    const filename = parts[parts.length - 1] || '';
+    
+    return filename
+      .replace('bgm_', '')
+      .replace('.mp3', '')
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   },
 
   playAudio: (action: AudioAction) => {
@@ -162,7 +296,8 @@ export const useAudioStore = create<AudioState>((set, get) => ({
   },
   
   _getBgmHowl: () => bgmHowl,
-}));
+  };
+})
 
 if (typeof window !== 'undefined') {
   (window as any).__ZUSTAND_AUDIO_STORE__ = useAudioStore;

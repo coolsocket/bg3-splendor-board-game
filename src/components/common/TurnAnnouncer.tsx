@@ -16,6 +16,16 @@ export const TurnAnnouncer: React.FC = () => {
   const t = language === 'ZH' ? ZH : EN;
   const phase = useGameStateStore((state) => state.phase);
 
+  const [particles] = useState(() => 
+    [...Array(12)].map(() => ({
+      xStart: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 800),
+      scale: Math.random() * 2,
+      xTarget: (Math.random() - 0.5) * 200 + (Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 800)),
+      duration: 2 + Math.random() * 2,
+      delay: Math.random() * 2
+    }))
+  );
+
   useEffect(() => {
     const handleAnnounce = (e: any) => {
       if (useGameStateStore.getState().phase === GamePhase.COMPLETED) return;
@@ -36,15 +46,18 @@ export const TurnAnnouncer: React.FC = () => {
   // Monitor phase changes for specific announcements
   useEffect(() => {
     if (phase === GamePhase.COMPLETED) {
-      setAnnouncement(null);
-      return;
+      const timer = setTimeout(() => setAnnouncement(null), 0);
+      return () => clearTimeout(timer);
     }
     if (phase === GamePhase.LAST_ROUND) {
-      setAnnouncement({
-        text: language === 'ZH' ? '最后一轮！' : 'LAST ROUND!',
-        type: 'phase',
-        id: 'last-round-announce'
-      });
+      const timer = setTimeout(() => {
+        setAnnouncement({
+          text: language === 'ZH' ? '最后一轮！' : 'LAST ROUND!',
+          type: 'phase',
+          id: 'last-round-announce'
+        });
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [phase, language]);
 
@@ -120,31 +133,31 @@ export const TurnAnnouncer: React.FC = () => {
                 </motion.div>
              </div>
 
-             {/* Embers/Particles Overlay */}
-             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {[...Array(12)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-1 h-1 bg-gold/60 rounded-full"
-                    initial={{ 
-                      x: Math.random() * window.innerWidth, 
-                      y: window.innerHeight / 2,
-                      opacity: 0,
-                      scale: Math.random() * 2 
-                    }}
-                    animate={{ 
-                      y: [window.innerHeight / 2, -100],
-                      x: (Math.random() - 0.5) * 200 + (Math.random() * window.innerWidth),
-                      opacity: [0, 0.8, 0],
-                    }}
-                    transition={{ 
-                      duration: 2 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2
-                    }}
-                  />
-                ))}
-             </div>
+              {/* Embers/Particles Overlay */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                 {particles.map((p, i) => (
+                   <motion.div
+                     key={i}
+                     className="absolute w-1 h-1 bg-gold/60 rounded-full"
+                     initial={{ 
+                       x: p.xStart, 
+                       y: typeof window !== 'undefined' ? window.innerHeight / 2 : 300,
+                       opacity: 0,
+                       scale: p.scale
+                     }}
+                     animate={{ 
+                       y: [typeof window !== 'undefined' ? window.innerHeight / 2 : 300, -100],
+                       x: p.xTarget,
+                       opacity: [0, 0.8, 0],
+                     }}
+                     transition={{ 
+                       duration: p.duration,
+                       repeat: Infinity,
+                       delay: p.delay
+                     }}
+                   />
+                 ))}
+              </div>
           </div>
         </motion.div>
       )}

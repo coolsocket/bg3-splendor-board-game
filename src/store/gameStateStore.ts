@@ -176,12 +176,13 @@ export const useGameStateStore = create<GameStateStore>()(
       storage: createJSONStorage(() => localStorage),
 
       partialize: (state) => {
-        // Exclude methods and personal preferences from persistence
+        // Exclude methods, transient UI locks, and personal preferences from persistence
         const syncableState = { ...state } as any;
         delete syncableState.language;
         delete syncableState.setGameState;
         delete syncableState.reset;
         delete syncableState.toggleLanguage;
+        delete syncableState.isAnimationLocked;
         return syncableState;
       },
       onRehydrateStorage: (_state) => {
@@ -236,6 +237,8 @@ if (typeof window !== 'undefined') { (window as any).__SOCKET__ = socket; }
 
 socket.on('connect', () => {
   console.log(`[MULTIPLAYER] Connected to server, joining room: ${ROOM}`);
+  // Clear any stale animation locks upon connection/reconnection
+  useGameStateStore.setState({ isAnimationLocked: false });
   socket.emit('join-room', ROOM);
   // NEW JOINER: Request full state from others in the room
   socket.emit('request-full-state', { room: ROOM });
@@ -335,9 +338,17 @@ socket.on('animation-event', (data) => {
 
 if (typeof window !== 'undefined') {
   window.addEventListener('request-sync-broadcast', () => {
+    // Clear lock locally
+    useGameStateStore.setState({ isAnimationLocked: false });
+    // Increment sequence number so others will accept this manual override
     const state = useGameStateStore.getState();
-    const { language, setGameState, reset, toggleLanguage, ...pureState } = state;
-    socket.emit('state-sync', { room: ROOM, state: pureState });
+    const nextSeq = state.sequenceNumber + 1;
+    useGameStateStore.setState({ sequenceNumber: nextSeq });
+    
+    const updatedState = useGameStateStore.getState();
+    const { language, setGameState, reset, toggleLanguage, dispatchAction, ...pureState } = updatedState;
+    console.log(`[MULTIPLAYER] Manual Force Sync. Incremented sequence to #${nextSeq}`);
+    socket.emit('state-sync', { room: ROOM, state: { ...pureState, sessionId: SESSION_ID } });
   });
 }
 

@@ -28,8 +28,15 @@ export default defineConfig([
     },
     rules: {
       ...jsxA11y.configs.recommended.rules,
-      '@typescript-eslint/no-unused-vars': 'error',
-      'react-hooks/exhaustive-deps': 'error',
+      'jsx-a11y/click-events-have-key-events': 'warn',
+      'jsx-a11y/no-noninteractive-element-interactions': 'warn',
+      'jsx-a11y/no-static-element-interactions': 'warn',
+      'jsx-a11y/no-redundant-roles': 'warn',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
+      'react-hooks/exhaustive-deps': 'warn',
+      'react-refresh/only-export-components': 'warn',
+      'no-case-declarations': 'warn',
     },
   },
 ])

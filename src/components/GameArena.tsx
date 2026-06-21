@@ -53,6 +53,14 @@ export const GameArena: React.FC = () => {
   const bgmVolume = useAudioStore((state) => state.bgmVolume);
   const setVolume = useAudioStore((state) => state.setVolume);
   const setBgmVolume = useAudioStore((state) => state.setBgmVolume);
+  const isBgmPlaying = useAudioStore((state) => state.isBgmPlaying);
+  const isShuffle = useAudioStore((state) => state.isShuffle);
+  const playBgm = useAudioStore((state) => state.playBgm);
+  const pauseBgm = useAudioStore((state) => state.pauseBgm);
+  const nextBgm = useAudioStore((state) => state.nextBgm);
+  const prevBgm = useAudioStore((state) => state.prevBgm);
+  const setShuffle = useAudioStore((state) => state.setShuffle);
+  const getCurrentTrackName = useAudioStore((state) => state.getCurrentTrackName);
 
   const discardingInfo = useGameStateStore((state) => state.discardingInfo);
   const localPlayerName = usePlayerStore((state) => state.name);
@@ -141,7 +149,7 @@ export const GameArena: React.FC = () => {
       if (currentInBoard > currentInDiscard) {
           setDiscardSelection(prev => ({ ...prev, [domainType]: (prev[domainType] || 0) + 1 }));
       }
-  }, [discardRequired, discardSelection, players, currentPlayerIndex]);
+  }, [discardRequired, discardSelection, players, currentPlayerIndex, isDiscardingMe]);
 
   const handleRemoveDiscardToken = useCallback((type: TokenResourceType) => {
       const domainType = type.toLowerCase();
@@ -266,6 +274,70 @@ export const GameArena: React.FC = () => {
                 onChange={(e) => setBgmVolume(parseFloat(e.target.value))}
                 className="flex-1 accent-[var(--color-gold)] cursor-pointer h-1.5 bg-black/50 rounded-full appearance-none"
               />
+            </div>
+
+            {/* Music Player Dashboard */}
+            <div className="bg-black/40 border border-[var(--color-ui-border-tier1)]/30 rounded-md p-4 flex flex-col items-center gap-3">
+              {/* Song Name with Glow */}
+              <div className="text-center w-full">
+                <p className="text-[10px] uppercase tracking-widest text-[var(--color-text-secondary)]">Now Playing / 正在播放</p>
+                <p className="text-sm font-fantasy font-bold text-[#E8E2D2] drop-shadow-[0_0_8px_rgba(212,175,55,0.6)] truncate mt-1">
+                  {getCurrentTrackName()}
+                </p>
+              </div>
+
+              {/* Player Controls */}
+              <div className="flex items-center gap-4 mt-1">
+                {/* Shuffle Button */}
+                <button
+                  onClick={() => setShuffle(!isShuffle)}
+                  className={`p-2 rounded border border-[var(--color-gold-dark)]/40 hover:bg-[var(--color-gold-dark)]/20 transition-all ${isShuffle ? 'bg-[var(--color-gold-dark)]/30 text-[var(--color-gold)] shadow-[0_0_8px_rgba(212,175,55,0.4)]' : 'bg-black/30 text-gray-500'}`}
+                  title="Shuffle Playlist / 随机播放"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 4l5 5m1.5 1.5L14 14m.5.5L20 20M20 4l-5 5m-1.5 1.5L9 14m-1.5 1.5L4 20" />
+                  </svg>
+                </button>
+
+                {/* Prev Button */}
+                <button
+                  onClick={prevBgm}
+                  className="p-2 rounded border border-[var(--color-gold-dark)]/40 bg-black/30 text-[var(--color-gold)] hover:bg-[var(--color-gold-dark)]/20 transition-all active:scale-95"
+                  title="Previous Song / 上一首"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                {/* Play/Pause Button */}
+                <button
+                  onClick={isBgmPlaying ? pauseBgm : playBgm}
+                  className="p-3 rounded-full border-2 border-[var(--color-gold)] bg-gradient-to-b from-[#bf953f] to-[#aa7c11] text-black hover:brightness-110 hover:shadow-[0_0_12px_rgba(212,175,55,0.6)] transition-all active:scale-95 flex items-center justify-center w-10 h-10"
+                  title={isBgmPlaying ? "Pause / 暂停" : "Play / 播放"}
+                >
+                  {isBgmPlaying ? (
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path fillRule="evenodd" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  )}
+                </button>
+
+                {/* Next Button */}
+                <button
+                  onClick={nextBgm}
+                  className="p-2 rounded border border-[var(--color-gold-dark)]/40 bg-black/30 text-[var(--color-gold)] hover:bg-[var(--color-gold-dark)]/20 transition-all active:scale-95"
+                  title="Next Song / 下一首"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
 

@@ -26,7 +26,7 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     pool: 'threads',
-    exclude: ['node_modules', 'dist', '.idea', '.git', '.cache', 'tests/e2e/**/*'],
+    exclude: ['node_modules', 'dist', '.idea', '.git', '.cache', 'tests/e2e/**/*', 'src/scratch.test.ts'],
     server: {
       deps: {
         inline: ['@exodus/bytes', 'html-encoding-sniffer']

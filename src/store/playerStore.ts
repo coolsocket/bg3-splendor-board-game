@@ -15,12 +15,17 @@ export interface PlayerState {
 
 export const usePlayerStore = create<PlayerState>((set) => ({
   id: '',
-  name: '',
+  name: typeof window !== 'undefined' ? localStorage.getItem('bg3-player-name') || '' : '',
   resources: {},
   bonuses: {},
   acquiredCards: [],
   reservedCards: [],
   patrons: [],
   prestigePoints: 0,
-  setName: (name: string) => set({ name }),
+  setName: (name: string) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('bg3-player-name', name);
+    }
+    set({ name });
+  },
 }));
